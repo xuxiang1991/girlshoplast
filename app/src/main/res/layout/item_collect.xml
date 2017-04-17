@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:imagecontrol="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_article"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:background="@drawable/shape_stoke">
+
+    <ImageView
+        android:id="@+id/iv_content"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_marginTop="60dp"
+        android:scaleType="fitXY" />
+
+    <com.daocheng.girlshop.view.RoundImageView
+        android:id="@+id/iv_head"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/head_sculpture"
+        imagecontrol:border_outside_color="@color/App_layout_deliver"
+        imagecontrol:border_thickness="0dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_toRightOf="@id/iv_head"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/tv_author_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingLeft="4dp"
+            android:textColor="@color/App_order_name"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingLeft="4dp"
+            android:textColor="@color/App_actvitytext_grey"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/iv_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:paddingLeft="24dp"
+        android:layout_alignParentRight="true"
+        android:paddingRight="24dp"
+        android:scaleType="center"
+        android:src="@drawable/collect_delete"/>
+
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:padding="8dp"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="@color/App_order_name"
+            android:textSize="22sp" />
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:maxLines="2"
+            android:textColor="@color/App_actvitytext_grey"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+</RelativeLayout>

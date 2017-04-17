@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/rl_title"
+        layout="@layout/title_view"></include>
+
+    <com.daocheng.girlshop.view.ScrollViewExtend
+        android:id="@+id/layout_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_title"
+        android:background="@color/App_backgroud_grey"
+        android:scrollbars="none"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/App_backgroud_grey"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <include layout="@layout/viewpager_advertis"></include>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="144dp"
+                android:background="@color/App_backgroud_grey"
+                android:orientation="horizontal"
+
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/ll_bigmeal"
+                    android:layout_width="match_parent"
+                    android:layout_height="144dp"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/shape_stoke"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/tv_large"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginTop="8dp"
+                        android:text="名厨汇聚"
+                        android:textColor="@color/App_back_orange"
+                        android:textSize="15dp" />
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/chef" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="找名厨"
+                        android:textColor="@color/App_actvitytext_grey"
+                        android:textSize="17dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:text="各大名厨 一键搜索"
+                        android:textColor="@color/App_home_text_grey"
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_smalmeal"
+                    android:layout_width="match_parent"
+                    android:layout_height="144dp"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/shape_stoke"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/tv_little"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginTop="8dp"
+                        android:text="找好日子"
+                        android:textColor="@color/App_back_orange"
+                        android:textSize="15dp" />
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/goodday" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="老黄历"
+                        android:textColor="@color/App_actvitytext_grey"
+                        android:textSize="17dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:text="良辰吉日 花好月圆"
+                        android:textColor="@color/App_home_text_grey"
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/ll_chadan"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/shape_stoke"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="厨师与茶担"
+                    android:textColor="@color/App_actvitytext_grey"
+                    android:textSize="17dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="32dp"
+                    android:text="快速预定"
+                    android:textColor="@color/App_back_orange"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center"
+                    android:text="专业团队 服务周到"
+                    android:textColor="@color/App_home_text_grey"
+                    android:textSize="12dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="13dp"
+                    android:layout_marginTop="11dp"
+                    android:src="@drawable/chadan2" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/serv_protect"
+                android:textColor="@color/App_home_text_grey_title"
+                android:textSize="15dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/App_backgroud_grey"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <RelativeLayout
+                    android:id="@+id/rl_order_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_stoke"
+                    android:visibility="visible">
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginTop="5dp"-->
+                        <!--android:layout_marginLeft="21dp"-->
+                        <!--android:layout_below="@id/tv_order_info"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:text="全程跟踪 平安消费"-->
+                        <!--android:textColor="@color/App_home_text_grey"-->
+                        <!--android:textSize="10sp" />-->
+
+                    <ImageView
+                        android:id="@+id/orderKnowIv"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="9dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/home_order_icon" />
+
+                    <TextView
+                        android:id="@+id/tv_order_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:text="订单须知"
+                        android:layout_toLeftOf="@+id/orderKnowIv"
+                        android:textColor="@color/App_actvitytext_grey"
+                        android:textSize="17dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_ser_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_stoke"
+                    android:visibility="visible">
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginTop="5dp"-->
+                        <!--android:layout_marginLeft="21dp"-->
+                        <!--android:layout_below="@id/tv_ser_save"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:text="花好月圆 乐享家宴"-->
+                        <!--android:textColor="@color/App_home_text_grey"-->
+                        <!--android:textSize="10sp" />-->
+
+                    <ImageView
+                        android:id="@+id/serverGuaranteeIv"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="9dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/home_service_icon" />
+                    <TextView
+                        android:id="@+id/tv_ser_save"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:text="服务保障"
+                        android:layout_toLeftOf="@+id/serverGuaranteeIv"
+                        android:textColor="@color/App_actvitytext_grey"
+                        android:textSize="17dp"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </com.daocheng.girlshop.view.ScrollViewExtend>
+
+    <com.daocheng.girlshop.view.LoadingView
+        android:id="@+id/layout_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_title">
+
+    </com.daocheng.girlshop.view.LoadingView>
+</RelativeLayout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/App_backgroud_grey">
+
+    <include
+        android:id="@+id/rl_title"
+        layout="@layout/title_top"></include>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_title"
+        android:background="@color/App_backgroud_grey"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginBottom="48dp">
+
+
+        <include
+            android:id="@+id/fresh_list"
+            layout="@layout/fresh_activity"></include>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/shape_stoke"
+        android:layout_alignParentBottom="true">
+
+        <CheckBox
+            android:id="@+id/cb_all"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="16dp"
+            android:layout_marginLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="全选"
+            android:checked="true"
+            />
+
+
+        <Button
+            android:id="@+id/bt_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@color/App_back_orange"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="结算"
+            android:textSize="16sp"
+
+            android:textColor="@color/white"
+            android:padding="8dp"/>
+        <Button
+            android:id="@+id/bt_addtocart"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@color/App_back_orange"
+            android:layout_toLeftOf="@id/bt_submit"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="加入购物车"
+            android:textSize="16sp"
+
+            android:textColor="@color/white"
+            android:padding="8dp"/>
+
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_toLeftOf="@id/bt_addtocart"
+            android:layout_marginRight="8dp"
+            android:textColor="@color/App_back_orange"
+            android:text=""
+            android:textSize="14sp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <RadioGroup
+        android:id="@+id/group"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape_main_bottom"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/one"
+            style="@style/main_tab_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="4dp"
+            android:drawableTop="@drawable/select_main_home"
+            android:padding="8dp"
+            android:text="首页" />
+
+
+        <RadioButton
+            android:id="@+id/two"
+            style="@style/main_tab_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="4dp"
+            android:drawableTop="@drawable/select_main_cooker"
+            android:padding="8dp"
+            android:text="我的词汇" />
+
+        <RadioButton
+            android:id="@+id/three"
+            style="@style/main_tab_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="4dp"
+            android:drawableTop="@drawable/select_main_order"
+            android:padding="8dp"
+            android:text="我的学习" />
+
+        <!--<RadioButton-->
+            <!--android:id="@+id/four"-->
+            <!--style="@style/main_tab_bottom"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:drawablePadding="4dp"-->
+            <!--android:drawableTop="@drawable/select_main_dingke"-->
+            <!--android:padding="8dp"-->
+            <!--android:text="订课考试" />-->
+
+        <RadioButton
+            android:id="@+id/five"
+            style="@style/main_tab_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="4dp"
+            android:drawableTop="@drawable/select_main_mine"
+            android:padding="8dp"
+            android:text="我的课程" />
+
+    </RadioGroup>
+
+
+    <com.daocheng.girlshop.view.NoScrollViewPager
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/group"
+        android:layout_alignParentTop="true" />
+
+
+</RelativeLayout>

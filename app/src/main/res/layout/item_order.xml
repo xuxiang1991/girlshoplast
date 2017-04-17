@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_order"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:background="@drawable/shape_stoke">
+    <!--<ImageView-->
+    <!--android:id="@+id/iv_arrow"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:padding="16dp"-->
+    <!--android:src="@drawable/arrow_right"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_centerVertical="true"/>-->
+    <TextView
+        android:id="@+id/tv_order_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="120dp"
+        android:padding="8dp"
+        android:singleLine="true"
+        android:text="订单号：2413120160"
+        android:textColor="@color/App_order_name"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_order_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:padding="8dp"
+        android:text="待付款"
+        android:textColor="@color/App_back_orange"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/tv_order_state"
+        android:paddingTop="8dp"
+        android:text="状态："
+        android:textColor="@color/App_order_name"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_paytype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_no"
+        android:padding="8dp"
+        android:text="支付方式：尚未支付"
+        android:textColor="@color/App_order_name"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_order_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_order_no"
+        android:padding="8dp"
+        android:text="￥791.5"
+        android:textColor="@color/App_back_orange"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_no"
+        android:layout_toLeftOf="@id/tv_order_count"
+        android:paddingTop="8dp"
+        android:text="总价："
+        android:textColor="@color/App_order_name"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_createtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order_count"
+        android:padding="8dp"
+        android:text="2013-1-12"
+        android:textColor="@color/App_order_name"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="查看详情"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/shape_orderlist_bt"
+        android:layout_below="@id/tv_paytype"/>
+    <TextView
+        android:id="@+id/tv_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:layout_below="@id/tv_paytype"
+        android:layout_toLeftOf="@id/tv_detail"
+        android:text="取消订单"
+        android:layout_marginRight="8dp"
+        android:textSize="14sp"
+        android:textColor="@color/App_order_name"
+        />
+
+</RelativeLayout>

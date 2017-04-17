@@ -1,0 +1,54 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <!--厨师列表 header-->
+    <dimen name="cooker_list_header">140dp</dimen>
+    <!--相册选择-->
+    <dimen name="image_size">120dp</dimen>
+    <dimen name="space_size">2dp</dimen>
+    <dimen name="folder_cover_size">72dp</dimen>
+    <dimen name="body_padding_medium">10dp</dimen>
+    <dimen name="body_padding_large">10dp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_xlarge">18sp</dimen>
+    <dimen name="speaker_image_size">36dp</dimen>
+    <dimen name="speaker_image_padding">8dp</dimen>
+    <dimen name="vendor_image_size">100dp</dimen>
+
+    <dimen name="actionbar_height">45dip</dimen>
+    <dimen name="actionbar_item_height">45dip</dimen>
+    <dimen name="actionbar_item_width">45dip</dimen>
+    <dimen name="LargeTextSize">16dp</dimen>
+    <dimen name="BasicTextSize">15dp</dimen>
+    <dimen name="TitleTextSize">18dp</dimen>
+    <dimen name="SmallTextSize">14dp</dimen>
+    <dimen name="SmallerTextSize">13dp</dimen>
+    <dimen name="LargestTextSize">30dp</dimen>
+    <dimen name="ChattingTextSize">16dp</dimen>
+    <dimen name="ChattingContentMinHeight">49dp</dimen>
+    <dimen name="PreferenceItemHeight">42dp</dimen>
+    <dimen name="ConversationItemHeight">58dp</dimen>
+    <dimen name="LargeAvatarSize">56dp</dimen>
+
+    <dimen name="App_little_text_size">13sp</dimen>
+    <dimen name="App_tabtop_text_size">17sp</dimen>
+    <dimen name="App_message_content">15sp</dimen>
+    <dimen name="App_home_dialog_text">16sp</dimen>
+    <dimen name="App_nomal_text_size">12sp</dimen>
+
+    <dimen name="App_caidan_text">13sp</dimen>
+    <dimen name="App_minest_text_size">9sp</dimen>
+    <dimen name="App_dialog_text">20sp</dimen>
+
+    <dimen name="setting_item_height">48.0dip</dimen>
+    <dimen name="app_text_big">20sp</dimen>
+    <dimen name="app_text_small">15sp</dimen>
+
+
+</resources>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:imagecontrol="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_bg">
+
+    <include
+        android:id="@+id/rl_title"
+        layout="@layout/title_top"></include>
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_stoke">
+
+
+
+        <com.daocheng.girlshop.media.recoder.view.AudioRecordButton
+            android:id="@+id/recordButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/button_recordnormal"
+            android:gravity="center"
+            android:minHeight="0dp"
+            android:padding="5dp"
+            android:text="@string/normal"
+            android:visibility="visible"
+            android:textColor="#727272"></com.daocheng.girlshop.media.recoder.view.AudioRecordButton>
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_stoke"
+        android:minHeight="100dp"
+        android:layout_below="@id/rl_title"
+        android:orientation="horizontal">
+
+        <com.daocheng.girlshop.view.RoundImageView
+            android:id="@+id/iv_head"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="16dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/head_sculpture"
+            imagecontrol:border_outside_color="@null"
+            imagecontrol:border_thickness="0dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingTop="16dp">
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Compant is goood"
+                android:textColor="@color/text_light_dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_content_translate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:text="公司很好"
+                android:textColor="@color/text_light_grey"
+                android:textSize="14sp"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_updatetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="6-27"
+            android:textColor="@color/text_light_grey"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="48dp"
+        android:layout_below="@id/rl_top"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <include
+            android:id="@+id/fresh_list"
+            layout="@layout/fresh_activity"></include>
+    </LinearLayout>
+
+
+</RelativeLayout>

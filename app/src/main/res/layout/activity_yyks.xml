@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_bg">
+
+    <include
+        android:id="@+id/rl_title"
+        layout="@layout/title_top"></include>
+
+    <LinearLayout
+        android:id="@+id/ll_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_title"
+        android:gravity="center"
+        android:background="@drawable/shape_stoke"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36sp"
+            android:padding="12dp"
+            android:gravity="center"
+            android:textColor="@color/text_color_green"
+            android:text="00:00:00"/>
+        <TextView
+            android:id="@+id/tv_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开始考试"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:paddingLeft="20dp"
+            android:gravity="center"
+            android:paddingRight="20dp"
+            android:textSize="18sp"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/text_color_green"
+            android:background="@drawable/activity_yyks_start"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_start"
+        android:layout_marginBottom="48dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <include
+            android:id="@+id/fresh_list"
+            layout="@layout/fresh_activity"></include>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_yy_ok"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/App_calendar_big"
+        android:gravity="center"
+        android:text="完 成"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:visibility="gone" />
+</RelativeLayout>

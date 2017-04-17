@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/App_backgroud_grey"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_top"></include>
+
+
+    <EditText
+        android:id="@+id/ed_secret"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_stoke"
+        android:gravity="center_vertical"
+        android:inputType="textPassword"
+        android:textColor="@color/text_light_dark"
+        android:hint="输入新密码"/>
+
+    <TextView
+        android:id="@+id/tv_sure"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/shape_orderbutton"
+        android:text="提 交"/>
+</LinearLayout>

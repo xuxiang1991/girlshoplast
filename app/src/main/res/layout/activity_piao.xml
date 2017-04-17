@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/App_backgroud_grey">
+
+    <include layout="@layout/title_top"></include>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/shape_stoke">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/App_actvitytext_grey"
+            android:text="发票"/>
+        <RadioGroup
+            android:id="@+id/rg_isneed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+            <RadioButton
+                android:id="@+id/rb_need"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/App_actvitytext_grey"
+                android:textSize="14sp"
+                android:text="需要"/>
+
+            <RadioButton
+                android:id="@+id/rb_unneed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/App_actvitytext_grey"
+                android:textSize="14sp"
+                android:text="不需要"
+                android:checked="true"/>
+
+
+        </RadioGroup>
+        <EditText
+            android:id="@+id/tv_content_name"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@drawable/shape_stoke"
+            android:padding="5dp"
+            android:hint="发票抬头"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

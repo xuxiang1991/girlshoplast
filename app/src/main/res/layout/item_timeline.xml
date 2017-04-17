@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:gravity="center"
+        android:lines="1"
+        android:text="4月12日"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@color/App_back_orange"></View>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/shape_time_dot"></View>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/time_item_bg">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:text="三款超火的水感唇膏"
+            android:textColor="@color/App_order_name"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:lines="4"
+            android:maxLines="4"
+            android:text="这是一个很好的布局,你是真的好好的的一个人，在这里我这你的号喜欢你"
+            android:layout_marginRight="100dp"
+            android:textSize="14sp"
+            android:textColor="@color/App_actvitytext_grey"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/iv_content"
+            android:layout_width="90dp"
+            android:layout_height="68dp"
+            android:layout_below="@id/tv_name"
+            android:layout_alignParentRight="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/banner2"
+            android:visibility="visible"
+
+            />
+
+    </RelativeLayout>
+</LinearLayout>

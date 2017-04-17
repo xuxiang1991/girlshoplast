@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_bg"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/rl_title"
+        layout="@layout/title_top"></include>
+
+    <include
+        android:id="@+id/rl_refresh"
+        layout="@layout/fresh_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_title"
+        android:layout_marginBottom="48.5dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/rl_refresh"
+        android:layout_marginBottom="48dp"
+        android:background="@color/text_light_grey"></View>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_stoke">
+
+        <CheckBox
+            android:id="@+id/cb_isvoice"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:button="@drawable/select_isvoice"
+            android:checked="true"/>
+
+        <com.daocheng.girlshop.media.recoder.view.AudioRecordButton
+            android:id="@+id/recordButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/button_recordnormal"
+            android:gravity="center"
+            android:minHeight="0dp"
+            android:padding="5dp"
+            android:text="@string/normal"
+            android:visibility="gone"
+            android:textColor="#727272"></com.daocheng.girlshop.media.recoder.view.AudioRecordButton>
+
+        <EditText
+            android:id="@+id/ed_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/button_recordnormal"
+            android:gravity="center_vertical"
+            android:minHeight="0dp"
+            android:paddingLeft="5dp"
+            android:textColor="#727272"
+            android:visibility="visible" />
+        <TextView
+            android:id="@+id/tv_send"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="7dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="发送"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/ll_plun"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:background="@drawable/shape_stoke"
+        android:orientation="horizontal">
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_zan"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--android:drawableLeft="@drawable/comment_icon_zan"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingLeft="48dp"-->
+        <!--android:text="赞" />-->
+
+        <!--<View-->
+        <!--android:id="@+id/line2"-->
+        <!--android:layout_width="1px"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@id/rl_music_title"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:background="@color/text_light_grey"></View>-->
+
+        <TextView
+            android:id="@+id/tv_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/comment_icon_comment"
+            android:drawablePadding="20dp"
+            android:gravity="center"
+            android:text="评论" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_bg"
+    android:orientation="vertical"
+   >
+
+    <include layout="@layout/title_top"></include>
+
+    <RadioGroup
+        android:id="@+id/rg_isgood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:padding="15dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_top"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/radiobotton_plun"
+            android:paddingBottom="4dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:button="@null"
+            android:paddingTop="4dp"
+            android:gravity="center"
+            android:text="满意"
+            android:checked="true"
+            android:textColor="@color/radiobutton_text_plun"
+            android:textSize="16sp" />
+        <RadioButton
+            android:id="@+id/rb_middle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/radiobotton_plun"
+            android:paddingBottom="4dp"
+            android:paddingLeft="12dp"
+            android:button="@null"
+            android:gravity="center"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="36dp"
+            android:paddingRight="12dp"
+            android:paddingTop="4dp"
+            android:text="一般"
+            android:textColor="@color/radiobutton_text_plun"
+            android:textSize="16sp" />
+        <RadioButton
+            android:id="@+id/rb_bottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/radiobotton_plun"
+            android:paddingBottom="4dp"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="4dp"
+            android:text="不满意"
+            android:textColor="@color/radiobutton_text_plun"
+            android:textSize="16sp" />
+    </RadioGroup>
+    <EditText
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:textSize="16sp"
+        android:background="@drawable/edit_plun"
+        android:padding="8dp"
+        android:layout_margin="16dp"
+        android:gravity="start"
+        android:textColor="@color/text_light_grey"
+        android:hint="请对课程进行评价"
+        android:textColorHint="@color/text_light_grey"
+        />
+    <Button
+        android:id="@+id/bt_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        android:gravity="center"
+        android:paddingTop="6dp"
+        android:text="提 交"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/button_submit_plun"
+        android:paddingBottom="6dp"/>
+
+</LinearLayout>

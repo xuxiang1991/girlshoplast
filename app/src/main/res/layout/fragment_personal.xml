@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:imagecontrol="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/App_backgroud_grey">
+
+    <include
+        android:id="@+id/rl_top"
+        layout="@layout/title_view"></include>
+
+    <RelativeLayout
+        android:id="@+id/rl_myown"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_top"
+        android:background="@drawable/bg2"
+        >
+
+        <com.daocheng.girlshop.view.RoundImageView
+            android:id="@+id/iv_head"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="56dp"
+            android:src="@drawable/head_sculpture"
+            android:scaleType="fitXY"
+            imagecontrol:border_outside_color="@null"
+            imagecontrol:border_thickness="0dp" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="56dp"
+            android:layout_toRightOf="@id/iv_head"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="昵称：小公举"
+                android:textColor="@color/App_order_name"
+                android:textSize="17dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="等级：一年级"
+                android:textColor="@color/App_order_name"
+                android:textSize="17dp" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/one"
+            style="@style/main_person_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/icon_home"
+            android:background="@drawable/shape_stoke"
+            android:padding="32dp"
+            android:text="关注" />
+        <Button
+            android:id="@+id/two"
+            style="@style/main_person_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/icon_order"
+            android:background="@drawable/shape_stoke"
+            android:padding="32dp"
+            android:text="足迹" />
+        <Button
+            android:id="@+id/three"
+            style="@style/main_person_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_menu_save"
+            android:background="@drawable/shape_stoke"
+            android:padding="32dp"
+            android:text="消息" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_above="@id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/four"
+            style="@style/main_person_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/icon_home"
+            android:background="@drawable/shape_stoke"
+            android:padding="32dp"
+            android:text="购物车" />
+        <Button
+            android:id="@+id/five"
+            style="@style/main_person_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/icon_cooker"
+            android:background="@drawable/shape_stoke"
+            android:padding="32dp"
+            android:text="兴趣班" />
+        <Button
+            android:id="@+id/six"
+            style="@style/main_person_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/icon_order"
+            android:background="@drawable/shape_stoke"
+            android:padding="32dp"
+            android:text="卡券包" />
+
+    </LinearLayout>
+</RelativeLayout>

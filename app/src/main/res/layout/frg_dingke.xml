@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_bg">
+
+    <include
+        android:id="@+id/rl_title"
+        layout="@layout/title_top"></include>
+
+    <RelativeLayout
+        android:id="@+id/rl_sec_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/rl_title">
+
+        <RadioGroup
+            android:id="@+id/rg_type"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/shape_radiogroup"
+            android:orientation="horizontal"
+            android:padding="1px">
+
+            <RadioButton
+                android:id="@+id/rb_bixiu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/select_rbutton_left"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="必修课"
+                android:textColor="@color/select_radiotext_color" />
+
+            <RadioButton
+                android:id="@+id/rb_xuanxiu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/select_rbutton_right"
+                android:button="@null"
+                android:gravity="center"
+                android:text="选修课"
+                android:textColor="@color/select_radiotext_color" />
+
+        </RadioGroup>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/rl_meat_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/rl_sec_title"
+        android:background="@color/color_meat_title"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:gravity="center"
+
+            android:text="时间"
+            android:textColor="@color/App_more_text_3"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:gravity="center"
+
+            android:text="课程名称"
+            android:textColor="@color/App_more_text_3"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:text="讲师"
+            android:textColor="@color/App_more_text_3"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:gravity="center"
+
+            android:text="教室"
+            android:textColor="@color/App_more_text_3"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="136dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <include
+            android:id="@+id/fresh_list"
+            layout="@layout/fresh_activity"></include>
+    </LinearLayout>
+
+</RelativeLayout>

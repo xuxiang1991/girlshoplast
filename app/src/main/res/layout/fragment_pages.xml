@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.chiemy.cardview.MainActivity"
+    android:background="@color/App_backgroud_grey"
+    android:clipChildren="false"
+    >
+
+    <com.daocheng.girlshop.view.CardView
+        android:id="@+id/cardView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        >
+    </com.daocheng.girlshop.view.CardView>
+
+    <LinearLayout
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_menu"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape_round_button"
+        android:text="进入"
+        android:textColor="@color/white"
+        android:textSize="@dimen/App_tabtop_text_size"
+
+
+        />
+</RelativeLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <shape>
+            <stroke android:color="@color/App_calendar_big" android:width="1px"></stroke>
+            <solid android:color="@color/orange"/>
+            <corners
+                android:radius="16dp"/>
+        </shape>
+    </item>
+    <item android:state_checked="false">
+        <shape>
+            <stroke android:color="@color/text_light_grey" android:width="1px"></stroke>
+            <solid android:color="@color/white"/>
+            <corners
+                android:radius="16dp"/>
+        </shape>
+    </item>
+</selector>

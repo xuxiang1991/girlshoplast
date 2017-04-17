@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_bg">
+
+    <ImageView
+        android:id="@+id/tv_left"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="16dip"
+        android:paddingRight="16dip"
+        android:scaleType="center"
+        android:src="@drawable/icon_back"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:paddingRight="16dp"
+        android:layout_toRightOf="@id/tv_left"
+        android:gravity="center"
+        android:text="上一步"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_username"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/iv_head"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="手机号"
+            android:textColor="@color/text_light_dark"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/ed_username"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="32dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="11位手机号码"
+            android:maxLength="11"
+            android:numeric="integer"
+            android:padding="4dp"
+            android:singleLine="true"
+            android:textColor="@color/text_light_grey"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/ll_username"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:background="@color/text_light_grey"></View>
+
+    <LinearLayout
+        android:id="@+id/ll_code"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/line1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:singleLine="true"
+            android:text="验证码"
+            android:textColor="@color/text_light_dark"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/ed_secret"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="32dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="注意查收短信"
+            android:padding="4dp"
+            android:singleLine="true"
+            android:textColor="@color/text_light_grey"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/bt_getCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:padding="8dp"
+            android:text="获取验证码"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/ll_code"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/text_light_grey"></View>
+
+
+    <Button
+        android:id="@+id/bt_register"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/line2"
+        android:layout_margin="36dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:text="注册"
+        android:textColor="@color/white" />
+
+
+    <TextView
+        android:id="@+id/tv_xieyi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="《时代国际英语用户注册协议》"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp" />
+
+    <TextView
+
+        style="@style/text_light_grey"
+        android:layout_width="match_parent"
+        android:layout_above="@id/tv_xieyi"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="轻触上面的“注册按钮，即表示您已同意" />
+</RelativeLayout>

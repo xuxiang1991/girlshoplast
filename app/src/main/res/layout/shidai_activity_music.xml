@@ -1,0 +1,133 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#25272d">
+    <TextView
+        android:id="@+id/textViewSong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:textColor="@android:color/white"
+        android:textSize="22sp" />
+
+
+    <TextView
+        android:id="@+id/textViewSinger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewSong"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Michael Jackson"
+        android:textColor="#80FFFFFF"
+        android:textSize="15sp" />
+
+
+    <co.mobiwise.playerview.MusicPlayerView
+        android:id="@+id/mpv"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_below="@+id/textViewSinger"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        app:buttonColor="#ff0028"
+        app:progressLoadedColor="#00815e"
+        app:textColor="#80FFFFFF"
+        app:textSize="14sp" />
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mpv"
+        android:layout_centerHorizontal="true"
+        android:progress="0" />
+
+    <ImageView
+        android:id="@+id/like"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/mpv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+
+    <ImageView
+        android:id="@+id/next"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignRight="@+id/mpv"
+        android:layout_below="@+id/mpv"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/sing_icon_next" />
+
+
+    <ImageView
+        android:id="@+id/previous"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignLeft="@+id/mpv"
+        android:layout_below="@+id/mpv"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/sing_icon_last" />
+
+    <TextView
+        android:id="@+id/tv_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mpv"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@id/seekbar"
+        android:text="0:00"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mpv"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/seekbar"
+        android:text="3:00"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/tv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="16dip"
+            android:paddingRight="60dip"
+            android:scaleType="center"
+            android:src="@drawable/icon_back_bai"
+            android:visibility="visible" />
+
+
+        <ImageView
+            android:id="@+id/tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:scaleType="center"
+            android:src="@drawable/sing_icon_comment"
+            android:visibility="visible"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"/>
+    </RelativeLayout>
+</RelativeLayout>

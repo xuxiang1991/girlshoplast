@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_top"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:drawableLeft="@drawable/icon_happy"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical|start"
+            android:text="很满意"
+            android:textColor="@color/text_color_light"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:id="@+id/rg_90"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/rb_90"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radiobotton_plun"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="4dp"
+                android:text="90分"
+                android:textColor="@color/radiobutton_text_plun"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/rb_95"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/radiobotton_plun"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="4dp"
+                android:text="95分"
+                android:textColor="@color/radiobutton_text_plun"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/rb_100"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radiobotton_plun"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="4dp"
+                android:text="100分"
+                android:textColor="@color/radiobutton_text_plun"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:drawableLeft="@drawable/icon_smiley"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical|start"
+            android:text="满意"
+            android:textColor="@color/text_color_light"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:id="@+id/rg_75"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/rb_75"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radiobotton_plun"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="4dp"
+                android:text="75分"
+                android:textColor="@color/radiobutton_text_plun"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/rb_80"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/radiobotton_plun"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="4dp"
+                android:text="80分"
+                android:textColor="@color/radiobutton_text_plun"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/rb_85"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radiobotton_plun"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="4dp"
+                android:text="85分"
+                android:textColor="@color/radiobutton_text_plun"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:drawableLeft="@drawable/icon_neutral"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical|start"
+            android:text="一般"
+            android:textColor="@color/text_color_light"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:id="@+id/rg_60"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/rb_60"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radiobotton_plun"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="4dp"
+                android:text="60分"
+                android:textColor="@color/radiobutton_text_plun"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/rb_65"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/radiobotton_plun"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="4dp"
+                android:text="65分"
+                android:textColor="@color/radiobutton_text_plun"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/rb_70"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radiobotton_plun"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="4dp"
+                android:text="70分"
+                android:textColor="@color/radiobutton_text_plun"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:drawableLeft="@drawable/icon_sad"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical|start"
+            android:text="很差"
+            android:textColor="@color/text_color_light"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:id="@+id/rg_30"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/rb_30"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radiobotton_plun"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="4dp"
+                android:text="30分"
+                android:textColor="@color/radiobutton_text_plun"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/rb_40"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/radiobotton_plun"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="4dp"
+                android:text="40分"
+                android:textColor="@color/radiobutton_text_plun"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/rb_50"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radiobotton_plun"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="4dp"
+                android:text="50分"
+                android:textColor="@color/radiobutton_text_plun"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/button_submit_plun"
+        android:gravity="center"
+        android:paddingBottom="6dp"
+        android:paddingTop="6dp"
+        android:text="提 交"
+        android:textColor="@color/white"
+        android:textSize="24dp" />
+
+</LinearLayout>

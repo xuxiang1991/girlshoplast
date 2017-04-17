@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/App_backgroud_grey">
+
+    <include
+        android:id="@+id/rl_title"
+        layout="@layout/title_top"></include>
+
+    <EditText
+        android:id="@+id/ed_name"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/rl_title"
+        android:background="@drawable/shape_stoke"
+        android:gravity="center_vertical"
+        android:hint="姓名"
+        android:maxLength="10"
+        android:singleLine="true"
+        android:padding="5dp"
+        android:paddingLeft="16dp"
+        android:textColorHint="@color/App_actvitytext_grey"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/ed_phone"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/ed_name"
+        android:background="@drawable/shape_stoke"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:hint="手机号码"
+        android:numeric="integer"
+        android:maxLength="11"
+        android:padding="5dp"
+        android:paddingLeft="16dp"
+        android:textColorHint="@color/App_actvitytext_grey"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_place"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/ed_phone"
+        android:background="@drawable/shape_stoke"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:paddingLeft="16dp"
+        android:text="所在地区"
+        android:textColorHint="@color/App_actvitytext_grey"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/ed_detailplace"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/tv_place"
+        android:background="@drawable/shape_stoke"
+        android:gravity="center_vertical"
+        android:hint="详细地址"
+        android:singleLine="true"
+        android:padding="5dp"
+        android:paddingLeft="16dp"
+        android:textColorHint="@color/App_actvitytext_grey"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/ed_youbian"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/ed_detailplace"
+        android:background="@drawable/shape_stoke"
+        android:gravity="center_vertical"
+        android:hint="邮编"
+        android:numeric="integer"
+        android:maxLength="6"
+        android:singleLine="true"
+        android:padding="5dp"
+        android:paddingLeft="16dp"
+        android:textColorHint="@color/App_actvitytext_grey"
+        android:textSize="16sp" />
+
+    <CheckBox
+        android:id="@+id/cb_isorganal"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/ed_youbian"
+        android:checked="true"
+        android:paddingLeft="16dp"
+        android:text="是否设为默认"
+        android:textColor="@color/App_actvitytext_grey" />
+
+
+    <Button
+        android:id="@+id/bt_sure"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="68dp"
+        android:background="@color/App_back_orange"
+        android:text="保存"
+        android:textSize="@dimen/app_text_big"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:background="@color/white">
+
+    <CheckBox
+        android:id="@+id/cb_isel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_centerVertical="true"
+        android:drawableLeft="@drawable/select_shopcart_check"
+        android:button="@null"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:padding="8dp" />
+
+    <ImageView
+        android:id="@+id/iv_goodimg"
+        android:layout_width="100dp"
+        android:layout_height="76dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@id/cb_isel"
+        android:scaleType="fitXY" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/App_actvitytext_grey"></View>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="48dp"
+        android:layout_toRightOf="@id/iv_goodimg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:layout_marginTop="8dp"
+            android:text="猫猫牌粉底液"
+            android:textColor="@color/App_order_name"
+            android:textSize="@dimen/app_text_small" />
+
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:paddingRight="16dp"
+            android:text="￥239"
+            android:textColor="@color/App_back_orange"
+            android:textSize="@dimen/app_text_small" />
+
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_spec"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:text="美丽的人，才能拥有美丽的人生"-->
+        <!--android:textColor="@color/App_actvitytext_grey" />-->
+
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/ll_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:padding="4dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/shape_shop_plus"
+        android:layout_marginRight="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_low"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:text="-"
+            android:textColor="@color/App_actvitytext_grey"
+
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_num"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:text="1"
+            android:background="@null"
+            android:textColor="@color/App_order_name"
+
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_plus"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/App_actvitytext_grey"
+
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_orginprice"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_below="@id/tv_price"-->
+    <!--android:layout_marginTop="14dp"-->
+
+    <!--android:gravity="center"-->
+    <!--android:paddingRight="16dp"-->
+    <!--android:text="￥239"-->
+    <!--android:textColor="@color/App_actvitytext_grey"-->
+    <!--android:textSize="14sp" />-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/iv_delete"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginRight="16dp"-->
+    <!--android:layout_marginTop="24dp"-->
+    <!--android:layout_below="@id/tv_orginprice"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:src="@drawable/navigationbar_delete"/>-->
+</RelativeLayout>

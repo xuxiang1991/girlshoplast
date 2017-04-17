@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/shape_main_bottom"
+   >
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        >
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textSize="20dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="12dp"
+            android:textColor="@color/material_blue_grey_800"
+            android:background="#FFFFFF"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:singleLine="true"
+            android:text="城市"
+            android:layout_centerInParent="true"
+            android:textColor="@color/App_order_set_bigText"
+            android:textSize="@dimen/App_dialog_text"></TextView>
+        <TextView
+            android:id="@+id/tv_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="确定"
+            android:textSize="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:textColor="@color/material_blue_grey_800"
+            android:background="#FFFFFF"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"></TextView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+
+        android:orientation="horizontal">
+
+        <com.daocheng.girlshop.view.citywheel.widget.WheelView
+            android:id="@+id/id_province"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        </com.daocheng.girlshop.view.citywheel.widget.WheelView>
+
+        <com.daocheng.girlshop.view.citywheel.widget.WheelView
+            android:id="@+id/id_city"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        </com.daocheng.girlshop.view.citywheel.widget.WheelView>
+
+        <com.daocheng.girlshop.view.citywheel.widget.WheelView
+            android:id="@+id/id_district"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        </com.daocheng.girlshop.view.citywheel.widget.WheelView>
+    </LinearLayout>
+
+
+
+</LinearLayout>

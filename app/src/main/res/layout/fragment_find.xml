@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginTop="50dp"
+        >
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@drawable/bg3" >-->
+
+            <!--<Button-->
+                <!--android:id="@+id/btn_Below"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:text="最后一层" />-->
+        <!--</RelativeLayout>-->
+
+        <com.daocheng.girlshop.view.PullDoorView
+            android:id="@+id/myImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg1"
+             >
+
+            <Button
+                android:id="@+id/btn_above"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="第二层" />
+        </com.daocheng.girlshop.view.PullDoorView>
+
+        <com.daocheng.girlshop.view.PullDoorView
+            android:id="@+id/myImage1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg2"
+           >
+
+            <Button
+                android:id="@+id/btn_above1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="第一层" />
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_hint"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:text="上滑可以进入首页"-->
+                <!--android:textColor="#ffffffff"-->
+                <!--android:textSize="18sp" />-->
+        </com.daocheng.girlshop.view.PullDoorView>
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/bt_menu"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape_round_button"
+        android:text="上滑"
+        android:textColor="@color/white"
+        android:textSize="@dimen/App_tabtop_text_size"
+
+
+        />
+
+</RelativeLayout>

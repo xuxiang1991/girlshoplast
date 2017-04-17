@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:imagecontrol="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <com.daocheng.girlshop.view.RoundImageView
+        android:id="@+id/iv_head"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/head_sculpture"
+        imagecontrol:border_outside_color="@color/App_layout_deliver"
+        imagecontrol:border_thickness="0dp" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:textSize="18sp"
+        android:text="Taler Swift"/>
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textSize="14sp"
+        android:text="2014.12.14"/>
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_below="@id/tv_name"
+        android:layout_marginTop="10dp"
+        android:textSize="14sp"
+        android:textColor="@color/App_actvitytext_grey"
+        android:text="你好这里很好"/>
+
+    <TextView
+        android:id="@+id/tv_hehe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_content"
+        android:padding="12dp"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/App_actvitytext_grey"
+        android:textSize="12sp"
+        android:text="呵呵（11）"/>
+    <TextView
+        android:id="@+id/tv_like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_content"
+        android:padding="12dp"
+        android:layout_toLeftOf="@id/tv_hehe"
+        android:textColor="@color/App_actvitytext_grey"
+        android:textSize="12sp"
+        android:text="（11）"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/tv_hehe"
+        android:background="@color/App_actvitytext_grey"
+        android:layout_marginLeft="60dp"/>
+</RelativeLayout>

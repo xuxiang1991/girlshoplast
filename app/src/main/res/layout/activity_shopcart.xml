@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/App_backgroud_grey">
+
+    <include
+        android:id="@+id/rl_title"
+        layout="@layout/title_top"></include>
+    <RelativeLayout
+        android:id="@+id/rl_allchoice"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/rl_title"
+        android:gravity="center_vertical"
+        android:background="@color/white">
+        <CheckBox
+            android:id="@+id/cb_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:layout_marginLeft="12dp"
+            android:button="@null"
+            android:drawablePadding="16dp"
+            android:textColor="@color/App_back_orange"
+            android:textSize="16sp"
+            android:drawableLeft="@drawable/select_shopcart_check"
+            android:text="全选"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/App_back_orange"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:text="打包购买有优惠哟"
+
+            />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_allchoice"
+        android:background="@color/App_backgroud_grey"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginBottom="48dp">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/activity_main_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/shape_stoke"
+        android:layout_alignParentBottom="true">
+
+
+
+
+        <!--<Button-->
+            <!--android:id="@+id/bt_submit"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center"-->
+            <!--android:background="@color/App_back_orange"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:layout_marginTop="4dp"-->
+            <!--android:layout_marginBottom="4dp"-->
+            <!--android:text="结算"-->
+            <!--android:textSize="16sp"-->
+
+            <!--android:textColor="@color/white"-->
+            <!--android:padding="8dp"/>-->
+        <Button
+            android:id="@+id/bt_addtocart"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@color/App_back_orange"
+            android:layout_alignParentRight="true"
+            android:text="加入购物车"
+            android:textSize="16sp"
+
+            android:textColor="@color/white"
+            android:padding="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="8dp"
+            android:textColor="@color/App_order_name"
+            android:text="总价:"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_toLeftOf="@id/bt_addtocart"
+            android:layout_marginRight="60dp"
+            android:textColor="@color/App_back_orange"
+            android:text=""
+            android:textSize="18sp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_bg">
+
+   <RelativeLayout
+       android:id="@+id/rl_top"
+       android:layout_width="match_parent"
+       android:background="@color/colorPrimary"
+       android:layout_height="wrap_content">
+       <RelativeLayout
+           android:id="@+id/rl_title"
+           android:layout_width="match_parent"
+           android:layout_height="48dp"
+           android:layout_alignParentTop="true"
+           android:background="@color/App_back_orange"
+           android:orientation="horizontal"
+           android:visibility="visible">
+
+           <ImageView
+               android:id="@+id/tv_left"
+               android:layout_width="wrap_content"
+               android:layout_height="fill_parent"
+               android:layout_alignParentLeft="true"
+               android:layout_centerVertical="true"
+               android:paddingLeft="16dip"
+               android:paddingRight="60dip"
+               android:scaleType="center"
+               android:src="@drawable/icon_back_bai"
+               android:visibility="gone" />
+
+           <TextView
+               android:id="@+id/tv_center"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerInParent="true"
+               android:textColor="@color/white"
+               android:textSize="20dp"
+               android:text="我的课程"/>
+
+           <ImageView
+               android:id="@+id/tv_right"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentRight="true"
+               android:layout_centerVertical="true"
+               android:layout_marginRight="16dp"
+               android:clickable="true"
+               android:visibility="gone" />
+
+           <TextView
+               android:id="@+id/makeSureTv"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentRight="true"
+               android:layout_centerVertical="true"
+               android:layout_marginRight="16dp"
+               android:clickable="true"
+               android:text="保存"
+               android:textColor="@color/text_light_dark"
+               android:textSize="17sp"
+               android:visibility="gone" />
+       </RelativeLayout>
+
+       <RelativeLayout
+           android:id="@+id/rl_start"
+           android:layout_width="match_parent"
+           android:layout_height="24dp"
+           android:layout_below="@id/rl_title"
+           android:layout_marginTop="6dp"
+           android:paddingLeft="16dp"
+           android:paddingRight="24dp">
+
+           <TextView
+               android:id="@+id/tv_level"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerVertical="true"
+               android:gravity="center_vertical"
+               android:text="当前级别:level1"
+               android:textColor="@color/white"
+               android:textSize="13sp" />
+
+
+       </RelativeLayout>
+
+       <TextView
+           android:id="@+id/tv_last_days"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+           android:gravity="center"
+           android:layout_marginTop="16dp"
+           android:layout_below="@id/rl_start"
+           android:text="889"
+           android:textColor="@color/white"
+           android:textSize="36sp" />
+       <TextView
+           android:id="@+id/tv_last_days_info"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+           android:gravity="center"
+           android:layout_marginTop="4dp"
+           android:layout_below="@id/tv_last_days"
+           android:text="学期剩余天数"
+           android:textColor="@color/white"
+           android:textSize="13sp" />
+
+
+       <TextView
+           android:id="@+id/tv_time"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@id/tv_last_days_info"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="12dp"
+           android:gravity="center"
+           android:text="2016-06-18至2016-06-29"
+           android:textColor="@color/white"
+           android:textSize="13sp" />
+
+       <View
+           android:id="@+id/line"
+           android:layout_width="match_parent"
+           android:layout_height="1px"
+           android:layout_below="@id/tv_time"
+           android:layout_marginTop="10dp"
+           android:background="@color/App_actvitytext_grey"></View>
+
+       <LinearLayout
+           android:id="@+id/ll_dingnum"
+           android:layout_width="match_parent"
+           android:layout_height="52dp"
+           android:layout_below="@id/line"
+           android:orientation="horizontal">
+
+           <TextView
+               android:id="@+id/tv_yiding"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_weight="1"
+               android:gravity="center"
+               android:text="已预订次数\n21"
+               android:textColor="@color/white"
+               android:textSize="14sp" />
+
+           <View
+               android:id="@+id/line1"
+               android:layout_width="1px"
+               android:layout_height="match_parent"
+               android:layout_below="@id/rl_level"
+               android:background="@color/App_actvitytext_grey"></View>
+
+           <TextView
+               android:id="@+id/tv_keding"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_weight="1"
+               android:gravity="center"
+               android:text="可预订次数\n21"
+               android:textColor="@color/white"
+               android:textSize="14sp" />
+
+       </LinearLayout>
+   </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_top"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/activity_main_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_bg"
+            android:visibility="visible">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="bottom_bg">#9900ff00</color>
+    <color name="card_bg">#EBEBEB</color>
+    <color name="card_outline">#D0D0CE</color>
+    <color name="ad_banner_bg_color">#fff5f7f3</color>
+    <color name="app_bg_color">#ffdfdfdf</color>
+    <color name="app_feature_update_content">#ff656565</color>
+    <color name="app_feature_update_title">#ff0ca9d2</color>
+    <color name="appmanager_detail_txt">#ff999999</color>
+    <color name="background_green">#ff00a185</color>
+    <color name="black">#ff000000</color>
+    <color name="card_text_0">#ff000000</color>
+    <color name="card_text_1">#ff6e1d01</color>
+    <color name="card_text_2">#ff011d49</color>
+    <color name="card_text_3">#ff019da7</color>
+    <color name="card_text_4">#ff737a87</color>
+    <color name="card_text_5">#ff017751</color>
+    <color name="card_text_6">#ffa47000</color>
+    <color name="card_text_7">#ffffffff</color>
+    <color name="dark_gray_text">#ff4d4d4d</color>
+    <color name="dialog_title_text_color">#ff00b1f2</color>
+    <color name="divider_color">#fffcaa54</color>
+    <color name="dlg_bule_text_normal_color">#ff02a16e</color>
+    <color name="dlg_bule_text_pressed_color">#7f017751</color>
+    <color name="dlg_gray_text_normal_color">#ff737a87</color>
+    <color name="dlg_gray_text_pressed_color">#33999999</color>
+    <color name="fm_item_normal">#ff00a185</color>
+    <color name="fm_item_pressed">#ff017751</color>
+    <color name="fm_item_text_color_pressed">#ff019364</color>
+    <color name="fm_playing_text_color">#fffbc300</color>
+    <color name="fm_playing_title_text_color">#ff4ffbdd</color>
+    <color name="fm_text_color">#fffbe000</color>
+    <color name="gray_location_edit_text_hint">#ffb9bec7</color>
+    <color name="gridview_bg_normal">#fff8f8f8</color>
+    <color name="gridview_bg_pressed">#ffeaeee7</color>
+    <color name="install_color">#fff3f3f3</color>
+    <color name="main_bg_color">#ffeaeee7</color>
+    <color name="main_circle_green_color">#ff00d18e</color>
+    <color name="main_circle_yellow_color">#ffffe800</color>
+    <color name="main_popup_window_normal">#fff5f5f5</color>
+    <color name="more_feature_text_color">#ffa6adb9</color>
+    <color name="nearby_title_text_color_pressed">#ff017751</color>
+    <color name="nonet_txt_color">#ffa9a9a9</color>
+    <color name="notification_layout_bg">#ff181818</color>
+    <color name="notification_text_color">#ffe8eaf0</color>
+    <color name="quran_read_item_selected">#ffe3dac5</color>
+    <color name="setting_dlg_item_text_color">#ff282b33</color>
+    <color name="setting_item_sub_text_color">#ff737a87</color>
+    <color name="settings_title_bar">#ffedfdfa</color>
+    <color name="tab_text_color_normal">#ff00cd8b</color>
+    <color name="text_color_black">#ff1d1d26</color>
+    <color name="text_color_default">#ff3c3c3c</color>
+    <color name="text_color_gray">#ffa6a6a6</color>
+    <color name="text_color_gray_calendar_weekend">#ffa4d3bf</color>
+    <color name="text_color_gray_location_menu">#ffa6a6a6</color>
+    <color name="text_color_green">#ff02a16e</color>
+    <color name="text_color_item_sub">#ff999a99</color>
+    <color name="text_color_item_title">#ff1d1d26</color>
+    <color name="text_color_light">#ff999a99</color>
+    <color name="text_color_red">#fffb6969</color>
+    <color name="text_color_white">#ffffffff</color>
+    <color name="text_color_yellow">#fffbc300</color>
+    <color name="title_bg_color">#ff20a661</color>
+    <color name="title_btn_bg_pressed">#ff017751</color>
+    <color name="title_color">#ff282b33</color>
+    <color name="translant_split_black">#ffb4b4b4</color>
+    <color name="translation_download_progress_color">#ff03ac8f</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent_color">#00000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="halfwhite">#80ffffff</color>
+
+    <color name="newcal_gridcell_pressed">#bebebe</color>
+    <color name="newcal_gridcell_today">#774aac53</color>
+    <color name="newcal_gridcell_inactive">#ffe0e0e0</color>
+    <color name="newcal_gridcell_stroke">#ff82889a</color>
+    <color name="newcal_tabstrip_indicator">#034593</color>
+
+    <color name="green">#8FCC85</color>
+    <color name="blue">#32b16c</color>
+    <color name="holo_red_light">#ffff4444</color>
+    <color name="light_blue">#0099CC</color>
+
+    //calender
+    <color name="calender_title">#30bb73</color>
+    <color name="calender_viewpager_background">#efefef</color>
+    <color name="calender_day_text">#1d1d26</color>
+    <color name="calender_day_trans_text">#4b1d1d26</color>
+    <color name="calender_list_item_ge_time">#21a661</color>
+    <color name="calender_list_item_divier">#3421a661</color>
+
+    //prayertime
+    <color name="prayer_cal_trans_bg">#264e4f4f</color>
+    <color name="prayer_cal_ge_text_color">#999a99</color>
+    <color name="prayer_list_diver_color">#ededed</color>
+    <color name="prayer_list_item_text_color">#1d1d26</color>
+    <color name="paryer_list_color_yellow">#fcab53</color>
+
+    //MAIN
+    <color name="start">#c6ec21</color>
+    <color name="end">#8ae02c</color>
+    <color name="red">#990000</color>
+
+    <color name="orange">#FF9900</color>
+
+    <color name="trans_light">#99eaeaea</color>
+    <color name="black2">#ff666666</color>
+
+    <color name="vpi__background_holo_dark">#ff000000</color>
+    <color name="body_text_1">#ff000000</color>
+    <color name="body_text_2">#99000000</color>
+    <color name="body_text_disabled">#66000000</color>
+    <color name="body_text_1_inverse">#ffffffff</color>
+    <color name="body_text_2_inverse">#99ffffff</color>
+    <color name="accent_1">#ff29549f</color>
+    <color name="hyperlink">#ffff549f</color>
+    <color name="background_1">#ffffffff</color>
+    <color name="whats_on_separator">#4d000000</color>
+    <color name="all_track_color">#ff222222</color>
+    <color name="block_column_1">#ff0fabff</color>
+    <color name="block_column_2">#ffdf1831</color>
+    <color name="block_column_3">#ff009939</color>
+    <color name="darkgrey">#ff404040</color>
+    <color name="toasterro">#9fd524</color>
+    <color name="lightgrey">#ff888888</color>
+    <color name="semitransparent">#80000000</color>
+    <color name="lightransparent">#a0000000</color>
+
+    <color name="navpage">#FFE1E8EB</color>
+    <color name="AppTextColor">#FF9900</color><!-- app 字体默认颜色-->
+
+    <color name="App_back_orange">#3F51B5</color><!-- app 字体默认橙颜色-->
+    <color name="App_zan_background">#2461A6</color><!-- app 字体默认橙颜色-->
+    <color name="App_more_text_3">#333333</color><!-- 更多中的文字颜色-->
+    <color name="App_white_text">#FFFFFF</color><!-- 更多中的文字颜色-->
+    <color name="App_buuton_grey">#bcbcbc</color><!-- 更多中的文字颜色-->
+    <color name="App_backgroud_grey">#f3f3f3</color><!-- 更多中的文字颜色-->
+    <color name="App_actvitytext_grey">#808080</color><!-- 更多中的文字颜色-->
+    <color name="App_layout_deliver">#eeeeee</color><!-- 更多中的Linearlayout分割线-->
+    <color name="App_layout_stoke">#c5c5c5</color><!-- 更多中的Linearlayout 描边-->
+    <color name="App_home_text_grey">#bbbaba</color><!-- 首页的文字颜色-->
+    <color name="App_home_text_grey_title">#a8a7a7</color><!-- 首页的文字颜色-->
+    <color name="App_order_set_bigText">#303030</color><!-- 首页的文字颜色-->
+    <color name="App_order_name">#434343</color><!--item 的title颜色-->
+    <color name="App_order_info2">#8a8a8a</color><!-- 首页的文字颜色-->
+    <color name="App_order_hint">#999999</color><!-- 首页的文字颜色-->
+    <color name="App_home_dialog_get">#ffff00</color><!-- 礼物领取-->
+    <color name="App_home_dialog_text">#dd0121</color><!-- 礼物领取-->
+    <color name="App_calendar_text">#ffffff</color><!-- 礼物领取-->
+    <color name="App_calendar_big">#f76d02</color><!-- 礼物领取-->
+    <color name="App_calendar_yinli">#666666</color><!-- 礼物领取-->
+    <color name="province_line_border">#C7C7C7</color>
+
+
+
+    <!--时代 -->
+    <color name="text_light_grey">#999999</color>
+    <color name="text_light_dark">#333333</color>
+    <color name="tv_bg_pressed">#11000000</color>
+    <color name="ui_new_divider_bg">#d5d5d5</color>
+    <color name="color_button">#ff0028</color>
+    <color name="color_gray">#ff333333</color>
+    <color name="color_meat">#FEF0E5</color>
+    <color name="color_meat_title">#FEEFE7</color>
+    <color name="dingke_bg_dark">#F9F9F9</color>
+    <color name="dingke_bg_light">#FFFFFF</color>
+    <color name="home_fragment_title">#1758A1</color>
+</resources>

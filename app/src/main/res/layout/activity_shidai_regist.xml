@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:imagecontrol="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_bg">
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="登录"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/text_light_grey"
+        android:textSize="18sp"/>
+
+    <com.daocheng.girlshop.view.RoundImageView
+        android:id="@+id/iv_head"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/head_sculpture"
+        imagecontrol:border_outside_color="@null"
+        imagecontrol:border_thickness="0dp" />
+
+    <LinearLayout
+        android:id="@+id/ll_username"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/iv_head">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textSize="16sp"
+            android:textColor="@color/text_light_dark"
+            android:text="姓名"
+            />
+        <EditText
+            android:id="@+id/ed_username"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:padding="4dp"
+            android:gravity="center_vertical"
+            android:background="@null"
+            android:layout_marginLeft="8dp"
+            android:singleLine="true"
+            android:layout_marginRight="32dp"
+            android:textColor="@color/text_light_grey"
+            android:textSize="16sp"
+            android:hint="真实姓名"
+            android:textColorHint="@color/text_light_grey"/>
+
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/ll_username"
+        android:layout_marginRight="36dp"
+        android:layout_marginLeft="36dp"
+        android:background="@color/text_light_grey"></View>
+    <LinearLayout
+        android:id="@+id/ll_secret"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/line1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textSize="16sp"
+            android:textColor="@color/text_light_dark"
+            android:singleLine="true"
+            android:text="密码"
+            />
+        <EditText
+            android:id="@+id/ed_secret"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:padding="4dp"
+            android:gravity="center_vertical"
+            android:background="@null"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="32dp"
+            android:textColor="@color/text_light_grey"
+            android:textSize="16sp"
+            android:hint="6-16位数字或者字母"
+            android:singleLine="true"
+            android:maxLength="16"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:textColorHint="@color/text_light_grey"/>
+
+    </LinearLayout>
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/ll_secret"
+        android:layout_marginRight="36dp"
+        android:layout_marginLeft="36dp"
+        android:background="@color/text_light_grey"></View>
+
+
+    <Button
+        android:id="@+id/bt_register"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:layout_margin="36dp"
+        android:layout_below="@id/line2"
+        android:background="@color/colorPrimaryDark"/>
+
+</RelativeLayout>

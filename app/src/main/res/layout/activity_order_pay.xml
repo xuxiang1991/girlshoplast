@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/App_backgroud_grey">
+
+    <include layout="@layout/title_top"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_stoke"
+        android:padding="16dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_order_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/tv_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="77.5dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shape_main_bottom"
+        android:orientation="vertical">
+        <!--77.5dp-->
+        <RelativeLayout
+            android:id="@+id/rl_weixin"
+            android:layout_width="match_parent"
+            android:layout_height="38.5dp"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/iv_airpay"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/weixin" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/iv_airpay"
+                android:text="微信支付"
+                android:textColor="@color/App_order_name"
+                android:textSize="14sp" />
+
+            <CheckBox
+                android:id="@+id/cb_weixin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="18dp"
+                android:background="@drawable/select_check_meal"
+                android:button="@null" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="55dp"
+            android:background="@color/App_layout_stoke" />
+
+        <RelativeLayout
+            android:id="@+id/rl_zhifubao"
+            android:layout_width="match_parent"
+            android:layout_height="38.5dp">
+
+            <ImageView
+                android:id="@+id/iv_wexinpay"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/airpay" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@id/iv_wexinpay"
+                android:text="支付宝支付"
+                android:textColor="@color/App_order_name"
+                android:textSize="14sp" />
+
+            <CheckBox
+                android:id="@+id/cb_zhifubao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="18dp"
+                android:background="@drawable/select_check_meal"
+                android:button="@null"
+                android:checked="true" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_pay"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:textSize="20sp"
+        android:layout_marginTop="24dp"
+        android:background="@color/App_back_orange"
+        android:textColor="@color/white"
+        android:text="付款"/>
+
+
+</LinearLayout>

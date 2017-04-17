@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/App_backgroud_grey">
+
+
+
+
+
+
+        <ImageView
+            android:id="@+id/iv_banner"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            android:src="@drawable/fenmian_edit" />
+
+
+        <EditText
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入文字标题（不超过20个字）"
+            android:singleLine="true"
+            android:maxLength="20"
+            android:layout_below="@id/iv_banner"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:padding="16dp"
+            android:textColor="@color/App_actvitytext_grey"
+            android:textColorHint="@color/App_actvitytext_grey"
+            android:background="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

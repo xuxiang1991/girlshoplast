@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/App_backgroud_grey">
+    <include
+        android:id="@+id/feedback_title"
+        layout="@layout/title_top">
+    </include>
+
+    <EditText
+        android:id="@+id/feedbackEd"
+        android:layout_width="match_parent"
+
+        android:layout_height="130dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="请描述您的意见详情，我们会尽快解决..."
+        android:gravity="top"
+        android:scrollbars = "vertical"
+        android:textSize="13sp"
+        android:paddingLeft="5dp"
+        android:background="@drawable/shape_stoke"/>
+    <Button
+        android:id="@+id/feedBackSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="提交"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_feedbackbutton2"/>
+</LinearLayout>

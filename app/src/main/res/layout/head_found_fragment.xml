@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/App_backgroud_grey"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <include layout="@layout/viewpager_advertis"></include>
+
+    <RadioGroup
+        android:id="@+id/rg_group"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/shape_stoke"
+        android:orientation="horizontal"
+        android:layout_marginBottom="1dp"
+        android:visibility="visible">
+
+        <RadioButton
+            android:id="@+id/rb_daren"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/select_found_daren"
+            android:textColor="@color/select_found_tab"
+            android:textSize="@dimen/app_text_big"
+           android:paddingLeft="48dp"
+            android:gravity="center"
+            android:button="@null"
+            android:text="达人"/>
+
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/App_actvitytext_grey"
+            android:layout_margin="5dp"/>
+        <RadioButton
+            android:id="@+id/rb_wenzhang"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:paddingLeft="48dp"
+            android:drawableLeft="@drawable/select_found_wenzhang"
+            android:textColor="@color/select_found_tab"
+            android:textSize="@dimen/app_text_big"
+            android:gravity="center"
+            android:button="@null"
+            android:text="文章"
+            android:checked="true"/>
+
+
+    </RadioGroup>
+
+</LinearLayout>

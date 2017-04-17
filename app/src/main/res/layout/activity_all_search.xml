@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/App_backgroud_grey"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_search"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/App_back_orange">
+        <ImageView
+            android:id="@+id/tv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="16dip"
+            android:paddingRight="16dip"
+            android:scaleType="center"
+            android:src="@drawable/selector_back"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_toRightOf="@id/tv_left"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="70dp"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_all_search"
+            android:imeOptions="actionSearch"
+            android:hint="输入你要查询的用户/文章"
+            android:textColor="@color/App_order_name"
+            android:textColorHint="@color/App_actvitytext_grey"
+            android:textSize="@dimen/app_text_small"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:gravity="center"
+            android:text="搜索"
+            android:textColor="@color/white"
+            android:textSize="@dimen/app_text_big" />
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:id="@+id/fresh_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_search"
+        android:background="@color/white">
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/activity_main_swipe_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/activity_main_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_nothing"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:src="@drawable/loading_photo"
+        />
+
+</RelativeLayout>
