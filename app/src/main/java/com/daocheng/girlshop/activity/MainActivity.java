@@ -51,7 +51,7 @@ import cn.jpush.android.api.JPushInterface;
 
 
 /**
- * Created by xuxiang on 2015/9/10.
+ * Created by xuxiang1 on 2015/9/10.
  */
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
