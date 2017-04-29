@@ -13,6 +13,8 @@ import com.daocheng.girlshop.dialog.Sharedialog;
 import com.daocheng.girlshop.entity.shdiai.dataListResult;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import fm.jiecao.jcvideoplayer_lib.JCFullScreenActivity;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 /**
@@ -37,7 +39,7 @@ public class videoDetailActivity extends BaseActivity implements View.OnClickLis
 
     private dataListResult.RecordBean data;
     private int dataflag;
-    private String url="http://www.cs66club.com/app/share_video?id=";
+    private String url = "http://www.cs66club.com/app/share_video?id=";
 
     @Override
     protected int getLayoutId() {
@@ -54,7 +56,7 @@ public class videoDetailActivity extends BaseActivity implements View.OnClickLis
         tv_left = (ImageView) findViewById(R.id.tv_left);
         tv_left.setVisibility(View.VISIBLE);
         vb_content = (WebView) findViewById(R.id.vb_content);
-        makeSureTv=(TextView)findViewById(R.id.makeSureTv);
+        makeSureTv = (TextView) findViewById(R.id.makeSureTv);
 
         tv_left.setOnClickListener(this);
         makeSureTv.setOnClickListener(this);
@@ -74,6 +76,7 @@ public class videoDetailActivity extends BaseActivity implements View.OnClickLis
             tv_center.setText(data.getTitle());
             custom_videoplayer.setUp(data.getMp4()
                     , data.getTitle());
+
             ImageLoader.getInstance().displayImage(data.getLogo(), custom_videoplayer.thumbImageView);
             tv_title.setText(data.getTitle());
             tv_time.setText(data.getUpdatetime());
@@ -82,6 +85,14 @@ public class videoDetailActivity extends BaseActivity implements View.OnClickLis
             vb_content.getSettings().setJavaScriptEnabled(true);
 
             vb_content.setWebViewClient(new MyWebViewClient());
+
+
+            JCFullScreenActivity.startActivity(this,
+                    data.getMp4(),
+                    JCVideoPlayerStandard.class, data.getTitle());
+//            JCFullScreenActivity.startActivityFromNormal(this, 1,
+//                    data.getMp4(),
+//                    JCVideoPlayerStandard.class, data.getTitle());
         }
 
 
@@ -93,8 +104,8 @@ public class videoDetailActivity extends BaseActivity implements View.OnClickLis
             case R.id.tv_left:
                 finish();
                 break;
-            case  R.id.makeSureTv:
-                Sharedialog sd=new Sharedialog(self,url+data.getId(),data.getTitle());
+            case R.id.makeSureTv:
+                Sharedialog sd = new Sharedialog(self, url + data.getId(), data.getTitle());
                 sd.show();
                 break;
 

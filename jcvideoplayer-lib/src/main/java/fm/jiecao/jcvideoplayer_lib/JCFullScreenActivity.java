@@ -19,7 +19,7 @@ import java.lang.reflect.Constructor;
  */
 public class JCFullScreenActivity extends Activity {
 
-  static void startActivityFromNormal(Context context, int state, String url, Class videoPlayClass, Object... obj) {
+   static void startActivityFromNormal(Context context, int state, String url, Class videoPlayClass, Object... obj) {
     CURRENT_STATE = state;
     DIRECT_FULLSCREEN = false;
     URL = url;
