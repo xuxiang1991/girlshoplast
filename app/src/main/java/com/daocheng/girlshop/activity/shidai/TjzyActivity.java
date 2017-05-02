@@ -463,7 +463,7 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
 
 
 
-    private void uploadhead(final int id, final scoreDialog mdialog, final String sharetitle) {
+    private void uploadhead(final int id, final scoreDialog mdialog, final String sharetitle,final int currentscope) {
         iscanshare = false;
         mdialog.setCanshare(iscanshare);
 
@@ -486,7 +486,7 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
                     String token = recode;
                     String key = file.replace(dir, "");
 
-                    shareurl = baseurl + "key=" + key + "&id=" + id + "&userid=" + Config.getShidaiUserInfo().getUserid();
+                    shareurl = baseurl + "key=" + key + "&id=" + id + "&userid=" + Config.getShidaiUserInfo().getUserid()+"&score="+currentscope;
                     iscanshare = true;
                     mdialog.setCanshare(true);
                     mdialog.setUrl(shareurl, sharetitle);
@@ -547,12 +547,14 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
                         scoreDialog md = new scoreDialog(self, "提示", currentscope + "");
                         md.show();
 
-                        uploadhead(baseobjects.get(index).getId(), md, baseobjects.get(index).getContent());
+                        if (currentscope > oldscope)
+                            updateScope(baseobjects.get(index).getId(), currentscope);
+
+                        uploadhead(baseobjects.get(index).getId(), md, baseobjects.get(index).getContent(),currentscope);
 
                         lastEvl.setBackgroundResource(R.drawable.icon_talk);
                         lastEvl = null;
-                        if (currentscope > oldscope)
-                            updateScope(baseobjects.get(index).getId(), currentscope);
+
                     }
 
                 }

@@ -56,6 +56,7 @@ public class scoreDialog extends Dialog implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.iv_dismiss:
             case R.id.tv_ok:
                 dismiss();
                 break;

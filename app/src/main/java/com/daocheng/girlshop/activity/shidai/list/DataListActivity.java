@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.BaseActivity;
+import com.daocheng.girlshop.activity.shidai.detail.RmtjActivity;
 import com.daocheng.girlshop.activity.shidai.detail.SingActivity;
 import com.daocheng.girlshop.activity.shidai.detail.dataDetailActivity;
 import com.daocheng.girlshop.activity.shidai.detail.pinglunActivity;
@@ -424,6 +425,16 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
                         }
                     });
 
+                } else if (dataflag==TYPE_HOT){
+                    ((hotViewHolder) holder).rl_item.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(self, RmtjActivity.class);
+                            intent.putExtra("type", dataflag);
+                            intent.putExtra("data", ob);
+                            startActivity(intent);
+                        }
+                    });
                 } else {
                     ((hotViewHolder) holder).rl_item.setOnClickListener(new View.OnClickListener() {
                         @Override

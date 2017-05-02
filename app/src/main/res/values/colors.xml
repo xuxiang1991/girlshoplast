@@ -73,6 +73,7 @@
     <color name="transparent_color">#00000000</color>
     <color name="white">#ffffffff</color>
     <color name="halfwhite">#80ffffff</color>
+    <color name="activyt_transparent">#0000</color>
 
     <color name="newcal_gridcell_pressed">#bebebe</color>
     <color name="newcal_gridcell_today">#774aac53</color>

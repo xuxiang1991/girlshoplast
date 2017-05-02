@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/iv_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:textColor="@color/text_light_dark"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right|center_vertical"
+        android:lines="1"
+        android:textColor="@color/text_light_dark"
+        android:textSize="12sp" />
+
+    <!--<WebView-->
+    <!--android:id="@+id/vb_content"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/white"-->
+    <!--android:paddingLeft="8dp"-->
+    <!--android:paddingRight="8dp"-->
+    <!--android:scrollbars="vertical"></WebView>-->
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"></TextView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/text_light_grey"></View>
+    <RelativeLayout
+        android:layout_below="@id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <TextView
+            android:id="@+id/tv_huifu_num"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="15sp"
+            android:layout_centerVertical="true"
+            android:paddingLeft="16dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/App_actvitytext_grey"
+            android:text="评论"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="15sp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="16dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/App_actvitytext_grey"
+            android:text="最赞回答"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/text_light_grey"></View>
+    </RelativeLayout>
+</LinearLayout>

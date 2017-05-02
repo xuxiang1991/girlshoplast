@@ -12,57 +12,74 @@
     <LinearLayout
         android:id="@+id/rl_top"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/rl_title"
-        android:background="@drawable/shape_stoke"
-        android:minHeight="100dp"
-        android:orientation="horizontal">
+        android:background="@drawable/bluebanner"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <com.daocheng.girlshop.view.RoundImageView
-            android:id="@+id/iv_head"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentLeft="true"
-            android:layout_margin="16dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/head_sculpture"
-            imagecontrol:border_outside_color="@null"
-            imagecontrol:border_thickness="0dp" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingTop="16dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="80dp"
+                android:text="Compant is goood"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <View
+                android:id="@+id/line_name"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@id/tv_name"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/white"></View>
 
             <TextView
                 android:id="@+id/tv_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/line_name"
+                android:layout_marginRight="80dp"
+                android:layout_marginTop="8dp"
+                android:maxLength="80"
                 android:text="Compant is goood"
-                android:textColor="@color/text_light_dark"
-                android:textSize="18sp" />
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tv_content_translate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                android:text="公司很好"
-                android:textColor="@color/text_light_grey"
-                android:textSize="14sp"
-                android:visibility="gone" />
-        </LinearLayout>
+            <com.daocheng.girlshop.view.RoundImageView
+                android:id="@+id/iv_head"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@id/tv_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/head_sculpture"
+                imagecontrol:border_outside_color="@null"
+                imagecontrol:border_thickness="0dp" />
+        </RelativeLayout>
+
 
         <TextView
-            android:id="@+id/tv_updatetime"
+            android:id="@+id/tv_moreinfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="6-27"
-            android:textColor="@color/text_light_grey"
-            android:textSize="14sp" />
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:text="全部介绍"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="visible" />
     </LinearLayout>
 
     <FrameLayout
@@ -108,26 +125,28 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp">
+
             <TextView
                 android:id="@+id/tv_huifu_num"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textSize="15sp"
                 android:layout_centerVertical="true"
-                android:paddingLeft="16dp"
                 android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:text="回复数（100）"
                 android:textColor="@color/App_actvitytext_grey"
-                android:text="回复数（100）"/>
+                android:textSize="15sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textSize="15sp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:paddingRight="16dp"
                 android:gravity="center_vertical"
+                android:paddingRight="16dp"
+                android:text="最赞回答"
                 android:textColor="@color/App_actvitytext_grey"
-                android:text="最赞回答"/>
+                android:textSize="15sp" />
         </RelativeLayout>
 
         <include

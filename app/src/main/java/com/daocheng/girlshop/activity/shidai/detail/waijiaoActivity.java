@@ -27,6 +27,7 @@ import com.daocheng.girlshop.activity.BaseActivity;
 import com.daocheng.girlshop.activity.shidai.list.DataListActivity;
 import com.daocheng.girlshop.activity.shidai.list.ZipinglunActivity;
 import com.daocheng.girlshop.dialog.CProgressDialog;
+import com.daocheng.girlshop.dialog.PersonInfoDialog;
 import com.daocheng.girlshop.entity.ServiceResult;
 import com.daocheng.girlshop.entity.shdiai.Vrecoder;
 import com.daocheng.girlshop.entity.shdiai.dataListResult;
@@ -73,8 +74,9 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
     private ImageView tv_left;
     private RoundImageView iv_head;
     private TextView tv_content;
-    private TextView tv_content_translate;
-    private TextView tv_updatetime;
+//    private TextView tv_content_translate;
+    private TextView tv_moreinfo;
+    private TextView tv_name;
     private AudioRecordButton recordButton;
 
 
@@ -116,12 +118,14 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
 
         iv_head = (RoundImageView) findViewById(R.id.iv_head);
         tv_content = (TextView) findViewById(R.id.tv_content);
-        tv_content_translate = (TextView) findViewById(R.id.tv_content_translate);
-        tv_updatetime = (TextView) findViewById(R.id.tv_updatetime);
+//        tv_content_translate = (TextView) findViewById(R.id.tv_content_translate);
+        tv_moreinfo = (TextView) findViewById(R.id.tv_moreinfo);
+        tv_name=(TextView)findViewById(R.id.tv_name);
 
         tv_left = (ImageView) findViewById(R.id.tv_left);
         tv_left.setVisibility(View.VISIBLE);
         tv_left.setOnClickListener(this);
+        tv_moreinfo.setOnClickListener(this);
 
 
         recordButton = (AudioRecordButton) findViewById(R.id.recordButton);
@@ -162,11 +166,11 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
             tv_center.setText("师生风采");
         }
 
-
-        tv_content.setText(Html.fromHtml(detaDetail.getContent()));
+        tv_name.setText(detaDetail.getTitle());
+        tv_content.setText(Html.fromHtml(detaDetail.getContent()));//Html.fromHtml(detaDetail.getContent())
         tv_content.setTextIsSelectable(true);
-        tv_content_translate.setText(detaDetail.getContent());
-        tv_updatetime.setText(detaDetail.getUpdatetime());
+//        tv_content_translate.setText(detaDetail.getContent());
+//        tv_moreinfo.setText(detaDetail.getUpdatetime());
 
         recordButton.setAudioFinishRecorderListener(new AudioRecordButton.AudioFinishRecorderListener() {
             @Override
@@ -232,6 +236,10 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
         switch (v.getId()) {
             case R.id.tv_left:
                 finish();
+                break;
+            case R.id.tv_moreinfo:
+                PersonInfoDialog dialog=new PersonInfoDialog(self,detaDetail,dataflag);
+                dialog.show();
                 break;
         }
 

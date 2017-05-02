@@ -297,6 +297,14 @@
 
         </activity>
         <activity
+            android:name=".activity.shidai.detail.RmtjActivity"
+            android:configChanges="locale|layoutDirection"
+            android:exported="true"
+            android:launchMode="standard"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
             android:name=".activity.shidai.YykwDetailActivity"
             android:configChanges="locale|layoutDirection"
             android:exported="true"
