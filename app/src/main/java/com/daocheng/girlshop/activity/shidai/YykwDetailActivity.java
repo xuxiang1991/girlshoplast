@@ -44,6 +44,7 @@ import com.daocheng.girlshop.utils.Constant;
 import com.daocheng.girlshop.view.newTextView;
 import com.daocheng.girlshop.voice.speech.EvaluatorManager;
 import com.daocheng.girlshop.voice.speech.SpeechManager;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCancellationSignal;
 import com.qiniu.android.storage.UpCompletionHandler;
@@ -204,7 +205,7 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                 if ("0".equals(rspData.getErrcode())) {
                     advertorialList = (fuxiList) rspData;
-                    if (pageNo == 1)
+                     if (pageNo == 1)
                         baseobjects = advertorialList.getRecord();
                     else
                         baseobjects.addAll(advertorialList.getRecord());
@@ -215,7 +216,7 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
                 } else {
                     showShortToast(rspData.getMessage());
                 }
-                mSwipeRefreshLayout.setRefreshing(false);
+                 mSwipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
@@ -241,6 +242,7 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
             ImageView iv_danci;
             ImageView iv_yuyin;
             ImageView iv_play;
+            ImageView iv_img;
 
 
             public arViewHolder(View itemView) {
@@ -253,6 +255,7 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
                 iv_danci = (ImageView) itemView.findViewById(R.id.iv_danci);
                 iv_yuyin = (ImageView) itemView.findViewById(R.id.iv_yuyin);
                 iv_play = (ImageView) itemView.findViewById(R.id.iv_play);
+                iv_img = (ImageView) itemView.findViewById(R.id.iv_img);
                 tv_words.setTextIsSelectable(true);
 
 
@@ -272,6 +275,17 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
 
             if (holder instanceof arViewHolder) {
                 final fuxiList.RecordBean ob = getItem(position);
+                if (TextUtils.isEmpty(ob.getPic()))
+                {
+//                    ImageLoader.getInstance().displayImage("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1493748101887&di=9000fa326aa8d95ef3f111a0a2fc0e6b&imgtype=0&src=http%3A%2F%2Fs6.yiban.cn%2Ftopic%2Fa4%2Fe8%2Fd1%2F84%2F1492ecb007abbd2d.jpg",  ((arViewHolder) holder).iv_img);
+                    ((arViewHolder) holder).iv_img.setVisibility(View.GONE);
+                }else
+                {
+                    ImageLoader.getInstance().displayImage(ob.getPic(),  ((arViewHolder) holder).iv_img);
+                    ((arViewHolder) holder).iv_img.setVisibility(View.VISIBLE);
+
+                }
+
                 ((arViewHolder) holder).tv_words.setTextIsSelectable(true);
                 ((arViewHolder) holder).tv_words.setText(ob.getContent());
                 ((arViewHolder) holder).tv_info.setText(ob.getContent1());

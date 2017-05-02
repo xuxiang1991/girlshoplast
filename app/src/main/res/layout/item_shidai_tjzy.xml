@@ -3,12 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/white_bg">
-
+    <ImageView
+        android:id="@+id/iv_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        android:visibility="gone"
+        />
     <RelativeLayout
         android:id="@+id/rl_text_scope"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_below="@id/iv_img"
         android:padding="8dp">
 
         <TextView

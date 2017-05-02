@@ -4,10 +4,20 @@
     android:layout_height="wrap_content"
     android:background="@drawable/white_bg">
 
+    <ImageView
+        android:id="@+id/iv_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        />
     <RelativeLayout
         android:id="@+id/rl_text_scope"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/iv_img"
         android:layout_marginLeft="8dp"
         android:padding="8dp">
 

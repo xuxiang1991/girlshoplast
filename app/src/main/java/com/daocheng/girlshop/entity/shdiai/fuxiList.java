@@ -46,6 +46,15 @@ public class fuxiList extends ServiceResult{
         private String content;
         private String content1;
         private int score;
+        private String pic;
+
+        public String getPic() {
+            return pic;
+        }
+
+        public void setPic(String pic) {
+            this.pic = pic;
+        }
 
         public int getId() {
             return id;

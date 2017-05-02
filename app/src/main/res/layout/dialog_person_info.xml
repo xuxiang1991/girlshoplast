@@ -9,53 +9,63 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/blue_tuoyuan">
+        android:background="@drawable/blue_tuo_x">
 
-        <com.daocheng.girlshop.view.RoundImageView
-            android:id="@+id/iv_head"
-            android:layout_width="68dp"
+        <LinearLayout
+            android:id="@+id/ll_head"
+            android:layout_width="match_parent"
             android:layout_height="68dp"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/head_sculpture"
-            imagecontrol:border_outside_color="@null"
-            imagecontrol:border_thickness="0dp" />
+            android:gravity="center"
+            android:layout_marginRight="8dp"
+            android:orientation="horizontal">
+
+            <com.daocheng.girlshop.view.RoundImageView
+                android:id="@+id/iv_head"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/head_sculpture"
+                imagecontrol:border_outside_color="@null"
+                imagecontrol:border_thickness="0dp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/iv_head"
+            android:layout_below="@id/ll_head"
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:padding="16dp"
             android:text="Compant is goood"
             android:textColor="@color/white"
             android:textSize="16sp" />
+
         <ImageView
             android:id="@+id/iv_dismiss"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:scaleType="center"
             android:padding="8dp"
-            android:src="@drawable/blue_close"/>
+            android:scaleType="center"
+            android:src="@drawable/blue_close" />
     </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
             android:id="@+id/tv_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/iv_head"
             android:layout_centerHorizontal="true"
+            android:background="@color/white"
             android:gravity="center"
             android:padding="16dp"
             android:text="Compant is goood"
-            android:background="@color/white"
             android:textColor="@color/App_more_text_3"
             android:textSize="14sp" />
     </ScrollView>
