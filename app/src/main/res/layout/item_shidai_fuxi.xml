@@ -4,16 +4,16 @@
     android:layout_height="wrap_content"
     android:background="@drawable/white_bg">
 
-    <ImageView
-        android:id="@+id/iv_img"
-        android:layout_width="wrap_content"
-        android:maxWidth="100dp"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="16dp"
-        />
+
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="center" />
+
     <RelativeLayout
         android:id="@+id/rl_text_scope"
         android:layout_width="match_parent"
@@ -27,10 +27,10 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
-            android:text="98"
-            android:gravity="center"
-            android:textColor="@color/white"
             android:background="@drawable/shape_round_green"
+            android:gravity="center"
+            android:text="98"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
         <com.daocheng.girlshop.view.ClipTextView
@@ -38,8 +38,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="24dp"
-            android:background="@color/white"
             android:layout_toLeftOf="@id/tv_scope"
+            android:background="@color/white"
             android:text="Free composition as an exercise has ites"
             android:textColor="@color/App_calendar_big"
             android:textIsSelectable="true"
@@ -51,10 +51,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rl_text_scope"
-        android:layout_marginRight="100dp"
-        android:paddingLeft="8dp"
-        android:background="@null"
         android:layout_marginLeft="8dp"
+        android:layout_marginRight="100dp"
+        android:background="@null"
+        android:paddingLeft="8dp"
         android:text="作为练习的自由命题的作文有局限性"
         android:textColor="@color/text_light_grey"
         android:textSize="14sp" />
@@ -64,9 +64,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_info"
-        android:padding="8dp"
         android:layout_marginLeft="8dp"
+        android:padding="8dp"
         android:visibility="gone">
+
         <ImageView
             android:id="@+id/iv_play"
             android:layout_width="wrap_content"
@@ -74,24 +75,24 @@
             android:layout_marginLeft="8dp"
             android:scaleType="center"
             android:src="@drawable/icon_play" />
+
         <ImageView
             android:id="@+id/iv_yuyin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@id/iv_play"
-            android:scaleType="center"
-            android:background="@drawable/icon_talk" />
+            android:background="@drawable/icon_talk"
+            android:scaleType="center" />
+
         <ImageView
             android:id="@+id/iv_danci"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/iv_yuyin"
             android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/iv_yuyin"
             android:scaleType="center"
             android:src="@drawable/icon_word" />
-
-
 
 
     </RelativeLayout>
@@ -99,8 +100,8 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_alignParentBottom="true"
         android:background="@color/App_actvitytext_grey"></View>
 </RelativeLayout>

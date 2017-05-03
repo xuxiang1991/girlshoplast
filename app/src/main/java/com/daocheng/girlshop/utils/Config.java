@@ -2,6 +2,8 @@ package com.daocheng.girlshop.utils;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
 
@@ -96,6 +98,32 @@ public class Config {
             }
         }
         return statusHeight;
+    }
+
+
+    /**
+     * 根据给定的宽和高进行拉伸
+     *
+     * @param origin    原图
+     * @param newWidth  新图的宽
+     * @param newHeight 新图的高
+     * @return new Bitmap
+     */
+    public static Bitmap scaleBitmap(Bitmap origin, int newWidth, int newHeight) {
+        if (origin == null) {
+            return null;
+        }
+        int height = origin.getHeight();
+        int width = origin.getWidth();
+        float scaleWidth = ((float) newWidth) / width;
+        float scaleHeight = ((float) newHeight) / height;
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);// 使用后乘
+        Bitmap newBM = Bitmap.createBitmap(origin, 0, 0, width, height, matrix, false);
+        if (!origin.isRecycled()) {
+            origin.recycle();
+        }
+        return newBM;
     }
 
     // 当前图片资源版本号

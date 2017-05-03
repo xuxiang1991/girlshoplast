@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Environment;
@@ -45,7 +46,11 @@ import com.daocheng.girlshop.view.ClipTextView;
 import com.daocheng.girlshop.view.newTextView;
 import com.daocheng.girlshop.voice.speech.EvaluatorManager;
 import com.daocheng.girlshop.voice.speech.SpeechManager;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCancellationSignal;
 import com.qiniu.android.storage.UpCompletionHandler;
@@ -282,7 +287,42 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
                     ((arViewHolder) holder).iv_img.setVisibility(View.GONE);
                 }else
                 {
-                    ImageLoader.getInstance().displayImage(ob.getPic(),  ((arViewHolder) holder).iv_img);
+                    Log.e("bitmap_url",ob.getPic());
+                    ImageLoader.getInstance().displayImage(ob.getPic(), ((arViewHolder) holder).iv_img,displayoption(), new ImageLoadingListener() {
+                        @Override
+                        public void onLoadingStarted(String s, View view) {
+
+                        }
+
+                        @Override
+                        public void onLoadingFailed(String s, View view, FailReason failReason) {
+                            ((arViewHolder) holder).iv_img.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onLoadingComplete(String s, View view, Bitmap bitmap) {
+
+                            if (bitmap==null||bitmap.getWidth()==0)
+                            {
+                                ((arViewHolder) holder).iv_img.setVisibility(View.GONE);
+                            }
+                            Log.e("bitmap_url","width="+Config.width+"-height:"+Config.height);
+                            Log.e("bitmap_url","bitmap->width="+bitmap.getWidth()+"-height:"+bitmap.getHeight());
+                            Log.e("bitmap_url","Scalebitmap->width="+Config.width+"-height:"+bitmap.getHeight()*Config.width/bitmap.getWidth());
+                            if (bitmap.getWidth()>Config.width)
+                            {
+                                ((arViewHolder) holder).iv_img.setImageBitmap(Config.scaleBitmap(bitmap,Config.width,bitmap.getHeight()*Config.width/bitmap.getWidth()));
+                            }else
+                            {
+                                ((arViewHolder) holder).iv_img.setImageBitmap(bitmap);
+                            }
+                        }
+
+                        @Override
+                        public void onLoadingCancelled(String s, View view) {
+
+                        }
+                    });
                     ((arViewHolder) holder).iv_img.setVisibility(View.VISIBLE);
 
                 }
@@ -388,6 +428,16 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
         public int getItemCount() {
             return baseobjects.size();
         }
+    }
+
+    private DisplayImageOptions displayoption()
+    {
+        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                .cacheInMemory(true).cacheOnDisc(true)
+//                .showImageOnLoading(R.drawable.loading_photo)
+                .showImageOnFail(R.drawable.loading_photo)
+                .imageScaleType(ImageScaleType.NONE).build();
+        return defaultOptions;
     }
 
 
