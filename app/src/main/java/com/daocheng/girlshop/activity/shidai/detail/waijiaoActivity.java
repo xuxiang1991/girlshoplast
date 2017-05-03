@@ -41,6 +41,7 @@ import com.daocheng.girlshop.net.NetUtils;
 import com.daocheng.girlshop.net.ShidaiApi;
 import com.daocheng.girlshop.utils.Config;
 import com.daocheng.girlshop.utils.Constant;
+import com.daocheng.girlshop.view.ClipTextView;
 import com.daocheng.girlshop.view.RoundImageView;
 import com.duowan.mobile.netroid.Listener;
 import com.duowan.mobile.netroid.NetroidError;
@@ -73,10 +74,10 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
     private TextView tv_center;
     private ImageView tv_left;
     private RoundImageView iv_head;
-    private TextView tv_content;
+    private ClipTextView tv_content;
 //    private TextView tv_content_translate;
     private TextView tv_moreinfo;
-    private TextView tv_name;
+    private ClipTextView tv_name;
     private AudioRecordButton recordButton;
 
 
@@ -117,10 +118,10 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
     protected void setupViews() {
 
         iv_head = (RoundImageView) findViewById(R.id.iv_head);
-        tv_content = (TextView) findViewById(R.id.tv_content);
+        tv_content = (ClipTextView) findViewById(R.id.tv_content);
 //        tv_content_translate = (TextView) findViewById(R.id.tv_content_translate);
         tv_moreinfo = (TextView) findViewById(R.id.tv_moreinfo);
-        tv_name=(TextView)findViewById(R.id.tv_name);
+        tv_name=(ClipTextView)findViewById(R.id.tv_name);
 
         tv_left = (ImageView) findViewById(R.id.tv_left);
         tv_left.setVisibility(View.VISIBLE);

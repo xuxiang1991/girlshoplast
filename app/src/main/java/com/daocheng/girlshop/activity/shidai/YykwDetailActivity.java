@@ -41,6 +41,7 @@ import com.daocheng.girlshop.net.NetUtils;
 import com.daocheng.girlshop.net.ShidaiApi;
 import com.daocheng.girlshop.utils.Config;
 import com.daocheng.girlshop.utils.Constant;
+import com.daocheng.girlshop.view.ClipTextView;
 import com.daocheng.girlshop.view.newTextView;
 import com.daocheng.girlshop.voice.speech.EvaluatorManager;
 import com.daocheng.girlshop.voice.speech.SpeechManager;
@@ -235,8 +236,8 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
 
             RelativeLayout rl_text_scope;
             TextView tv_scope;
-            newTextView tv_words;
-            TextView tv_info;
+            ClipTextView tv_words;
+            ClipTextView tv_info;
             RelativeLayout rl_play;
 
             ImageView iv_danci;
@@ -249,8 +250,8 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
                 super(itemView);
                 rl_text_scope = (RelativeLayout) itemView.findViewById(R.id.rl_text_scope);
                 tv_scope = (TextView) itemView.findViewById(R.id.tv_scope);
-                tv_words = (newTextView) itemView.findViewById(R.id.tv_words);
-                tv_info = (TextView) itemView.findViewById(R.id.tv_info);
+                tv_words = (ClipTextView) itemView.findViewById(R.id.tv_words);
+                tv_info = (ClipTextView) itemView.findViewById(R.id.tv_info);
                 rl_play = (RelativeLayout) itemView.findViewById(R.id.rl_play);
                 iv_danci = (ImageView) itemView.findViewById(R.id.iv_danci);
                 iv_yuyin = (ImageView) itemView.findViewById(R.id.iv_yuyin);

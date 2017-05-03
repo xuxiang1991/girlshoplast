@@ -56,6 +56,7 @@ import com.daocheng.girlshop.utils.Config;
 import com.daocheng.girlshop.utils.Constant;
 import com.daocheng.girlshop.utils.Utils;
 import com.daocheng.girlshop.view.Bookends;
+import com.daocheng.girlshop.view.ClipTextView;
 import com.daocheng.girlshop.view.RoundImageView;
 import com.duowan.mobile.netroid.Listener;
 import com.duowan.mobile.netroid.NetroidError;
@@ -97,7 +98,7 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
     private SeekBar seekbar;
     private TextView tv_length;
     private ImageView iv_ban;
-    private TextView tv_songword;
+    private ClipTextView tv_songword;
     private TextView tv_comment;
     private LinearLayout ll_plun;
 
@@ -184,7 +185,7 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
         seekbar = (SeekBar) headview.findViewById(R.id.seekbar);
         tv_length = (TextView) headview.findViewById(R.id.tv_length);
         iv_ban = (ImageView) headview.findViewById(R.id.iv_ban);
-        tv_songword = (TextView) headview.findViewById(R.id.tv_songword);
+        tv_songword = (ClipTextView) headview.findViewById(R.id.tv_songword);
 //        tv_zan=(TextView)findViewById(R.id.tv_zan);
         tv_comment = (TextView) findViewById(R.id.tv_comment);
         tv_left.setVisibility(View.VISIBLE);
@@ -231,6 +232,7 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
         tv_name.setText(datalist.getRecord().get(position).getTitle());
         tv_time.setText(datalist.getRecord().get(position).getUpdatetime());
         tv_songword.setText(Html.fromHtml(datalist.getRecord().get(position).getContent()));
+        tv_songword.setTextIsSelectable(true);
         ImageLoader.getInstance().displayImage(musicgroup.get(position).getLogo(),iv_ban);
         tv_right.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -93,12 +93,13 @@
             android:layout_height="wrap_content"
             android:scaleType="fitXY" />
 
-        <TextView
+        <com.daocheng.girlshop.view.ClipTextView
             android:id="@+id/tv_songword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start"
             android:padding="15dp"
+            android:background="@null"
             android:textColor="@color/text_light_grey"
             android:textSize="16sp" />
     </LinearLayout>

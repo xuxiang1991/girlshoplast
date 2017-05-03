@@ -34,6 +34,7 @@ import com.daocheng.girlshop.net.ShidaiApi;
 import com.daocheng.girlshop.utils.Config;
 import com.daocheng.girlshop.utils.Constant;
 import com.daocheng.girlshop.view.Bookends;
+import com.daocheng.girlshop.view.ClipTextView;
 import com.daocheng.girlshop.view.RoundImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -51,12 +52,12 @@ public class RmtjActivity extends BaseActivity implements View.OnClickListener {
     private int dataflag;
 
     private ImageView iv_banner;
-    private TextView tv_title;
+    private ClipTextView tv_title;
     private TextView tv_time;
     private TextView tv_center;
     private ImageView tv_left;
     //    private WebView vb_content;
-    private TextView tv_content;
+    private ClipTextView tv_content;
     private TextView tv_share;
     private String url;
 
@@ -91,9 +92,9 @@ public class RmtjActivity extends BaseActivity implements View.OnClickListener {
         headview = (LinearLayout) inflater.inflate(R.layout.head_rmtj, mRecyclerView, false);
 
         iv_banner = (ImageView) headview.findViewById(R.id.iv_banner);
-        tv_title = (TextView) headview.findViewById(R.id.tv_title);
+        tv_title = (ClipTextView) headview.findViewById(R.id.tv_title);
         tv_time = (TextView) headview.findViewById(R.id.tv_time);
-        tv_content = (TextView) headview.findViewById(R.id.tv_content);
+        tv_content = (ClipTextView) headview.findViewById(R.id.tv_content);
         tv_center = (TextView) findViewById(R.id.tv_center);
         tv_left = (ImageView) findViewById(R.id.tv_left);
         tv_left.setVisibility(View.VISIBLE);

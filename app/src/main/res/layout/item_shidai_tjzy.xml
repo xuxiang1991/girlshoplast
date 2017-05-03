@@ -6,11 +6,12 @@
     <ImageView
         android:id="@+id/iv_img"
         android:layout_width="wrap_content"
+        android:maxWidth="100dp"
         android:layout_height="wrap_content"
-        android:scaleType="center"
-        android:paddingLeft="16dp"
-        android:paddingTop="8dp"
-        android:paddingRight="16dp"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
         android:visibility="gone"
         />
     <RelativeLayout
@@ -32,7 +33,7 @@
             android:background="@drawable/shape_round_green"
             android:textSize="18sp" />
 
-        <com.daocheng.girlshop.view.newTextView
+        <com.daocheng.girlshop.view.ClipTextView
             android:id="@+id/tv_words"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,13 +56,14 @@
 
         android:layout_marginLeft="8dp"></com.daocheng.girlshop.view.FlowLayout>
 
-    <TextView
+    <com.daocheng.girlshop.view.ClipTextView
         android:id="@+id/tv_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_wordlist"
         android:layout_marginRight="100dp"
         android:paddingLeft="8dp"
+        android:background="@null"
         android:layout_marginLeft="8dp"
         android:text="作为练习的自由命题的作文有局限性"
         android:textColor="@color/text_light_grey"

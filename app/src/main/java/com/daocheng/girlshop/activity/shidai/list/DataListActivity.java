@@ -33,6 +33,7 @@ import com.daocheng.girlshop.net.NetUtils;
 import com.daocheng.girlshop.net.ShidaiApi;
 import com.daocheng.girlshop.utils.Config;
 import com.daocheng.girlshop.utils.Constant;
+import com.daocheng.girlshop.view.ClipTextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.IOException;
@@ -233,18 +234,18 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
 
         public class hotViewHolder extends RecyclerView.ViewHolder {
 
-            TextView tv_title;
+            ClipTextView tv_title;
             ImageView iv_image;
-            TextView tv_content;
+            ClipTextView tv_content;
             TextView tv_time;
             RelativeLayout rl_item;
 
             public hotViewHolder(View itemView) {
                 super(itemView);
                 rl_item = (RelativeLayout) itemView.findViewById(R.id.rl_item);
-                tv_title = (TextView) itemView.findViewById(R.id.tv_title);
+                tv_title = (ClipTextView) itemView.findViewById(R.id.tv_title);
                 iv_image = (ImageView) itemView.findViewById(R.id.iv_image);
-                tv_content = (TextView) itemView.findViewById(R.id.tv_content);
+                tv_content = (ClipTextView) itemView.findViewById(R.id.tv_content);
                 tv_time = (TextView) itemView.findViewById(R.id.tv_time);
                 tv_title.setTextIsSelectable(true);
                 tv_content.setTextIsSelectable(true);

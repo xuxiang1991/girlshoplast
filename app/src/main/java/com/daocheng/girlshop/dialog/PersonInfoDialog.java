@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.entity.shdiai.dataListResult;
 import com.daocheng.girlshop.utils.Config;
+import com.daocheng.girlshop.view.ClipTextView;
 import com.daocheng.girlshop.view.RoundImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -31,7 +32,7 @@ import static com.daocheng.girlshop.activity.shidai.detail.waijiaoActivity.TYPE_
 public class PersonInfoDialog extends Dialog implements View.OnClickListener {
     private Context mcontext;
     private TextView tv_name;
-    private TextView tv_content;
+    private ClipTextView tv_content;
     private ImageView iv_dismiss;
     private RoundImageView iv_head;
     private int dataflag;
@@ -84,10 +85,11 @@ public class PersonInfoDialog extends Dialog implements View.OnClickListener {
     private void initialize() {
 
         tv_name = (TextView) findViewById(R.id.tv_name);
-        tv_content = (TextView) findViewById(R.id.tv_content);
+        tv_content = (ClipTextView) findViewById(R.id.tv_content);
         iv_dismiss = (ImageView) findViewById(R.id.iv_dismiss);
         iv_head = (RoundImageView) findViewById(R.id.iv_head);
         iv_dismiss.setOnClickListener(this);
+        tv_content.setTextIsSelectable(true);
 
         if (data!=null)
         {

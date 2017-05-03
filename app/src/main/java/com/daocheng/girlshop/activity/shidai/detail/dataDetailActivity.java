@@ -13,6 +13,7 @@ import com.daocheng.girlshop.activity.BaseActivity;
 import com.daocheng.girlshop.activity.shidai.list.DataListActivity;
 import com.daocheng.girlshop.dialog.Sharedialog;
 import com.daocheng.girlshop.entity.shdiai.dataListResult;
+import com.daocheng.girlshop.view.ClipTextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.w3c.dom.Text;
@@ -38,7 +39,7 @@ public class dataDetailActivity extends BaseActivity implements View.OnClickList
     private TextView tv_center;
     private ImageView tv_left;
     //    private WebView vb_content;
-    private TextView tv_content;
+    private ClipTextView tv_content;
     private TextView tv_share;
     private String url;
 
@@ -72,7 +73,7 @@ public class dataDetailActivity extends BaseActivity implements View.OnClickList
         tv_center = (TextView) findViewById(R.id.tv_center);
         tv_left = (ImageView) findViewById(R.id.tv_left);
         tv_left.setVisibility(View.VISIBLE);
-        tv_content = (TextView) findViewById(R.id.tv_content);
+        tv_content = (ClipTextView) findViewById(R.id.tv_content);
         tv_share = (TextView) findViewById(R.id.tv_share);
 //        vb_content=(WebView)findViewById(R.id.vb_content);
 

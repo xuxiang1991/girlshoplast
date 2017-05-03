@@ -11,10 +11,11 @@
         android:layout_height="wrap_content"
         android:scaleType="fitXY" />
 
-    <TextView
+    <com.daocheng.girlshop.view.ClipTextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@null"
         android:gravity="center_vertical"
         android:padding="8dp"
         android:textColor="@color/text_light_dark"
@@ -38,41 +39,47 @@
     <!--android:paddingRight="8dp"-->
     <!--android:scrollbars="vertical"></WebView>-->
 
-    <TextView
+    <com.daocheng.girlshop.view.ClipTextView
         android:id="@+id/tv_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:paddingLeft="8dp"
-        android:paddingRight="8dp"></TextView>
+        android:paddingRight="8dp"></com.daocheng.girlshop.view.ClipTextView>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/text_light_grey"></View>
+
     <RelativeLayout
-        android:layout_below="@id/ll_content"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="40dp"
+        android:layout_below="@id/ll_content">
+
         <TextView
             android:id="@+id/tv_huifu_num"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textSize="15sp"
             android:layout_centerVertical="true"
-            android:paddingLeft="16dp"
             android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:text="留言"
             android:textColor="@color/App_actvitytext_grey"
-            android:text="评论"/>
+            android:textSize="15sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textSize="15sp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:paddingRight="16dp"
             android:gravity="center_vertical"
+            android:paddingRight="16dp"
+            android:text="最赞回答"
             android:textColor="@color/App_actvitytext_grey"
-            android:text="最赞回答"/>
+            android:textSize="15sp"
+            android:visibility="gone" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
