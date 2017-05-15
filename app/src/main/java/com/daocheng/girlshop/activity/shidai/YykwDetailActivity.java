@@ -302,6 +302,7 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
                         @Override
                         public void onLoadingComplete(String s, View view, Bitmap bitmap) {
 
+                            ((arViewHolder) holder).iv_img.setVisibility(View.VISIBLE);
                             if (bitmap==null||bitmap.getWidth()==0)
                             {
                                 ((arViewHolder) holder).iv_img.setVisibility(View.GONE);
@@ -312,6 +313,10 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
                             if (bitmap.getWidth()>Config.width)
                             {
                                 ((arViewHolder) holder).iv_img.setImageBitmap(Config.scaleBitmap(bitmap,Config.width,bitmap.getHeight()*Config.width/bitmap.getWidth()));
+                            }else if (bitmap.getWidth()<(Config.width/2))
+                            {
+                                ((arViewHolder) holder).iv_img.setImageBitmap(Config.scaleBitmap(bitmap,Config.width/2,bitmap.getHeight()*(Config.width/2)/bitmap.getWidth()));
+
                             }else
                             {
                                 ((arViewHolder) holder).iv_img.setImageBitmap(bitmap);
