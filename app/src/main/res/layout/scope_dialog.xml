@@ -96,7 +96,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="分享"
-            android:textColor="@color/App_actvitytext_grey"
+            android:textColor="@color/App_calendar_big"
             android:textSize="@dimen/text_size_small"
             android:visibility="gone" />
     </LinearLayout>
