@@ -177,11 +177,11 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
             @Override
             public void onFinished(float seconds, String filePath) {
                 Log.v("recoderVoice", filePath + seconds);
-                if (Config.getShidaiUserInfo()!=null&&Config.getShidaiUserInfo().getLevel().contains("游客"))
-                {
-                    showShortToast("游客不能发表");
-                    return;
-                }
+//                if (Config.getShidaiUserInfo()!=null&&Config.getShidaiUserInfo().getLevel().contains("游客"))
+//                {
+//                    showShortToast("游客不能发表");
+//                    return;
+//                }
                 uploadhead(filePath, ((int) seconds) > 1 ? (int) seconds : 1);
             }
         });

@@ -4,15 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/white_bg">
+
+    <TextView
+        android:id="@+id/tv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="返回上一步"
+        android:textColor="@color/text_light_grey"
+        android:textSize="18sp" />
+
     <TextView
         android:id="@+id/tv_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
         android:padding="16dp"
         android:text="登录"
-        android:layout_alignParentRight="true"
         android:textColor="@color/text_light_grey"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:visibility="gone" />
 
     <com.daocheng.girlshop.view.RoundImageView
         android:id="@+id/iv_head"
@@ -29,37 +40,37 @@
         android:id="@+id/ll_username"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="48dp"
+        android:layout_below="@id/iv_head"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:orientation="horizontal"
+        android:layout_marginTop="48dp"
         android:gravity="center_vertical"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/iv_head">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
-            android:textSize="16sp"
+            android:text="昵称"
             android:textColor="@color/text_light_dark"
-            android:text="姓名"
-            />
+            android:textSize="16sp" />
+
         <EditText
             android:id="@+id/ed_username"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
-            android:padding="4dp"
-            android:gravity="center_vertical"
-            android:background="@null"
             android:layout_marginLeft="8dp"
-            android:singleLine="true"
             android:layout_marginRight="32dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="请输入昵称"
+            android:padding="4dp"
+            android:singleLine="true"
             android:textColor="@color/text_light_grey"
-            android:textSize="16sp"
-            android:hint="真实姓名"
-            android:textColorHint="@color/text_light_grey"/>
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -69,55 +80,57 @@
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_below="@id/ll_username"
-        android:layout_marginRight="36dp"
         android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
         android:background="@color/text_light_grey"></View>
+
     <LinearLayout
         android:id="@+id/ll_secret"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="24dp"
+        android:layout_below="@id/line1"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/line1">
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
-            android:textSize="16sp"
-            android:textColor="@color/text_light_dark"
             android:singleLine="true"
             android:text="密码"
-            />
+            android:textColor="@color/text_light_dark"
+            android:textSize="16sp" />
+
         <EditText
             android:id="@+id/ed_secret"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
-            android:padding="4dp"
-            android:gravity="center_vertical"
-            android:background="@null"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="32dp"
-            android:textColor="@color/text_light_grey"
-            android:textSize="16sp"
-            android:hint="6-16位数字或者字母"
-            android:singleLine="true"
-            android:maxLength="16"
+            android:background="@null"
             android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            android:textColorHint="@color/text_light_grey"/>
+            android:gravity="center_vertical"
+            android:hint="6-16位数字或者字母"
+            android:maxLength="16"
+            android:padding="4dp"
+            android:singleLine="true"
+            android:textColor="@color/text_light_grey"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp" />
 
     </LinearLayout>
+
     <View
         android:id="@+id/line2"
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_below="@id/ll_secret"
-        android:layout_marginRight="36dp"
         android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
         android:background="@color/text_light_grey"></View>
 
 
@@ -125,11 +138,11 @@
         android:id="@+id/bt_register"
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:layout_below="@id/line2"
+        android:layout_margin="36dp"
+        android:background="@color/colorPrimaryDark"
         android:gravity="center"
         android:text="下一步"
-        android:textColor="@color/white"
-        android:layout_margin="36dp"
-        android:layout_below="@id/line2"
-        android:background="@color/colorPrimaryDark"/>
+        android:textColor="@color/white" />
 
 </RelativeLayout>

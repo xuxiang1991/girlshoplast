@@ -130,13 +130,13 @@ public class ZipinglunActivity extends BaseActivity implements View.OnClickListe
         recordButton.setAudioFinishRecorderListener(new AudioRecordButton.AudioFinishRecorderListener() {
             @Override
             public void onFinished(float seconds, String filePath) {
-                if (Config.getShidaiUserInfo()!=null&&Config.getShidaiUserInfo().getLevel().contains("游客"))
-                {
-                    showShortToast("游客不能发表");
-                    return;
-                }
+//                if (Config.getShidaiUserInfo()!=null&&Config.getShidaiUserInfo().getLevel().contains("游客"))
+//                {
+//                    showShortToast("游客不能发表");
+//                    return;
+//                }
                 Log.v("recoderVoice", filePath + seconds);
-                uploadhead(filePath, ((int) seconds)>1?(int) seconds:1 );
+                uploadhead(filePath, ((int) seconds) > 1 ? (int) seconds : 1);
             }
         });
 
@@ -152,8 +152,8 @@ public class ZipinglunActivity extends BaseActivity implements View.OnClickListe
                                              int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE
-                        && lastVisibleItem == sRecyclerViewAdapter.getItemCount()-1
-                        && lastVisibleItem == (pageNo * Constant.found_pageNum-1)) {
+                        && lastVisibleItem == sRecyclerViewAdapter.getItemCount() - 1
+                        && lastVisibleItem == (pageNo * Constant.found_pageNum - 1)) {
                     pageNo = pageNo + 1;
                     setData();
                     mSwipeRefreshLayout.setRefreshing(true);
@@ -213,11 +213,11 @@ public class ZipinglunActivity extends BaseActivity implements View.OnClickListe
 
     private void sendText() {
         if (!TextUtils.isEmpty(ed_text.getText().toString())) {
-            if (Config.getShidaiUserInfo()!=null&&Config.getShidaiUserInfo().getLevel().contains("游客"))
-            {
-                showShortToast("游客不能发表");
-                return;
-            }
+//            if (Config.getShidaiUserInfo()!=null&&Config.getShidaiUserInfo().getLevel().contains("游客"))
+//            {
+//                showShortToast("游客不能发表");
+//                return;
+//            }
             sendMessge(TYPE_TXT, 0, "", ed_text.getText().toString());
             ed_text.setText("");
         }
@@ -317,8 +317,6 @@ public class ZipinglunActivity extends BaseActivity implements View.OnClickListe
                 ((arViewHolder) holder).tv_time.setText(ob.getUpdatetime());
 
 
-
-
                 if (ob.getType().equals(TYPE_TXT)) {
                     ((arViewHolder) holder).ll_text.setVisibility(View.VISIBLE);
                     ((arViewHolder) holder).rl_voice.setVisibility(View.GONE);
@@ -326,7 +324,7 @@ public class ZipinglunActivity extends BaseActivity implements View.OnClickListe
                 } else {
                     ((arViewHolder) holder).ll_text.setVisibility(View.GONE);
                     ((arViewHolder) holder).rl_voice.setVisibility(View.VISIBLE);
-                    ((arViewHolder) holder).tv_voicesize.setText(ob.getLength()+"s");
+                    ((arViewHolder) holder).tv_voicesize.setText(ob.getLength() + "s");
                     ((arViewHolder) holder).ll_voice.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -359,7 +357,6 @@ public class ZipinglunActivity extends BaseActivity implements View.OnClickListe
 
                                         MediaManager.playSound(localFile,
                                                 new MediaPlayer.OnCompletionListener() {
-
 
 
                                                     @Override
@@ -465,17 +462,16 @@ public class ZipinglunActivity extends BaseActivity implements View.OnClickListe
     }
 
 
-
     private void sendMessge(final String type, final int length, final String url, final String content) {
 
 
-        ShidaiApi.sendZiPinglun(self, Config.getShidaiUserInfo().getUserid(), id, type, length, url, content,  punlun.class, new NetUtils.NetCallBack<ServiceResult>() {
+        ShidaiApi.sendZiPinglun(self, Config.getShidaiUserInfo().getUserid(), id, type, length, url, content, punlun.class, new NetUtils.NetCallBack<ServiceResult>() {
             @Override
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
 
                 if ("0".equals(rspData.getErrcode())) {
 
-                    punlun pl=(punlun)rspData;
+                    punlun pl = (punlun) rspData;
 
                     Vrecoder.RecordBean recordBean = new Vrecoder.RecordBean();
                     recordBean.setContent(content);
@@ -483,13 +479,13 @@ public class ZipinglunActivity extends BaseActivity implements View.OnClickListe
                     recordBean.setLength(length);
                     recordBean.setNickname(Config.getShidaiUserInfo().getNickname());
                     recordBean.setType(type);
-                    recordBean.setUrl( ShidaiApi.Pic_BASE_URL +url);
+                    recordBean.setUrl(ShidaiApi.Pic_BASE_URL + url);
                     recordBean.setUpdatetime("现在");
                     recordBean.setZan(0);
                     recordBean.setId(pl.getId());
                     recordBean.setUserid(Config.getShidaiUserInfo().getUserid());
 
-                    baseobjects.add(0,recordBean);
+                    baseobjects.add(0, recordBean);
                     sRecyclerViewAdapter.notifyDataSetChanged();
                     mRecyclerView.smoothScrollToPosition(0);
                 }

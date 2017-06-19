@@ -143,7 +143,7 @@ public class myClassFragment extends BaseFragment implements View.OnClickListene
 
     @Override
     protected void initialized() {
-        tv_center.setText("我的课程");
+        tv_center.setText("我的账号");
 
 
         if (Config.getShidaiUserInfo() == null) {

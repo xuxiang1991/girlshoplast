@@ -47,14 +47,14 @@
             android:text="我的学习" />
 
         <!--<RadioButton-->
-            <!--android:id="@+id/four"-->
-            <!--style="@style/main_tab_bottom"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:drawablePadding="4dp"-->
-            <!--android:drawableTop="@drawable/select_main_dingke"-->
-            <!--android:padding="8dp"-->
-            <!--android:text="订课考试" />-->
+        <!--android:id="@+id/four"-->
+        <!--style="@style/main_tab_bottom"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:drawablePadding="4dp"-->
+        <!--android:drawableTop="@drawable/select_main_dingke"-->
+        <!--android:padding="8dp"-->
+        <!--android:text="订课考试" />-->
 
         <RadioButton
             android:id="@+id/five"
@@ -64,7 +64,7 @@
             android:drawablePadding="4dp"
             android:drawableTop="@drawable/select_main_mine"
             android:padding="8dp"
-            android:text="我的课程" />
+            android:text="我的账号" />
 
     </RadioGroup>
 

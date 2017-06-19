@@ -54,7 +54,7 @@ import java.io.InputStream;
  */
 public class registActivity extends BaseActivity implements View.OnClickListener {
 
-    private TextView tv_login;
+    private TextView tv_login, tv_back;
     private RoundImageView iv_head;
     private EditText ed_username, ed_secret;
     private Button bt_register;
@@ -79,6 +79,7 @@ public class registActivity extends BaseActivity implements View.OnClickListener
     @Override
     protected void setupViews() {
 
+        tv_back = (TextView) findViewById(R.id.tv_back);
         tv_login = (TextView) findViewById(R.id.tv_login);
         iv_head = (RoundImageView) findViewById(R.id.iv_head);
         ed_username = (EditText) findViewById(R.id.ed_username);
@@ -110,10 +111,10 @@ public class registActivity extends BaseActivity implements View.OnClickListener
                     FloatTextToast.makeText(self, ed_secret, "请输入6-16位正确的密码", FloatTextToast.LENGTH_SHORT).show();
                     return;
                 }
-                if (headpathResponse == null) {
-                    Toast.makeText(self, "请添加头像", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                if (headpathResponse == null) {
+//                    Toast.makeText(self, "请添加头像", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
 
 
                 submitUserInfo(ed_username.getText().toString(), ed_secret.getText().toString());
@@ -123,6 +124,7 @@ public class registActivity extends BaseActivity implements View.OnClickListener
 //                showPics();
                 showPickDialog();
                 break;
+            case R.id.tv_back:
             case R.id.tv_login:
                 finish();
                 break;
@@ -132,13 +134,20 @@ public class registActivity extends BaseActivity implements View.OnClickListener
 
     }
 
-    private void submitUserInfo(String userNmae, String secret) {
+    private void submitUserInfo(String userNmae, final String secret) {
 
         ShidaiApi.register(self, phone, secret, headpathResponse, userNmae, ServiceResult.class, new NetUtils.NetCallBack<ServiceResult>() {
             @Override
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                 if ("0".endsWith(rspData.getErrcode())) {
                     showShortToast("您已注册，请登录");
+
+                    Intent i = new Intent();
+                    i.putExtra("username", phone);
+                    i.putExtra("secret", secret);
+                    setResult(RESULT_OK, i);
+
+                    finish();
                     return;
                 } else {
                     showShortToast(rspData.getErrmsg());

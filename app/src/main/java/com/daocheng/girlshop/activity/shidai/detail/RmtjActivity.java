@@ -216,10 +216,10 @@ public class RmtjActivity extends BaseActivity implements View.OnClickListener {
 
     private void sendText() {
         if (!TextUtils.isEmpty(ed_text.getText().toString())) {
-            if (Config.getShidaiUserInfo() != null && Config.getShidaiUserInfo().getLevel().contains("游客")) {
-                showShortToast("游客不能发表");
-                return;
-            }
+//            if (Config.getShidaiUserInfo() != null && Config.getShidaiUserInfo().getLevel().contains("游客")) {
+//                showShortToast("游客不能发表");
+//                return;
+//            }
             sendMessge(TYPE_TXT, 0, "", ed_text.getText().toString());
             ed_text.setText("");
         }

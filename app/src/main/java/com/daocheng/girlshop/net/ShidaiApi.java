@@ -83,6 +83,7 @@ public class ShidaiApi {
         map.put("nickname", nickname);
         map.put("password", password);
         map.put("userAgent", "Android");
+        if (!TextUtils.isEmpty(head))
         map.put("head", head);
 
 

@@ -4,8 +4,10 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
@@ -58,7 +60,9 @@ public class loginActivity extends BaseActivity implements View.OnClickListener,
 
     private boolean ready;
 
-    private int WRITE_EXTERNAL_STORAGE_REQUEST_CODE=11001;
+    private int WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 11001;
+
+    public static final int FRMOREJEST = 1001;
 
     // 短信注册，随机产生头像
     private static final String[] AVATARS = {
@@ -100,12 +104,18 @@ public class loginActivity extends BaseActivity implements View.OnClickListener,
     @Override
     protected void initialized() {
         initSDK();
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission_group.MICROPHONE)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
                 != PackageManager.PERMISSION_GRANTED) {
             //申请WRITE_EXTERNAL_STORAGE权限
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission_group.MICROPHONE,Manifest.permission.RECORD_AUDIO,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS},
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission_group.MICROPHONE, Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS},
                     WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
         }
+//        else if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
+//                != PackageManager.PERMISSION_GRANTED) {
+//            Uri packageURI = Uri.parse("package:" + self.getPackageName());
+//            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI);
+//            startActivity(intent);
+//        }
     }
 
     @Override
@@ -159,8 +169,8 @@ public class loginActivity extends BaseActivity implements View.OnClickListener,
                             // 提交用户信息
                             registerUser(country, phone);
 
-                            Intent intent=new Intent(self,secretEditActivity.class);
-                            intent.putExtra("phone",phone);
+                            Intent intent = new Intent(self, secretEditActivity.class);
+                            intent.putExtra("phone", phone);
                             startActivity(intent);
 
                         }
@@ -186,7 +196,7 @@ public class loginActivity extends BaseActivity implements View.OnClickListener,
                 if ("0".equals(rspData.getErrcode())) {
                     Intent i = new Intent(self, registActivity.class);
                     i.putExtra("phone", mobile);
-                    startActivity(i);
+                    startActivityForResult(i, FRMOREJEST);
                 } else {
                     showShortToast(rspData.getErrmsg());
                 }
@@ -299,6 +309,11 @@ public class loginActivity extends BaseActivity implements View.OnClickListener,
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        showShortToast("权限获取成功");
+        if (resultCode == RESULT_OK && requestCode == FRMOREJEST && data != null) {
+            ed_username.setText(data.getStringExtra("username"));
+            ed_secret.setText(data.getStringExtra("secret"));
+
+        } else
+            showShortToast("权限获取成功");
     }
 }
