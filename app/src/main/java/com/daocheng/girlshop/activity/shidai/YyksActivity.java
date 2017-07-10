@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.baoyz.actionsheet.ActionSheet;
 import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.BaseActivity;
+import com.daocheng.girlshop.dialog.AddWordDialog;
 import com.daocheng.girlshop.dialog.MessageDialog;
 import com.daocheng.girlshop.dialog.scoreDialog;
 import com.daocheng.girlshop.entity.ServiceResult;
@@ -359,6 +360,14 @@ public class YyksActivity extends BaseActivity implements View.OnClickListener {
                 ((arViewHolder) holder).tv_words.setTextIsSelectable(true);
                 ((arViewHolder) holder).tv_words.requestFocus();
                 ((arViewHolder) holder).tv_words.setText(ob.getContent().replace("\\r\\n", "").replace("\r\n", ""));
+                ((arViewHolder) holder).tv_words.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        AddWordDialog dialog = new AddWordDialog(self, ob.getContent().replace("\\r\\n", "").replace("\r\n", ""));
+                        dialog.show();
+                        return false;
+                    }
+                });
                 ((arViewHolder) holder).tv_info.setText(ob.getContent1());
                 ((arViewHolder) holder).tv_scope.setText(ob.getScore() + "");
                 ((arViewHolder) holder).iv_danci.setVisibility(View.GONE);

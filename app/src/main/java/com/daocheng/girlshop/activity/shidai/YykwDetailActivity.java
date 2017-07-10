@@ -31,6 +31,7 @@ import com.baoyz.actionsheet.ActionSheet;
 import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.BaseActivity;
 import com.daocheng.girlshop.activity.shidai.detail.waijiaoActivity;
+import com.daocheng.girlshop.dialog.AddWordDialog;
 import com.daocheng.girlshop.dialog.CProgressDialog;
 import com.daocheng.girlshop.dialog.scoreDialog;
 import com.daocheng.girlshop.entity.ServiceResult;
@@ -332,8 +333,16 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
 
                 }
 
-                ((arViewHolder) holder).tv_words.setTextIsSelectable(true);
+//                ((arViewHolder) holder).tv_words.setTextIsSelectable(true);
                 ((arViewHolder) holder).tv_words.setText(ob.getContent());
+//                ((arViewHolder) holder).tv_words.setOnLongClickListener(new View.OnLongClickListener() {
+//                    @Override
+//                    public boolean onLongClick(View v) {
+//                        AddWordDialog dialog=new AddWordDialog(self,ob.getContent());
+//                        dialog.show();
+//                        return false;
+//                    }
+//                });
                 ((arViewHolder) holder).tv_info.setText(ob.getContent1());
                 ((arViewHolder) holder).tv_scope.setText(ob.getScore() + "");
                 ((arViewHolder) holder).iv_danci.setVisibility(View.VISIBLE);
