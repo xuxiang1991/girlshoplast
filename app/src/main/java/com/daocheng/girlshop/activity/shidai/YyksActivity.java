@@ -322,23 +322,6 @@ public class YyksActivity extends BaseActivity implements View.OnClickListener {
                 tv_wordlist = (FlowLayout) itemView.findViewById(R.id.tv_wordlist);
 
                 tv_words.setTextIsSelectable(true);
-                tv_words.setCustomSelectionActionModeCallback(new ActionMode.Callback() {
-
-                    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                        return false;
-                    }
-
-                    public void onDestroyActionMode(ActionMode mode) {
-                    }
-
-                    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                        return false;
-                    }
-
-                    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                        return false;
-                    }
-                });
 
 
             }
@@ -357,17 +340,15 @@ public class YyksActivity extends BaseActivity implements View.OnClickListener {
 
             if (holder instanceof arViewHolder) {
                 final fuxiList.RecordBean ob = getItem(position);
-                ((arViewHolder) holder).tv_words.setTextIsSelectable(true);
-                ((arViewHolder) holder).tv_words.requestFocus();
                 ((arViewHolder) holder).tv_words.setText(ob.getContent().replace("\\r\\n", "").replace("\r\n", ""));
-                ((arViewHolder) holder).tv_words.setOnLongClickListener(new View.OnLongClickListener() {
-                    @Override
-                    public boolean onLongClick(View v) {
-                        AddWordDialog dialog = new AddWordDialog(self, ob.getContent().replace("\\r\\n", "").replace("\r\n", ""));
-                        dialog.show();
-                        return false;
-                    }
-                });
+//                ((arViewHolder) holder).tv_words.setOnLongClickListener(new View.OnLongClickListener() {
+//                    @Override
+//                    public boolean onLongClick(View v) {
+//                        AddWordDialog dialog = new AddWordDialog(self, ob.getContent().replace("\\r\\n", "").replace("\r\n", ""));
+//                        dialog.show();
+//                        return false;
+//                    }
+//                });
                 ((arViewHolder) holder).tv_info.setText(ob.getContent1());
                 ((arViewHolder) holder).tv_scope.setText(ob.getScore() + "");
                 ((arViewHolder) holder).iv_danci.setVisibility(View.GONE);
@@ -382,6 +363,7 @@ public class YyksActivity extends BaseActivity implements View.OnClickListener {
 //                    ((arViewHolder) holder).tv_wordlist.setVisibility(View.GONE);
                 } else {
                     ((arViewHolder) holder).tv_words.setVisibility(View.VISIBLE);
+                    ((arViewHolder) holder).tv_words.setTextIsSelectable(true);
 //                    ((arViewHolder) holder).tv_wordlist.setVisibility(View.VISIBLE);
                 }
 

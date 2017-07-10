@@ -16,6 +16,7 @@
             android:id="@+id/activity_main_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:descendantFocusability="afterDescendants"
             android:background="@drawable/white_bg"
             android:visibility="visible">
 

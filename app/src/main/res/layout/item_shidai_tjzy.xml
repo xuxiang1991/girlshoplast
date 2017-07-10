@@ -35,14 +35,12 @@
 
         <com.daocheng.girlshop.view.ClipTextView
             android:id="@+id/tv_words"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="24dp"
-            android:layout_toLeftOf="@id/tv_scope"
-            android:background="@color/white"
-            android:text="Free composition as an exercise has ites"
+            android:layout_marginRight="60dp"
+            android:background="@null"
+            android:gravity="left|center_vertical"
             android:textColor="@color/App_calendar_big"
-            android:textIsSelectable="true"
             android:textSize="20sp" />
     </RelativeLayout>
 
