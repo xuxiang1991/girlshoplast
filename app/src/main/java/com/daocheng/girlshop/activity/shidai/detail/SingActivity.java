@@ -109,8 +109,7 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
 
     private boolean isplay = false;
 
-    private static String shareUrl="http://www.cs66club.com/app/share?id=";
-
+    private static String shareUrl = "http://www.cs66club.com/app/share?id=";
 
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
@@ -139,7 +138,7 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
     private String dir = Environment.getExternalStorageDirectory()
             + "/cooke/recoder/";
 
-    private String pl_share_url="http://www.cs66club.com/app/share_sing?id=";
+    private String pl_share_url = "http://www.cs66club.com/app/share_sing?id=";
 
 
     @Override
@@ -219,25 +218,24 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
         tv_right.setVisibility(View.VISIBLE);
 
 
-
         //定义一个新线程，用来发送消息，通知更新UI
         myThread = new Thread(new MyThread());
         position = getIntent().getIntExtra("position", 0);
-        datalist = (dataListResult) getIntent().getSerializableExtra("data");
-        musicgroup = datalist.getRecord();
+        musicgroup = (List<dataListResult.RecordBean>) getIntent().getSerializableExtra("data");
+//        musicgroup = musicgroup;
 
-        tv_center.setText(datalist.getRecord().get(position).getTitle());
+        tv_center.setText(musicgroup.get(position).getTitle());
 
 
-        tv_name.setText(datalist.getRecord().get(position).getTitle());
-        tv_time.setText(datalist.getRecord().get(position).getUpdatetime());
-        tv_songword.setText(Html.fromHtml(datalist.getRecord().get(position).getContent()));
+        tv_name.setText(musicgroup.get(position).getTitle());
+        tv_time.setText(musicgroup.get(position).getUpdatetime());
+        tv_songword.setText(Html.fromHtml(musicgroup.get(position).getContent()));
         tv_songword.setTextIsSelectable(true);
-        ImageLoader.getInstance().displayImage(musicgroup.get(position).getLogo(),iv_ban);
+        ImageLoader.getInstance().displayImage(musicgroup.get(position).getLogo(), iv_ban);
         tv_right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Sharedialog sd=new Sharedialog(self,shareUrl+datalist.getRecord().get(position).getId(),datalist.getRecord().get(position).getTitle());
+                Sharedialog sd = new Sharedialog(self, shareUrl + musicgroup.get(position).getId(), musicgroup.get(position).getTitle());
                 sd.show();
 
             }
@@ -262,13 +260,12 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
                 // TODO Auto-generated method stub
-
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar arg0) {
                 // TODO Auto-generated method stub
-                mService.play();
+                mService.playRepeat();
             }
 
         });
@@ -283,7 +280,7 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
             bindService(serviceIntent, mConnection, Context.BIND_AUTO_CREATE);
         }
 
-        id=musicgroup.get(position).getId();
+        id = musicgroup.get(position).getId();
 
         mSwipeRefreshLayout.setProgressViewOffset(false, 0, (int) TypedValue
                 .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 48, getResources()
@@ -297,7 +294,7 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
                                              int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE
-                        && lastVisibleItem == mBookends.getItemCount()-1
+                        && lastVisibleItem == mBookends.getItemCount() - 1
                         && lastVisibleItem == (pageNo * Constant.found_pageNum)) {
                     pageNo = pageNo + 1;
                     setData();
@@ -341,14 +338,13 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
 //                    showShortToast("游客不能发表");
 //                    return;
 //                }
-                uploadhead(filePath, ((int) seconds)>1?(int) seconds:1 );
+                uploadhead(filePath, ((int) seconds) > 1 ? (int) seconds : 1);
             }
         });
         recordButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction()==MotionEvent.ACTION_DOWN)
-                {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     if (mService.getState()) {
                         pause();
                     }
@@ -373,7 +369,7 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void setData() {
-        ShidaiApi.getpingList(self,Config.getShidaiUserInfo().getUserid(), id, pageNo, Constant.pageNum, Vrecoder.class, new NetUtils.NetCallBack<ServiceResult>() {
+        ShidaiApi.getpingList(self, Config.getShidaiUserInfo().getUserid(), id, pageNo, Constant.pageNum, Vrecoder.class, new NetUtils.NetCallBack<ServiceResult>() {
             @Override
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                 if ("0".equals(rspData.getErrcode())) {
@@ -411,7 +407,6 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
             ed_text.setText("");
         }
     }
-
 
 
     private void uploadhead(final String file, final int length) {
@@ -472,17 +467,16 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
-
     private void sendMessge(final String type, final int length, final String url, final String content) {
 
 
-        ShidaiApi.sendPinglun(self, Config.getShidaiUserInfo().getUserid(), id, type, length, url, content,  punlun.class, new NetUtils.NetCallBack<ServiceResult>() {
+        ShidaiApi.sendPinglun(self, Config.getShidaiUserInfo().getUserid(), id, type, length, url, content, punlun.class, new NetUtils.NetCallBack<ServiceResult>() {
             @Override
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
 
                 if ("0".equals(rspData.getErrcode())) {
 
-                    punlun pl=(punlun)rspData;
+                    punlun pl = (punlun) rspData;
 
                     Vrecoder.RecordBean recordBean = new Vrecoder.RecordBean();
                     recordBean.setContent(content);
@@ -490,13 +484,13 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
                     recordBean.setLength(length);
                     recordBean.setNickname(Config.getShidaiUserInfo().getNickname());
                     recordBean.setType(type);
-                    recordBean.setUrl( ShidaiApi.Pic_BASE_URL +url);
+                    recordBean.setUrl(ShidaiApi.Pic_BASE_URL + url);
                     recordBean.setUpdatetime("现在");
                     recordBean.setZan(0);
                     recordBean.setId(pl.getId());
                     recordBean.setUserid(Config.getShidaiUserInfo().getUserid());
 
-                    baseobjects.add(0,recordBean);
+                    baseobjects.add(0, recordBean);
                     mBookends.notifyDataSetChanged();
                     mRecyclerView.smoothScrollToPosition(0);
                 }
@@ -515,12 +509,12 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
         else if (position > musicgroup.size() - 1)
             position = musicgroup.size() - 1;
         if (mBound)
-            mService.play(musicgroup.get(position).getMp3());
+            mService.playRepeat(musicgroup.get(position).getMp3());
 
         iv_play.setImageResource(R.drawable.sing_icon_stop);
 
-        tv_name.setText(datalist.getRecord().get(position).getTitle());
-        tv_time.setText(datalist.getRecord().get(position).getUpdatetime());
+        tv_name.setText(musicgroup.get(position).getTitle());
+        tv_time.setText(musicgroup.get(position).getUpdatetime());
     }
 
     private void updatetotal() {
@@ -698,7 +692,6 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
-
     public class baseObRecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
@@ -737,7 +730,7 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
 
                 bt_zan = (CheckBox) itemView.findViewById(R.id.bt_zan);
                 bt_pinglun = (TextView) itemView.findViewById(R.id.bt_pinglun);
-                bt_share=(TextView)itemView.findViewById(R.id.bt_share);
+                bt_share = (TextView) itemView.findViewById(R.id.bt_share);
             }
         }
 
@@ -762,10 +755,10 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
                     ((arViewHolder) holder).iv_head.setImageResource(R.drawable.head_sculpture);
                 ((arViewHolder) holder).tv_name.setText(ob.getNickname());
                 ((arViewHolder) holder).tv_time.setText(ob.getUpdatetime());
-                ((arViewHolder) holder).bt_zan.setText(" ("+ob.getZan() + ")");
+                ((arViewHolder) holder).bt_zan.setText(" (" + ob.getZan() + ")");
                 ((arViewHolder) holder).bt_zan.setChecked(ob.iszan());
                 ((arViewHolder) holder).bt_zan.setEnabled(!ob.iszan());
-                ((arViewHolder) holder).bt_pinglun.setText("评论 ("+ob.getSub()+")");
+                ((arViewHolder) holder).bt_pinglun.setText("评论 (" + ob.getSub() + ")");
 
                 ((arViewHolder) holder).bt_zan.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -801,20 +794,20 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
 
 
                 if (ob.getType().equals(TYPE_TXT)) {
-                    ((arViewHolder)holder).bt_share.setVisibility(View.GONE);
+                    ((arViewHolder) holder).bt_share.setVisibility(View.GONE);
                     ((arViewHolder) holder).ll_text.setVisibility(View.VISIBLE);
                     ((arViewHolder) holder).rl_voice.setVisibility(View.GONE);
                     ((arViewHolder) holder).tv_message.setText(ob.getContent());
                 } else {
-                    ((arViewHolder)holder).bt_share.setVisibility(View.VISIBLE);
+                    ((arViewHolder) holder).bt_share.setVisibility(View.VISIBLE);
                     ((arViewHolder) holder).ll_text.setVisibility(View.GONE);
                     ((arViewHolder) holder).rl_voice.setVisibility(View.VISIBLE);
-                    ((arViewHolder) holder).tv_voicesize.setText(ob.getLength()+"s");
+                    ((arViewHolder) holder).tv_voicesize.setText(ob.getLength() + "s");
 
-                    ((arViewHolder)holder).bt_share.setOnClickListener(new View.OnClickListener() {
+                    ((arViewHolder) holder).bt_share.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Sharedialog sd=new Sharedialog(self,pl_share_url+ob.getId(),ob.getNickname());
+                            Sharedialog sd = new Sharedialog(self, pl_share_url + ob.getId(), ob.getNickname());
                             sd.show();
                         }
                     });
@@ -823,6 +816,11 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
                     ((arViewHolder) holder).ll_voice.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            if (mService.getState())
+                            {
+                                pause();
+                            }
+
                             if (TextUtils.isEmpty(ob.getUrl())) {
 //                                showShortToast("没有语音信息");
                                 return;

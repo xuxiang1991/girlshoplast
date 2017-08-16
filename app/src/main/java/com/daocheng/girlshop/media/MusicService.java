@@ -131,6 +131,50 @@ public class MusicService extends Service {
 
     }
 
+    public void playRepeat(){
+        if(mediaPlayer != null){
+            mediaPlayer.setLooping(true);
+            mediaPlayer.start();
+        }
+
+    }
+    public void playRepeat(String path){
+        if (lastPath.equals(path))
+        {
+            play();
+            return;
+        }
+
+        lastPath=path;
+
+        if (mediaPlayer != null) {
+            mediaPlayer.reset();
+
+        }
+        try {
+//            File f=new File(path);
+//            boolean fd=f.exists();
+            //初始化
+            mediaPlayer.setDataSource(path);
+
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+            // prepare 通过异步的方式装载媒体资源
+            mediaPlayer.prepareAsync();
+            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    mediaPlayer.setLooping(true);
+                    mediaPlayer.start();
+                }
+            });
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
     public void play(String path)
     {
         if (lastPath.equals(path))

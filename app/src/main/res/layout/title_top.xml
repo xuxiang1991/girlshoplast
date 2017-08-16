@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textColor="@color/text_light_dark"
+        android:singleLine="true"
         android:textSize="20dp"
       />
 

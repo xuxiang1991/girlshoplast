@@ -37,6 +37,7 @@ import com.daocheng.girlshop.view.ClipTextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -389,7 +390,7 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
                         public void onClick(View v) {
                             Intent intent = new Intent(self, SingActivity.class);//MusicActivity.class
                             intent.putExtra("position", position);
-                            intent.putExtra("data",advertorialList);
+                            intent.putExtra("data",(Serializable) baseobjects);
                             startActivity(intent);
                         }
                     });
