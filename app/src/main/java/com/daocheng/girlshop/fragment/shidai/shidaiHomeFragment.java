@@ -116,7 +116,7 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
     private View line_bottom_left, line_bottom_right;
 
     private String mp4;
-    private ImageView iv_new;
+    private ImageView iv_new, iv_7_new;
 
     @Override
     protected int getLayoutId() {
@@ -141,6 +141,7 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
 
 
         iv_new = (ImageView) headview.findViewById(R.id.iv_new);
+        iv_7_new = (ImageView) headview.findViewById(R.id.iv_7_new);
         rb_rmtj = (RadioButton) headview.findViewById(R.id.rb_rmtj);
         rb_mryj = (RadioButton) headview.findViewById(R.id.rb_mryj);
         rb_flxx = (RadioButton) headview.findViewById(R.id.rb_flxx);
@@ -186,7 +187,6 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
 
     @Override
     protected void initialized() {
-
 
 
         tv_center.setTextColor(getResources().getColor(R.color.home_fragment_title));
@@ -254,28 +254,28 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
             case R.id.rb_rmtj:
                 iv_new.setVisibility(View.GONE);
                 Config.setshidaishownew(true);
-                goToNext(DataListActivity.TYPE_HOT);
+                goToNext(DataListActivity.TYPE_HOT,((TextView)v).getText().toString());
                 break;
             case R.id.rb_mryj:
-                goToNext(DataListActivity.TYPE_MRIRIYIJU);
+                goToNext(DataListActivity.TYPE_MRIRIYIJU,((TextView)v).getText().toString());
                 break;
             case R.id.rb_flxx:
-                goToNext(DataListActivity.TYPE_FENLEIXUEXI);
+                goToNext(DataListActivity.TYPE_FENLEIXUEXI,((TextView)v).getText().toString());
                 break;
             case R.id.rb_eca:
-                goToNext(DataListActivity.TYPE_ECA);
+                goToNext(DataListActivity.TYPE_ECA,((TextView)v).getText().toString());
                 break;
             case R.id.rb_xsbx:
-                goToNext(DataListActivity.TYPE_XINSHENGBIXIU);
+                goToNext(DataListActivity.TYPE_XINSHENGBIXIU,((TextView)v).getText().toString());
                 break;
             case R.id.rb_spxx:
-                goToNext(DataListActivity.TYPE_SHIPINGLIANXI);
+                goToNext(DataListActivity.TYPE_SHIPINGLIANXI,((TextView)v).getText().toString());
                 break;
             case R.id.rb_xcjc:
-                goToNext(DataListActivity.TYPE_CHANGGE);
+                goToNext(DataListActivity.TYPE_CHANGGE,((TextView)v).getText().toString());
                 break;
             case R.id.rb_tzwj:
-                goToNext(DataListActivity.TYPE_TZWJ);
+                goToNext(DataListActivity.TYPE_TZWJ,((TextView)v).getText().toString());
                 break;
             case R.id.tv_right:
                 if (!TextUtils.isEmpty(mp4)) {
@@ -308,9 +308,10 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
 
     }
 
-    private void goToNext(int type) {
+    private void goToNext(int type,String title) {
         Intent intent = new Intent(self, DataListActivity.class);
         intent.putExtra("type", type);
+        intent.putExtra("title",title);
         startActivity(intent);
 
     }

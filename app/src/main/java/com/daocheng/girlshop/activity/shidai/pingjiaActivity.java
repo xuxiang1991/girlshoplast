@@ -40,8 +40,11 @@ public class pingjiaActivity extends BaseActivity implements View.OnClickListene
     private Button bt_submit;
     private int id;
 
+    private CheckBox cb_jsysk, cb_tzchs, cb_fybqx, cb_bjzfy, cb_fxbcf, cb_tdbrz;
+
     private int feedback = 1;//1满意2一般3不满意
     private String scope = "0";
+    private CheckBox[] pjias = new CheckBox[]{cb_jsysk, cb_tzchs, cb_fybqx, cb_bjzfy, cb_fxbcf, cb_tdbrz};
 
     @Override
     public void onClick(View v) {
@@ -69,6 +72,13 @@ public class pingjiaActivity extends BaseActivity implements View.OnClickListene
         rg_60 = (LinearLayout) findViewById(R.id.rg_60);
         rg_30 = (LinearLayout) findViewById(R.id.rg_30);
         bt_submit = (Button) findViewById(R.id.bt_submit);
+
+        cb_jsysk = (CheckBox) findViewById(R.id.cb_jsysk);
+        cb_tzchs = (CheckBox) findViewById(R.id.cb_tzchs);
+        cb_fybqx = (CheckBox) findViewById(R.id.cb_fybqx);
+        cb_bjzfy = (CheckBox) findViewById(R.id.cb_bjzfy);
+        cb_fxbcf = (CheckBox) findViewById(R.id.cb_fxbcf);
+        cb_tdbrz = (CheckBox) findViewById(R.id.cb_tdbrz);
     }
 
     @Override
@@ -83,23 +93,20 @@ public class pingjiaActivity extends BaseActivity implements View.OnClickListene
 
     }
 
-   CheckBox.OnCheckedChangeListener clistener=new CompoundButton.OnCheckedChangeListener() {
-       @Override
-       public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-           if (isChecked)
-           {
-               cleanAllviews(buttonView.getId());
-               scope=buttonView.getText().toString().replace("分","");
-           }else
-           {
-               scope="0";
-           }
-       }
-   };
+    CheckBox.OnCheckedChangeListener clistener = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (isChecked) {
+                cleanAllviews(buttonView.getId());
+                scope = buttonView.getText().toString().replace("分", "");
+            } else {
+                scope = "0";
+            }
+        }
+    };
 
 
-    private void initbox(LinearLayout layout)
-    {
+    private void initbox(LinearLayout layout) {
         int count = layout.getChildCount();
         for (int i = 0; i < count; i++) {
             CheckBox rb = (CheckBox) layout.getChildAt(i);
@@ -107,8 +114,7 @@ public class pingjiaActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
-    private void initAllbox()
-    {
+    private void initAllbox() {
         initbox(rg_90);
         initbox(rg_75);
         initbox(rg_60);
@@ -138,14 +144,41 @@ public class pingjiaActivity extends BaseActivity implements View.OnClickListene
             Toast.makeText(self, "请选择评分", Toast.LENGTH_SHORT).show();
             return;
         }
-        ShidaiApi.submitplun(self, Config.getShidaiUserInfo().getUserid(), id,  scope, ServiceResult.class, new NetUtils.NetCallBack<ServiceResult>() {
+        String content = "";
+       if (cb_jsysk.isChecked())
+       {
+           content+=",教师语速快";
+       }
+       if (cb_tzchs.isChecked())
+       {
+           content+=",拓展词汇少";
+       }
+       if (cb_fybqx.isChecked())
+       {
+           content+=",发音不清晰";
+       }
+       if (cb_bjzfy.isChecked())
+       {
+           content+=",不纠正发音";
+       }
+       if (cb_fxbcf.isChecked())
+       {
+           content+=",复习不充分";
+       }
+       if (cb_tdbrz.isChecked())
+       {
+           content+=",态度不认真";
+       }
+       if (content.length()>4)
+           content=content.substring(1,content.length());
+        ShidaiApi.submitplun(self, Config.getShidaiUserInfo().getUserid(), id, scope, content, ServiceResult.class, new NetUtils.NetCallBack<ServiceResult>() {
             @Override
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                 if ("0".equals(rspData.getErrcode())) {
                     Toast.makeText(self, "评论成功", Toast.LENGTH_SHORT).show();
                     finish();
                 } else
-                    Toast.makeText(self, rspData.getErrmsg()+"", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(self, rspData.getErrmsg() + "", Toast.LENGTH_SHORT).show();
             }
 
             @Override

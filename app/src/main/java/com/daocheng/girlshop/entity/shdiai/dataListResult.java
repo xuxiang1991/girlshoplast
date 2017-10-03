@@ -27,8 +27,18 @@ public class dataListResult extends ServiceResult{
      * content50 : 1116345646579678
      */
 
+    private String video;
 
     private int score;
+
+
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
+    }
 
     public int getScore() {
         return score;

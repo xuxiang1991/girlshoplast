@@ -81,6 +81,8 @@ public class myClassFragment extends BaseFragment implements View.OnClickListene
     private TextView tv_exit;
     private boolean isShowPinLun = false;
     private TextView tv_total_class;
+    private TextView tv_bzr,tv_phone;
+
 
     @Override
     protected int getLayoutId() {
@@ -136,6 +138,8 @@ public class myClassFragment extends BaseFragment implements View.OnClickListene
         tv_x_class = (TextView) headview.findViewById(R.id.tv_x_class);
         tv_total_class=(TextView)headview.findViewById(R.id.tv_total_class);
         tv_levelscope=(TextView)headview.findViewById(R.id.tv_levelscope);
+        tv_phone=(TextView)headview.findViewById(R.id.tv_phone);
+        tv_bzr=(TextView)headview.findViewById(R.id.tv_bzr);
 
 
         tv_exit.setOnClickListener(this);
@@ -255,6 +259,28 @@ public class myClassFragment extends BaseFragment implements View.OnClickListene
         tv_x_class.setText("选修课已预订次数:" + myclass.getNumber87());
         tv_total_class.setText("必修课可预订总次数:"+myclass.getTotal56());
         tv_levelscope.setText("报名级别："+myclass.getLevelscope());
+        if (myclass!=null&&myclass.getExtra()!=null&&myclass.getExtra().size()>0)
+        {
+            String extra="";
+            for (int i=0;i<myclass.getExtra().size();i++)
+            {
+                if (i==myclass.getExtra().size()-1)
+                {
+                    extra+=myclass.getExtra().get(i);
+                }else
+                {
+                    extra+=myclass.getExtra().get(i)+"\r\n";
+                }
+
+            }
+            tv_bzr.setText(extra);
+            tv_bzr.setVisibility(View.VISIBLE);
+
+        }else
+        {
+            tv_bzr.setVisibility(View.GONE);
+        }
+        tv_phone.setVisibility(View.GONE);
 
 //        try
 //        {

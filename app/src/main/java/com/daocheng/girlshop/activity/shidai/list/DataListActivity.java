@@ -79,6 +79,7 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
     public static final int TYPE_XINSHENGBIXIU = 10;
 
     private ImageView tv_left;
+    private String paget_title = "";
 
     @Override
     public void onClick(View v) {
@@ -98,6 +99,7 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
     protected void setupViews() {
 
         dataflag = getIntent().getIntExtra("type", TYPE_HOT);
+        paget_title = getIntent().getStringExtra("title");
 
         tv_left = (ImageView) findViewById(R.id.tv_left);
         tv_left.setVisibility(View.VISIBLE);
@@ -119,8 +121,8 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void initialized() {
-        tv_center.setText(getTitle(dataflag));
-
+//        tv_center.setText(getTitle(dataflag));
+        tv_center.setText(paget_title);
 
         mSwipeRefreshLayout.setProgressViewOffset(false, 0, (int) TypedValue
                 .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 48, getResources()
@@ -134,8 +136,8 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
                                              int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE
-                        && lastVisibleItem == sRecyclerViewAdapter.getItemCount()-1
-                        && lastVisibleItem == (pageNo * Constant.found_pageNum-1)) {
+                        && lastVisibleItem == sRecyclerViewAdapter.getItemCount() - 1
+                        && lastVisibleItem == (pageNo * Constant.found_pageNum - 1)) {
                     pageNo = pageNo + 1;
                     setData();
                     mSwipeRefreshLayout.setRefreshing(true);
@@ -311,10 +313,10 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            if (getItemViewType(viewType) == TYPE_HOT || getItemViewType(viewType) == TYPE_FENLEIXUEXI || getItemViewType(viewType) == TYPE_ECA || getItemViewType(viewType) == TYPE_XINSHENGBIXIU || getItemViewType(viewType) == TYPE_SHIPINGLIANXI || getItemViewType(viewType) == TYPE_CHANGGE|| getItemViewType(viewType) == TYPE_TZWJ||getItemViewType(viewType) == TYPE_MRIRIYIJU) {
+            if (getItemViewType(viewType) == TYPE_HOT || getItemViewType(viewType) == TYPE_FENLEIXUEXI || getItemViewType(viewType) == TYPE_ECA || getItemViewType(viewType) == TYPE_XINSHENGBIXIU || getItemViewType(viewType) == TYPE_SHIPINGLIANXI || getItemViewType(viewType) == TYPE_CHANGGE || getItemViewType(viewType) == TYPE_TZWJ || getItemViewType(viewType) == TYPE_MRIRIYIJU) {
                 View inflatedView = LayoutInflater.from(self).inflate(R.layout.item_shidai_article_simple, parent, false);
                 return new hotViewHolder(inflatedView);
-            }  else {
+            } else {
                 View inflatedView = LayoutInflater.from(self).inflate(R.layout.item_shidai_article_simple, parent, false);
                 return new hotViewHolder(inflatedView);
             }
@@ -332,16 +334,15 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
                 ((arViewHolder) holder).tv_content.setTextIsSelectable(true);
                 ((arViewHolder) holder).tv_title.setText(ob.getTitle());
                 ((arViewHolder) holder).tv_time.setText(ob.getUpdatetime());
-                ((arViewHolder) holder).bt_zan.setText(ob.getCount()+"");
+                ((arViewHolder) holder).bt_zan.setText(ob.getCount() + "");
                 ((arViewHolder) holder).bt_zan.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         ShidaiApi.addZan(self, Config.getShidaiUserInfo().getUserid(), ob.getId(), ServiceResult.class, new NetUtils.NetCallBack<ServiceResult>() {
                             @Override
                             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
-                                if ("0".equals(rspData.getErrcode()))
-                                {
-                                    baseobjects.get(position).setCount(ob.getCount()+1);
+                                if ("0".equals(rspData.getErrcode())) {
+                                    baseobjects.get(position).setCount(ob.getCount() + 1);
                                     sRecyclerViewAdapter.notifyDataSetChanged();
 //                                    showShortToast("评论成功");
                                 }
@@ -390,7 +391,7 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
                         public void onClick(View v) {
                             Intent intent = new Intent(self, SingActivity.class);//MusicActivity.class
                             intent.putExtra("position", position);
-                            intent.putExtra("data",(Serializable) baseobjects);
+                            intent.putExtra("data", (Serializable) baseobjects);
                             startActivity(intent);
                         }
                     });
@@ -404,8 +405,7 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
                             startActivity(intent);
                         }
                     });
-                }else if (dataflag==TYPE_TZWJ)
-                {
+                } else if (dataflag == TYPE_TZWJ) {
                     ((hotViewHolder) holder).rl_item.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -415,8 +415,7 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
                             startActivity(intent);
                         }
                     });
-                }else if (dataflag==TYPE_MRIRIYIJU)
-                {
+                } else if (dataflag == TYPE_MRIRIYIJU) {
                     ((hotViewHolder) holder).rl_item.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -427,7 +426,7 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
                         }
                     });
 
-                } else if (dataflag==TYPE_HOT){
+                } else if (dataflag == TYPE_HOT) {
                     ((hotViewHolder) holder).rl_item.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

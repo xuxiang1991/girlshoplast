@@ -160,6 +160,7 @@ public class Sharedialog extends Dialog implements View.OnClickListener {
     private UMShareListener umShareListener = new UMShareListener() {
         @Override
         public void onResult(SHARE_MEDIA platform) {
+            //分享成功增加积分
             Toast.makeText(context, platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
         }
 

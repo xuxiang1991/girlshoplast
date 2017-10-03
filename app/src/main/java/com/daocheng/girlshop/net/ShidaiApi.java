@@ -735,7 +735,7 @@ public class ShidaiApi {
      * @param rspCls
      * @param netCallBack
      */
-    public static void submitplun(Context context, int userid, int id,  String score, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+    public static void submitplun(Context context, int userid, int id,  String score,String content, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
 
         HashMap map = new HashMap();
@@ -743,6 +743,7 @@ public class ShidaiApi {
         map.put("id", Integer.toString(id));
         map.put("score", score);
         map.put("userAgent", "android");
+        map.put("content",content);
 
         NetUtils.post(context, BASE_URL + "cstimes/app/courseTask", map, null, netCallBack, rspCls);
 

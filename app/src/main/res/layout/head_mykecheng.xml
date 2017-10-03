@@ -83,12 +83,36 @@
             android:text="当前级别"
             android:textColor="@color/black"
             android:textSize="14sp" />
-
+        <TextView
+            android:id="@+id/tv_bzr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_level"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="6dp"
+            android:lineSpacingExtra="6dp"
+            android:layout_toRightOf="@id/iv_head"
+            android:text="班主任："
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_bzr"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/iv_head"
+            android:text="手机："
+            android:lineSpacingExtra="6dp"
+            android:visibility="gone"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
         <TextView
             android:id="@+id/tv_exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_level"
+            android:layout_below="@id/tv_phone"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="6dp"
             android:layout_toRightOf="@id/iv_head"

@@ -113,17 +113,32 @@
             android:text="想唱就唱"
             android:textColor="@color/text_light_dark" />
 
-        <RadioButton
-            android:id="@+id/rb_eca"
-            style="@style/main_tab_bottom"
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawablePadding="4dp"
-            android:drawableTop="@drawable/home_icon_baby"
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="少儿英语"
-            android:textColor="@color/text_light_dark" />
+            android:layout_weight="1">
+
+            <RadioButton
+                android:id="@+id/rb_eca"
+                style="@style/main_tab_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:drawableTop="@drawable/home_icon_baby"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="少儿英语"
+                android:textColor="@color/text_light_dark" />
+
+            <ImageView
+                android:id="@+id/iv_7_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/icon_new" />
+        </RelativeLayout>
+
 
         <RadioButton
             android:id="@+id/rb_xsbx"

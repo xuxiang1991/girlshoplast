@@ -34,12 +34,21 @@ public class MyClass extends ServiceResult {
     private int point;
     private int number56;
     private int number87;
+    private List<String> extra;
     private String starttime;
     private String endtime;
     private int spareDay;
     private int total56;
     private int total87;
     private String levelscope;
+
+    public List<String> getExtra() {
+        return extra;
+    }
+
+    public void setExtra(List<String> extra) {
+        this.extra = extra;
+    }
 
     public String getLevelscope() {
         return levelscope;
