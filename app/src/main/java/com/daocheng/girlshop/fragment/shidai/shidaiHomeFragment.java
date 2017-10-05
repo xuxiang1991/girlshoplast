@@ -1,5 +1,6 @@
 package com.daocheng.girlshop.fragment.shidai;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -76,6 +77,7 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
 
     private List<RecordBean> baseobjectsPK;
     private List<RecordBean> baseobjectsstamina;
+    private List<RecordBean> baseobjectsJf;
 
     private List<RecordBean> baseobjects;
 
@@ -104,19 +106,20 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
     private boolean isPrepared;
 
 
-    public int dataflag = 1000;//初始化耐力排行榜
+    public int dataflag = 1002;//初始化耐力排行榜
 
     private int TYPE_NAILI = 1000;
     private int TYPE_PK = 1001;
+    private int TYPE_JF = 1002;
 
     private RadioButton rb_rmtj, rb_mryj, rb_flxx, rb_tzwj, rb_spxx, rb_xcjc, rb_eca, rb_xsbx;
 
-    private TextView tv_bottom_left, tv_bottom_right;
+    private TextView tv_bottom_left, tv_bottom_right,tv_bottom_first;
 
-    private View line_bottom_left, line_bottom_right;
+    private View line_bottom_left, line_bottom_right,line_bottom_first;
 
     private String mp4;
-    private ImageView iv_new, iv_7_new;
+    private ImageView iv_new, iv_7_new,iv_8_new;
 
     @Override
     protected int getLayoutId() {
@@ -142,6 +145,8 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
 
         iv_new = (ImageView) headview.findViewById(R.id.iv_new);
         iv_7_new = (ImageView) headview.findViewById(R.id.iv_7_new);
+        iv_8_new = (ImageView) headview.findViewById(R.id.iv_8_new);
+
         rb_rmtj = (RadioButton) headview.findViewById(R.id.rb_rmtj);
         rb_mryj = (RadioButton) headview.findViewById(R.id.rb_mryj);
         rb_flxx = (RadioButton) headview.findViewById(R.id.rb_flxx);
@@ -159,17 +164,20 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
         rb_xsbx.setOnClickListener(this);
         rb_spxx.setOnClickListener(this);
 
-
+        tv_bottom_first = (TextView) headview.findViewById(R.id.tv_bottom_first);
         tv_bottom_left = (TextView) headview.findViewById(R.id.tv_bottom_left);
         tv_bottom_right = (TextView) headview.findViewById(R.id.tv_bottom_right);
         tv_bottom_left.setOnClickListener(this);
         tv_bottom_right.setOnClickListener(this);
+        tv_bottom_first.setOnClickListener(this);
 
+        line_bottom_first = headview.findViewById(R.id.line_bottom_first);
         line_bottom_left = headview.findViewById(R.id.line_bottom_left);
         line_bottom_right = headview.findViewById(R.id.line_bottom_right);
 
 
-        line_bottom_left.setVisibility(View.VISIBLE);
+        line_bottom_first.setVisibility(View.VISIBLE);
+        line_bottom_left.setVisibility(View.INVISIBLE);
         line_bottom_right.setVisibility(View.INVISIBLE);
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.activity_main_recyclerview);
@@ -235,18 +243,29 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.tv_bottom_first:
+                if (dataflag != TYPE_JF) {
+                    dataflag = TYPE_JF;
+                    setContent();
+                    line_bottom_first.setVisibility(View.VISIBLE);
+                    line_bottom_left.setVisibility(View.INVISIBLE);
+                    line_bottom_right.setVisibility(View.INVISIBLE);
+                }
+                break;
             case R.id.tv_bottom_left:
-                if (dataflag == TYPE_PK) {
+                if (dataflag != TYPE_NAILI) {
                     dataflag = TYPE_NAILI;
                     setContent();
+                    line_bottom_first.setVisibility(View.INVISIBLE);
                     line_bottom_left.setVisibility(View.VISIBLE);
                     line_bottom_right.setVisibility(View.INVISIBLE);
                 }
                 break;
             case R.id.tv_bottom_right:
-                if (dataflag == TYPE_NAILI) {
+                if (dataflag != TYPE_PK) {
                     dataflag = TYPE_PK;
                     setContent();
+                    line_bottom_first.setVisibility(View.INVISIBLE);
                     line_bottom_left.setVisibility(View.INVISIBLE);
                     line_bottom_right.setVisibility(View.VISIBLE);
                 }
@@ -263,9 +282,13 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
                 goToNext(DataListActivity.TYPE_FENLEIXUEXI,((TextView)v).getText().toString());
                 break;
             case R.id.rb_eca:
+                iv_7_new.setVisibility(View.GONE);
+                Config.setZPQS(System.currentTimeMillis()+"");
                 goToNext(DataListActivity.TYPE_ECA,((TextView)v).getText().toString());
                 break;
             case R.id.rb_xsbx:
+                iv_8_new.setVisibility(View.GONE);
+                Config.setZYTZ(System.currentTimeMillis()+"");
                 goToNext(DataListActivity.TYPE_XINSHENGBIXIU,((TextView)v).getText().toString());
                 break;
             case R.id.rb_spxx:
@@ -299,7 +322,10 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
 
         if (dataflag == TYPE_NAILI) {
             sRecyclerViewAdapter.setItemCount(baseobjectsstamina);
-        } else {
+        }else if (dataflag==TYPE_JF)
+        {
+            sRecyclerViewAdapter.setItemCount(baseobjectsJf);
+        }else {
             sRecyclerViewAdapter.setItemCount(baseobjectsPK);
         }
 
@@ -340,6 +366,7 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
 
                     baseobjectsPK = toBaseList(hdata.getRecord1());
                     baseobjectsstamina = toBaseList2(hdata.getRecord2());
+                    baseobjectsJf=toBaseList3(hdata.getRecord3());
                     imageIdList.clear();
                     if (!TextUtils.isEmpty(hdata.getPic1())) {
                         BannerInfo.DataEntity de = new BannerInfo.DataEntity();
@@ -372,6 +399,33 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
                         loadImage(hdata.getIcon9(), rb_xsbx);
 
                     }
+
+                    long new7=Long.parseLong(Config.getZPQS());
+                    long new8=Long.parseLong(Config.getZYTZ());
+
+                    if (!TextUtils.isEmpty(hdata.getNew9updateime()))
+                    {
+                        long data_7=Long.parseLong(hdata.getNew9updateime());
+                        if (new7<data_7)
+                        {
+                            iv_7_new.setVisibility(View.VISIBLE);
+                        }else
+                        {
+                            iv_7_new.setVisibility(View.GONE);
+                        }
+                    }
+                    if (!TextUtils.isEmpty(hdata.getNew10updateime()))
+                    {
+                        long data_8=Long.parseLong(hdata.getNew10updateime());
+                        if (new8<data_8)
+                        {
+                            iv_8_new.setVisibility(View.VISIBLE);
+                        }else
+                        {
+                            iv_8_new.setVisibility(View.GONE);
+                        }
+                    }
+
 
 
                     initBanner();
@@ -527,6 +581,18 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
             rb.setNickname(hr.getNickname());
             rb.setStamina(hr.getStamina());
             rb.setStamina1(hr.getStamina1());
+            dlist.add(rb);
+        }
+        return dlist;
+    }
+
+    private List<RecordBean> toBaseList3(List<homedata.Record3Bean> hr2) {
+        List<RecordBean> dlist = new ArrayList<RecordBean>();
+        for (homedata.Record3Bean hr : hr2) {
+            RecordBean rb = new RecordBean();
+            rb.setHead(hr.getHead());
+            rb.setNickname(hr.getNickname());
+            rb.setStamina1(hr.getPoint());
             dlist.add(rb);
         }
         return dlist;

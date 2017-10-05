@@ -377,6 +377,33 @@ public class Config {
     }
 
 
+    /**
+     * 招聘启示 new 标签
+     */
+    public static String ZPQS = "ZPQS";
+    public static String getZPQS() {
+        return UserInfoPreferences.getString(ZPQS, "0");
+    }
+
+    public static void setZPQS(String zppqs) {
+        UserInfoPreferences.edit().putString(ZPQS, zppqs).commit();
+    }
+
+
+    /**
+     * 重要通知 new 标签
+     */
+    public static String ZYTZ = "ZYTZ";
+    public static String getZYTZ() {
+        return UserInfoPreferences.getString(ZYTZ, "0");
+    }
+
+    public static void setZYTZ(String zytz) {
+        UserInfoPreferences.edit().putString(ZYTZ, zytz).commit();
+    }
+
+
+
     public static String SHIDAIUSERINFO = "SHIDAI_USERINFO";
 public static void setShidaiUserInfo(String userInfo) {
     UserInfoPreferences.edit().putString(SHIDAIUSERINFO, userInfo).commit();

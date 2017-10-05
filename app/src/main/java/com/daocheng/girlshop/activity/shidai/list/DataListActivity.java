@@ -7,6 +7,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +35,7 @@ import com.daocheng.girlshop.net.NetUtils;
 import com.daocheng.girlshop.net.ShidaiApi;
 import com.daocheng.girlshop.utils.Config;
 import com.daocheng.girlshop.utils.Constant;
+import com.daocheng.girlshop.view.Bookends;
 import com.daocheng.girlshop.view.ClipTextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -40,6 +43,9 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import fm.jiecao.jcvideoplayer_lib.JCFullScreenActivity;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 /**
  * 项目名称：girlshop
@@ -80,6 +86,10 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
 
     private ImageView tv_left;
     private String paget_title = "";
+    private LinearLayout headview;
+    private JCVideoPlayerStandard custom_videoplayer;
+
+    private Bookends<baseObRecycleAdapter> mBookends;
 
     @Override
     public void onClick(View v) {
@@ -97,7 +107,7 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void setupViews() {
-
+        LayoutInflater inflater = LayoutInflater.from(self);
         dataflag = getIntent().getIntExtra("type", TYPE_HOT);
         paget_title = getIntent().getStringExtra("title");
 
@@ -108,13 +118,19 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
         tv_center = (TextView) findViewById(R.id.tv_center);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
         mRecyclerView = (RecyclerView) findViewById(R.id.activity_main_recyclerview);
+
+
         layoutManager = new LinearLayoutManager(self);
         mRecyclerView.setLayoutManager(layoutManager);
+        headview = (LinearLayout) inflater.inflate(R.layout.head_vedio, mRecyclerView, false);
+        custom_videoplayer = (JCVideoPlayerStandard) headview.findViewById(R.id.custom_videoplayer);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         baseobjects = new ArrayList<dataListResult.RecordBean>();
         sRecyclerViewAdapter = new baseObRecycleAdapter();
-        mRecyclerView.setAdapter(sRecyclerViewAdapter);
+        mBookends = new Bookends<>(sRecyclerViewAdapter);
+        mBookends.addHeader(headview);
+        mRecyclerView.setAdapter(mBookends);
 
         tv_left.setOnClickListener(this);
     }
@@ -215,8 +231,9 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
                         baseobjects.addAll(advertorialList.getRecord());
                     Log.v("ere", "fdfdf");
 
-                    sRecyclerViewAdapter.notifyDataSetChanged();
+                    mBookends.notifyDataSetChanged();
 
+                    inithead();
                 } else {
                     showShortToast(rspData.getMessage());
                 }
@@ -231,6 +248,31 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
         });
     }
 
+    private void inithead() {
+        if (!TextUtils.isEmpty(advertorialList.getVideo())) {
+            custom_videoplayer.backButton.setVisibility(View.GONE);
+            custom_videoplayer.setVisibility(View.VISIBLE);
+            custom_videoplayer.thumbImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    JCFullScreenActivity.startActivity(self,
+                            advertorialList.getVideo(),
+                            JCVideoPlayerStandard.class, "挑战外教");
+                }
+            });
+            custom_videoplayer.startButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    JCFullScreenActivity.startActivity(self,
+                            advertorialList.getVideo(),
+                            JCVideoPlayerStandard.class, "挑战外教");
+                }
+            });
+        } else {
+            custom_videoplayer.setVisibility(View.GONE);
+        }
+
+    }
 
     public class baseObRecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -343,7 +385,7 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
                             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                                 if ("0".equals(rspData.getErrcode())) {
                                     baseobjects.get(position).setCount(ob.getCount() + 1);
-                                    sRecyclerViewAdapter.notifyDataSetChanged();
+                                    mBookends.notifyDataSetChanged();
 //                                    showShortToast("评论成功");
                                 }
                             }

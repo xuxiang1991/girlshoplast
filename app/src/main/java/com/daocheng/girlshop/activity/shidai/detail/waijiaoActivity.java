@@ -22,6 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baoyz.actionsheet.ActionSheet;
 import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.BaseActivity;
 import com.daocheng.girlshop.activity.shidai.list.DataListActivity;
@@ -377,6 +378,22 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
                 ((arViewHolder) holder).ll_text.setVisibility(View.GONE);
                 ((arViewHolder) holder).rl_voice.setVisibility(View.VISIBLE);
                 ((arViewHolder) holder).tv_voicesize.setText(ob.getLength() + "s");
+                ((arViewHolder) holder).ll_text.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        if (Config.getShidaiUserInfo().getUserid()==ob.getUserid())
+                        showdelete(ob.getId());
+                        return false;
+                    }
+                });
+                ((arViewHolder) holder).rl_voice.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        if (Config.getShidaiUserInfo().getUserid()==ob.getUserid())
+                        showdelete(ob.getId());
+                        return false;
+                    }
+                });
                 ((arViewHolder) holder).ll_voice.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -583,5 +600,36 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
         MediaManager.release();
     }
 
+
+    private void showdelete(final int id) {
+        ActionSheet.createBuilder(self, self.getSupportFragmentManager())
+                .setCancelButtonTitle("取消")
+                .setOtherButtonTitles("删除")
+                .setCancelableOnTouchOutside(true)
+                .setListener(new ActionSheet.ActionSheetListener() {
+                    @Override
+                    public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
+                    }
+
+                    @Override
+                    public void onOtherButtonClick(ActionSheet actionSheet, int index) {
+                        // 调用服务器接口上传
+                        ShidaiApi.deletePinglun(self, Config.getShidaiUserInfo().getUserid(), id, ServiceResult.class, new NetUtils.NetCallBack<ServiceResult>() {
+                            @Override
+                            public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
+                                if ("0".equals(rspData.getErrcode())) {
+                                    showToast("评论删除成功");
+                                    sRecyclerViewAdapter.notifyDataSetChanged();
+                                }
+                            }
+
+                            @Override
+                            public void failed(String msg) {
+                                showToast("评论删除失败");
+                            }
+                        });
+                    }
+                }).show();
+    }
 
 }

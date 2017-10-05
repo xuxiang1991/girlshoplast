@@ -38,6 +38,9 @@ public class homedata extends ServiceResult{
     private String icon9;
     private String title10;
     private String icon10;
+    private String new9updateime;
+    private String new10updateime;
+
     /**
      * nickname : 刘敏sarah
      * head : null
@@ -52,6 +55,32 @@ public class homedata extends ServiceResult{
      */
 
     private List<Record2Bean> record2;
+
+    private List<Record3Bean> record3;
+
+    public String getNew9updateime() {
+        return new9updateime;
+    }
+
+    public void setNew9updateime(String new9updateime) {
+        this.new9updateime = new9updateime;
+    }
+
+    public String getNew10updateime() {
+        return new10updateime;
+    }
+
+    public void setNew10updateime(String new10updateime) {
+        this.new10updateime = new10updateime;
+    }
+
+    public List<Record3Bean> getRecord3() {
+        return record3;
+    }
+
+    public void setRecord3(List<Record3Bean> record3) {
+        this.record3 = record3;
+    }
 
     public String getMp4() {
         return mp4;
@@ -170,6 +199,37 @@ public class homedata extends ServiceResult{
         public void setPk(int pk) {
             this.pk = pk;
         }
+    }
+
+    public static class Record3Bean {
+        private String nickname;
+        private String head;
+        private String point;
+
+        public String getPoint() {
+            return point;
+        }
+
+        public void setPoint(String point) {
+            this.point = point;
+        }
+
+        public String getNickname() {
+            return nickname;
+        }
+
+        public void setNickname(String nickname) {
+            this.nickname = nickname;
+        }
+
+        public String getHead() {
+            return head;
+        }
+
+        public void setHead(String head) {
+            this.head = head;
+        }
+
     }
 
     public static class Record2Bean {

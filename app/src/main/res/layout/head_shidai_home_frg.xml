@@ -139,18 +139,33 @@
                 android:src="@drawable/icon_new" />
         </RelativeLayout>
 
-
-        <RadioButton
-            android:id="@+id/rb_xsbx"
-            style="@style/main_tab_bottom"
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawablePadding="4dp"
-            android:drawableTop="@drawable/home_icon_new"
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="新生必修"
-            android:textColor="@color/text_light_dark" />
+            android:layout_weight="1">
+
+            <RadioButton
+                android:id="@+id/rb_xsbx"
+                style="@style/main_tab_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:drawableTop="@drawable/home_icon_new"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="新生必修"
+                android:textColor="@color/text_light_dark" />
+
+            <ImageView
+                android:id="@+id/iv_8_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/icon_new" />
+        </RelativeLayout>
+
+
     </LinearLayout>
 
     <View
@@ -165,15 +180,27 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tv_bottom_first"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:paddingRight="24dp"
+            android:text="积分排行榜"
+            android:textColor="@color/text_light_dark"
+            android:textSize="14sp" />
+
+        <TextView
             android:id="@+id/tv_bottom_left"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical|right"
-            android:paddingRight="48dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
             android:text="耐力排行榜"
             android:textColor="@color/text_light_dark"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_bottom_right"
@@ -181,10 +208,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical|left"
-            android:paddingLeft="48dp"
+            android:paddingLeft="24dp"
             android:text="Pk排行榜"
             android:textColor="@color/text_light_dark"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -193,6 +220,14 @@
         android:background="@drawable/white_bg"
         android:orientation="horizontal">
 
+        <View
+            android:id="@+id/line_bottom_first"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_weight="1"
+            android:background="@color/AppTextColor"></View>
 
         <View
             android:id="@+id/line_bottom_left"

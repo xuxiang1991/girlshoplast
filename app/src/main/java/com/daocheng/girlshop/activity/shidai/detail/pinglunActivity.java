@@ -26,6 +26,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baoyz.actionsheet.ActionSheet;
 import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.BaseActivity;
 import com.daocheng.girlshop.activity.shidai.list.ZipinglunActivity;
@@ -103,8 +104,6 @@ public class pinglunActivity extends BaseActivity implements View.OnClickListene
     private static final String TYPE_VOICE = "amr";
 
 
-
-
     @Override
     protected int getLayoutId() {
         return R.layout.shidai_pinlun_acitivity;
@@ -146,7 +145,7 @@ public class pinglunActivity extends BaseActivity implements View.OnClickListene
             @Override
             public void onFinished(float seconds, String filePath) {
                 Log.v("recoderVoice", filePath + seconds);
-                uploadhead(filePath, ((int) seconds)>1?(int) seconds:1 );
+                uploadhead(filePath, ((int) seconds) > 1 ? (int) seconds : 1);
             }
         });
 
@@ -162,8 +161,8 @@ public class pinglunActivity extends BaseActivity implements View.OnClickListene
                                              int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE
-                        && lastVisibleItem == sRecyclerViewAdapter.getItemCount()-1
-                        && lastVisibleItem == (pageNo * Constant.found_pageNum-1)) {
+                        && lastVisibleItem == sRecyclerViewAdapter.getItemCount() - 1
+                        && lastVisibleItem == (pageNo * Constant.found_pageNum - 1)) {
                     pageNo = pageNo + 1;
                     setData();
                     mSwipeRefreshLayout.setRefreshing(true);
@@ -230,7 +229,7 @@ public class pinglunActivity extends BaseActivity implements View.OnClickListene
 
 
     private void setData() {
-        ShidaiApi.getpingList(self,Config.getShidaiUserInfo().getUserid(), id, pageNo, Constant.pageNum, Vrecoder.class, new NetUtils.NetCallBack<ServiceResult>() {
+        ShidaiApi.getpingList(self, Config.getShidaiUserInfo().getUserid(), id, pageNo, Constant.pageNum, Vrecoder.class, new NetUtils.NetCallBack<ServiceResult>() {
             @Override
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                 if ("0".equals(rspData.getErrcode())) {
@@ -318,10 +317,10 @@ public class pinglunActivity extends BaseActivity implements View.OnClickListene
                     ((arViewHolder) holder).iv_head.setImageResource(R.drawable.head_sculpture);
                 ((arViewHolder) holder).tv_name.setText(ob.getNickname());
                 ((arViewHolder) holder).tv_time.setText(ob.getUpdatetime());
-                ((arViewHolder) holder).bt_zan.setText(" ("+ob.getZan() + ")");
+                ((arViewHolder) holder).bt_zan.setText(" (" + ob.getZan() + ")");
                 ((arViewHolder) holder).bt_zan.setChecked(ob.iszan());
                 ((arViewHolder) holder).bt_zan.setEnabled(!ob.iszan());
-                ((arViewHolder) holder).bt_pinglun.setText("评论 ("+ob.getSub()+")");
+                ((arViewHolder) holder).bt_pinglun.setText("评论 (" + ob.getSub() + ")");
 
                 ((arViewHolder) holder).bt_zan.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -355,7 +354,22 @@ public class pinglunActivity extends BaseActivity implements View.OnClickListene
                     }
                 });
 
-
+                ((arViewHolder) holder).ll_text.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        if (Config.getShidaiUserInfo().getUserid()==ob.getUserid())
+                        showdelete(ob.getId());
+                        return false;
+                    }
+                });
+                ((arViewHolder) holder).rl_voice.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        if (Config.getShidaiUserInfo().getUserid()==ob.getUserid())
+                            showdelete(ob.getId());
+                        return false;
+                    }
+                });
                 if (ob.getType().equals(TYPE_TXT)) {
                     ((arViewHolder) holder).ll_text.setVisibility(View.VISIBLE);
                     ((arViewHolder) holder).rl_voice.setVisibility(View.GONE);
@@ -363,7 +377,7 @@ public class pinglunActivity extends BaseActivity implements View.OnClickListene
                 } else {
                     ((arViewHolder) holder).ll_text.setVisibility(View.GONE);
                     ((arViewHolder) holder).rl_voice.setVisibility(View.VISIBLE);
-                    ((arViewHolder) holder).tv_voicesize.setText(ob.getLength()+"s");
+                    ((arViewHolder) holder).tv_voicesize.setText(ob.getLength() + "s");
                     ((arViewHolder) holder).ll_voice.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -500,17 +514,16 @@ public class pinglunActivity extends BaseActivity implements View.OnClickListene
     }
 
 
-
     private void sendMessge(final String type, final int length, final String url, final String content) {
 
 
-        ShidaiApi.sendPinglun(self, Config.getShidaiUserInfo().getUserid(), id, type, length, url, content,  punlun.class, new NetUtils.NetCallBack<ServiceResult>() {
+        ShidaiApi.sendPinglun(self, Config.getShidaiUserInfo().getUserid(), id, type, length, url, content, punlun.class, new NetUtils.NetCallBack<ServiceResult>() {
             @Override
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
 
                 if ("0".equals(rspData.getErrcode())) {
 
-                    punlun pl=(punlun)rspData;
+                    punlun pl = (punlun) rspData;
 
                     Vrecoder.RecordBean recordBean = new Vrecoder.RecordBean();
                     recordBean.setContent(content);
@@ -518,13 +531,13 @@ public class pinglunActivity extends BaseActivity implements View.OnClickListene
                     recordBean.setLength(length);
                     recordBean.setNickname(Config.getShidaiUserInfo().getNickname());
                     recordBean.setType(type);
-                    recordBean.setUrl( ShidaiApi.Pic_BASE_URL +url);
+                    recordBean.setUrl(ShidaiApi.Pic_BASE_URL + url);
                     recordBean.setUpdatetime("现在");
                     recordBean.setZan(0);
                     recordBean.setId(pl.getId());
                     recordBean.setUserid(Config.getShidaiUserInfo().getUserid());
 
-                    baseobjects.add(0,recordBean);
+                    baseobjects.add(0, recordBean);
                     sRecyclerViewAdapter.notifyDataSetChanged();
                     mRecyclerView.smoothScrollToPosition(0);
                 }
@@ -557,6 +570,37 @@ public class pinglunActivity extends BaseActivity implements View.OnClickListene
         // TODO Auto-generated method stub
         super.onDestroy();
         MediaManager.release();
+    }
+
+    private void showdelete(final int id) {
+        ActionSheet.createBuilder(self, self.getSupportFragmentManager())
+                .setCancelButtonTitle("取消")
+                .setOtherButtonTitles("删除")
+                .setCancelableOnTouchOutside(true)
+                .setListener(new ActionSheet.ActionSheetListener() {
+                    @Override
+                    public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
+                    }
+
+                    @Override
+                    public void onOtherButtonClick(ActionSheet actionSheet, int index) {
+                        // 调用服务器接口上传
+                        ShidaiApi.deletePinglun(self, Config.getShidaiUserInfo().getUserid(), id, ServiceResult.class, new NetUtils.NetCallBack<ServiceResult>() {
+                            @Override
+                            public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
+                                if ("0".equals(rspData.getErrcode())) {
+                                    showToast("评论删除成功");
+                                    sRecyclerViewAdapter.notifyDataSetChanged();
+                                }
+                            }
+
+                            @Override
+                            public void failed(String msg) {
+                                showToast("评论删除失败");
+                            }
+                        });
+                    }
+                }).show();
     }
 
 }
