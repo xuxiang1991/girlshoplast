@@ -11,6 +11,7 @@ import com.daocheng.girlshop.activity.shidai.RdkcActivity;
 import com.daocheng.girlshop.activity.shidai.TjzyActivity;
 import com.daocheng.girlshop.activity.shidai.YyksActivity;
 import com.daocheng.girlshop.activity.shidai.YykwActivity;
+import com.daocheng.girlshop.activity.shidai.ZyActivity;
 import com.daocheng.girlshop.adapter.AdvertImagePagerAdapter;
 import com.daocheng.girlshop.entity.BannerInfo;
 import com.daocheng.girlshop.entity.ServiceResult;
@@ -153,7 +154,7 @@ public class myStudyFragment extends BaseFragment implements View.OnClickListene
                 startActivity(intent);
                 break;
             case R.id.iv_tjzy:
-                startActivity(new Intent(self, TjzyActivity.class));
+                startActivity(new Intent(self, ZyActivity.class));
                 break;
             case R.id.iv_ydkc:
                 startActivity(new Intent(self, RdkcActivity.class));

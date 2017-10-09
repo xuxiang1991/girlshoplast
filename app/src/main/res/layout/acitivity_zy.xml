@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_bg"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/rl_title"
+        layout="@layout/title_top"></include>
+
+    <ImageView
+        android:id="@+id/iv_write"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:scaleType="center"
+        android:src="@drawable/xuanze_icon_write" />
+
+    <TextView
+        android:id="@+id/tv_write"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="16dp"
+        android:text="书写作业"
+        android:textColor="@color/App_more_text_3"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray_location_edit_text_hint"></View>
+
+    <ImageView
+        android:id="@+id/iv_listen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:scaleType="center"
+        android:src="@drawable/xuanze_icon_listen" />
+
+    <TextView
+        android:id="@+id/tv_listen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="16dp"
+        android:text="书写作业"
+        android:textColor="@color/App_more_text_3"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray_location_edit_text_hint"></View>
+</LinearLayout>
