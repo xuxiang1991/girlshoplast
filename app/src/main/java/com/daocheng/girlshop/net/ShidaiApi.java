@@ -427,6 +427,27 @@ public class ShidaiApi {
 
 
     /**
+     * 书面作业提交
+     *
+     * @param context
+     * @param userid
+     * @param rspCls
+     * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
+     */
+    public static void RightSmzy(Context context, int userid,String id, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+
+
+        HashMap map = new HashMap();
+        map.put("userid", Integer.toString(userid));
+        map.put("userAgent", "android");
+        map.put("id",id);
+
+        NetUtils.post(context, BASE_URL + "cstimes/app/right", map, null, netCallBack, rspCls);
+
+
+    }
+
+    /**
      * 加入生词表
      *
      * @param context

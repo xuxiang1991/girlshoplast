@@ -2,6 +2,7 @@ package com.daocheng.girlshop.entity.shdiai;
 
 import com.daocheng.girlshop.entity.ServiceResult;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -49,6 +50,15 @@ public class SmzyBean extends ServiceResult{
         private String content;
         private String answer;
         private int pass;
+        private HashMap<Integer,String> temp;//用户输入
+
+        public HashMap<Integer, String> getTemp() {
+            return temp;
+        }
+
+        public void setTemp(HashMap<Integer, String> temp) {
+            this.temp = temp;
+        }
 
         public int getId() {
             return id;

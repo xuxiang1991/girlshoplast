@@ -114,12 +114,12 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
 
     private RadioButton rb_rmtj, rb_mryj, rb_flxx, rb_tzwj, rb_spxx, rb_xcjc, rb_eca, rb_xsbx;
 
-    private TextView tv_bottom_left, tv_bottom_right,tv_bottom_first;
+    private TextView tv_bottom_left, tv_bottom_right, tv_bottom_first;
 
-    private View line_bottom_left, line_bottom_right,line_bottom_first;
+    private View line_bottom_left, line_bottom_right, line_bottom_first;
 
     private String mp4;
-    private ImageView iv_new, iv_7_new,iv_8_new;
+    private ImageView iv_new, iv_7_new, iv_8_new;
 
     @Override
     protected int getLayoutId() {
@@ -273,32 +273,32 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
             case R.id.rb_rmtj:
                 iv_new.setVisibility(View.GONE);
                 Config.setshidaishownew(true);
-                goToNext(DataListActivity.TYPE_HOT,((TextView)v).getText().toString());
+                goToNext(DataListActivity.TYPE_HOT, ((TextView) v).getText().toString());
                 break;
             case R.id.rb_mryj:
-                goToNext(DataListActivity.TYPE_MRIRIYIJU,((TextView)v).getText().toString());
+                goToNext(DataListActivity.TYPE_MRIRIYIJU, ((TextView) v).getText().toString());
                 break;
             case R.id.rb_flxx:
-                goToNext(DataListActivity.TYPE_FENLEIXUEXI,((TextView)v).getText().toString());
+                goToNext(DataListActivity.TYPE_FENLEIXUEXI, ((TextView) v).getText().toString());
                 break;
             case R.id.rb_eca:
                 iv_7_new.setVisibility(View.GONE);
-                Config.setZPQS(System.currentTimeMillis()+"");
-                goToNext(DataListActivity.TYPE_ECA,((TextView)v).getText().toString());
+                Config.setZPQS(System.currentTimeMillis() + "");
+                goToNext(DataListActivity.TYPE_ECA, ((TextView) v).getText().toString());
                 break;
             case R.id.rb_xsbx:
                 iv_8_new.setVisibility(View.GONE);
-                Config.setZYTZ(System.currentTimeMillis()+"");
-                goToNext(DataListActivity.TYPE_XINSHENGBIXIU,((TextView)v).getText().toString());
+                Config.setZYTZ(System.currentTimeMillis() + "");
+                goToNext(DataListActivity.TYPE_XINSHENGBIXIU, ((TextView) v).getText().toString());
                 break;
             case R.id.rb_spxx:
-                goToNext(DataListActivity.TYPE_SHIPINGLIANXI,((TextView)v).getText().toString());
+                goToNext(DataListActivity.TYPE_SHIPINGLIANXI, ((TextView) v).getText().toString());
                 break;
             case R.id.rb_xcjc:
-                goToNext(DataListActivity.TYPE_CHANGGE,((TextView)v).getText().toString());
+                goToNext(DataListActivity.TYPE_CHANGGE, ((TextView) v).getText().toString());
                 break;
             case R.id.rb_tzwj:
-                goToNext(DataListActivity.TYPE_TZWJ,((TextView)v).getText().toString());
+                goToNext(DataListActivity.TYPE_TZWJ, ((TextView) v).getText().toString());
                 break;
             case R.id.tv_right:
                 if (!TextUtils.isEmpty(mp4)) {
@@ -322,10 +322,9 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
 
         if (dataflag == TYPE_NAILI) {
             sRecyclerViewAdapter.setItemCount(baseobjectsstamina);
-        }else if (dataflag==TYPE_JF)
-        {
+        } else if (dataflag == TYPE_JF) {
             sRecyclerViewAdapter.setItemCount(baseobjectsJf);
-        }else {
+        } else {
             sRecyclerViewAdapter.setItemCount(baseobjectsPK);
         }
 
@@ -334,10 +333,10 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
 
     }
 
-    private void goToNext(int type,String title) {
+    private void goToNext(int type, String title) {
         Intent intent = new Intent(self, DataListActivity.class);
         intent.putExtra("type", type);
-        intent.putExtra("title",title);
+        intent.putExtra("title", title);
         startActivity(intent);
 
     }
@@ -366,7 +365,7 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
 
                     baseobjectsPK = toBaseList(hdata.getRecord1());
                     baseobjectsstamina = toBaseList2(hdata.getRecord2());
-                    baseobjectsJf=toBaseList3(hdata.getRecord3());
+                    baseobjectsJf = toBaseList3(hdata.getRecord3());
                     imageIdList.clear();
                     if (!TextUtils.isEmpty(hdata.getPic1())) {
                         BannerInfo.DataEntity de = new BannerInfo.DataEntity();
@@ -400,32 +399,25 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
 
                     }
 
-                    long new7=Long.parseLong(Config.getZPQS());
-                    long new8=Long.parseLong(Config.getZYTZ());
+                    long new7 = Long.parseLong(Config.getZPQS());
+                    long new8 = Long.parseLong(Config.getZYTZ());
 
-                    if (!TextUtils.isEmpty(hdata.getNew9updateime()))
-                    {
-                        long data_7=Long.parseLong(hdata.getNew9updateime());
-                        if (new7<data_7)
-                        {
+                    if (!TextUtils.isEmpty(hdata.getNew9updateime())) {
+                        long data_7 = Long.parseLong(hdata.getNew9updateime());
+                        if (new7 < data_7) {
                             iv_7_new.setVisibility(View.VISIBLE);
-                        }else
-                        {
+                        } else {
                             iv_7_new.setVisibility(View.GONE);
                         }
                     }
-                    if (!TextUtils.isEmpty(hdata.getNew10updateime()))
-                    {
-                        long data_8=Long.parseLong(hdata.getNew10updateime());
-                        if (new8<data_8)
-                        {
+                    if (!TextUtils.isEmpty(hdata.getNew10updateime())) {
+                        long data_8 = Long.parseLong(hdata.getNew10updateime());
+                        if (new8 < data_8) {
                             iv_8_new.setVisibility(View.VISIBLE);
-                        }else
-                        {
+                        } else {
                             iv_8_new.setVisibility(View.GONE);
                         }
                     }
-
 
 
                     initBanner();
@@ -525,8 +517,28 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
                     ((obViewHolder) holder).iv_cup.setImageResource(R.drawable.home_icon_4);
                     ((obViewHolder) holder).tv_pk.setTextSize(15);
                     ((obViewHolder) holder).tv_pk.setTextColor(getResources().getColor(R.color.text_light_grey));
-                } else {
+                } else if (position == 4) {
                     ((obViewHolder) holder).iv_cup.setImageResource(R.drawable.home_icon_5);
+                    ((obViewHolder) holder).tv_pk.setTextSize(15);
+                    ((obViewHolder) holder).tv_pk.setTextColor(getResources().getColor(R.color.text_light_grey));
+                } else if (position == 5) {
+                    ((obViewHolder) holder).iv_cup.setImageResource(R.drawable.home_icon_6);
+                    ((obViewHolder) holder).tv_pk.setTextSize(15);
+                    ((obViewHolder) holder).tv_pk.setTextColor(getResources().getColor(R.color.text_light_grey));
+                } else if (position == 6) {
+                    ((obViewHolder) holder).iv_cup.setImageResource(R.drawable.home_icon_7);
+                    ((obViewHolder) holder).tv_pk.setTextSize(15);
+                    ((obViewHolder) holder).tv_pk.setTextColor(getResources().getColor(R.color.text_light_grey));
+                } else if (position == 7) {
+                    ((obViewHolder) holder).iv_cup.setImageResource(R.drawable.home_icon_8);
+                    ((obViewHolder) holder).tv_pk.setTextSize(15);
+                    ((obViewHolder) holder).tv_pk.setTextColor(getResources().getColor(R.color.text_light_grey));
+                } else if (position == 8) {
+                    ((obViewHolder) holder).iv_cup.setImageResource(R.drawable.home_icon_9);
+                    ((obViewHolder) holder).tv_pk.setTextSize(15);
+                    ((obViewHolder) holder).tv_pk.setTextColor(getResources().getColor(R.color.text_light_grey));
+                } else if (position == 9) {
+                    ((obViewHolder) holder).iv_cup.setImageResource(R.drawable.home_icon_10);
                     ((obViewHolder) holder).tv_pk.setTextSize(15);
                     ((obViewHolder) holder).tv_pk.setTextColor(getResources().getColor(R.color.text_light_grey));
                 }

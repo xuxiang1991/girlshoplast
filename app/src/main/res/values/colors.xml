@@ -170,4 +170,10 @@
     <color name="dingke_bg_dark">#F9F9F9</color>
     <color name="dingke_bg_light">#FFFFFF</color>
     <color name="home_fragment_title">#1758A1</color>
+    <color name="green_light_bg">#f2fef6</color>
+    <color name="green_text">#479A53</color>
+    <color name="red_light_bg">#FCEAEA</color>
+    <color name="red_text">#ED3326</color>
+    <color name="baby_blue">#90D4F2</color>
+
 </resources>

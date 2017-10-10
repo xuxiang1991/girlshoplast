@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="16dp"
-        android:text="书写作业"
+        android:text="听说作业"
         android:textColor="@color/App_more_text_3"
         android:textSize="18sp" />
 

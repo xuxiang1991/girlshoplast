@@ -203,7 +203,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                    mPager.setCurrentItem(3);
 //                    break;
                 case R.id.five:
-                    mPager.setCurrentItem(4);
+                    mPager.setCurrentItem(3);
                     break;
 
             }
@@ -227,7 +227,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                case 3:
 //                    mGroup.check(R.id.four);
 //                    break;
-                case 4:
+                case 3:
                     mGroup.check(R.id.five);
                     break;
 
@@ -269,7 +269,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //                    dingke = new dingKeFragment();
 //                return dingke;
 //            }
-            else if (position == 4) {
+            else if (position == 3) {
                 if (myclass == null) {
                     myclass = new myClassFragment();
                 }
