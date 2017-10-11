@@ -76,7 +76,7 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
     private ImageView tv_left;
     private RoundImageView iv_head;
     private ClipTextView tv_content;
-//    private TextView tv_content_translate;
+    //    private TextView tv_content_translate;
     private TextView tv_moreinfo;
     private ClipTextView tv_name;
     private AudioRecordButton recordButton;
@@ -122,7 +122,7 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
         tv_content = (ClipTextView) findViewById(R.id.tv_content);
 //        tv_content_translate = (TextView) findViewById(R.id.tv_content_translate);
         tv_moreinfo = (TextView) findViewById(R.id.tv_moreinfo);
-        tv_name=(ClipTextView)findViewById(R.id.tv_name);
+        tv_name = (ClipTextView) findViewById(R.id.tv_name);
 
         tv_left = (ImageView) findViewById(R.id.tv_left);
         tv_left.setVisibility(View.VISIBLE);
@@ -143,7 +143,7 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
         mRecyclerView.setAdapter(sRecyclerViewAdapter);
 
         tv_left.setOnClickListener(this);
-        tv_huifu_num=(TextView)findViewById(R.id.tv_huifu_num);
+        tv_huifu_num = (TextView) findViewById(R.id.tv_huifu_num);
 
     }
 
@@ -155,15 +155,14 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
 
         detaDetail = (dataListResult.RecordBean) getIntent().getSerializableExtra("data");
         id = detaDetail.getId();
-        tv_huifu_num.setText("回复数("+detaDetail.getCount()+")");
-        if (dataflag==TYPE_WAIJIAO)
-        {
+        tv_huifu_num.setText("回复数(" + detaDetail.getCount() + ")");
+        if (dataflag == TYPE_WAIJIAO) {
             ImageLoader.getInstance().displayImage(detaDetail.getIcon(), iv_head);
 //            recordButton.setBackgroundColor(self.getResources().getColor(R.color.App_backgroud_grey));
 //            recordButton.setTextColor(self.getResources().getColor(R.color.App_actvitytext_grey));
             recordButton.setText("马上挑战");
             tv_center.setText("挑战外教");
-        }else {
+        } else {
             ImageLoader.getInstance().displayImage(detaDetail.getLogo(), iv_head);
             tv_center.setText("师生风采");
         }
@@ -240,7 +239,7 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
                 finish();
                 break;
             case R.id.tv_moreinfo:
-                PersonInfoDialog dialog=new PersonInfoDialog(self,detaDetail,dataflag);
+                PersonInfoDialog dialog = new PersonInfoDialog(self, detaDetail, dataflag);
                 dialog.show();
                 break;
         }
@@ -249,7 +248,7 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
 
 
     private void setData() {
-        ShidaiApi.getpingList(self,Config.getShidaiUserInfo().getUserid(), id, pageNo, Constant.pageNum, Vrecoder.class, new NetUtils.NetCallBack<ServiceResult>() {
+        ShidaiApi.getpingList(self, Config.getShidaiUserInfo().getUserid(), id, pageNo, Constant.pageNum, Vrecoder.class, new NetUtils.NetCallBack<ServiceResult>() {
             @Override
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                 if ("0".equals(rspData.getErrcode())) {
@@ -337,10 +336,10 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
                     ((arViewHolder) holder).iv_head.setImageResource(R.drawable.head_sculpture);
                 ((arViewHolder) holder).tv_name.setText(ob.getNickname());
                 ((arViewHolder) holder).tv_time.setText(ob.getUpdatetime());
-                ((arViewHolder) holder).bt_zan.setText(" ("+ob.getZan() + ")");
+                ((arViewHolder) holder).bt_zan.setText(" (" + ob.getZan() + ")");
 
                 ((arViewHolder) holder).bt_zan.setChecked(ob.iszan());
-                ((arViewHolder) holder).bt_pinglun.setText("评论 ("+ob.getSub()+")");
+                ((arViewHolder) holder).bt_pinglun.setText("评论 (" + ob.getSub() + ")");
 
                 ((arViewHolder) holder).bt_pinglun.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -381,16 +380,24 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
                 ((arViewHolder) holder).ll_text.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
+                        if (Config.getShidaiUserInfo().getUserid() == ob.getUserid())
+                            showdelete(ob.getId(), position);
+                        return false;
+                    }
+                });
+                ((arViewHolder) holder).ll_voice.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
                         if (Config.getShidaiUserInfo().getUserid()==ob.getUserid())
-                        showdelete(ob.getId());
+                            showdelete(ob.getId(),position);
                         return false;
                     }
                 });
                 ((arViewHolder) holder).rl_voice.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
-                        if (Config.getShidaiUserInfo().getUserid()==ob.getUserid())
-                        showdelete(ob.getId());
+                        if (Config.getShidaiUserInfo().getUserid() == ob.getUserid())
+                            showdelete(ob.getId(), position);
                         return false;
                     }
                 });
@@ -511,8 +518,7 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
                                     progressDialog.dismiss();
 
                                     sendMessge(TYPE_VOICE, length, key, "");
-                                    if (dataflag == TYPE_WAIJIAO)
-                                    {
+                                    if (dataflag == TYPE_WAIJIAO) {
 //                                        recordButton.setBackgroundColor(self.getResources().getColor(R.color.App_backgroud_grey));
 //                                        recordButton.setTextColor(self.getResources().getColor(R.color.App_actvitytext_grey));
                                         recordButton.setText("马上挑战");
@@ -530,8 +536,7 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
             @Override
             public void failed(String msg) {
                 showShortToast(msg);
-                if (dataflag == TYPE_WAIJIAO)
-                {
+                if (dataflag == TYPE_WAIJIAO) {
 //                    recordButton.setBackgroundColor(self.getResources().getColor(R.color.App_backgroud_grey));
 //                    recordButton.setTextColor(self.getResources().getColor(R.color.App_actvitytext_grey));
                     recordButton.setText("马上挑战");
@@ -601,7 +606,7 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
     }
 
 
-    private void showdelete(final int id) {
+    private void showdelete(final int id, final int position) {
         ActionSheet.createBuilder(self, self.getSupportFragmentManager())
                 .setCancelButtonTitle("取消")
                 .setOtherButtonTitles("删除")
@@ -619,7 +624,9 @@ public class waijiaoActivity extends BaseActivity implements View.OnClickListene
                             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                                 if ("0".equals(rspData.getErrcode())) {
                                     showToast("评论删除成功");
+                                    baseobjects.remove(position);
                                     sRecyclerViewAdapter.notifyDataSetChanged();
+
                                 }
                             }
 

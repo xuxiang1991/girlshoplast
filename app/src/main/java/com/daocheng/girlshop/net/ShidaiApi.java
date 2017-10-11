@@ -2,9 +2,12 @@ package com.daocheng.girlshop.net;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.os.Debug;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.daocheng.girlshop.BuildConfig;
 import com.daocheng.girlshop.entity.ServiceResult;
 import com.daocheng.girlshop.utils.Config;
 import com.daocheng.girlshop.utils.Utils;
@@ -84,7 +87,7 @@ public class ShidaiApi {
         map.put("password", password);
         map.put("userAgent", "Android");
         if (!TextUtils.isEmpty(head))
-        map.put("head", head);
+            map.put("head", head);
 
 
 //        StringBuilder sb = new StringBuilder(BASE_URL);
@@ -144,7 +147,7 @@ public class ShidaiApi {
      * @param rspCls
      * @param netCallBack    http://121.40.90.171/cstimes/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
      */
-    public static void getKeweekcoursesList(Context context,int userid, int catid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+    public static void getKeweekcoursesList(Context context, int userid, int catid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
@@ -386,7 +389,7 @@ public class ShidaiApi {
      * @param rspCls
      * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
      */
-    public static void updateScope(Context context, int userid, int id, int updateScore,int type, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+    public static void updateScope(Context context, int userid, int id, int updateScore, int type, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
 
         HashMap map = new HashMap();
@@ -394,14 +397,13 @@ public class ShidaiApi {
         map.put("id", Integer.toString(id));
         map.put("score", Integer.toString(updateScore));
         map.put("userAgent", "android");
-        if (type!=0)
-        map.put("type",Integer.toString(type));
+        if (type != 0)
+            map.put("type", Integer.toString(type));
 
         NetUtils.post(context, BASE_URL + "cstimes/app/updateScore", map, null, netCallBack, rspCls);
 
 
     }
-
 
 
     /**
@@ -418,7 +420,8 @@ public class ShidaiApi {
         HashMap map = new HashMap();
         map.put("userid", Integer.toString(userid));
         map.put("userAgent", "android");
-        map.put("debug", "1");
+        if (BuildConfig.DEBUG)
+            map.put("debug", "1");
 
         NetUtils.post(context, BASE_URL + "cstimes/app/writtenWork", map, null, netCallBack, rspCls);
 
@@ -434,13 +437,13 @@ public class ShidaiApi {
      * @param rspCls
      * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
      */
-    public static void RightSmzy(Context context, int userid,String id, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+    public static void RightSmzy(Context context, int userid, String id, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
 
         HashMap map = new HashMap();
         map.put("userid", Integer.toString(userid));
         map.put("userAgent", "android");
-        map.put("id",id);
+        map.put("id", id);
 
         NetUtils.post(context, BASE_URL + "cstimes/app/right", map, null, netCallBack, rspCls);
 
@@ -483,7 +486,7 @@ public class ShidaiApi {
 
         HashMap map = new HashMap();
         map.put("userid", Integer.toString(userid));
-        map.put("id", id);
+        map.put("id", id + "");
         map.put("userAgent", "android");
 
         NetUtils.post(context, BASE_URL + "cstimes/app/delComment", map, null, netCallBack, rspCls);
@@ -701,7 +704,6 @@ public class ShidaiApi {
     }
 
 
-
     /**
      * 获取apk更新信息
      *
@@ -725,7 +727,6 @@ public class ShidaiApi {
 
 
     }
-
 
 
     /**
@@ -759,8 +760,6 @@ public class ShidaiApi {
     }
 
 
-
-
     /**
      * 预习课文
      *
@@ -792,7 +791,6 @@ public class ShidaiApi {
     }
 
 
-
     /**
      * 提交评论
      *
@@ -802,7 +800,7 @@ public class ShidaiApi {
      * @param rspCls
      * @param netCallBack
      */
-    public static void submitplun(Context context, int userid, int id,  String score,String content, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+    public static void submitplun(Context context, int userid, int id, String score, String content, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
 
         HashMap map = new HashMap();
@@ -810,7 +808,7 @@ public class ShidaiApi {
         map.put("id", Integer.toString(id));
         map.put("score", score);
         map.put("userAgent", "android");
-        map.put("content",content);
+        map.put("content", content);
 
         NetUtils.post(context, BASE_URL + "cstimes/app/courseTask", map, null, netCallBack, rspCls);
 
@@ -826,7 +824,7 @@ public class ShidaiApi {
      * @param rspCls
      * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
      */
-    public static void getmyKeDetail(Context context, int userid,int catid, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+    public static void getmyKeDetail(Context context, int userid, int catid, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
@@ -834,8 +832,7 @@ public class ShidaiApi {
             sb.append("userid=").append(userid);
             sb.append("&userAgent=")
                     .append("android");
-            if (catid==87)
-            {
+            if (catid == 87) {
                 sb.append("&catid=").append(catid);
             }
 

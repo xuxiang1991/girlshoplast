@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daocheng.girlshop.R;
+import com.daocheng.girlshop.utils.Config;
 
 /**
  * 项目名称：girlshop
@@ -65,7 +66,7 @@ public class scoreDialog extends Dialog implements View.OnClickListener {
               {
                   if (!TextUtils.isEmpty(url))
                   {
-                      Sharedialog sd = new Sharedialog(mcontext, url, sharetitle);
+                      Sharedialog sd = new Sharedialog(mcontext, url+"&userid="+ Config.getShidaiUserInfo().getUserid(), sharetitle);
                       sd.show();
                   }else
                   {

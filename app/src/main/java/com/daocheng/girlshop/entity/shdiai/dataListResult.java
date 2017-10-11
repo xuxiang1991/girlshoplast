@@ -29,11 +29,20 @@ public class dataListResult extends ServiceResult{
 
     private String video;
 
+    private String vedio_pic;
     private int score;
 
 
     public String getVideo() {
         return video;
+    }
+
+    public String getVedio_pic() {
+        return vedio_pic;
+    }
+
+    public void setVedio_pic(String vedio_pic) {
+        this.vedio_pic = vedio_pic;
     }
 
     public void setVideo(String video) {

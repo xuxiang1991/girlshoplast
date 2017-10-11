@@ -11,6 +11,7 @@ import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.BaseActivity;
 import com.daocheng.girlshop.dialog.Sharedialog;
 import com.daocheng.girlshop.entity.shdiai.dataListResult;
+import com.daocheng.girlshop.utils.Config;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import fm.jiecao.jcvideoplayer_lib.JCFullScreenActivity;
@@ -105,7 +106,7 @@ public class videoDetailActivity extends BaseActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.makeSureTv:
-                Sharedialog sd = new Sharedialog(self, url + data.getId(), data.getTitle());
+                Sharedialog sd = new Sharedialog(self, url + data.getId()+"&userid="+ Config.getShidaiUserInfo().getUserid(), data.getTitle());
                 sd.show();
                 break;
 

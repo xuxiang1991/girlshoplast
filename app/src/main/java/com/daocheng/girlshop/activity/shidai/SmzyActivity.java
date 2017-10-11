@@ -179,7 +179,7 @@ public class SmzyActivity extends BaseActivity implements View.OnClickListener {
             if (!TextUtils.isEmpty(bean.getContent())) {
                 holder.tv_content.setText(bean.getContent());
             }
-            holder.tv_no.setText(position + ". ");
+            holder.tv_no.setText((position+1) + ". ");
             if (bean.getPass() == 1) {// TODO 已经提交的状态
                 holder.ll_main.setBackgroundColor(getResources().getColor(R.color.green_light_bg));
                 holder.iv_submit.setImageResource(R.drawable.write_btn_right);
@@ -225,7 +225,7 @@ public class SmzyActivity extends BaseActivity implements View.OnClickListener {
                     if (!TextUtils.isEmpty(temptxt)) {
                         subcontent = subcontent.replace("^", temptxt);
                     } else {
-                        subcontent = subcontent.replace("^", "？？？？？");
+                        subcontent = subcontent.replace("^", "______");
                     }
 
                     SpannableStringBuilder spanText = new SpannableStringBuilder(subcontent);
@@ -315,7 +315,7 @@ public class SmzyActivity extends BaseActivity implements View.OnClickListener {
                     if (!TextUtils.isEmpty(temptxt)) {
                         subcontent = subcontent.replace("^", temptxt);
                     } else {
-                        subcontent = subcontent.replace("^", "？？？？？");
+                        subcontent = subcontent.replace("^", "______");
                     }
 
                     SpannableStringBuilder spanText = new SpannableStringBuilder(subcontent);

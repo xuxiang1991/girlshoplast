@@ -250,6 +250,11 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
 
     private void inithead() {
         if (!TextUtils.isEmpty(advertorialList.getVideo())) {
+
+            if (!TextUtils.isEmpty(advertorialList.getVedio_pic()))
+                ImageLoader.getInstance().displayImage(advertorialList.getVedio_pic(), custom_videoplayer.thumbImageView);
+
+
             custom_videoplayer.backButton.setVisibility(View.GONE);
             custom_videoplayer.setVisibility(View.VISIBLE);
             custom_videoplayer.thumbImageView.setOnClickListener(new View.OnClickListener() {

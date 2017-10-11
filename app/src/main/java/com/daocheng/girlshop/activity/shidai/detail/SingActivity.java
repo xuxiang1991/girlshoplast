@@ -236,7 +236,7 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
         tv_right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Sharedialog sd = new Sharedialog(self, shareUrl + musicgroup.get(position).getId(), musicgroup.get(position).getTitle());
+                Sharedialog sd = new Sharedialog(self, shareUrl + musicgroup.get(position).getId()+"&userid="+ Config.getShidaiUserInfo().getUserid(), musicgroup.get(position).getTitle());
                 sd.show();
 
             }
@@ -796,7 +796,15 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
                     @Override
                     public boolean onLongClick(View v) {
                         if (Config.getShidaiUserInfo().getUserid()==ob.getUserid())
-                        showdelete(ob.getId());
+                        showdelete(ob.getId(),position);
+                        return false;
+                    }
+                });
+                ((arViewHolder) holder).ll_voice.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        if (Config.getShidaiUserInfo().getUserid()==ob.getUserid())
+                            showdelete(ob.getId(),position);
                         return false;
                     }
                 });
@@ -804,7 +812,7 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
                     @Override
                     public boolean onLongClick(View v) {
                         if (Config.getShidaiUserInfo().getUserid()==ob.getUserid())
-                        showdelete(ob.getId());
+                        showdelete(ob.getId(),position);
                         return false;
                     }
                 });
@@ -823,7 +831,7 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
                     ((arViewHolder) holder).bt_share.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Sharedialog sd = new Sharedialog(self, pl_share_url + ob.getId(), ob.getNickname());
+                            Sharedialog sd = new Sharedialog(self, pl_share_url + ob.getId()+"&userid="+ Config.getShidaiUserInfo().getUserid(), ob.getNickname());
                             sd.show();
                         }
                     });
@@ -910,7 +918,7 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
             return baseobjects.size();
         }
     }
-    private void showdelete(final int id) {
+    private void showdelete(final int id,final int position) {
         ActionSheet.createBuilder(self, self.getSupportFragmentManager())
                 .setCancelButtonTitle("取消")
                 .setOtherButtonTitles("删除")
@@ -928,6 +936,7 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
                             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                                 if ("0".equals(rspData.getErrcode())) {
                                     showToast("评论删除成功");
+                                    baseobjects.remove(position);
                                     sRecyclerViewAdapter.notifyDataSetChanged();
                                 }
                             }

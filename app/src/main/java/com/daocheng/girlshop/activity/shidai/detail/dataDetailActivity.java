@@ -13,6 +13,7 @@ import com.daocheng.girlshop.activity.BaseActivity;
 import com.daocheng.girlshop.activity.shidai.list.DataListActivity;
 import com.daocheng.girlshop.dialog.Sharedialog;
 import com.daocheng.girlshop.entity.shdiai.dataListResult;
+import com.daocheng.girlshop.utils.Config;
 import com.daocheng.girlshop.view.ClipTextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -52,7 +53,7 @@ public class dataDetailActivity extends BaseActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.tv_share:
-                Sharedialog sd=new Sharedialog(self,url+data.getId(),data.getTitle());
+                Sharedialog sd=new Sharedialog(self,url+data.getId()+"&userid="+ Config.getShidaiUserInfo().getUserid(),data.getTitle());
                 sd.show();
                 break;
         }

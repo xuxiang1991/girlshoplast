@@ -299,7 +299,7 @@ public class RmtjActivity extends BaseActivity implements View.OnClickListener {
                 finish();
                 break;
             case R.id.tv_share:
-                Sharedialog sd = new Sharedialog(self, url + data.getId(), data.getTitle());
+                Sharedialog sd = new Sharedialog(self, url + data.getId()+"&userid="+ Config.getShidaiUserInfo().getUserid(), data.getTitle());
                 sd.show();
                 break;
             case R.id.tv_send:
@@ -364,7 +364,7 @@ public class RmtjActivity extends BaseActivity implements View.OnClickListener {
                     @Override
                     public boolean onLongClick(View v) {
                         if (Config.getShidaiUserInfo().getUserid()==ob.getUserid())
-                            showdelete(ob.getId());
+                            showdelete(ob.getId(),position);
                         return false;
                     }
                 });
@@ -386,7 +386,7 @@ public class RmtjActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
-    private void showdelete(final int id) {
+    private void showdelete(final int id,final int position) {
         ActionSheet.createBuilder(self, self.getSupportFragmentManager())
                 .setCancelButtonTitle("取消")
                 .setOtherButtonTitles("删除")
@@ -404,6 +404,7 @@ public class RmtjActivity extends BaseActivity implements View.OnClickListener {
                             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                                 if ("0".equals(rspData.getErrcode())) {
                                     showToast("评论删除成功");
+                                    baseobjects.remove(position);
                                     sRecyclerViewAdapter.notifyDataSetChanged();
                                 }
                             }

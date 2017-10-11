@@ -358,7 +358,15 @@ public class pinglunActivity extends BaseActivity implements View.OnClickListene
                     @Override
                     public boolean onLongClick(View v) {
                         if (Config.getShidaiUserInfo().getUserid()==ob.getUserid())
-                        showdelete(ob.getId());
+                        showdelete(ob.getId(),position);
+                        return false;
+                    }
+                });
+                ((arViewHolder) holder).ll_voice.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        if (Config.getShidaiUserInfo().getUserid()==ob.getUserid())
+                            showdelete(ob.getId(),position);
                         return false;
                     }
                 });
@@ -366,7 +374,7 @@ public class pinglunActivity extends BaseActivity implements View.OnClickListene
                     @Override
                     public boolean onLongClick(View v) {
                         if (Config.getShidaiUserInfo().getUserid()==ob.getUserid())
-                            showdelete(ob.getId());
+                            showdelete(ob.getId(),position);
                         return false;
                     }
                 });
@@ -572,7 +580,7 @@ public class pinglunActivity extends BaseActivity implements View.OnClickListene
         MediaManager.release();
     }
 
-    private void showdelete(final int id) {
+    private void showdelete(final int id,final int postion) {
         ActionSheet.createBuilder(self, self.getSupportFragmentManager())
                 .setCancelButtonTitle("取消")
                 .setOtherButtonTitles("删除")
@@ -590,6 +598,7 @@ public class pinglunActivity extends BaseActivity implements View.OnClickListene
                             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                                 if ("0".equals(rspData.getErrcode())) {
                                     showToast("评论删除成功");
+                                    baseobjects.remove(postion);
                                     sRecyclerViewAdapter.notifyDataSetChanged();
                                 }
                             }
