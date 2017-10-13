@@ -420,8 +420,8 @@ public class ShidaiApi {
         HashMap map = new HashMap();
         map.put("userid", Integer.toString(userid));
         map.put("userAgent", "android");
-        if (BuildConfig.DEBUG)
-            map.put("debug", "1");
+//        if (BuildConfig.DEBUG)
+//            map.put("debug", "1");
 
         NetUtils.post(context, BASE_URL + "cstimes/app/writtenWork", map, null, netCallBack, rspCls);
 
@@ -490,6 +490,27 @@ public class ShidaiApi {
         map.put("userAgent", "android");
 
         NetUtils.post(context, BASE_URL + "cstimes/app/delComment", map, null, netCallBack, rspCls);
+
+
+    }
+
+    /**
+     * 删除子评论
+     *
+     * @param context
+     * @param userid
+     * @param id
+     * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
+     */
+    public static void deleteZiPinglun(Context context, int userid, int id, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+
+
+        HashMap map = new HashMap();
+        map.put("userid", Integer.toString(userid));
+        map.put("id", id + "");
+        map.put("userAgent", "android");
+
+        NetUtils.post(context, BASE_URL + "cstimes/app/delSubComment", map, null, netCallBack, rspCls);
 
 
     }
