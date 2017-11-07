@@ -406,6 +406,26 @@ public class ShidaiApi {
     }
 
 
+
+
+    /**
+     * 考试结束
+     *
+     * @param context
+     * @param rspCls
+     * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
+     */
+    public static void CompleteExam(Context context,  final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+
+
+        HashMap map = new HashMap();
+        map.put("userid",Config.getShidaiUserInfo().getUserid()+"");
+        map.put("userAgent", "android");
+        NetUtils.post(context, BASE_URL + "cstimes/app/examfinish", map, null, netCallBack, rspCls);
+
+
+    }
+
     /**
      * 获取书面作业
      *

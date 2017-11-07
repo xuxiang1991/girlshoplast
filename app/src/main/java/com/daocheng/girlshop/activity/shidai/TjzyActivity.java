@@ -62,6 +62,7 @@ import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UploadManager;
 import com.qiniu.android.storage.UploadOptions;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -349,7 +350,7 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
                 ((arViewHolder) holder).tv_scope.setText(ob.getScore() + "");
                 ((arViewHolder) holder).iv_danci.setVisibility(View.VISIBLE);
                 ((arViewHolder) holder).iv_danci.setImageResource(R.drawable.icon_voice_play);
-                getWordlist(ob.getContent(), ((arViewHolder) holder).tv_wordlist);
+                getWordlist(ob.getPart(), ((arViewHolder) holder).tv_wordlist);
                 if (ob.getScore() >=Config.Default_Score)
                     ((arViewHolder) holder).tv_scope.setBackgroundResource(R.drawable.shape_round_green);
                 else
@@ -493,24 +494,34 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
         parent.removeAllViews();
         if (content == null)
             return;
-        String ready = content.replace("\\r\\n", "").replace("\r\n", "").replace(",", "").replace(".", "").replace("!", "");
-        String[] listString = ready.split(" ");
-        List list = Arrays.asList(listString);
-        Collections.shuffle(list);
-        String result = "";
-        for (int i = 0; i < list.size(); i++) {
-            TextView tv = new TextView(self);
-            tv.setPadding((int) Utils.dp2px(getResources(),4), (int) Utils.dp2px(getResources(),6), (int) Utils.dp2px(getResources(),6), (int) Utils.dp2px(getResources(),4));
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            lp.setMargins((int) Utils.dp2px(getResources(),8), (int) Utils.dp2px(getResources(),8), 0, 0);
-            tv.setLayoutParams(lp);
-            tv.setBackgroundColor(self.getResources().getColor(R.color.color_meat));
-            tv.setGravity(Gravity.CENTER);
-            tv.setText(list.get(i).toString());
-            tv.setTextSize(16);
-            tv.setTextColor(self.getResources().getColor(R.color.black));
-            parent.addView(tv);
+        JSONArray list=null;
+        try {
+            list=new JSONArray(content);
+
+            //        String ready = content.replace("\\r\\n", "").replace("\r\n", "").replace(",", "").replace(".", "").replace("!", "");
+//        String[] listString = ready.split(" ");
+//        List list = Arrays.asList(listString);
+//        Collections.shuffle(list);
+            String result = "";
+            for (int i = 0; i < list.length(); i++) {
+                TextView tv = new TextView(self);
+                tv.setPadding((int) Utils.dp2px(getResources(),4), (int) Utils.dp2px(getResources(),6), (int) Utils.dp2px(getResources(),6), (int) Utils.dp2px(getResources(),4));
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp.setMargins((int) Utils.dp2px(getResources(),8), (int) Utils.dp2px(getResources(),8), 0, 0);
+                tv.setLayoutParams(lp);
+                tv.setBackgroundColor(self.getResources().getColor(R.color.color_meat));
+                tv.setGravity(Gravity.CENTER);
+                tv.setText(list.getString(i));
+                tv.setTextSize(16);
+                tv.setTextColor(self.getResources().getColor(R.color.black));
+                parent.addView(tv);
+            }
+        }catch (Exception e)
+        {
+            e.printStackTrace();
         }
+
+
     }
 
 

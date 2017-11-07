@@ -21,6 +21,15 @@ public class fuxiList extends ServiceResult{
      */
 
     private int score;
+    private String type15flag;
+
+    public String getType15flag() {
+        return type15flag;
+    }
+
+    public void setType15flag(String type15flag) {
+        this.type15flag = type15flag;
+    }
 
     public int getScore() {
         return score;
@@ -47,6 +56,18 @@ public class fuxiList extends ServiceResult{
         private String content1;
         private int score;
         private String pic;
+        private String part;
+
+
+
+
+        public String getPart() {
+            return part;
+        }
+
+        public void setPart(String part) {
+            this.part = part;
+        }
 
         public String getPic() {
             return pic;

@@ -47,7 +47,7 @@ public class SmzyActivity extends BaseActivity implements View.OnClickListener {
     private ImageView tv_left;
     private TextView tv_center;
     private ListView list;
-    private TextView tv_complete, tv_head;
+    private TextView tv_complete, tv_head,tv_head_right;
     private SmzyBean smzyBean;
     private List<SmzyBean.RecordBean> beans = new ArrayList<>();
     private ZyAdapter mAdapter;
@@ -78,6 +78,7 @@ public class SmzyActivity extends BaseActivity implements View.OnClickListener {
         tv_center = (TextView) findViewById(R.id.tv_center);
         tv_complete = (TextView) findViewById(R.id.tv_complete);
         tv_head = (TextView) findViewById(R.id.tv_head);
+        tv_head_right=(TextView)findViewById(R.id.tv_head_right);
         list = (ListView) findViewById(R.id.list);
         tv_left.setVisibility(View.VISIBLE);
         tv_left.setOnClickListener(this);
@@ -94,7 +95,26 @@ public class SmzyActivity extends BaseActivity implements View.OnClickListener {
     private void initview() {
         if (smzyBean != null) {
             if (!TextUtils.isEmpty(smzyBean.getFriends())) {
-                tv_head.setText(smzyBean.getFriends());
+                String firend=smzyBean.getFriends();
+                String [] arr = firend.split("\\s+");
+                int i=0;
+                String headleft="";
+                String headright="";
+                for(int j=0;j<arr.length;j++){
+                   String s=arr[j];
+                    if(j%2==0)
+                    {
+                        headleft+=s+"\r\n";
+                    }else
+                    {
+                        headright+=s+"\r\n";
+                    }
+
+                }
+
+
+                tv_head.setText(headleft);
+                tv_head_right.setText(headright);
             }
 
             if (smzyBean.getRecord() != null && smzyBean.getRecord().size() > 0) {

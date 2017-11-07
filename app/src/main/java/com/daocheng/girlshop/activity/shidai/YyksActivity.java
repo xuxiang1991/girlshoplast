@@ -45,6 +45,8 @@ import com.daocheng.girlshop.view.newTextView;
 import com.daocheng.girlshop.voice.speech.EvaluatorManager;
 import com.daocheng.girlshop.voice.speech.SpeechManager;
 
+import org.json.JSONArray;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -454,23 +456,30 @@ public class YyksActivity extends BaseActivity implements View.OnClickListener {
         parent.removeAllViews();
         if (content == null)
             return;
-        String ready = content.replace("\\r\\n", "").replace("\r\n", "").replace(",", "").replace(".", "").replace("!", "");
-        String[] listString = ready.split(" ");
-        List list = Arrays.asList(listString);
-        Collections.shuffle(list);
-        String result = "";
-        for (int i = 0; i < list.size(); i++) {
-            TextView tv = new TextView(self);
-            tv.setPadding((int) Utils.dp2px(getResources(), 4), (int) Utils.dp2px(getResources(), 6), (int) Utils.dp2px(getResources(), 6), (int) Utils.dp2px(getResources(), 4));
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            lp.setMargins((int) Utils.dp2px(getResources(), 8), (int) Utils.dp2px(getResources(), 8), 0, 0);
-            tv.setLayoutParams(lp);
-            tv.setBackgroundColor(self.getResources().getColor(R.color.color_meat));
-            tv.setGravity(Gravity.CENTER);
-            tv.setText(list.get(i).toString());
-            tv.setTextSize(16);
-            tv.setTextColor(self.getResources().getColor(R.color.black));
-            parent.addView(tv);
+        JSONArray list = null;
+        try {
+            list = new JSONArray(content);
+
+            //        String ready = content.replace("\\r\\n", "").replace("\r\n", "").replace(",", "").replace(".", "").replace("!", "");
+//        String[] listString = ready.split(" ");
+//        List list = Arrays.asList(listString);
+//        Collections.shuffle(list);
+            String result = "";
+            for (int i = 0; i < list.length(); i++) {
+                TextView tv = new TextView(self);
+                tv.setPadding((int) Utils.dp2px(getResources(), 4), (int) Utils.dp2px(getResources(), 6), (int) Utils.dp2px(getResources(), 6), (int) Utils.dp2px(getResources(), 4));
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp.setMargins((int) Utils.dp2px(getResources(), 8), (int) Utils.dp2px(getResources(), 8), 0, 0);
+                tv.setLayoutParams(lp);
+                tv.setBackgroundColor(self.getResources().getColor(R.color.color_meat));
+                tv.setGravity(Gravity.CENTER);
+                tv.setText(list.getString(i));
+                tv.setTextSize(16);
+                tv.setTextColor(self.getResources().getColor(R.color.black));
+                parent.addView(tv);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -488,6 +497,7 @@ public class YyksActivity extends BaseActivity implements View.OnClickListener {
                         baseobjects.get(index).setScore(currentscope > oldscope ? currentscope : oldscope);
                         sRecyclerViewAdapter.notifyDataSetChanged();
                         updateBottom();
+                        CompleteExam();
                         scoreDialog md = new scoreDialog(self, "提示", currentscope + "");
                         md.show();
                         lastEvl.setBackgroundResource(R.drawable.icon_talk);
@@ -573,16 +583,34 @@ public class YyksActivity extends BaseActivity implements View.OnClickListener {
         return true;
     }
 
-    private void updateBottom() {
+    /**
+     * 调用完成接口
+     */
+    private void CompleteExam() {
         if (isComplete()) {
+            ShidaiApi.CompleteExam(self, ServiceResult.class, new NetUtils.NetCallBack<ServiceResult>() {
+                @Override
+                public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
+
+                }
+
+                @Override
+                public void failed(String msg) {
+
+                }
+            });
+        }
+    }
+
+    private void updateBottom() {
+        if (isComplete() || (advertorialList != null && "1".equals(advertorialList.getType15flag()))) {
             tv_yy_ok.setBackgroundColor(getResources().getColor(R.color.App_calendar_big));
             tv_yy_ok.setTextColor(getResources().getColor(R.color.white));
             tv_yy_ok.setText("已完成");
             tv_yy_ok.setClickable(false);
             tv_yy_ok.setVisibility(View.VISIBLE);
         }
-//        else
-//        {
+//        else {
 //            tv_yy_ok.setBackgroundColor(getResources().getColor(R.color.App_backgroud_grey));
 //            tv_yy_ok.setTextColor(getResources().getColor(R.color.App_calendar_yinli));
 //            tv_yy_ok.setText("未完成");

@@ -34,12 +34,67 @@ public class homedata extends ServiceResult{
     private String pic1;
     private String pic2;
     private String pic3;
+    private String title3;
+    private String title4;
+    private String title5;
+    private String title6;
+    private String title7;
+    private String title8;
     private String title9;
     private String icon9;
     private String title10;
     private String icon10;
     private String new9updateime;
     private String new10updateime;
+
+
+    public String getTitle3() {
+        return title3;
+    }
+
+    public void setTitle3(String title3) {
+        this.title3 = title3;
+    }
+
+    public String getTitle4() {
+        return title4;
+    }
+
+    public void setTitle4(String title4) {
+        this.title4 = title4;
+    }
+
+    public String getTitle5() {
+        return title5;
+    }
+
+    public void setTitle5(String title5) {
+        this.title5 = title5;
+    }
+
+    public String getTitle6() {
+        return title6;
+    }
+
+    public void setTitle6(String title6) {
+        this.title6 = title6;
+    }
+
+    public String getTitle7() {
+        return title7;
+    }
+
+    public void setTitle7(String title7) {
+        this.title7 = title7;
+    }
+
+    public String getTitle8() {
+        return title8;
+    }
+
+    public void setTitle8(String title8) {
+        this.title8 = title8;
+    }
 
     /**
      * nickname : 刘敏sarah

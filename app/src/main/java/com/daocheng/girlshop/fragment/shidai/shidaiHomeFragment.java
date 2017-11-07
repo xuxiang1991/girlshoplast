@@ -283,12 +283,12 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
                 break;
             case R.id.rb_eca:
                 iv_7_new.setVisibility(View.GONE);
-                Config.setZPQS(System.currentTimeMillis() + "");
+                Config.setZPQS(System.currentTimeMillis()/1000 + "");
                 goToNext(DataListActivity.TYPE_ECA, ((TextView) v).getText().toString());
                 break;
             case R.id.rb_xsbx:
                 iv_8_new.setVisibility(View.GONE);
-                Config.setZYTZ(System.currentTimeMillis() + "");
+                Config.setZYTZ(System.currentTimeMillis()/1000 + "");
                 goToNext(DataListActivity.TYPE_XINSHENGBIXIU, ((TextView) v).getText().toString());
                 break;
             case R.id.rb_spxx:
@@ -388,6 +388,27 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
                     }
                     if (!TextUtils.isEmpty(hdata.getTitle10())) {
                         rb_xsbx.setText(hdata.getTitle10());
+                    }
+
+                    if (!TextUtils.isEmpty(hdata.getTitle3())) {
+                        rb_rmtj.setText(hdata.getTitle3());
+                    }
+                    if (!TextUtils.isEmpty(hdata.getTitle4())) {
+                        rb_mryj.setText(hdata.getTitle4());
+                    }
+
+                    if (!TextUtils.isEmpty(hdata.getTitle5())) {
+                        rb_flxx.setText(hdata.getTitle5());
+                    }
+                    if (!TextUtils.isEmpty(hdata.getTitle6())) {
+                        rb_tzwj.setText(hdata.getTitle6());
+                    }
+
+                    if (!TextUtils.isEmpty(hdata.getTitle7())) {
+                        rb_spxx.setText(hdata.getTitle7());
+                    }
+                    if (!TextUtils.isEmpty(hdata.getTitle8())) {
+                        rb_xcjc.setText(hdata.getTitle8());
                     }
 
                     if (!TextUtils.isEmpty(hdata.getIcon9())) {

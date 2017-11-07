@@ -94,7 +94,7 @@ public class Sharedialog extends Dialog implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-        UMImage image = new UMImage(context, "http://www.cs66club.com/images/144.png");
+        UMImage image = new UMImage(context, "http://7vijhu.com1.z0.glb.clouddn.com/512.jpg");
 //        String url = "http://www.dig-data.com";
         //UMImage image = new UMImage(context, "http://blog.thegmic.com/wp-content/uploads/2012/05/umeng.jpg");
 //        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.info_icon_1);
