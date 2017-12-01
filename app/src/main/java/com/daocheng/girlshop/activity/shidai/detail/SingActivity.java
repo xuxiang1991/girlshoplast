@@ -937,7 +937,7 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
                                 if ("0".equals(rspData.getErrcode())) {
                                     showToast("评论删除成功");
                                     baseobjects.remove(position);
-                                    sRecyclerViewAdapter.notifyDataSetChanged();
+                                    mBookends.notifyDataSetChanged();
                                 }
                             }
 

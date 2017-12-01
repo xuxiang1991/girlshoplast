@@ -157,7 +157,6 @@
     <color name="province_line_border">#C7C7C7</color>
 
 
-
     <!--时代 -->
     <color name="text_light_grey">#999999</color>
     <color name="text_light_dark">#333333</color>
@@ -175,5 +174,6 @@
     <color name="red_light_bg">#FCEAEA</color>
     <color name="red_text">#ED3326</color>
     <color name="baby_blue">#90D4F2</color>
+    <color name="skye_blue">#92D3EF</color>
 
 </resources>
