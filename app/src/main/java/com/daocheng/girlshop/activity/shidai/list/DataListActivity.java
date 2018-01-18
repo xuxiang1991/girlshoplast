@@ -120,14 +120,14 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
 
         layoutManager = new LinearLayoutManager(self);
         mRecyclerView.setLayoutManager(layoutManager);
-        headview = (LinearLayout) inflater.inflate(R.layout.head_vedio, mRecyclerView, false);
-        custom_videoplayer = (JCVideoPlayerStandard) headview.findViewById(R.id.custom_videoplayer);
+//        headview = (LinearLayout) inflater.inflate(R.layout.head_vedio, mRecyclerView, false);
+        custom_videoplayer = (JCVideoPlayerStandard) findViewById(R.id.custom_videoplayer);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         baseobjects = new ArrayList<dataListResult.RecordBean>();
         sRecyclerViewAdapter = new baseObRecycleAdapter();
         mBookends = new Bookends<>(sRecyclerViewAdapter);
-        mBookends.addHeader(headview);
+//        mBookends.addHeader(headview);
         mRecyclerView.setAdapter(mBookends);
 
         tv_left.setOnClickListener(this);
