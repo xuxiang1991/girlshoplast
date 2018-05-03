@@ -145,28 +145,28 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
                         .getDisplayMetrics()));
 
         //加载内容
-//        mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
-//
-//            @Override
-//            public void onScrollStateChanged(RecyclerView recyclerView,
-//                                             int newState) {
-//                super.onScrollStateChanged(recyclerView, newState);
-//                if (newState == RecyclerView.SCROLL_STATE_IDLE
-//                        && lastVisibleItem == sRecyclerViewAdapter.getItemCount() - 1
-//                        && lastVisibleItem == (pageNo * Constant.found_pageNum - 1)) {
-//                    pageNo = pageNo + 1;
-//                    setData();
-//                    mSwipeRefreshLayout.setRefreshing(true);
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-//                super.onScrolled(recyclerView, dx, dy);
-//                lastVisibleItem = layoutManager.findLastVisibleItemPosition();
-//            }
-//        });
+        mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView,
+                                             int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE
+                        && lastVisibleItem == sRecyclerViewAdapter.getItemCount() - 1
+                        && lastVisibleItem == (pageNo * Constant.found_pageNum - 1)) {
+                    pageNo = pageNo + 1;
+                    setData();
+                    mSwipeRefreshLayout.setRefreshing(true);
+
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                lastVisibleItem = layoutManager.findLastVisibleItemPosition();
+            }
+        });
 
 
         mSwipeRefreshLayout.setColorSchemeResources(R.color.App_back_orange, R.color.green, R.color.blue, R.color.red);
@@ -180,6 +180,7 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
 
             }
         });
+        mSwipeRefreshLayout.setRefreshing(true);
     }
 
     @Override

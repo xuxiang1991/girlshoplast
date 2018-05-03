@@ -186,15 +186,12 @@ public class SpeechManager {
                         }).show();
     }
 
-    public int changePlayer()
-    {
-        if (selectedNum==3)
-        {
-            selectedNum=4;
+    public int changePlayer() {
+        if (selectedNum == 3) {
+            selectedNum = 4;
 
-        }else if (selectedNum==4)
-        {
-            selectedNum=3;
+        } else if (selectedNum == 4) {
+            selectedNum = 3;
         }
         voicer = mCloudVoicersValue[selectedNum];
         return selectedNum;
@@ -274,7 +271,7 @@ public class SpeechManager {
             // 设置在线合成发音人
             mTts.setParameter(SpeechConstant.VOICE_NAME, voicer);
             //设置合成语速
-            mTts.setParameter(SpeechConstant.SPEED, "40");//语音合成语速
+            mTts.setParameter(SpeechConstant.SPEED, selectedNum == 3 ? "14" : "30");//语音合成语速
             //设置合成音调
             mTts.setParameter(SpeechConstant.PITCH, mSharedPreferences.getString("pitch_preference", "50"));
             //设置合成音量
