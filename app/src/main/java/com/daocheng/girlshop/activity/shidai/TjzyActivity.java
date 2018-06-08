@@ -112,7 +112,7 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
     protected void setupViews() {
         tv_yy_ok = (TextView) findViewById(R.id.tv_yy_ok);
         tv_yy_ok.setOnClickListener(this);
-        tv_yy_ok.setVisibility(View.GONE);
+        tv_yy_ok.setVisibility(View.VISIBLE);
         tv_left = (ImageView) findViewById(R.id.tv_left);
         tv_left.setVisibility(View.VISIBLE);
         tv_left.setOnClickListener(this);
@@ -221,7 +221,7 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                 if ("0".equals(rspData.getErrcode())) {
                     advertorialList = (fuxiList) rspData;
-                    Config.Default_Score=advertorialList.getScore();
+                    Config.Default_Score = advertorialList.getScore();
                     if (pageNo == 1)
                         baseobjects = advertorialList.getRecord();
                     else
@@ -229,7 +229,11 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
                     Log.v("ere", "fdfdf");
 
                     sRecyclerViewAdapter.notifyDataSetChanged();
-                    updateBottom();
+                    if (advertorialList.getFlag() == 1) {
+                        showOK();
+                    } else {
+                        showUnOk();
+                    }
                 } else {
                     showShortToast(rspData.getMessage());
                 }
@@ -243,6 +247,36 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
             }
         });
     }
+
+
+    /**
+     * 获取工作状态
+     */
+    private void getworkstate() {
+        ShidaiApi.getworkOver(self, TYPE_FUXI, Config.getShidaiUserInfo().getUserid(), fuxiList.class, new NetUtils.NetCallBack<ServiceResult>() {
+            @Override
+            public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
+                if ("0".equals(rspData.getErrcode())) {
+                    advertorialList = (fuxiList) rspData;
+
+                    if (advertorialList.getFlag() == 1) {
+                        showOK();
+                    } else {
+                        showUnOk();
+                    }
+                } else {
+                    showShortToast(rspData.getMessage());
+                }
+            }
+
+            @Override
+            public void failed(String msg) {
+                Toast.makeText(self, msg, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+
 
 
     public class baseObRecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -294,14 +328,12 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
 
             if (holder instanceof arViewHolder) {
                 final fuxiList.RecordBean ob = getItem(position);
-                if (TextUtils.isEmpty(ob.getPic()))
-                {
+                if (TextUtils.isEmpty(ob.getPic())) {
 //                    ImageLoader.getInstance().displayImage("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1493748101887&di=9000fa326aa8d95ef3f111a0a2fc0e6b&imgtype=0&src=http%3A%2F%2Fs6.yiban.cn%2Ftopic%2Fa4%2Fe8%2Fd1%2F84%2F1492ecb007abbd2d.jpg",  ((arViewHolder) holder).iv_img);
                     ((arViewHolder) holder).iv_img.setVisibility(View.GONE);
-                }else
-                {
-                    Log.e("bitmap_url",ob.getPic());
-                    ImageLoader.getInstance().displayImage(ob.getPic(), ((arViewHolder) holder).iv_img,displayoption(), new ImageLoadingListener() {
+                } else {
+                    Log.e("bitmap_url", ob.getPic());
+                    ImageLoader.getInstance().displayImage(ob.getPic(), ((arViewHolder) holder).iv_img, displayoption(), new ImageLoadingListener() {
                         @Override
                         public void onLoadingStarted(String s, View view) {
 
@@ -315,22 +347,18 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
                         @Override
                         public void onLoadingComplete(String s, View view, Bitmap bitmap) {
                             ((arViewHolder) holder).iv_img.setVisibility(View.VISIBLE);
-                            if (bitmap==null||bitmap.getWidth()==0)
-                            {
+                            if (bitmap == null || bitmap.getWidth() == 0) {
                                 ((arViewHolder) holder).iv_img.setVisibility(View.GONE);
                             }
-                            Log.e("bitmap_url","width="+Config.width+"-height:"+Config.height);
-                            Log.e("bitmap_url","bitmap->width="+bitmap.getWidth()+"-height:"+bitmap.getHeight());
-                            Log.e("bitmap_url","Scalebitmap->width="+Config.width+"-height:"+bitmap.getHeight()*Config.width/bitmap.getWidth());
-                            if (bitmap.getWidth()>Config.width)
-                            {
-                                ((arViewHolder) holder).iv_img.setImageBitmap(Config.scaleBitmap(bitmap,Config.width,bitmap.getHeight()*Config.width/bitmap.getWidth()));
-                            }else if (bitmap.getWidth()<(Config.width/2))
-                            {
-                                ((arViewHolder) holder).iv_img.setImageBitmap(Config.scaleBitmap(bitmap,Config.width/2,bitmap.getHeight()*(Config.width/2)/bitmap.getWidth()));
+                            Log.e("bitmap_url", "width=" + Config.width + "-height:" + Config.height);
+                            Log.e("bitmap_url", "bitmap->width=" + bitmap.getWidth() + "-height:" + bitmap.getHeight());
+                            Log.e("bitmap_url", "Scalebitmap->width=" + Config.width + "-height:" + bitmap.getHeight() * Config.width / bitmap.getWidth());
+                            if (bitmap.getWidth() > Config.width) {
+                                ((arViewHolder) holder).iv_img.setImageBitmap(Config.scaleBitmap(bitmap, Config.width, bitmap.getHeight() * Config.width / bitmap.getWidth()));
+                            } else if (bitmap.getWidth() < (Config.width / 2)) {
+                                ((arViewHolder) holder).iv_img.setImageBitmap(Config.scaleBitmap(bitmap, Config.width / 2, bitmap.getHeight() * (Config.width / 2) / bitmap.getWidth()));
 
-                            }else
-                            {
+                            } else {
                                 ((arViewHolder) holder).iv_img.setImageBitmap(bitmap);
                             }
                         }
@@ -352,17 +380,15 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
                 ((arViewHolder) holder).iv_danci.setVisibility(View.VISIBLE);
                 ((arViewHolder) holder).iv_danci.setImageResource(R.drawable.icon_voice_play);
                 getWordlist(ob.getPart(), ((arViewHolder) holder).tv_wordlist);
-                if (ob.getScore() >=Config.Default_Score)
+                if (ob.getScore() >= Config.Default_Score)
                     ((arViewHolder) holder).tv_scope.setBackgroundResource(R.drawable.shape_round_green);
                 else
                     ((arViewHolder) holder).tv_scope.setBackgroundResource(R.drawable.shape_round_red);
 
-                if (ob.getScore()<90)
-                {
+                if (ob.getScore() < 90) {
                     ((arViewHolder) holder).tv_words.setVisibility(View.GONE);
 //                    ((arViewHolder) holder).tv_wordlist.setVisibility(View.GONE);
-                }else
-                {
+                } else {
                     ((arViewHolder) holder).tv_words.setVisibility(View.VISIBLE);
 //                    ((arViewHolder) holder).tv_wordlist.setVisibility(View.VISIBLE);
                     ((arViewHolder) holder).tv_words.setTextIsSelectable(true);
@@ -429,7 +455,7 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
                             lastEvl.setBackgroundResource(R.drawable.icon_talk);
                         }
                         lastEvl = (ImageView) v;
-                        EvaluatorManager.getInstance(self).play(ob.getContent(), position,ob.getId());
+                        EvaluatorManager.getInstance(self).play(ob.getContent(), position, ob.getId());
                         lastEvl.setBackgroundResource(R.drawable.play_list);
                         AnimationDrawable drawable = (AnimationDrawable) lastEvl
                                 .getBackground();
@@ -443,8 +469,7 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
                         EvaluatorManager.getInstance(self).stop();
                         SpeechManager.getInstance(self).stop();
                         File localfile = new File(voicePath(ob.getId()));
-                        if (localfile.exists())
-                        {
+                        if (localfile.exists()) {
                             MediaManager.playSound(localfile.getAbsolutePath(),
                                     new MediaPlayer.OnCompletionListener() {
 
@@ -475,14 +500,12 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
-    private String voicePath(int id)
-    {
-        return Environment.getExternalStorageDirectory().getAbsolutePath() + "/msc/"+id+"ise.wav";
+    private String voicePath(int id) {
+        return Environment.getExternalStorageDirectory().getAbsolutePath() + "/msc/" + id + "ise.wav";
     }
 
 
-    private DisplayImageOptions displayoption()
-    {
+    private DisplayImageOptions displayoption() {
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheInMemory(true).cacheOnDisc(true)
 //                .showImageOnLoading(R.drawable.loading_photo)
@@ -490,14 +513,15 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
                 .imageScaleType(ImageScaleType.NONE).build();
         return defaultOptions;
     }
+
     private void getWordlist(String content, FlowLayout parent) {
 
         parent.removeAllViews();
         if (content == null)
             return;
-        JSONArray list=null;
+        JSONArray list = null;
         try {
-            list=new JSONArray(content);
+            list = new JSONArray(content);
 
             //        String ready = content.replace("\\r\\n", "").replace("\r\n", "").replace(",", "").replace(".", "").replace("!", "");
 //        String[] listString = ready.split(" ");
@@ -506,9 +530,9 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
             String result = "";
             for (int i = 0; i < list.length(); i++) {
                 TextView tv = new TextView(self);
-                tv.setPadding((int) Utils.dp2px(getResources(),4), (int) Utils.dp2px(getResources(),6), (int) Utils.dp2px(getResources(),6), (int) Utils.dp2px(getResources(),4));
+                tv.setPadding((int) Utils.dp2px(getResources(), 4), (int) Utils.dp2px(getResources(), 6), (int) Utils.dp2px(getResources(), 6), (int) Utils.dp2px(getResources(), 4));
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                lp.setMargins((int) Utils.dp2px(getResources(),8), (int) Utils.dp2px(getResources(),8), 0, 0);
+                lp.setMargins((int) Utils.dp2px(getResources(), 8), (int) Utils.dp2px(getResources(), 8), 0, 0);
                 tv.setLayoutParams(lp);
                 tv.setBackgroundColor(self.getResources().getColor(R.color.color_meat));
                 tv.setGravity(Gravity.CENTER);
@@ -517,8 +541,7 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
                 tv.setTextColor(self.getResources().getColor(R.color.black));
                 parent.addView(tv);
             }
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -526,10 +549,7 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
-
-
-
-    private void uploadhead(final int id, final scoreDialog mdialog, final String sharetitle,final int currentscope) {
+    private void uploadhead(final int id, final scoreDialog mdialog, final String sharetitle, final int currentscope) {
         iscanshare = false;
         mdialog.setCanshare(iscanshare);
 
@@ -552,7 +572,7 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
                     String token = recode;
                     String key = file.replace(dir, "");
 
-                    shareurl = baseurl + "key=" + key + "&id=" + id + "&userid=" + Config.getShidaiUserInfo().getUserid()+"&score="+currentscope;
+                    shareurl = baseurl + "key=" + key + "&id=" + id + "&userid=" + Config.getShidaiUserInfo().getUserid() + "&score=" + currentscope;
                     iscanshare = true;
                     mdialog.setCanshare(true);
                     mdialog.setUrl(shareurl, sharetitle);
@@ -590,12 +610,6 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
     private String dir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/msc/";
 
 
-
-
-
-
-
-
     //注册接收订单广播
     private void initIndexBroadcast() {
         try {
@@ -609,14 +623,13 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
                         int currentscope = intent.getIntExtra("code", 0);
                         baseobjects.get(index).setScore(currentscope > oldscope ? currentscope : oldscope);
                         sRecyclerViewAdapter.notifyDataSetChanged();
-                        updateBottom();
                         scoreDialog md = new scoreDialog(self, "提示", currentscope + "");
                         md.show();
 
                         if (currentscope > oldscope)
                             updateScope(baseobjects.get(index).getId(), currentscope);
 
-                        uploadhead(baseobjects.get(index).getId(), md, baseobjects.get(index).getContent(),currentscope);
+                        uploadhead(baseobjects.get(index).getId(), md, baseobjects.get(index).getContent(), currentscope);
 
                         lastEvl.setBackgroundResource(R.drawable.icon_talk);
                         lastEvl = null;
@@ -635,11 +648,12 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
 
 
     private void updateScope(int id, int scope) {
-        ShidaiApi.updateScope(self, Config.getShidaiUserInfo().getUserid(), id, scope,11, ServiceResult.class, new NetUtils.NetCallBack<ServiceResult>() {
+        ShidaiApi.updateScope(self, Config.getShidaiUserInfo().getUserid(), id, scope, 11, ServiceResult.class, new NetUtils.NetCallBack<ServiceResult>() {
             @Override
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                 if ("0".equals(rspData.getErrcode())) {
                     Log.e("fuxifragment", "分数更新成功");
+                    getworkstate();
                 }
             }
 
@@ -692,33 +706,46 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
-    private boolean isComplete()
-    {
-        for (int i=0;i<baseobjects.size();i++)
-        {
-            fuxiList.RecordBean rb=baseobjects.get(i);
-            if (rb.getScore()<Config.Default_Score)
-                return  false;
+    private boolean isComplete() {
+        for (int i = 0; i < baseobjects.size(); i++) {
+            fuxiList.RecordBean rb = baseobjects.get(i);
+            if (rb.getScore() < Config.Default_Score)
+                return false;
         }
         return true;
     }
 
-    private void updateBottom()
-    {
-        if (isComplete())
-        {
-            tv_yy_ok.setBackgroundColor(getResources().getColor(R.color.App_calendar_big));
-            tv_yy_ok.setTextColor(getResources().getColor(R.color.white));
-            tv_yy_ok.setText("已完成");
-            tv_yy_ok.setClickable(false);
-            tv_yy_ok.setVisibility(View.VISIBLE);
-        }
-//        else
-//        {
-//            tv_yy_ok.setBackgroundColor(getResources().getColor(R.color.App_backgroud_grey));
-//            tv_yy_ok.setTextColor(getResources().getColor(R.color.App_calendar_yinli));
-//            tv_yy_ok.setText("未完成");
+//    private void updateBottom() {
+//        if (isComplete()) {
+//            tv_yy_ok.setBackgroundColor(getResources().getColor(R.color.App_calendar_big));
+//            tv_yy_ok.setTextColor(getResources().getColor(R.color.white));
+//            tv_yy_ok.setText("已完成");
 //            tv_yy_ok.setClickable(false);
+//            tv_yy_ok.setVisibility(View.VISIBLE);
 //        }
+////        else
+////        {
+////            tv_yy_ok.setBackgroundColor(getResources().getColor(R.color.App_backgroud_grey));
+////            tv_yy_ok.setTextColor(getResources().getColor(R.color.App_calendar_yinli));
+////            tv_yy_ok.setText("未完成");
+////            tv_yy_ok.setClickable(false);
+////        }
+//    }
+
+
+    private void showOK() {
+        tv_yy_ok.setBackgroundColor(getResources().getColor(R.color.App_calendar_big));
+        tv_yy_ok.setTextColor(getResources().getColor(R.color.white));
+        tv_yy_ok.setText("已完成");
+        tv_yy_ok.setClickable(false);
+        tv_yy_ok.setVisibility(View.VISIBLE);
+    }
+
+    private void showUnOk() {
+        tv_yy_ok.setBackgroundColor(getResources().getColor(R.color.App_backgroud_grey));
+        tv_yy_ok.setTextColor(getResources().getColor(R.color.App_calendar_yinli));
+        tv_yy_ok.setText("未完成");
+        tv_yy_ok.setClickable(false);
+        tv_yy_ok.setVisibility(View.VISIBLE);
     }
 }

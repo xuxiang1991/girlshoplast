@@ -20,6 +20,7 @@ public class fuxiList extends ServiceResult{
      * score : 0
      */
 
+    private int flag;
     private int score;
     private String type15flag;
 
@@ -47,6 +48,14 @@ public class fuxiList extends ServiceResult{
 
     public void setRecord(List<RecordBean> record) {
         this.record = record;
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 
     public static class RecordBean {

@@ -381,6 +381,37 @@ public class ShidaiApi {
 
 
     /**
+     *
+     *
+     * 获取是否作业做完
+     *
+     * @param context
+     * @param type
+     * @param userid
+     * @param rspCls
+     * @param netCallBack
+     */
+    public static void getworkOver(Context context, int type, int userid, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+
+        StringBuilder sb = new StringBuilder(BASE_URL);
+        try {
+            sb.append("cstimes/app/checkover?");
+            sb.append("userid=").append(userid);
+            sb.append("&userAgent=")
+                    .append("android").append("&type=").append(type);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        NetUtils.post(context, sb.toString(), null, null, netCallBack, rspCls);
+
+
+    }
+
+
+    /**
      * 更新句子得分
      *
      * @param context
