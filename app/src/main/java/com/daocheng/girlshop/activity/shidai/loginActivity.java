@@ -103,6 +103,7 @@ public class loginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     protected void initialized() {
+
         initSDK();
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
                 != PackageManager.PERMISSION_GRANTED) {

@@ -17,8 +17,8 @@ android {
         applicationId "com.daocheng.girlshop"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 105
-        versionName "5.0.5"
+        versionCode 110
+        versionName "5.1.0"
     }
     buildTypes {
         release {
@@ -74,6 +74,9 @@ repositories {
     flatDir {
         dirs 'libs' //就是你放aar的目录地址
     }
+    maven {
+        url "http://maven.aliyun.com/nexus/content/repositories/releases"
+    }
 }
 
 dependencies {
@@ -114,4 +117,5 @@ dependencies {
     compile project(':library')
     compile files('libs/org.apache.http.legacy.jar')
     compile project(':playerview')
+    compile 'com.aliyun.ams:alicloud-android-hotfix:3.2.2'
 }

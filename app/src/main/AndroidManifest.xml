@@ -583,6 +583,15 @@
         <meta-data android:name="JPUSH_CHANNEL" android:value="changsh"/>
         <meta-data android:name="JPUSH_APPKEY" android:value="c4db3de578690d0e04561d3c" /> <!--  </>值来自开发者平台取得的AppKey-->
 
+        <meta-data
+            android:name="com.taobao.android.hotfix.IDSECRET"
+            android:value="24874549" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.APPSECRET"
+            android:value="54ea236c09e03b2aea6d5e67ec853897" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.RSASECRET"
+            android:value="MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCQAzKXe9jxapqcUgLiGox5PA0w/xRfZOth/tywh9b0VUTcxnbPFCB+1SqdVoTSksffrZhs06RvHlYPgs2nQ9/c22D8stQS5Ajb7t24TRasmC/8Wlh3M/Qakjw6AkP88c823I7WYE9Mo1MYQ/YlKv5oAGMuVXgzgBP2+zy2k9vTHt7LJ664k5EXJ36X4/7AcdeCP6tlLVkBB2/Ga98KNNuCZtCqL1l/Sy+A6/Sr1bUHkNajylIdQ4nhByBDKgX/Q3hnG5yRX9lgZicQ+WWI7Dg5qc3CYF4cFb6gEZXlWIBMeZN28zm2Wq2d3SDbT/BUhgaMdpRKjgo4f44W9y9uSnf1AgMBAAECggEAGSUlyUNrnsOBWXgMXtRJ4MU2fG6dbQae/s5UVFJzmtfknTPd/MxD3EF2HmDD8kyEr66M5buSg4BlgHHTXLhCNzrq1VSYKPA+B8DOX+a95cbw4fwYZD/jCFyuPWa13k2OY8LhAddxIS2HTb5YFSdLoncm2ik8QqnDUqWNdUed41/FHc+1a+gkm5Ytwpy0DmjB4bRYlLzPTcjuhndsVz8QXLbjyPs3hie9HFusfGjmG+fQ56gIXuQa7mWYjWAvwHfaSHjbzjdBkZbj9RSxnSCYlb7WioukGQUVXnSifaGB/sv0xpAdzXJqTwgqOgkd2NPIfi9JQt8C/ZRdddOATPw14QKBgQDqWCRpbj5mpiKA3cTRzmm38riUZbgBVqg8c6lsCsHDW07pCj9RGhp5kOmzTBYseoEPML2vOtn9aITCAiDVoMyal1XPetOErS5R0GjAaDy5AUrkYe+mtSykKmibv7g/tXiqqMvXj4ew+wMQhsVxL2wK8vzbBlugb2jbSEp3LmOjWQKBgQCdUhXg9i4MZvq2+EhTG/At0tEckQuF6sClGNzUbypCuyqYrX6vqRrkbIMv8c4EySdisuZV0MAWLhbIlm9KcJgjiX/zRmZkp5MTPrdJssS2OYZNR8hVCn0g6bmC1RwthbYV321gXybAjtdC8/oRNhy/70xpMcGppMV3OiCJFD4x/QKBgHn1U0XXTPxo+83rHHJAJT7JQAxi/6carUWAwCxtULfVvjSD073mgt6/bxCTyXpuato3+I/IZgh+q5C4QNRM8g6GMe9fsdL7uf50Iv/3f5qctJg0697rrQbm1zgvR7lIPTs7y5IsrWaKy+Z+7SRhlK4CFVv7bBYLxRtR/QcXil1JAoGAQPnyR2PmSQEPdBq/5HOZk5OLAr11gO4gew/1xVfUoJMlWMHvnSW/EbEvzdGVQazDM6SoNbFuZLrMdjSL6rbuX18fFZ9yEwiTWlOA6FOJo6nGqoyHVXhrjfh6wmq6pKKhPg914WPrYYSdq+2QzyMGZM+1Q41la2e+lyvO3E8cERECgYA3D8jaVCV5gs7jLnjxjVKWrhHfc1GkKICajvMLNpFhsnjQ832/LD3RqvcS30wLjnYwhjVHzFAEXfTJrU6MV5NjEBXfsH9ZJouC+NTCYGOQWkaz7+nGcGyjgeiLaytaL+H2mlQ3I3dB1lrJGGEij1rDTOBLEWhTDiESrTh4Rt4QQA==" />
     </application>
 
 </manifest>
