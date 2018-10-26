@@ -108,6 +108,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.4.0'
     compile 'com.android.support:support-v4:23.4.0'
     compile name: 'SMSSDK-2.0.2', ext: 'aar'
+    compile name: 'fsp_sdk', ext: 'aar'
     compile name: 'SMSSDKGUI-2.0.2', ext: 'aar'
     compile files('libs/qiniu/qiniu-android-sdk-7.0.9.jar')
     compile files('libs/qiniu/qiniu-dependency-happy-dns-0.2.4.jar')
