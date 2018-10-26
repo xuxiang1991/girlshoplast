@@ -144,3 +144,17 @@
 -keep class com.ta.utdid2.device.**{*;}
 #防止inline
 -dontoptimize
+
+-keep class com.newrelic.** { *; }
+-dontwarn com.newrelic.**
+-keepattributes Exceptions, Signature, InnerClasses
+
+-keep class com.tencent.mm.opensdk.** {
+*;
+}
+-keep class com.tencent.wxop.** {
+*;
+}
+-keep class com.tencent.mm.sdk.** {
+*;
+}
