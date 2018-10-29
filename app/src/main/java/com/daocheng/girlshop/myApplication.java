@@ -10,9 +10,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Vibrator;
 
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
+
 import com.daocheng.girlshop.activity.MainActivity;
 import com.daocheng.girlshop.entity.Location;
 import com.daocheng.girlshop.utils.BoardManager;
@@ -53,8 +51,7 @@ import cn.smssdk.SMSSDK;
 public class myApplication extends Application {
     public File cacheFile = null;
     private static Context mContext;
-    public LocationClient mLocationClient;
-    public MyLocationListener mMyLocationListener;
+
     public Vibrator mVibrator;
 
 
@@ -103,7 +100,7 @@ public class myApplication extends Application {
         CrashHandler catchHandler = CrashHandler.getInstance();
         catchHandler.init(getApplicationContext());//用来获取全局的错误处理
 
-        initLocation();//自动定位
+
         initCache();//imageloader 初始化
         initPlatform();
 
@@ -178,60 +175,10 @@ public class myApplication extends Application {
     }
 
 
-    public void initLocation() {
-        mLocationClient = new LocationClient(this.getApplicationContext());
-        mMyLocationListener = new MyLocationListener();
-        mLocationClient.registerLocationListener(mMyLocationListener);
-        mVibrator = (Vibrator) getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
-    }
 
 
-    /**
-     * 实现实时位置回调监听
-     */
-    public class MyLocationListener implements BDLocationListener {
-
-        @Override
-        public void onReceiveLocation(BDLocation location) {
-            //Receive Location
-            Location loc = new Location();
-            loc.setTypeCode(location.getLocType());
-            if (location.getLocType() == BDLocation.TypeGpsLocation || location.getLocType() == BDLocation.TypeNetWorkLocation || location.getLocType() == BDLocation.TypeOffLineLocation) {// GPS定位结果
-
-                loc.setTime(location.getTime());
-                loc.setAddress(location.getAddrStr());
-                loc.setProvince(location.getProvince());
-                loc.setCity(location.getCity());
-                loc.setStreet(location.getStreet());
-                loc.setDescribe(location.getLocationDescribe());
-                loc.setDistrct(location.getDistrict());
-                loc.setCityCode(location.getCityCode());
-                loc.setResult(true);
 
 
-            } else if (location.getLocType() == BDLocation.TypeServerError) {
-                loc.setDescribe(getResources().getString(R.string.location_TypeServerError));
-                loc.setResult(false);
-
-            } else if (location.getLocType() == BDLocation.TypeNetWorkException) {
-                loc.setDescribe(getResources().getString(R.string.location_TypeNetWorkException));
-                loc.setResult(false);
-            } else if (location.getLocType() == BDLocation.TypeCriteriaException) {
-                loc.setDescribe(getResources().getString(R.string.location_TypeCriteriaException));
-                loc.setResult(false);
-            }
-
-            setLocationMessage(loc);
-
-            if (loc.getDistrct() == null) {
-                loc.setDistrct("常熟市");
-            }
-            sendCity(loc.getDistrct());
-            mLocationClient.stop();
-        }
-
-
-    }
 
     public static Location location;
 
@@ -252,12 +199,7 @@ public class myApplication extends Application {
         return mContext;
     }
 
-    private void sendCity(String city) {
-        Intent intent = new Intent();
-        intent.setAction(Constant.CITYBROADCAST);
-        intent.putExtra("city", city);
-        sendBroadcast(intent);
-    }
+
 
 
     public synchronized static myApplication getInstance() {

@@ -17,9 +17,7 @@ import android.widget.TextView;
 import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.shidai.detail.pinglunActivity;
 import com.daocheng.girlshop.entity.shdiai.dataListResult;
-import com.daocheng.girlshop.media.recoder.recoderActivity;
 import com.daocheng.girlshop.utils.Utils;
-import com.tencent.open.utils.Util;
 
 import java.util.List;
 
