@@ -1,5 +1,6 @@
 package com.daocheng.girlshop.activity.shidai.detail;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.View;
 import android.webkit.WebView;
@@ -13,6 +14,7 @@ import com.daocheng.girlshop.dialog.Sharedialog;
 import com.daocheng.girlshop.entity.shdiai.dataListResult;
 import com.daocheng.girlshop.utils.Config;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.umeng.socialize.UMShareAPI;
 
 import fm.jiecao.jcvideoplayer_lib.JCFullScreenActivity;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
@@ -112,6 +114,11 @@ public class videoDetailActivity extends BaseActivity implements View.OnClickLis
 
         }
 
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
 

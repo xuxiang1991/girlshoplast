@@ -57,6 +57,7 @@ import com.qiniu.android.storage.UpCancellationSignal;
 import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UploadManager;
 import com.qiniu.android.storage.UploadOptions;
+import com.umeng.socialize.UMShareAPI;
 
 import org.json.JSONObject;
 
@@ -599,6 +600,12 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
     public void onDestroy() {
         super.onDestroy();
         self.unregisterReceiver(indexofcast);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
 

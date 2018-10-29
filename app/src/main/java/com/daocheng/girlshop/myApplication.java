@@ -31,6 +31,7 @@ import com.qiniu.android.storage.UploadManager;
 import com.taobao.sophix.PatchStatus;
 import com.taobao.sophix.SophixManager;
 import com.taobao.sophix.listener.PatchLoadStatusListener;
+import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;
 
 import java.io.File;
@@ -165,9 +166,11 @@ public class myApplication extends Application {
 
     private void initPlatform() {
 
+        UMConfigure.init(this,"56d56cb967e58e3d7a001308"
+                ,"umeng", UMConfigure.DEVICE_TYPE_PHONE,"");
+
         PlatformConfig.setWeixin("wx462d77ba9d7383c6", "f3faf974207b28499ba906257df74284");
         //微信 appid appsecret
-        PlatformConfig.setSinaWeibo("1032310419", "1e7f45866cfaf98f5a5abeb2f77722e7");
         //新浪微博 appkey appsecret    appid appkey appsecret
         PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
         // qq qzone appid appkey

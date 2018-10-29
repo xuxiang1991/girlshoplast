@@ -38,6 +38,7 @@ import com.daocheng.girlshop.view.ClipTextView;
 import com.daocheng.girlshop.view.newTextView;
 import com.daocheng.girlshop.voice.speech.EvaluatorManager;
 import com.daocheng.girlshop.voice.speech.SpeechManager;
+import com.umeng.socialize.UMShareAPI;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -345,6 +346,9 @@ public class fuxiFragment extends BaseFragment implements View.OnClickListener {
             return baseobjects.size();
         }
     }
+
+
+
 
 
     //注册接收订单广播

@@ -44,6 +44,7 @@ import com.daocheng.girlshop.view.FlowLayout;
 import com.daocheng.girlshop.view.newTextView;
 import com.daocheng.girlshop.voice.speech.EvaluatorManager;
 import com.daocheng.girlshop.voice.speech.SpeechManager;
+import com.umeng.socialize.UMShareAPI;
 
 import org.json.JSONArray;
 
@@ -515,7 +516,11 @@ public class YyksActivity extends BaseActivity implements View.OnClickListener {
             e.printStackTrace();
         }
     }
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+    }
 
     private void updateScope(int id, int scope) {
         ShidaiApi.updateScope(self, Config.getShidaiUserInfo().getUserid(), id, scope, 15, ServiceResult.class, new NetUtils.NetCallBack<ServiceResult>() {

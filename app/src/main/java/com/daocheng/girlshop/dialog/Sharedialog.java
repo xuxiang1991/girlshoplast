@@ -22,6 +22,7 @@ import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.editorpage.ShareActivity;
 import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.media.UMVideo;
+import com.umeng.socialize.media.UMWeb;
 import com.umeng.socialize.media.UMusic;
 
 /**
@@ -43,12 +44,12 @@ public class Sharedialog extends Dialog implements View.OnClickListener {
     private String title;
     private String content;
 
-    public Sharedialog(Context context,String url,String title) {
+    public Sharedialog(Context context, String url, String title) {
         super(context);
 
         this.context = context;
-        this.url=url;
-        this.title=title;
+        this.url = url;
+        this.title = title;
 
 
     }
@@ -82,7 +83,7 @@ public class Sharedialog extends Dialog implements View.OnClickListener {
 //        dialogWindow.setWindowAnimations(R.style.dateDialog);  //添加动画
 
 ////        int screenwith = Config.width;
-        lp.width = (int) (Config.width*0.8); // 宽度
+        lp.width = (int) (Config.width * 0.8); // 宽度
 //
 //        lp.height = (int) (Config.height * 0.4f);
         dialogWindow.setAttributes(lp);
@@ -105,6 +106,12 @@ public class Sharedialog extends Dialog implements View.OnClickListener {
 //        UMVideo video = new UMVideo("http://video.sina.com.cn/p/sports/cba/v/2013-10-22/144463050817.html");
 
 
+        UMWeb web = new UMWeb(url);
+        web.setTitle(title);//标题
+        web.setThumb(image);  //缩略图
+        web.setDescription(title);//描述
+
+
         com.umeng.socialize.Config.OpenEditor = true;//打开编辑页
         switch (v.getId()) {
             case R.id.s_off:
@@ -112,42 +119,27 @@ public class Sharedialog extends Dialog implements View.OnClickListener {
                 break;
             case R.id.s_wx:
                 new ShareAction((Activity) context).setPlatform(SHARE_MEDIA.WEIXIN).setCallback(umShareListener)
-                        .withMedia(image)
-                        .withTitle(title)
-                        .withText(title)
-                        .withTargetUrl(url)
+                        .withMedia(web)
                         .share();
                 break;
             case R.id.s_wxcircle:
                 new ShareAction((Activity) context).setPlatform(SHARE_MEDIA.WEIXIN_CIRCLE).setCallback(umShareListener)
-                        .withMedia(image)
-                        .withTitle(title)
-                        .withText(title)
-                        .withTargetUrl(url)
+                        .withMedia(web)
                         .share();
                 break;
             case R.id.s_sina:
                 new ShareAction((Activity) context).setPlatform(SHARE_MEDIA.SINA).setCallback(umShareListener)
-                        .withText(title)
-                        .withMedia(image)
-                        .withTargetUrl(url)
-                        .withTitle(title)
+                        .withMedia(web)
                         .share();
                 break;
             case R.id.s_qq:
                 new ShareAction((Activity) context).setPlatform(SHARE_MEDIA.QQ).setCallback(umShareListener)
-                        .withText(title)
-                        .withMedia(image)
-                        .withTitle(title)
-                        .withTargetUrl(url)
+                        .withMedia(web)
                         .share();
                 break;
             case R.id.s_qzone:
                 new ShareAction((Activity) context).setPlatform(SHARE_MEDIA.QZONE).setCallback(umShareListener)
-                        .withText(title)
-                        .withMedia(image)
-                        .withTitle(title)
-                        .withTargetUrl(url)
+                        .withMedia(web)
                         .share();
                 break;
 
@@ -158,6 +150,11 @@ public class Sharedialog extends Dialog implements View.OnClickListener {
 
 
     private UMShareListener umShareListener = new UMShareListener() {
+        @Override
+        public void onStart(SHARE_MEDIA share_media) {
+
+        }
+
         @Override
         public void onResult(SHARE_MEDIA platform) {
             //分享成功增加积分

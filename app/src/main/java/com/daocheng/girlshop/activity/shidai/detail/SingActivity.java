@@ -68,6 +68,7 @@ import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UploadManager;
 import com.qiniu.android.storage.UploadOptions;
 import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareAPI;
 
 import org.json.JSONObject;
 
@@ -140,6 +141,13 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
             + "/cooke/recoder/";
 
     private String pl_share_url = "http://www.cs66club.com/app/share_sing?id=";
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+    }
 
 
     @Override
@@ -408,6 +416,10 @@ public class SingActivity extends BaseActivity implements View.OnClickListener {
             ed_text.setText("");
         }
     }
+
+
+
+
 
 
     private void uploadhead(final String file, final int length) {

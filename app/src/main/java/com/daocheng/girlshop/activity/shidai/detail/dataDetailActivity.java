@@ -1,5 +1,6 @@
 package com.daocheng.girlshop.activity.shidai.detail;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.text.Html;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.daocheng.girlshop.entity.shdiai.dataListResult;
 import com.daocheng.girlshop.utils.Config;
 import com.daocheng.girlshop.view.ClipTextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.umeng.socialize.UMShareAPI;
 
 import org.w3c.dom.Text;
 
@@ -104,6 +106,13 @@ public class dataDetailActivity extends BaseActivity implements View.OnClickList
         }
         getShareUrl(dataflag);
 
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
 

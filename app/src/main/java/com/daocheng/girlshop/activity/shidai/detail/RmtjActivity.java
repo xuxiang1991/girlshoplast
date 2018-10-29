@@ -38,6 +38,7 @@ import com.daocheng.girlshop.view.Bookends;
 import com.daocheng.girlshop.view.ClipTextView;
 import com.daocheng.girlshop.view.RoundImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.umeng.socialize.UMShareAPI;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -290,6 +291,12 @@ public class RmtjActivity extends BaseActivity implements View.OnClickListener {
         if (url != null) {
             tv_share.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
