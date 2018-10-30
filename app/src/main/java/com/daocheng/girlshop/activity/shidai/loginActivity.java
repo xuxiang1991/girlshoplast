@@ -108,7 +108,7 @@ public class loginActivity extends BaseActivity implements View.OnClickListener,
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
                 != PackageManager.PERMISSION_GRANTED) {
             //申请WRITE_EXTERNAL_STORAGE权限
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission_group.MICROPHONE, Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.CALL_PHONE,Manifest.permission.READ_LOGS,Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.SET_DEBUG_APP,Manifest.permission.SYSTEM_ALERT_WINDOW,Manifest.permission.GET_ACCOUNTS,Manifest.permission.WRITE_APN_SETTINGS},
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission_group.MICROPHONE, Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CALL_PHONE, Manifest.permission.READ_LOGS, Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.SET_DEBUG_APP, Manifest.permission.SYSTEM_ALERT_WINDOW, Manifest.permission.GET_ACCOUNTS, Manifest.permission.WRITE_APN_SETTINGS},
                     WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
         }
 //        else if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
@@ -214,7 +214,7 @@ public class loginActivity extends BaseActivity implements View.OnClickListener,
 
     private void initSDK() {
         // 初始化短信SDK
-        SMSSDK.initSDK(this, APPKEY, APPSECRET, true);
+//        SMSSDK.initSDK(this, APPKEY, APPSECRET, true);
         final Handler handler = new Handler(this);
         EventHandler eventHandler = new EventHandler() {
             public void afterEvent(int event, int result, Object data) {

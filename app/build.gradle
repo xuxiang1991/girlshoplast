@@ -1,4 +1,10 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.mob.sdk'
+MobSDK {
+    appKey "1406c7fa416d9"
+    appSecret "089ea3f88c8e64efe54972088c838352"
+    SMSSDK {}
+}
 
 android {
 
@@ -26,7 +32,7 @@ android {
 
 
         ndk {
-            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "mips", "mips64", "x86", "x86_64"
+            abiFilters "armeabi", "x86", "x86_64", "mips64", "mips"
         }
         multiDexEnabled true
     }
@@ -104,7 +110,6 @@ repositories {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.aliyun.ams:alicloud-android-hotfix:3.2.2'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.duowan.android.netroid:netroid:1.2.1'
     compile 'com.umeng.analytics:analytics:latest.integration'
@@ -125,8 +130,5 @@ dependencies {
     compile files('libs/org.apache.http.legacy.jar')
     compile project(':playerview')
 
-
-    compile(name: 'SMSSDK-2.0.2', ext: 'aar')
-    compile(name: 'SMSSDKGUI-2.0.2', ext: 'aar')
     compile(name: 'fsp_sdk', ext: 'aar')
 }
