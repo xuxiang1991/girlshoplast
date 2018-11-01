@@ -30,6 +30,7 @@ import android.widget.Toast;
 import com.baoyz.actionsheet.ActionSheet;
 import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.BaseActivity;
+import com.daocheng.girlshop.activity.shidai.detail.SingActivity;
 import com.daocheng.girlshop.activity.shidai.detail.waijiaoActivity;
 import com.daocheng.girlshop.dialog.AddWordDialog;
 import com.daocheng.girlshop.dialog.CProgressDialog;
@@ -385,9 +386,24 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
                 ((arViewHolder) holder).iv_play.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         MediaManager.pause();
                         EvaluatorManager.getInstance(self).stop();
-                        SpeechManager.getInstance(self).play(ob.getContent());
+                        if (TextUtils.isEmpty(ob.getCompose())){
+                            SpeechManager.getInstance(self).play(ob.getContent());
+                        }else {
+                            MediaManager.playSound(ob.getCompose(),
+                                    new MediaPlayer.OnCompletionListener() {
+
+                                        @Override
+                                        public void onCompletion(MediaPlayer mp) {
+//                                                showShortToast("播放完成");
+
+
+                                        }
+                                    });
+                        }
+
                     }
                 });
 

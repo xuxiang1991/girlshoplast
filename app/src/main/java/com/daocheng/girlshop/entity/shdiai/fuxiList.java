@@ -66,9 +66,16 @@ public class fuxiList extends ServiceResult{
         private int score;
         private String pic;
         private String part;
+        private String compose;
 
 
+        public String getCompose() {
+            return compose;
+        }
 
+        public void setCompose(String compose) {
+            this.compose = compose;
+        }
 
         public String getPart() {
             return part;
