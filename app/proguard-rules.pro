@@ -236,3 +236,6 @@
 -keep class com.linkedin.** { *; }
 -keep class com.android.dingtalk.share.ddsharemodule.** { *; }
 -keepattributes Signature
+
+-dontwarn cn.smssdk.**
+-keep class cn.smssdk.** {*;}

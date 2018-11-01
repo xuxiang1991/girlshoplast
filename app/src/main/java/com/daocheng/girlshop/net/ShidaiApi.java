@@ -380,6 +380,43 @@ public class ShidaiApi {
     }
 
 
+
+
+    /**
+     * 获取热门歌曲列表
+     * <p/>
+
+     *
+     * @param context
+     * @param userid
+     * @param currentPageStr
+     * @param maxCountStr
+     * @param rspCls
+     * @param netCallBack    http://121.40.90.171/cstimes/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     */
+    public static void getSongList(Context context, int type, int userid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+
+        StringBuilder sb = new StringBuilder(BASE_URL);
+        try {
+            sb.append("cstimes/app/songs?");
+            sb.append("userid=").append(userid);
+            sb.append("&currentPageStr=").append(currentPageStr).append("&maxCountStr=").append(maxCountStr)
+                    .append("&userAgent=")
+                    .append("android").append("&type=").append(type);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        NetUtils.post(context, sb.toString(), null, null, netCallBack, rspCls);
+
+
+    }
+
+
+
+
     /**
      *
      *

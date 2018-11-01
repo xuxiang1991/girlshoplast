@@ -714,6 +714,25 @@ public class Utils {
         return timeStr;
     }
 
+
+    public static long parseToTime(String shortTime) {
+        long time = 0;
+        try {
+            String[] times = shortTime.split(":");
+            int mm = Integer.parseInt(times[0]);
+            int ss = Integer.parseInt(times[1]);
+            time = (mm * 60 + ss) * 1000;
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return 0;
+        }
+
+
+        return time;
+
+    }
+
     public static String unitFormat(int i) {
         String retStr = null;
         if (i >= 0 && i < 10)

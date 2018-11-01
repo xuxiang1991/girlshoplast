@@ -159,6 +159,7 @@
 
     <!--时代 -->
     <color name="text_light_grey">#999999</color>
+    <color name="color_ececec">#ececec</color>
     <color name="text_light_dark">#333333</color>
     <color name="tv_bg_pressed">#11000000</color>
     <color name="ui_new_divider_bg">#d5d5d5</color>

@@ -25,16 +25,19 @@ import com.daocheng.girlshop.activity.BaseActivity;
 import com.daocheng.girlshop.activity.shidai.detail.RmtjActivity;
 import com.daocheng.girlshop.activity.shidai.detail.SingActivity;
 import com.daocheng.girlshop.activity.shidai.detail.dataDetailActivity;
+import com.daocheng.girlshop.activity.shidai.detail.hotSongActivity;
 import com.daocheng.girlshop.activity.shidai.detail.videoDetailActivity;
 import com.daocheng.girlshop.activity.shidai.detail.waijiaoActivity;
 import com.daocheng.girlshop.entity.ServiceResult;
 import com.daocheng.girlshop.entity.shdiai.dataListResult;
+import com.daocheng.girlshop.entity.shdiai.hotSongData;
 import com.daocheng.girlshop.net.NetUtils;
 import com.daocheng.girlshop.net.ShidaiApi;
 import com.daocheng.girlshop.utils.Config;
 import com.daocheng.girlshop.utils.Constant;
 import com.daocheng.girlshop.view.Bookends;
 import com.daocheng.girlshop.view.ClipTextView;
+import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.IOException;
@@ -89,6 +92,15 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
 
     private Bookends<baseObRecycleAdapter> mBookends;
 
+    /**
+     * 热门歌曲
+     */
+    private hotSongData hotsongdata;
+
+    private List<hotSongData.RecordBean> basehotobjects;
+    private baseHotRecycleAdapter shotRecyclerViewAdapter;
+    private Bookends<baseHotRecycleAdapter> mHotBookends;
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -125,6 +137,7 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         baseobjects = new ArrayList<dataListResult.RecordBean>();
+        basehotobjects = new ArrayList<hotSongData.RecordBean>();
         sRecyclerViewAdapter = new baseObRecycleAdapter();
         mBookends = new Bookends<>(sRecyclerViewAdapter);
 //        mBookends.addHeader(headview);
@@ -218,36 +231,72 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
 
 
     private void setData() {
-        ShidaiApi.getDataList(self, dataflag, Config.getShidaiUserInfo().getUserid(), pageNo, Constant.pageNum, dataListResult.class, new NetUtils.NetCallBack<ServiceResult>() {
-            @Override
-            public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
-                if ("0".equals(rspData.getErrcode())) {
-                    advertorialList = (dataListResult) rspData;
-                    if (pageNo == 1)
-                        baseobjects = advertorialList.getRecord();
-                    else
-                        baseobjects.addAll(advertorialList.getRecord());
-                    Log.v("ere", "fdfdf");
 
-                    mBookends.notifyDataSetChanged();
+        if (dataflag != TYPE_HOT) {
+            ShidaiApi.getDataList(self, dataflag, Config.getShidaiUserInfo().getUserid(), pageNo, Constant.pageNum, dataListResult.class, new NetUtils.NetCallBack<ServiceResult>() {
+                @Override
+                public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
+                    if ("0".equals(rspData.getErrcode())) {
 
-                    inithead();
-                } else {
-                    showShortToast(rspData.getMessage());
+                        advertorialList = (dataListResult) rspData;
+                        if (pageNo == 1)
+                            baseobjects = advertorialList.getRecord();
+                        else
+                            baseobjects.addAll(advertorialList.getRecord());
+                        Log.v("ere", "fdfdf");
+
+                        mBookends.notifyDataSetChanged();
+
+                        inithead();
+                    } else {
+                        showShortToast(rspData.getMessage());
+                    }
+                    mSwipeRefreshLayout.setRefreshing(false);
                 }
-                mSwipeRefreshLayout.setRefreshing(false);
-            }
 
-            @Override
-            public void failed(String msg) {
-                Toast.makeText(self, msg, Toast.LENGTH_LONG).show();
-                mSwipeRefreshLayout.setRefreshing(false);
-            }
-        });
+                @Override
+                public void failed(String msg) {
+                    Toast.makeText(self, msg, Toast.LENGTH_LONG).show();
+                    mSwipeRefreshLayout.setRefreshing(false);
+                }
+            });
+        } else {
+            ShidaiApi.getSongList(self, dataflag, Config.getShidaiUserInfo().getUserid(), pageNo, Constant.pageNum, hotSongData.class, new NetUtils.NetCallBack<ServiceResult>() {
+                @Override
+                public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
+                    if ("0".equals(rspData.getErrcode())) {
+
+                        hotsongdata = (hotSongData) rspData;
+                        if (pageNo == 1) {
+                            shotRecyclerViewAdapter = new baseHotRecycleAdapter();
+                            mHotBookends = new Bookends<>(shotRecyclerViewAdapter);
+                            mRecyclerView.setAdapter(mHotBookends);
+                            basehotobjects = hotsongdata.getRecord();
+                        } else
+                            basehotobjects.addAll(hotsongdata.getRecord());
+                        Log.v("ere", "fdfdf");
+
+                        mHotBookends.notifyDataSetChanged();
+
+                        inithead();
+                    } else {
+                        showShortToast(rspData.getMessage());
+                    }
+                    mSwipeRefreshLayout.setRefreshing(false);
+                }
+
+                @Override
+                public void failed(String msg) {
+                    Toast.makeText(self, msg, Toast.LENGTH_LONG).show();
+                    mSwipeRefreshLayout.setRefreshing(false);
+                }
+            });
+        }
+
     }
 
     private void inithead() {
-        if (!TextUtils.isEmpty(advertorialList.getVideo())) {
+        if (dataflag!=3&&advertorialList!=null&&!TextUtils.isEmpty(advertorialList.getVideo())) {
 
             if (!TextUtils.isEmpty(advertorialList.getVedio_pic()))
                 ImageLoader.getInstance().displayImage(advertorialList.getVedio_pic(), custom_videoplayer.thumbImageView);
@@ -507,4 +556,85 @@ public class DataListActivity extends BaseActivity implements View.OnClickListen
             return baseobjects.size();
         }
     }
+
+
+    public class baseHotRecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+
+        public class hotViewHolder extends RecyclerView.ViewHolder {
+
+            ClipTextView tv_title;
+            ImageView iv_image;
+            ClipTextView tv_content;
+            TextView tv_time;
+            RelativeLayout rl_item;
+
+            public hotViewHolder(View itemView) {
+                super(itemView);
+                rl_item = (RelativeLayout) itemView.findViewById(R.id.rl_item);
+                tv_title = (ClipTextView) itemView.findViewById(R.id.tv_title);
+                iv_image = (ImageView) itemView.findViewById(R.id.iv_image);
+                tv_content = (ClipTextView) itemView.findViewById(R.id.tv_content);
+                tv_time = (TextView) itemView.findViewById(R.id.tv_time);
+                tv_title.setTextIsSelectable(true);
+                tv_content.setTextIsSelectable(true);
+
+
+            }
+        }
+
+
+        @Override
+        public int getItemViewType(int position) {
+            // TODO Auto-generated method stub
+
+            return TYPE_HOT;
+
+        }
+
+
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View inflatedView = LayoutInflater.from(self).inflate(R.layout.item_shidai_article_simple, parent, false);
+            return new hotViewHolder(inflatedView);
+
+
+        }
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+
+            final hotSongData.RecordBean ob = getItem(position);
+
+            ImageLoader.getInstance().displayImage(ob.getCover(), ((hotViewHolder) holder).iv_image);
+            ((hotViewHolder) holder).tv_content.setText(ob.getIntroduce());
+            ((hotViewHolder) holder).tv_content.setTextIsSelectable(true);
+            ((hotViewHolder) holder).tv_title.setText(ob.getTitle());
+            ((hotViewHolder) holder).tv_time.setVisibility(View.GONE);
+            if (dataflag == TYPE_HOT) {
+                ((hotViewHolder) holder).rl_item.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(self, hotSongActivity.class);
+                        intent.putExtra("musicData", new Gson().toJson(ob));
+                        startActivity(intent);
+                    }
+                });
+
+
+            }
+
+        }
+
+        public hotSongData.RecordBean getItem(int position) {
+            return basehotobjects.get(position);
+        }
+
+        @Override
+        public int getItemCount() {
+            return basehotobjects.size();
+        }
+    }
+
+
 }

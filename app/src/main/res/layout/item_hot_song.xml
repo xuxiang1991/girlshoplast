@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
+    android:layout_marginTop="12dp"
+    android:background="@drawable/shape_hotsong_item"
+    android:orientation="vertical">
+
+    <com.daocheng.girlshop.view.ClipTextView
+        android:id="@+id/tv_content_orginal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@null"
+        android:textColor="@color/text_light_grey"
+        android:textSize="14sp"
+
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/text_light_grey"></View>
+
+    <com.daocheng.girlshop.view.ClipTextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@null"
+        android:textColor="@color/text_light_grey"
+        android:textSize="14sp"
+
+        />
+
+</LinearLayout>
