@@ -239,6 +239,14 @@
             android:screenOrientation="portrait">
 
         </activity>
+        <activity
+            android:name=".activity.shidai.detail.WordDetailActivity"
+            android:configChanges="locale|layoutDirection"
+            android:exported="true"
+            android:launchMode="standard"
+            android:screenOrientation="portrait">
+
+        </activity>
 
 
         <activity

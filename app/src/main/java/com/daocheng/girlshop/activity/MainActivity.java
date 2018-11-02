@@ -24,6 +24,7 @@ import com.daocheng.girlshop.entity.ServiceResult;
 import com.daocheng.girlshop.entity.shdiai.Logo;
 import com.daocheng.girlshop.entity.shdiai.UpdateApk;
 import com.daocheng.girlshop.fragment.Frag;
+import com.daocheng.girlshop.fragment.shidai.WordClassFragment;
 import com.daocheng.girlshop.fragment.shidai.ciHuiFragment;
 import com.daocheng.girlshop.fragment.shidai.dingKeFragment;
 import com.daocheng.girlshop.fragment.shidai.fuxiFragment;
@@ -60,7 +61,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private Fragment homeFragment;
 
     private myKeFragment mykefragment;
-    private ciHuiFragment cihuifragment;
+    private WordClassFragment cihuifragment;
     private shidaiHomeFragment shidaihomefragment;
     private fuxiFragment fuxifragment;
 
@@ -264,7 +265,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 return shidaihomefragment;
             } else if (position == 1) {
                 if (cihuifragment == null)
-                    cihuifragment = new ciHuiFragment();
+                    cihuifragment = new WordClassFragment();
                 return cihuifragment;
             } else if (position == 2) {
                 if (mystudy == null) {

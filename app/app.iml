@@ -164,6 +164,7 @@
     <orderEntry type="library" name="Gradle: com.mob:SDKWrapper:2018.0801.1824@jar" level="project" />
     <orderEntry type="library" name="Gradle: cn.smssdk:SMSSDK-3.2.1.1" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:runtime-1.0.0" level="project" />
+    <orderEntry type="module" module-name="flowlayout-lib" />
     <orderEntry type="module" module-name="playerview" />
     <orderEntry type="module" module-name="library" />
     <orderEntry type="module" module-name="jcvideoplayer-lib" />

@@ -289,6 +289,68 @@ public class ShidaiApi {
 
     }
 
+
+
+
+    /**
+     * 获取我的词汇
+     *
+     * @param context
+     * @param userid
+     * @param currentPageStr
+     * @param maxCountStr
+     * @param rspCls
+     * @param netCallBack    http://121.40.90.171/cstimes/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     */
+    public static void getWordList(Context context,String level, int userid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+
+        StringBuilder sb = new StringBuilder(BASE_URL);
+        try {
+            sb.append("cstimes/app/wordLesson?");
+            sb.append("userid=").append(userid).append("&levelname=").append(level);
+            sb.append("&currentPageStr=").append(currentPageStr).append("&maxCountStr=").append(maxCountStr)
+                    .append("&userAgent=")
+                    .append("android");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        NetUtils.post(context, sb.toString(), null, null, netCallBack, rspCls);
+
+
+    }
+
+    /**
+     * 获取等级
+     *
+     * @param context
+     * @param userid
+     * @param rspCls
+     * @param netCallBack    http://121.40.90.171/cstimes/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     */
+    public static void getLevel(Context context, int userid, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+
+        StringBuilder sb = new StringBuilder(BASE_URL);
+        try {
+            sb.append("cstimes/app/wordLevel?");
+            sb.append("userid=").append(userid);
+            sb.append("&userAgent=")
+                    .append("android");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        NetUtils.post(context, sb.toString(), null, "加载中。。。", netCallBack, rspCls);
+
+
+    }
+
+
+
     /**
      * 删除词汇
      *
