@@ -545,39 +545,39 @@ public class YyksActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
-    private void clip(final String txt) {
-        ActionSheet.createBuilder(self, ((FragmentActivity) self).getSupportFragmentManager())
-                .setCancelButtonTitle("取消")
-                .setOtherButtonTitles("加入到生词本")
-                .setCancelableOnTouchOutside(true)
-                .setListener(new ActionSheet.ActionSheetListener() {
-                    @Override
-                    public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
-
-                    }
-
-                    @Override
-                    public void onOtherButtonClick(ActionSheet actionSheet, int index) {
-                        // 调用服务器接口上传
-                        ShidaiApi.addtoWordbooke(self, Config.getShidaiUserInfo().getUserid(), txt, ServiceResult.class, new NetUtils.NetCallBack<ServiceResult>() {
-                            @Override
-                            public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
-                                if ("0".equals(rspData.getErrcode())) {
-
-//                                    Toast.makeText(self, "加入生词表成功", Toast.LENGTH_SHORT).show();
-
-
-                                }
-                            }
-
-                            @Override
-                            public void failed(String msg) {
-
-                            }
-                        });
-                    }
-                }).show();
-    }
+//    private void clip(final String txt) {
+//        ActionSheet.createBuilder(self, ((FragmentActivity) self).getSupportFragmentManager())
+//                .setCancelButtonTitle("取消")
+//                .setOtherButtonTitles("加入到生词本")
+//                .setCancelableOnTouchOutside(true)
+//                .setListener(new ActionSheet.ActionSheetListener() {
+//                    @Override
+//                    public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onOtherButtonClick(ActionSheet actionSheet, int index) {
+//                        // 调用服务器接口上传
+//                        ShidaiApi.addtoWordbooke(self, Config.getShidaiUserInfo().getUserid(), txt, ServiceResult.class, new NetUtils.NetCallBack<ServiceResult>() {
+//                            @Override
+//                            public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
+//                                if ("0".equals(rspData.getErrcode())) {
+//
+////                                    Toast.makeText(self, "加入生词表成功", Toast.LENGTH_SHORT).show();
+//
+//
+//                                }
+//                            }
+//
+//                            @Override
+//                            public void failed(String msg) {
+//
+//                            }
+//                        });
+//                    }
+//                }).show();
+//    }
 
     private boolean isComplete() {
         for (int i = 0; i < baseobjects.size(); i++) {

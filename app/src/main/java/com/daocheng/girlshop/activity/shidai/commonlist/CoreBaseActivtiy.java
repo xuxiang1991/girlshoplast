@@ -77,7 +77,7 @@ public abstract class CoreBaseActivtiy<T extends CoreBasePresenter, E extends Co
         MobclickAgent.onResume(this);
         JPushInterface.onResume(this);
 
-        BoardManager.init(self);
+//        BoardManager.init(self);
     }
 
 

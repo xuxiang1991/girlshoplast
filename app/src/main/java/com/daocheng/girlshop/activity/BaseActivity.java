@@ -74,7 +74,7 @@ public abstract class BaseActivity extends FragmentActivity {
         MobclickAgent.onResume(this);
         JPushInterface.onResume(this);
 
-        BoardManager.init(self);
+//        BoardManager.init(self);
     }
 
 
