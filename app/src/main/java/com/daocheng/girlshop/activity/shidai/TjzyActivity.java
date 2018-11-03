@@ -30,7 +30,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.baoyz.actionsheet.ActionSheet;
 import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.BaseActivity;
 import com.daocheng.girlshop.dialog.AddWordDialog;
@@ -620,6 +619,9 @@ public class TjzyActivity extends BaseActivity implements View.OnClickListener {
 
                     if (intent != null) {
                         int index = intent.getIntExtra("index", 0);
+                        if (baseobjects.size()<=index){
+                            return;
+                        }
                         int oldscope = baseobjects.get(index).getScore();
                         int currentscope = intent.getIntExtra("code", 0);
                         baseobjects.get(index).setScore(currentscope > oldscope ? currentscope : oldscope);

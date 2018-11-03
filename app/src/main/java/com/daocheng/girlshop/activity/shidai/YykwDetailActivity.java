@@ -27,7 +27,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.baoyz.actionsheet.ActionSheet;
 import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.BaseActivity;
 import com.daocheng.girlshop.activity.shidai.detail.SingActivity;
@@ -214,7 +213,7 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                 if ("0".equals(rspData.getErrcode())) {
                     advertorialList = (fuxiList) rspData;
-                     if (pageNo == 1)
+                    if (pageNo == 1)
                         baseobjects = advertorialList.getRecord();
                     else
                         baseobjects.addAll(advertorialList.getRecord());
@@ -225,7 +224,7 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
                 } else {
                     showShortToast(rspData.getMessage());
                 }
-                 mSwipeRefreshLayout.setRefreshing(false);
+                mSwipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
@@ -284,14 +283,12 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
 
             if (holder instanceof arViewHolder) {
                 final fuxiList.RecordBean ob = getItem(position);
-                if (TextUtils.isEmpty(ob.getPic()))
-                {
+                if (TextUtils.isEmpty(ob.getPic())) {
 //                    ImageLoader.getInstance().displayImage("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1493748101887&di=9000fa326aa8d95ef3f111a0a2fc0e6b&imgtype=0&src=http%3A%2F%2Fs6.yiban.cn%2Ftopic%2Fa4%2Fe8%2Fd1%2F84%2F1492ecb007abbd2d.jpg",  ((arViewHolder) holder).iv_img);
                     ((arViewHolder) holder).iv_img.setVisibility(View.GONE);
-                }else
-                {
-                    Log.e("bitmap_url",ob.getPic());
-                    ImageLoader.getInstance().displayImage(ob.getPic(), ((arViewHolder) holder).iv_img,displayoption(), new ImageLoadingListener() {
+                } else {
+                    Log.e("bitmap_url", ob.getPic());
+                    ImageLoader.getInstance().displayImage(ob.getPic(), ((arViewHolder) holder).iv_img, displayoption(), new ImageLoadingListener() {
                         @Override
                         public void onLoadingStarted(String s, View view) {
 
@@ -305,23 +302,22 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
                         @Override
                         public void onLoadingComplete(String s, View view, Bitmap bitmap) {
 
+                            if (bitmap==null||bitmap.isRecycled()){
+                                return;
+                            }
                             ((arViewHolder) holder).iv_img.setVisibility(View.VISIBLE);
-                            if (bitmap==null||bitmap.getWidth()==0)
-                            {
+                            if (bitmap == null || bitmap.getWidth() == 0) {
                                 ((arViewHolder) holder).iv_img.setVisibility(View.GONE);
                             }
-                            Log.e("bitmap_url","width="+Config.width+"-height:"+Config.height);
-                            Log.e("bitmap_url","bitmap->width="+bitmap.getWidth()+"-height:"+bitmap.getHeight());
-                            Log.e("bitmap_url","Scalebitmap->width="+Config.width+"-height:"+bitmap.getHeight()*Config.width/bitmap.getWidth());
-                            if (bitmap.getWidth()>Config.width)
-                            {
-                                ((arViewHolder) holder).iv_img.setImageBitmap(Config.scaleBitmap(bitmap,Config.width,bitmap.getHeight()*Config.width/bitmap.getWidth()));
-                            }else if (bitmap.getWidth()<(Config.width/2))
-                            {
-                                ((arViewHolder) holder).iv_img.setImageBitmap(Config.scaleBitmap(bitmap,Config.width/2,bitmap.getHeight()*(Config.width/2)/bitmap.getWidth()));
+                            Log.e("bitmap_url", "width=" + Config.width + "-height:" + Config.height);
+                            Log.e("bitmap_url", "bitmap->width=" + bitmap.getWidth() + "-height:" + bitmap.getHeight());
+                            Log.e("bitmap_url", "Scalebitmap->width=" + Config.width + "-height:" + bitmap.getHeight() * Config.width / bitmap.getWidth());
+                            if (bitmap.getWidth() > Config.width) {
+                                ((arViewHolder) holder).iv_img.setImageBitmap(Config.scaleBitmap(bitmap, Config.width, bitmap.getHeight() * Config.width / bitmap.getWidth()));
+                            } else if (bitmap.getWidth() < (Config.width / 2)) {
+                                ((arViewHolder) holder).iv_img.setImageBitmap(Config.scaleBitmap(bitmap, Config.width / 2, bitmap.getHeight() * (Config.width / 2) / bitmap.getWidth()));
 
-                            }else
-                            {
+                            } else {
                                 ((arViewHolder) holder).iv_img.setImageBitmap(bitmap);
                             }
                         }
@@ -389,9 +385,9 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
 
                         MediaManager.pause();
                         EvaluatorManager.getInstance(self).stop();
-                        if (TextUtils.isEmpty(ob.getCompose())){
+                        if (TextUtils.isEmpty(ob.getCompose())) {
                             SpeechManager.getInstance(self).play(ob.getContent());
-                        }else {
+                        } else {
                             MediaManager.playSound(ob.getCompose(),
                                     new MediaPlayer.OnCompletionListener() {
 
@@ -461,8 +457,7 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
         }
     }
 
-    private DisplayImageOptions displayoption()
-    {
+    private DisplayImageOptions displayoption() {
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheInMemory(true).cacheOnDisc(true)
 //                .showImageOnLoading(R.drawable.loading_photo)
@@ -472,7 +467,7 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
     }
 
 
-    private void uploadhead(final int id, final scoreDialog mdialog, final String sharetitle,final int currentscope) {
+    private void uploadhead(final int id, final scoreDialog mdialog, final String sharetitle, final int currentscope) {
         iscanshare = false;
         mdialog.setCanshare(iscanshare);
 
@@ -495,7 +490,7 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
                     String token = recode;
                     String key = file.replace(dir, "");
 
-                    shareurl = baseurl + "key=" + key + "&id=" + id + "&userid=" + Config.getShidaiUserInfo().getUserid()+"&score="+currentscope;
+                    shareurl = baseurl + "key=" + key + "&id=" + id + "&userid=" + Config.getShidaiUserInfo().getUserid() + "&score=" + currentscope;
                     iscanshare = true;
                     mdialog.setCanshare(true);
                     mdialog.setUrl(shareurl, sharetitle);
@@ -557,10 +552,12 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
                         if (currentscope > oldscope)
                             updateScope(baseobjects.get(index).getId(), currentscope);
 
-                        uploadhead(baseobjects.get(index).getId(), md, baseobjects.get(index).getContent(),currentscope);
+                        uploadhead(baseobjects.get(index).getId(), md, baseobjects.get(index).getContent(), currentscope);
 
-                        lastEvl.setBackgroundResource(R.drawable.icon_talk);
-                        lastEvl = null;
+                        if (lastEvl != null) {
+                            lastEvl.setBackgroundResource(R.drawable.icon_talk);
+                            lastEvl = null;
+                        }
                     }
 
                 }
