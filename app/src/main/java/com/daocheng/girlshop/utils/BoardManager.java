@@ -20,28 +20,29 @@ import java.io.IOException;
 public class BoardManager {
 
 
-    public static String clipboard="";
+    public static String clipboard = "";
 
 
-    public synchronized static void init(final Context mcontext)
-    {
+    public synchronized static void init(final Context mcontext) {
         final ClipboardManager cm = (ClipboardManager) mcontext.getSystemService(mcontext.CLIPBOARD_SERVICE);
 
         cm.addPrimaryClipChangedListener(new ClipboardManager.OnPrimaryClipChangedListener() {
             @Override
             public void onPrimaryClipChanged() {
-                if (((Activity)mcontext)!=ActivityManager.getScreenManager().currentActivity())
-                return;
-
+                if (((Activity) mcontext) != ActivityManager.getScreenManager().currentActivity())
+                    return;
 
 
                 ClipData data = cm.getPrimaryClip();
+                if (data == null) {
+                    return;
+                }
                 ClipData.Item item = data.getItemAt(0);
                 // 监听剪切板内容变化，获得文字
                 final String text = item.getText().toString();
                 if (text.equals(clipboard))
                     return;
-                clipboard=text;
+                clipboard = text;
 //                Toast.makeText(MainActivity.this, text, Toast.LENGTH_LONG).show();
                 ActionSheet.createBuilder(mcontext, ((FragmentActivity) mcontext).getSupportFragmentManager())
                         .setCancelButtonTitle("取消")
@@ -50,7 +51,7 @@ public class BoardManager {
                         .setListener(new ActionSheet.ActionSheetListener() {
                             @Override
                             public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
-                                clipboard="";
+                                clipboard = "";
                             }
 
                             @Override
