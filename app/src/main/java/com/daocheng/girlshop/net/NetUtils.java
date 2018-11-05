@@ -77,6 +77,7 @@ public class NetUtils {
         JsonObjectRequest request = new JsonObjectRequest( type, params, new com.duowan.mobile.netroid.Listener<JSONObject>() {
             @Override
             public void onSuccess(JSONObject jsonObject) {
+                Log.e("xx_api",jsonObject.toString());
                 progressDialog.dismiss();
 //				int retcode = getRetCode(jsonObject);
 //				if (retcode != 0) {

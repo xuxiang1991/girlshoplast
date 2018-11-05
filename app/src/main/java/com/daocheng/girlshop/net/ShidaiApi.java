@@ -351,6 +351,38 @@ public class ShidaiApi {
 
 
 
+
+    /**
+     * 获取词汇详情
+     *
+     * @param context
+     * @param userid
+     * @param rspCls
+     * @param netCallBack    http://121.40.90.171/cstimes/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     */
+    public static void getWordDetail(Context context,int lessonId, int userid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+
+        StringBuilder sb = new StringBuilder(BASE_URL);
+        try {
+            sb.append("cstimes/app/passwords?");
+            sb.append("userid=").append(userid).append("&lessonId=").append(lessonId);
+            sb.append("&currentPageStr=").append(currentPageStr).append("&maxCountStr=").append(maxCountStr)
+                    .append("&userAgent=")
+                    .append("android");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        NetUtils.post(context, sb.toString(), null, "加载中。。。", netCallBack, rspCls);
+
+
+    }
+
+
+
+
     /**
      * 删除词汇
      *

@@ -22,6 +22,7 @@ import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.shidai.detail.WordDetailActivity;
 import com.daocheng.girlshop.dialog.LevelDialog;
 import com.daocheng.girlshop.entity.ServiceResult;
+import com.daocheng.girlshop.entity.shdiai.WordDetailBean;
 import com.daocheng.girlshop.entity.shdiai.WordLevel;
 import com.daocheng.girlshop.entity.shdiai.WordList;
 import com.daocheng.girlshop.entity.shdiai.ciHui;
@@ -31,6 +32,7 @@ import com.daocheng.girlshop.net.ShidaiApi;
 import com.daocheng.girlshop.utils.Config;
 import com.daocheng.girlshop.utils.Constant;
 import com.daocheng.girlshop.voice.speech.SpeechManager;
+import com.google.gson.Gson;
 import com.zhy.view.flowlayout.TagFlowLayout;
 
 import java.io.IOException;
@@ -43,7 +45,7 @@ import java.util.List;
  * 创建人：xuxiang
  * 修改人：
  */
-public class WordClassFragment extends BaseFragment implements View.OnClickListener{
+public class WordClassFragment extends BaseFragment implements View.OnClickListener {
 
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
@@ -51,7 +53,7 @@ public class WordClassFragment extends BaseFragment implements View.OnClickListe
     private LinearLayoutManager layoutManager;
     private List<WordList.RecordBean> baseobjects;
     private baseObRecycleAdapter sRecyclerViewAdapter;
-    private TextView tv_level,tv_changeLevel;
+    private TextView tv_level, tv_changeLevel;
 
 
     private TextView tv_center;
@@ -61,7 +63,8 @@ public class WordClassFragment extends BaseFragment implements View.OnClickListe
     private int lastVisibleItem;
 
     private boolean isPrepared = false;
-    private WordLevel.RecordBean cLevel=null;
+    private WordLevel.RecordBean cLevel = null;
+    private WordLevel alist;
 
 
     @Override
@@ -73,8 +76,8 @@ public class WordClassFragment extends BaseFragment implements View.OnClickListe
     protected void setupViews(View view) {
 
         tv_center = (TextView) view.findViewById(R.id.tv_center);
-        tv_level=view.findViewById(R.id.tv_level);
-        tv_changeLevel=view.findViewById(R.id.tv_changeLevel);
+        tv_level = view.findViewById(R.id.tv_level);
+        tv_changeLevel = view.findViewById(R.id.tv_changeLevel);
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.activity_main_recyclerview);
         layoutManager = new LinearLayoutManager(self);
@@ -151,7 +154,7 @@ public class WordClassFragment extends BaseFragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tv_changeLevel:
                 getLeveDialog();
 
@@ -166,7 +169,7 @@ public class WordClassFragment extends BaseFragment implements View.OnClickListe
 //            mSwipeRefreshLayout.setRefreshing(false);
 //            return;
 //        }
-        ShidaiApi.getWordList(self,"vip1", Config.getShidaiUserInfo().getUserid(), pageNo, Constant.found_pageNum, WordList.class, new NetUtils.NetCallBack<ServiceResult>() {
+        ShidaiApi.getWordList(self, "vip1", Config.getShidaiUserInfo().getUserid(), pageNo, Constant.found_pageNum, WordList.class, new NetUtils.NetCallBack<ServiceResult>() {
             @Override
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
 
@@ -195,18 +198,18 @@ public class WordClassFragment extends BaseFragment implements View.OnClickListe
     }
 
 
-    private void getLeveDialog(){
+    private void getLeveDialog() {
         ShidaiApi.getLevel(self, Config.getShidaiUserInfo().getUserid(), WordLevel.class, new NetUtils.NetCallBack<ServiceResult>() {
             @Override
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
 
                 if ("0".equals(rspData.getErrcode())) {
-                    WordLevel alist = (WordLevel) rspData;
+                    alist = (WordLevel) rspData;
 
-                    LevelDialog dialog=new LevelDialog(self, alist.getRecord(), new LevelDialog.ShowLevel() {
+                    LevelDialog dialog = new LevelDialog(self, alist.getRecord(), new LevelDialog.ShowLevel() {
                         @Override
                         public void back(WordLevel.RecordBean level) {
-                            cLevel=level;
+                            cLevel = level;
                             setData();
                         }
                     });
@@ -227,7 +230,6 @@ public class WordClassFragment extends BaseFragment implements View.OnClickListe
     public class baseObRecycleAdapter extends RecyclerSwipeAdapter<RecyclerView.ViewHolder> {
 
 
-
         @Override
         public int getSwipeLayoutResourceId(int position) {
             return R.id.test_swipe_swipe;
@@ -238,11 +240,12 @@ public class WordClassFragment extends BaseFragment implements View.OnClickListe
             TextView tv_lesson1;
             TextView tv_wordcount;
             LinearLayout itemview;
+
             public arViewHolder(View itemView) {
                 super(itemView);
                 tv_lesson1 = (TextView) itemView.findViewById(R.id.tv_lesson1);
                 tv_wordcount = (TextView) itemView.findViewById(R.id.tv_wordcount);
-                itemview= (LinearLayout) itemView.findViewById(R.id.itemview);
+                itemview = (LinearLayout) itemView.findViewById(R.id.itemview);
 
             }
         }
@@ -261,12 +264,12 @@ public class WordClassFragment extends BaseFragment implements View.OnClickListe
             if (holder instanceof baseObRecycleAdapter.arViewHolder) {
                 final WordList.RecordBean ob = getItem(position);
                 ((baseObRecycleAdapter.arViewHolder) holder).tv_lesson1.setText(ob.getTitle());
-                ((baseObRecycleAdapter.arViewHolder) holder).tv_wordcount.setText(ob.getNum()+"个单词");
+                ((baseObRecycleAdapter.arViewHolder) holder).tv_wordcount.setText(ob.getNum() + "个单词");
                 ((baseObRecycleAdapter.arViewHolder) holder).itemview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        getWordDetail(position);
 
-                        startActivity(new Intent(self,WordDetailActivity.class));
 
                     }
                 });
@@ -284,6 +287,15 @@ public class WordClassFragment extends BaseFragment implements View.OnClickListe
             return baseobjects.size();
         }
     }
-    
-    
-}
+
+
+    private void getWordDetail(int position) {
+        Gson gson = new Gson();
+        String wordlist = gson.toJson(alist);
+        Intent intent = new Intent();
+        intent.putExtra("position", position);
+        intent.putExtra("wordlist", wordlist);
+        startActivity(new Intent(self, WordDetailActivity.class));
+    }
+
+    }

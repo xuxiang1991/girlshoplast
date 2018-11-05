@@ -42,7 +42,50 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/shape_word_grey_bg"></View>
 
+
+        <LinearLayout
+            android:id="@+id/rl_complete"
+            android:layout_width="match_parent"
+            android:layout_height="304dp"
+            android:layout_below="@id/tv_count"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:background="@drawable/shape_word_white_bg"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="center"
+                android:src="@drawable/img_word_complete"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="恭喜你"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/text_light_dark"
+                android:layout_marginBottom="16dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:text="恭喜你完成此课的所有单词"
+                android:textColor="@color/text_light_grey"
+                />
+
+
+        </LinearLayout>
+
         <RelativeLayout
+            android:id="@+id/rl_info"
             android:layout_width="match_parent"
             android:layout_height="304dp"
             android:layout_below="@id/tv_count"
