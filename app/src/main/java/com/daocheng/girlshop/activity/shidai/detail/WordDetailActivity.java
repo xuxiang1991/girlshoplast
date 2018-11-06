@@ -1,6 +1,7 @@
 package com.daocheng.girlshop.activity.shidai.detail;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,6 +16,7 @@ import com.daocheng.girlshop.entity.ServiceResult;
 import com.daocheng.girlshop.entity.shdiai.WordDetailBean;
 import com.daocheng.girlshop.entity.shdiai.WordLevel;
 import com.daocheng.girlshop.entity.shdiai.WordList;
+import com.daocheng.girlshop.media.recoder.MediaManager;
 import com.daocheng.girlshop.net.NetUtils;
 import com.daocheng.girlshop.net.ShidaiApi;
 import com.daocheng.girlshop.utils.Config;
@@ -63,12 +65,7 @@ public class WordDetailActivity extends BaseActivity implements View.OnClickList
             case R.id.tv_left:
                 finish();
                 break;
-//            case R.id.tv_know:
-//                break;
-//            case R.id.tv_unknow:
-//                break;
-//            case R.id.tv_next:
-//                break;
+
 
         }
 
@@ -111,7 +108,8 @@ public class WordDetailActivity extends BaseActivity implements View.OnClickList
 
         String wordDetailstr = getIntent().getStringExtra("wordlist");
         if (!TextUtils.isEmpty(wordDetailstr)) {
-            wordList = new Gson().fromJson(wordDetailstr, new TypeToken<List<WordList.RecordBean>>(){}.getType());
+            wordList = new Gson().fromJson(wordDetailstr, new TypeToken<List<WordList.RecordBean>>() {
+            }.getType());
         }
         position = getIntent().getIntExtra("position", 0);
 
@@ -130,7 +128,7 @@ public class WordDetailActivity extends BaseActivity implements View.OnClickList
 
 
     private void setData() {
-        if (wordDetail != null&&positionDetail<wordDetail.getRecord().size()) {
+        if (wordDetail != null && positionDetail < wordDetail.getRecord().size()) {
             WordDetailBean.RecordBean bean = wordDetail.getRecord().get(positionDetail);
             tv_count.setText((positionDetail + 1) + "/" + wordDetail.getRecord().size());
             currentBean = bean;
@@ -141,15 +139,15 @@ public class WordDetailActivity extends BaseActivity implements View.OnClickList
     }
 
 
-    private void setWordInfo(WordDetailBean.RecordBean bean) {
+    private void setWordInfo(final WordDetailBean.RecordBean bean) {
 
         tv_word.setText(bean.getWord_name());
-        tv_info1.setText("英[" + bean.getPh_en()+"]");
-        tv_info2.setText("美[" + bean.getPh_am()+"]");
+        tv_info1.setText("英[" + bean.getPh_en() + "]");
+        tv_info2.setText("美[" + bean.getPh_am() + "]");
         String trans = "";
         for (int i = 0; i < bean.getParts().size(); i++) {
             WordDetailBean.RecordBean.PartsBean pBean = bean.getParts().get(i);
-            trans += pBean.getPart() ;
+            trans += pBean.getPart();
             for (int j = 0; j < pBean.getMeans().size(); j++) {
                 trans += pBean.getMeans().get(j) + ";";
             }
@@ -157,6 +155,30 @@ public class WordDetailActivity extends BaseActivity implements View.OnClickList
         }
         tv_trans.setText(trans);
         tv_trans.setVisibility(View.INVISIBLE);
+        tv_play1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MediaManager.playSound(bean.getPh_en_mp3(),
+                        new MediaPlayer.OnCompletionListener() {
+
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                            }
+                        });
+            }
+        });
+        tv_play2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MediaManager.playSound(bean.getPh_am_mp3(),
+                        new MediaPlayer.OnCompletionListener() {
+
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                            }
+                        });
+            }
+        });
 
     }
 
@@ -236,7 +258,7 @@ public class WordDetailActivity extends BaseActivity implements View.OnClickList
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                 if ("0".equals(rspData.getErrcode())) {
                     wordDetail = (WordDetailBean) rspData;
-                    positionDetail=0;
+                    positionDetail = 0;
                     setData();
 
 
