@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,8 +19,10 @@ import com.daocheng.girlshop.net.NetUtils;
 import com.daocheng.girlshop.net.ShidaiApi;
 import com.daocheng.girlshop.utils.Config;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * 类名称：我的单词
@@ -39,9 +43,11 @@ public class WordDetailActivity extends BaseActivity implements View.OnClickList
     private TextView tv_play2, tv_info2;
     private TextView tv_trans;
     private TextView tv_know, tv_unknow, tv_next;
+    private RelativeLayout rl_info;
+    private LinearLayout rl_complete;
 
     private WordDetailBean wordDetail;
-    private WordList wordList;
+    private List<WordList.RecordBean> wordList;
     private int position;
 
     /**
@@ -55,13 +61,14 @@ public class WordDetailActivity extends BaseActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_left:
+                finish();
                 break;
-            case R.id.tv_know:
-                break;
-            case R.id.tv_unknow:
-                break;
-            case R.id.tv_next:
-                break;
+//            case R.id.tv_know:
+//                break;
+//            case R.id.tv_unknow:
+//                break;
+//            case R.id.tv_next:
+//                break;
 
         }
 
@@ -80,7 +87,9 @@ public class WordDetailActivity extends BaseActivity implements View.OnClickList
         tv_left.setOnClickListener(this);
 
         tv_center = (TextView) findViewById(R.id.tv_center);
-
+        tv_center.setText("课程详情");
+        rl_info = findViewById(R.id.rl_info);
+        rl_complete = findViewById(R.id.rl_complete);
         tv_count = findViewById(R.id.tv_count);
         tv_word = findViewById(R.id.tv_word);
         tv_play1 = findViewById(R.id.tv_play1);
@@ -102,7 +111,7 @@ public class WordDetailActivity extends BaseActivity implements View.OnClickList
 
         String wordDetailstr = getIntent().getStringExtra("wordlist");
         if (!TextUtils.isEmpty(wordDetailstr)) {
-            wordList = new Gson().fromJson(wordDetailstr, WordList.class);
+            wordList = new Gson().fromJson(wordDetailstr, new TypeToken<List<WordList.RecordBean>>(){}.getType());
         }
         position = getIntent().getIntExtra("position", 0);
 
@@ -112,8 +121,8 @@ public class WordDetailActivity extends BaseActivity implements View.OnClickList
     @Override
     protected void initialized() {
         getIntentData();
-        if (wordList != null && wordList.getRecord().size() > 0 && position < wordList.getRecord().size()) {
-            getWordDetail(wordList.getRecord().get(position));
+        if (wordList != null && wordList.size() > 0 && position < wordList.size()) {
+            getWordDetail(wordList.get(position));
         }
 
 
@@ -121,25 +130,26 @@ public class WordDetailActivity extends BaseActivity implements View.OnClickList
 
 
     private void setData() {
-        if (wordDetail != null) {
+        if (wordDetail != null&&positionDetail<wordDetail.getRecord().size()) {
             WordDetailBean.RecordBean bean = wordDetail.getRecord().get(positionDetail);
             tv_count.setText((positionDetail + 1) + "/" + wordDetail.getRecord().size());
             currentBean = bean;
             setWordInfo(bean);
-        }
 
+        }
+        setWordFoot();
     }
 
 
     private void setWordInfo(WordDetailBean.RecordBean bean) {
 
         tv_word.setText(bean.getWord_name());
-        tv_info1.setText("英" + bean.getPh_en());
-        tv_info2.setText("美" + bean.getPh_am());
+        tv_info1.setText("英[" + bean.getPh_en()+"]");
+        tv_info2.setText("美[" + bean.getPh_am()+"]");
         String trans = "";
         for (int i = 0; i < bean.getParts().size(); i++) {
             WordDetailBean.RecordBean.PartsBean pBean = bean.getParts().get(i);
-            trans += pBean.getPart() + ":";
+            trans += pBean.getPart() ;
             for (int j = 0; j < pBean.getMeans().size(); j++) {
                 trans += pBean.getMeans().get(j) + ";";
             }
@@ -151,7 +161,9 @@ public class WordDetailActivity extends BaseActivity implements View.OnClickList
     }
 
     private void setWordFoot() {
-        if (positionDetail<wordDetail.getRecord().size()){
+        if (positionDetail < wordDetail.getRecord().size()) {
+            rl_info.setVisibility(View.VISIBLE);
+            rl_complete.setVisibility(View.GONE);
             tv_know.setText("认识");
             tv_unknow.setText("不认识");
             tv_know.setVisibility(View.VISIBLE);
@@ -172,6 +184,7 @@ public class WordDetailActivity extends BaseActivity implements View.OnClickList
                     tv_unknow.setVisibility(View.GONE);
                     tv_know.setVisibility(View.GONE);
                     tv_next.setVisibility(View.VISIBLE);
+                    tv_next.setText("下一步");
                 }
             });
             tv_next.setOnClickListener(new View.OnClickListener() {
@@ -181,7 +194,36 @@ public class WordDetailActivity extends BaseActivity implements View.OnClickList
                     setData();
                 }
             });
-        }else {
+        } else {
+            rl_info.setVisibility(View.GONE);
+            rl_complete.setVisibility(View.VISIBLE);
+
+            tv_know.setText("重测");
+            tv_unknow.setText("下一课程");
+            tv_know.setVisibility(View.VISIBLE);
+            tv_unknow.setVisibility(View.VISIBLE);
+            tv_next.setVisibility(View.GONE);
+            tv_know.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    positionDetail = 0;
+                    setData();
+
+                }
+            });
+            tv_unknow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    position++;
+                    if (wordList != null && wordList.size() > 0 && position < wordList.size()) {
+                        getWordDetail(wordList.get(position));
+                    } else {
+                        showShortToast("已是最新课程，等待更新。。。");
+                        tv_unknow.setVisibility(View.GONE);
+                    }
+                }
+            });
+
 
         }
 
@@ -194,6 +236,7 @@ public class WordDetailActivity extends BaseActivity implements View.OnClickList
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                 if ("0".equals(rspData.getErrcode())) {
                     wordDetail = (WordDetailBean) rspData;
+                    positionDetail=0;
                     setData();
 
 

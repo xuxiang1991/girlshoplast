@@ -291,11 +291,11 @@ public class WordClassFragment extends BaseFragment implements View.OnClickListe
 
     private void getWordDetail(int position) {
         Gson gson = new Gson();
-        String wordlist = gson.toJson(alist);
-        Intent intent = new Intent();
+        String wordlist = gson.toJson(baseobjects);
+        Intent intent = new Intent(self,WordDetailActivity.class);
         intent.putExtra("position", position);
         intent.putExtra("wordlist", wordlist);
-        startActivity(new Intent(self, WordDetailActivity.class));
+        startActivity(intent);
     }
 
     }

@@ -61,7 +61,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private Fragment homeFragment;
 
     private myKeFragment mykefragment;
-    private ciHuiFragment cihuifragment;
+    private WordClassFragment cihuifragment;
     private shidaiHomeFragment shidaihomefragment;
     private fuxiFragment fuxifragment;
 
@@ -265,7 +265,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 return shidaihomefragment;
             } else if (position == 1) {
                 if (cihuifragment == null)
-                    cihuifragment = new ciHuiFragment();
+                    cihuifragment = new WordClassFragment();
                 return cihuifragment;
             } else if (position == 2) {
                 if (mystudy == null) {
