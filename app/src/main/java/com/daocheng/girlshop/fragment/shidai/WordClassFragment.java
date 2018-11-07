@@ -94,36 +94,13 @@ public class WordClassFragment extends BaseFragment implements View.OnClickListe
 
     @Override
     protected void initialized() {
-        tv_center.setText("单词课程");
+        tv_center.setText("单词过关");
 
 
         mSwipeRefreshLayout.setProgressViewOffset(false, 0, (int) TypedValue
                 .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 48, getResources()
                         .getDisplayMetrics()));
 
-        //加载内容
-        mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView,
-                                             int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                if (newState == RecyclerView.SCROLL_STATE_IDLE
-                        && lastVisibleItem == sRecyclerViewAdapter.getItemCount() - 1
-                        && lastVisibleItem == (pageNo * Constant.found_pageNum - 1)) {
-                    pageNo = pageNo + 1;
-                    setData();
-                    mSwipeRefreshLayout.setRefreshing(true);
-
-                }
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                lastVisibleItem = layoutManager.findLastVisibleItemPosition();
-            }
-        });
 
 
         mSwipeRefreshLayout.setColorSchemeResources(R.color.App_back_orange, R.color.green, R.color.blue, R.color.red);
@@ -164,12 +141,13 @@ public class WordClassFragment extends BaseFragment implements View.OnClickListe
 
 
     private void setData() {
-//        if (cLevel==null)
-//        {
-//            mSwipeRefreshLayout.setRefreshing(false);
-//            return;
-//        }
-        ShidaiApi.getWordList(self, "vip1", Config.getShidaiUserInfo().getUserid(), pageNo, Constant.found_pageNum, WordList.class, new NetUtils.NetCallBack<ServiceResult>() {
+        String levelName = "";
+        if (cLevel == null) {
+            levelName = "";
+        } else {
+            levelName = cLevel.getLevelname();
+        }
+        ShidaiApi.getWordList(self, levelName, Config.getShidaiUserInfo().getUserid(), pageNo, Constant.found_pageNum, WordList.class, new NetUtils.NetCallBack<ServiceResult>() {
             @Override
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
 
@@ -211,6 +189,7 @@ public class WordClassFragment extends BaseFragment implements View.OnClickListe
                         public void back(WordLevel.RecordBean level) {
                             cLevel = level;
                             setData();
+                            tv_level.setText("当前等级："+cLevel.getLevelname());
                         }
                     });
                     dialog.show();
@@ -292,10 +271,10 @@ public class WordClassFragment extends BaseFragment implements View.OnClickListe
     private void getWordDetail(int position) {
         Gson gson = new Gson();
         String wordlist = gson.toJson(baseobjects);
-        Intent intent = new Intent(self,WordDetailActivity.class);
+        Intent intent = new Intent(self, WordDetailActivity.class);
         intent.putExtra("position", position);
         intent.putExtra("wordlist", wordlist);
         startActivity(intent);
     }
 
-    }
+}

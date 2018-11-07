@@ -238,7 +238,7 @@ public class hotSongActivity extends BaseActivity implements View.OnClickListene
     //控制后台线程退出
     boolean playStatus = true;
 
-    private int currentPoint=0;
+    private int currentPoint = 0;
 
 
     //处理进度条更新
@@ -261,7 +261,7 @@ public class hotSongActivity extends BaseActivity implements View.OnClickListene
                     updatetotal();
 //                    }
                     tv_song_start.setText(Utils.secToTime((int) (progress * musiclength / 1000)));
-                    currentPoint=(int)(progress * musiclength);
+                    currentPoint = (int) (progress * musiclength);
                     shotRecyclerViewAdapter.notifyDataSetChanged();
                     break;
                 default:
@@ -440,13 +440,20 @@ public class hotSongActivity extends BaseActivity implements View.OnClickListene
             ((hotViewHolder) holder).tv_content_orginal.setText(ob.getWord());
             ((hotViewHolder) holder).tv_content.setText(ob.getWord_ch());
 
-            int itemTIme=(int)Utils.parseToTime(ob.getTime());
+            int positionfont= position+1;
+            if (positionfont>=getItemCount())
+            {
+                positionfont=position;
+            }
 
-            Log.e("xx_time",position+"__"+itemTIme+"__"+currentPoint);
-            if (currentPoint>itemTIme){
+            int itemTIme = (int) Utils.parseToTime(ob.getTime());
+            int itemTimeBefo=(int) Utils.parseToTime(getItem(positionfont).getTime());
+
+            Log.e("xx_time", position + "__" + itemTIme + "__" + currentPoint);
+            if ((currentPoint > itemTIme&&currentPoint<itemTimeBefo)||(position==positionfont&&currentPoint > itemTIme)) {
                 ((hotViewHolder) holder).tv_content_orginal.setTextColor(getResources().getColor(R.color.dlg_bule_text_normal_color));
                 ((hotViewHolder) holder).tv_content.setTextColor(getResources().getColor(R.color.dlg_bule_text_normal_color));
-            }else {
+            } else {
                 ((hotViewHolder) holder).tv_content_orginal.setTextColor(getResources().getColor(R.color.text_light_grey));
                 ((hotViewHolder) holder).tv_content.setTextColor(getResources().getColor(R.color.text_light_grey));
             }

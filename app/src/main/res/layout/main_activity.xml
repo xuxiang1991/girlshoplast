@@ -34,7 +34,7 @@
             android:drawablePadding="4dp"
             android:drawableTop="@drawable/select_main_cooker"
             android:padding="8dp"
-            android:text="我的词汇" />
+            android:text="单词过关" />
 
         <RadioButton
             android:id="@+id/three"
