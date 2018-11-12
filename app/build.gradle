@@ -27,7 +27,7 @@ android {
         applicationId "com.daocheng.girlshop"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 111
+        versionCode 511
         versionName "5.1.1"
 
 

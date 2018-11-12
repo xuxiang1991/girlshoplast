@@ -239,3 +239,4 @@
 
 -dontwarn cn.smssdk.**
 -keep class cn.smssdk.** {*;}
+
