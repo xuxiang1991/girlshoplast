@@ -24,6 +24,8 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 import com.qiniu.android.common.Zone;
 import com.qiniu.android.storage.Configuration;
 import com.qiniu.android.storage.UploadManager;
@@ -63,7 +65,7 @@ public class myApplication extends Application {
     private List<Activity> mList = new LinkedList<Activity>();
     private static myApplication instance;
 
-    private static myApplication self;
+    public static myApplication self;
 
 
     private CrashHandler catchHandler;
@@ -104,7 +106,7 @@ public class myApplication extends Application {
 
         JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
         JPushInterface.init(this);
-
+        Logger.addLogAdapter(new AndroidLogAdapter());
 
     }
 

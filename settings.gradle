@@ -1,1 +1,1 @@
-include ':app', ':jcvideoplayer-lib', ':library', ':playerview',':flowlayout-lib'
+include ':app', ':jcvideoplayer-lib', ':library', ':playerview',':flowlayout-lib',':fsp_sdk'

@@ -31,10 +31,15 @@ android {
         versionName "5.1.1"
 
 
-        ndk {
-            abiFilters "armeabi", "x86", "x86_64", "mips64", "mips"
-        }
+//        ndk {
+//            abiFilters "armeabi", "x86", "x86_64", "mips64", "mips"
+//        }
         multiDexEnabled true
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
     }
     buildTypes {
         release {
@@ -78,22 +83,30 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    task nativeLibsToJar(type: Zip, description: "create a jar archive of the native libs") {
+        destinationDir file("$projectDir/libs")
+        baseName "Native_Libs2"
+        extension "jar"
+        from fileTree(dir: "libs", include: "**/*.so")
+        into "lib"
+    }
+
     tasks.withType(JavaCompile) {
         compileTask -> compileTask.dependsOn(nativeLibsToJar)
     }
-
-
-}
-
-task nativeLibsToJar(type: Zip, description: "create a jar archive of the native libs") {
-    destinationDir file("$projectDir/libs")
-    baseName "Native_Libs2"
-    extension "jar"
-    from fileTree(dir: "src/main/jniLibs", include: "**/*.so")
-    into "lib"
-
+    productFlavors {
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
 
 }
+
+
+
+
+
 
 
 
@@ -116,6 +129,8 @@ dependencies {
     // compile files('libs/alipaySdk-20160223.jar')
     compile project(':jcvideoplayer-lib')
     compile project(':flowlayout-lib')
+    compile project(':fsp_sdk')
+
     compile 'com.mcxiaoke.volley:library:1.0.7'
     compile 'com.github.bumptech.glide:glide:3.5.2'
     compile 'com.squareup.picasso:picasso:2.5.1'
@@ -131,5 +146,16 @@ dependencies {
     compile files('libs/org.apache.http.legacy.jar')
     compile project(':playerview')
 
-    compile(name: 'fsp_sdk', ext: 'aar')
+
+    implementation 'com.orhanobut:logger:2.2.0'
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    implementation("com.github.hotchemi:permissionsdispatcher:3.1.0") {
+        // if you don't use android.app.Fragment you can exclude support for them
+        exclude module: "support-v13"
+    }
+    annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:3.1.0"
+
 }

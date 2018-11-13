@@ -177,4 +177,10 @@
     <color name="baby_blue">#90D4F2</color>
     <color name="skye_blue">#92D3EF</color>
 
+
+
+    <color name="color_dialog_title">#F7F7F7</color>
+    <color name="color_dialog_text">#323232</color>
+    <color name="color_app_config_text">#B9C1D5</color>
+    <color name="color_text_white">#FFFFFF</color>
 </resources>
