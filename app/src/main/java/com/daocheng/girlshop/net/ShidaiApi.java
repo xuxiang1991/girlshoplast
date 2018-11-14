@@ -508,7 +508,32 @@ public class ShidaiApi {
 
     }
 
+    /**
+     * 会议列表
 
+     *
+     * @param context
+     * @param userid
+     * @param rspCls
+     * @param netCallBack    http://121.40.90.171/cstimes/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     */
+    public static void getMeetingList(Context context, int userid,  final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+
+        StringBuilder sb = new StringBuilder(BASE_URL);
+        try {
+            sb.append("cstimes/app/meeting?");
+            sb.append("userid=").append(userid);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        NetUtils.post(context, sb.toString(), null, null, netCallBack, rspCls);
+
+
+    }
 
 
     /**

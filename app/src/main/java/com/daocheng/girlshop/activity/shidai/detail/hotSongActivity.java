@@ -375,8 +375,8 @@ public class hotSongActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void onPause() {
         super.onPause();
-        pause();
-        MediaManager.pause();
+//        pause();
+//        MediaManager.pause();
 
 
     }
@@ -384,8 +384,8 @@ public class hotSongActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void onResume() {
         super.onResume();
-        play();
-        MediaManager.resume();
+//        play();
+//        MediaManager.resume();
     }
 
     private void play() {

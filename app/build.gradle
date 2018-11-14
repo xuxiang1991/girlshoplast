@@ -129,7 +129,14 @@ dependencies {
     compile 'com.baoyz.actionsheet:library:1.1.5'
     compile project(':library')
     compile files('libs/org.apache.http.legacy.jar')
+
     compile project(':playerview')
 
-    compile(name: 'fsp_sdk', ext: 'aar')
+    compile 'com.android.support:design:26.1.0'
+    compile 'com.android.support:cardview-v7:26.1.0'
+    compile(name: 'app-neutral-release', ext: 'aar', {
+        exclude group: 'com.android.support', module: 'support-v4'
+    })
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.squareup.okhttp3:okhttp:3.4.2'
 }

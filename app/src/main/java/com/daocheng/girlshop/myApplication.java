@@ -17,6 +17,7 @@ import com.daocheng.girlshop.utils.BoardManager;
 import com.daocheng.girlshop.utils.Constant;
 import com.daocheng.girlshop.utils.CrashHandler;
 import com.iflytek.cloud.SpeechUtility;
+import com.inpor.fastmeetingcloud.receiver.HstApplication;
 import com.mob.MobSDK;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -104,6 +105,7 @@ public class myApplication extends Application {
 
         JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
         JPushInterface.init(this);
+        HstApplication.initHstApplication(this);
 
 
     }

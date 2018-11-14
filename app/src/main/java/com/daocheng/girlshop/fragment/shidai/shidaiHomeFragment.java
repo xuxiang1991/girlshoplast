@@ -23,6 +23,7 @@ import android.widget.TextView;
 import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.shidai.JincaiActivity;
 import com.daocheng.girlshop.activity.shidai.list.DataListActivity;
+import com.daocheng.girlshop.activity.shidai.list.MeetingListActivity;
 import com.daocheng.girlshop.activity.shidai.loginActivity;
 import com.daocheng.girlshop.adapter.AdvertImagePagerAdapter;
 import com.daocheng.girlshop.dialog.MessageDialog;
@@ -279,16 +280,16 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
                 goToNext(DataListActivity.TYPE_MRIRIYIJU, ((TextView) v).getText().toString());
                 break;
             case R.id.rb_flxx:
-                goToNext(DataListActivity.TYPE_FENLEIXUEXI, ((TextView) v).getText().toString());
+                goToMeeting(DataListActivity.TYPE_FENLEIXUEXI, ((TextView) v).getText().toString());
                 break;
             case R.id.rb_eca:
                 iv_7_new.setVisibility(View.GONE);
-                Config.setZPQS(System.currentTimeMillis()/1000 + "");
+                Config.setZPQS(System.currentTimeMillis() / 1000 + "");
                 goToNext(DataListActivity.TYPE_ECA, ((TextView) v).getText().toString());
                 break;
             case R.id.rb_xsbx:
                 iv_8_new.setVisibility(View.GONE);
-                Config.setZYTZ(System.currentTimeMillis()/1000 + "");
+                Config.setZYTZ(System.currentTimeMillis() / 1000 + "");
                 goToNext(DataListActivity.TYPE_XINSHENGBIXIU, ((TextView) v).getText().toString());
                 break;
             case R.id.rb_spxx:
@@ -335,6 +336,14 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
 
     private void goToNext(int type, String title) {
         Intent intent = new Intent(self, DataListActivity.class);
+        intent.putExtra("type", type);
+        intent.putExtra("title", title);
+        startActivity(intent);
+
+    }
+
+    private void goToMeeting(int type, String title) {
+        Intent intent = new Intent(self, MeetingListActivity.class);
         intent.putExtra("type", type);
         intent.putExtra("title", title);
         startActivity(intent);
