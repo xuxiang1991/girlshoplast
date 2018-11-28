@@ -83,31 +83,9 @@ public class ApkUpdateDialog
 
             case R.id.button_confrim:
 
-
-                File apkfile = new File(DownloadManager.mSaveAPkFile);
-
-                if (apkfile.exists()){
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                        Uri contentUri = FileProvider.getUriForFile(
-                                context, myApplication.getContext().getPackageName()+".fileProvider", apkfile);
-                        intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
-                    } else {
-                        intent.setDataAndType(Uri.fromFile(apkfile), "application/vnd.android.package-archive");
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    }
-
-                    context.startActivity(intent);
-                }else {
                     downloadApk(url);
                     loading_tv_progress.setText("0%");
                     Config.setshidaishownew(false);
-                }
-
-
-
 
 
                 break;
