@@ -240,3 +240,5 @@
 -dontwarn cn.smssdk.**
 -keep class cn.smssdk.** {*;}
 
+-dontwarn com.inpor.**
+-keep class com.inpor.** {*;}

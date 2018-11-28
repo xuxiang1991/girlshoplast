@@ -62,6 +62,15 @@ public class MeetingBean extends ServiceResult{
         private String title;
         private String number;
         private String password;
+        private String live;
+
+        public String getLive() {
+            return live;
+        }
+
+        public void setLive(String live) {
+            this.live = live;
+        }
 
         public int getId() {
             return id;
