@@ -192,10 +192,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private class CheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
-            if (Config.getShidaiUserInfo() != null && Config.getShidaiUserInfo().getLevel().contains("游客")) {
-                showToast("对不起，您是游客身份，解锁更多功能，请联系0512-52952008");
-                return;
-            }
 
             switch (checkedId) {
                 case R.id.one:
@@ -203,9 +199,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
                     break;
                 case R.id.two:
+                    if (Config.getShidaiUserInfo() != null && Config.getShidaiUserInfo().getLevel().contains("游客")) {
+                        showToast("对不起，您是游客身份，解锁更多功能，请联系0512-52952008");
+                        return;
+                    }
                     mPager.setCurrentItem(1);
                     break;
                 case R.id.three:
+                    if (Config.getShidaiUserInfo() != null && Config.getShidaiUserInfo().getLevel().contains("游客")) {
+                        showToast("对不起，您是游客身份，解锁更多功能，请联系0512-52952008");
+                        return;
+                    }
                     mPager.setCurrentItem(2);
                     break;
 //                case R.id.four:

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <paths>
+        <files-path
+            name="data_file_root"
+            path="."/>
+        <external-path
+            name="download"
+            path="download"/>
+        <external-path
+            name="cooke"
+            path="."/>
+        <external-path
+            name="external_storage_root"
+            path="."
+            />
+    </paths>
+</resources>

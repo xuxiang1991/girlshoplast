@@ -4,15 +4,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/white_bg">
 
-    <TextView
-        android:id="@+id/tv_regist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:padding="16dp"
-        android:text="注册"
-        android:textColor="@color/text_light_grey"
-        android:textSize="18sp" />
 
     <LinearLayout
         android:id="@+id/ll_img_logo"
@@ -108,19 +99,41 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_below="@id/cb_rememberSecret"
-        android:layout_margin="36dp"
-        android:background="@color/colorPrimaryDark"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginTop="36dp"
+        android:background="@color/st_tropaz"
         android:gravity="center"
         android:text="登录"
         android:textColor="@color/white" />
 
-    <TextView
-        android:id="@+id/tv_getsecret"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/bt_login"
-        android:layout_centerHorizontal="true"
-        android:padding="8dp"
-        android:text="忘记账号/密码"
-        android:textSize="14sp" />
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+
+        <TextView
+            android:id="@+id/tv_getsecret"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="8dp"
+            android:text="忘记账号/密码"
+            android:textColor="@color/st_tropaz"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_regist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:padding="8dp"
+            android:text="注册"
+            android:textColor="@color/st_tropaz"
+            android:textSize="16sp" />
+    </RelativeLayout>
 </RelativeLayout>

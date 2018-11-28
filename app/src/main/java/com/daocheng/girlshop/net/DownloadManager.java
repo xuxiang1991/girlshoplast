@@ -21,7 +21,7 @@ public class DownloadManager {
     public static final String mSaveDirPath = Environment.getExternalStorageDirectory() + "/cooke/";
 
     public static final String mSaveLogoDirPath = Environment.getExternalStorageDirectory() + "/cooke/logo/";
-    public static final String mSaveAPKDirPath = Environment.getExternalStorageDirectory() + "/cooke/update/";
+    public static final String mSaveAPKDirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/cooke/update/";
     public static final String mSaveVedioDirPath = Environment.getExternalStorageDirectory() + "/cooke/video/";
     public static final String mSaveRecodeDirPath = Environment.getExternalStorageDirectory() + "/cooke/netrecoder/";
     public static final String mSaveLogoFile = mSaveLogoDirPath + "logo.jpg";

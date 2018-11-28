@@ -8,10 +8,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Movie;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -391,8 +393,13 @@ public class registActivity extends BaseActivity implements View.OnClickListener
                         alertDialog.dismiss();
 
                         Intent intentTakePhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        intentTakePhoto.putExtra(MediaStore.EXTRA_OUTPUT, Uri
-                                .fromFile(new File(mBufferPath)));
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                            intentTakePhoto.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(self, myApplication.getContext().getPackageName()+".fileProvider", new File(mBufferPath)));
+                        } else {
+                            intentTakePhoto.putExtra(MediaStore.EXTRA_OUTPUT, Uri
+                                    .fromFile(new File(mBufferPath)));
+                        }
+
 
                         startActivityForResult(intentTakePhoto, REQUEST_TOUXIANG_TAKE_PHOTO);
                         break;

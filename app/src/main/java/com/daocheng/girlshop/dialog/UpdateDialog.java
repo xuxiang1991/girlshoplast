@@ -11,7 +11,9 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.daocheng.girlshop.R;
@@ -38,9 +40,11 @@ public class UpdateDialog
 
     private Context context;
     private String url;
-    private TextView content;
     private Button button_confrim;
     private boolean haslocal;
+    private TextView loading_tv_progress;
+    private ProgressBar loading_pb_bar;
+
 
     public UpdateDialog(Context context, String url) {
         super(context);
@@ -60,21 +64,34 @@ public class UpdateDialog
         setContentView(R.layout.setting_update_dialog);
 
         ((TextView) findViewById(R.id.alertTitle)).setText("精彩视频");
-        content = ((TextView) findViewById(R.id.content));
-        button_confrim=(Button)findViewById(R.id.button_confrim);
+        button_confrim = (Button) findViewById(R.id.button_confrim);
+        loading_pb_bar = (ProgressBar) findViewById(R.id.loading_pb_bar);
+        loading_tv_progress = (TextView) findViewById(R.id.loading_tv_progress);
         findViewById(R.id.button_cancel).setOnClickListener(this);
         button_confrim.setOnClickListener(this);
+
+        loading_pb_bar.setMax(100);
+        loading_pb_bar.setProgress(0);
 
         setCanceledOnTouchOutside(false);
         if (url.equals(Config.getshidaiVideo()))
 
-            haslocal=true;
+            haslocal = true;
 
 
-        if (haslocal)
-        {
+        if (haslocal) {
+            loading_pb_bar.setProgress(100);
             button_confrim.setText("播放");
         }
+
+        Window dialogWindow = this.getWindow();
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+
+        dialogWindow.setGravity(Gravity.CENTER);  //此处可以设置dialog显示的位置
+
+        lp.width = (int) (Config.width * 0.8); // 宽度
+
+        dialogWindow.setAttributes(lp);
     }
 
 
@@ -84,10 +101,10 @@ public class UpdateDialog
 
             case R.id.button_confrim:
                 if (!haslocal)
-                downloadApk(url);
+                    downloadApk(url);
                 else
                     JCFullScreenActivity.startActivity(context,
-                        Config.getshidaiVideoL(),
+                            Config.getshidaiVideoL(),
                             JCVideoPlayerStandard.class, "精彩视频");
                 break;
 
@@ -151,8 +168,9 @@ public class UpdateDialog
             public void onProgressChange(long fileSize, long downloadedSize) {
                 super.onProgressChange(fileSize, downloadedSize);
 //                progress.setProgress((int) (downloadedSize * 1.0f / fileSize * 100));
-                content.setGravity(Gravity.CENTER);
-                content.setText((int) (downloadedSize * 1.0f / fileSize * 100) + "%");
+
+                loading_pb_bar.setProgress((int) (downloadedSize * 1.0f / fileSize * 100));
+                loading_tv_progress.setText((int) (downloadedSize * 1.0f / fileSize * 100) + "%");
             }
 
             @Override

@@ -25,23 +25,39 @@
             android:text="@string/about_update_text" />
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
+
+    <LinearLayout
+        android:id="@+id/loading_ll_progress"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/dlg_item_bg_selector"
-        android:minHeight="@dimen/setting_item_height">
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
 
         <TextView
-            android:id="@+id/content"
+            android:id="@+id/loading_tv_progress"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15.0dip"
-            android:gravity="center_vertical"
-            android:textColor="@color/black"
-            android:textSize="18.0sp" />
-    </RelativeLayout>
+            android:text="0%"
+            android:layout_marginTop="1dp"
+            android:textColor="@color/color_777777"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/loading_pb_bar"
+        android:progressDrawable="@drawable/progressbar_horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:progress="1"
+        android:max="100"
+        android:minWidth="350dp" />
 
 
     <LinearLayout
@@ -49,6 +65,7 @@
         android:layout_width="fill_parent"
         android:layout_height="50.0dip"
         android:layout_gravity="right|center"
+        android:layout_marginTop="16dp"
         android:background="@drawable/alert_dialog_bottom_bg"
         android:gravity="right|center"
         android:orientation="horizontal">
