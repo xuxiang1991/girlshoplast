@@ -41,6 +41,33 @@ public class MyClass extends ServiceResult {
     private int total56;
     private int total87;
     private String levelscope;
+    private String inviteBackground;
+    private String inviteIntroduce;
+    private String inviteQR;
+
+    public String getInviteBackground() {
+        return inviteBackground;
+    }
+
+    public void setInviteBackground(String inviteBackground) {
+        this.inviteBackground = inviteBackground;
+    }
+
+    public String getInviteIntroduce() {
+        return inviteIntroduce;
+    }
+
+    public void setInviteIntroduce(String inviteIntroduce) {
+        this.inviteIntroduce = inviteIntroduce;
+    }
+
+    public String getInviteQR() {
+        return inviteQR;
+    }
+
+    public void setInviteQR(String inviteQR) {
+        this.inviteQR = inviteQR;
+    }
 
     public List<String> getExtra() {
         return extra;

@@ -28,7 +28,7 @@
 
     <LinearLayout
         android:id="@+id/loading_ll_progress"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="1dp"
@@ -41,6 +41,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="0%"
+            android:gravity="center"
             android:layout_marginTop="1dp"
             android:textColor="@color/color_777777"
             android:textSize="14sp" />

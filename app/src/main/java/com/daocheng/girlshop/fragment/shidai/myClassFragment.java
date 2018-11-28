@@ -22,6 +22,7 @@ import com.daocheng.girlshop.activity.BaseActivity;
 import com.daocheng.girlshop.activity.shidai.PlunActivity;
 import com.daocheng.girlshop.activity.shidai.loginActivity;
 import com.daocheng.girlshop.activity.shidai.pingjiaActivity;
+import com.daocheng.girlshop.activity.shidai.shareActivity;
 import com.daocheng.girlshop.dialog.MessageDialog;
 import com.daocheng.girlshop.entity.ServiceResult;
 import com.daocheng.girlshop.entity.shdiai.MyClass;
@@ -82,6 +83,7 @@ public class myClassFragment extends BaseFragment implements View.OnClickListene
     private boolean isShowPinLun = false;
     private TextView tv_total_class;
     private TextView tv_bzr,tv_phone;
+    private TextView tv_share_class;
 
 
     @Override
@@ -140,8 +142,9 @@ public class myClassFragment extends BaseFragment implements View.OnClickListene
         tv_levelscope=(TextView)headview.findViewById(R.id.tv_levelscope);
         tv_phone=(TextView)headview.findViewById(R.id.tv_phone);
         tv_bzr=(TextView)headview.findViewById(R.id.tv_bzr);
+        tv_share_class=(TextView)headview.findViewById(R.id.tv_share_class);
 
-
+        tv_share_class.setOnClickListener(this);
         tv_exit.setOnClickListener(this);
     }
 
@@ -190,6 +193,14 @@ public class myClassFragment extends BaseFragment implements View.OnClickListene
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.tv_share_class:
+                Intent intent=new Intent(self,shareActivity.class);
+                intent.putExtra("ivbg",myclass.getInviteBackground());
+                intent.putExtra("ivscan",myclass.getInviteQR());
+                intent.putExtra("ivtroduce",myclass.getInviteIntroduce());
+                intent.putExtra("name",myclass.getName());
+                startActivity(intent);
+                break;
             case R.id.tv_bottom_left:
                 if (class_type == CHOSE_CLASS) {
                     class_type = MUST_CLASS;

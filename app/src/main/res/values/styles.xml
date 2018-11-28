@@ -31,7 +31,19 @@
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
     </style>
 
-
+    <!--<style name="dialogHke" parent="Theme.AppCompat.Light.DarkActionBar">-->
+        <!--<item name="windowActionBar">false</item>-->
+        <!--<item name="windowNoTitle">true</item>-->
+        <!--&lt;!&ndash; Actionbar color &ndash;&gt;-->
+        <!--&lt;!&ndash;        <item name="colorPrimary">@color/common_red_main</item>&ndash;&gt;-->
+        <!--&lt;!&ndash;Status bar color&ndash;&gt;-->
+        <!--<item name="colorPrimaryDark">@color/color_ffffff</item>-->
+        <!--&lt;!&ndash;Window color&ndash;&gt;-->
+        <!--<item name="colorAccent">@color/blue</item>-->
+        <!--<item name="android:windowBackground">@color/color_ffffff</item>-->
+        <!--<item name="android:textColorPrimary">@android:color/white</item>-->
+        <!--<item name="actionMenuTextColor">@color/color_ffffff</item> &lt;!&ndash;  敲定颜色&ndash;&gt;-->
+    <!--</style>-->
     <style name="radiobt">
         <item name="android:layout_weight">1</item>
         <item name="android:button">@null</item>
