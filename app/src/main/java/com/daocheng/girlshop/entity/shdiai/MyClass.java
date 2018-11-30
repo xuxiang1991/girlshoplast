@@ -44,6 +44,15 @@ public class MyClass extends ServiceResult {
     private String inviteBackground;
     private String inviteIntroduce;
     private String inviteQR;
+    private String invitePoint;
+
+    public String getInvitePoint() {
+        return invitePoint;
+    }
+
+    public void setInvitePoint(String invitePoint) {
+        this.invitePoint = invitePoint;
+    }
 
     public String getInviteBackground() {
         return inviteBackground;

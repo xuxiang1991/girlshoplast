@@ -199,6 +199,7 @@ public class myClassFragment extends BaseFragment implements View.OnClickListene
                 intent.putExtra("ivscan",myclass.getInviteQR());
                 intent.putExtra("ivtroduce",myclass.getInviteIntroduce());
                 intent.putExtra("name",myclass.getName());
+                intent.putExtra("point",myclass.getInvitePoint());
                 startActivity(intent);
                 break;
             case R.id.tv_bottom_left:
@@ -270,6 +271,7 @@ public class myClassFragment extends BaseFragment implements View.OnClickListene
         tv_x_class.setText("选修课已预订次数:" + myclass.getNumber87());
         tv_total_class.setText("必修课可预订总次数:"+myclass.getTotal56());
         tv_levelscope.setText("报名级别："+myclass.getLevelscope());
+        tv_share_class.setText("邀请好友加入，立得"+myclass.getInvitePoint()+"积分");
         if (myclass!=null&&myclass.getExtra()!=null&&myclass.getExtra().size()>0)
         {
             String extra="";

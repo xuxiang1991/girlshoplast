@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.daocheng.girlshop.R;
@@ -20,10 +21,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
  * 创建人：xuxiang
  * 修改人：
  */
-public class shareActivity extends BaseActivity implements View.OnClickListener{
-
-
-
+public class shareActivity extends BaseActivity implements View.OnClickListener {
 
 
     private ImageView tvLeft;
@@ -35,17 +33,20 @@ public class shareActivity extends BaseActivity implements View.OnClickListener{
     private TextView tvName;
     private TextView tvIntroduce;
     private TextView tvSubmit;
+    private TextView tv_point;
+    private LinearLayout ll_card;
 
-    private String ivbg="";
-    private String ivscan="";
-    private String ivtroduce="";
-    private String name="";
+    private String ivbg = "";
+    private String ivscan = "";
+    private String ivtroduce = "";
+    private String name = "";
+    private String posint = "";
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tv_submit:
-                ShareBitmapDialog dialog=new ShareBitmapDialog(self,getBitmapFromScrollView(cardview));
+                ShareBitmapDialog dialog = new ShareBitmapDialog(self, getBitmapFromScrollView(ll_card));
                 dialog.show();
                 break;
             case R.id.makeSureTv:
@@ -73,6 +74,8 @@ public class shareActivity extends BaseActivity implements View.OnClickListener{
         tvName = (TextView) findViewById(R.id.tv_name);
         tvIntroduce = (TextView) findViewById(R.id.tv_introduce);
         tvSubmit = (TextView) findViewById(R.id.tv_submit);
+        ll_card=findViewById(R.id.ll_card);
+        tv_point = findViewById(R.id.tv_point);
         tvSubmit.setOnClickListener(this);
         tvLeft.setOnClickListener(this);
         makeSureTv.setOnClickListener(this);
@@ -84,19 +87,20 @@ public class shareActivity extends BaseActivity implements View.OnClickListener{
         getIntentParams();
         ImageLoader.getInstance().displayImage(ivbg, ivBg);
         ImageLoader.getInstance().displayImage(ivscan, ivScan);
-        tvName.setText(name+"");
-        tvIntroduce.setText(ivtroduce+"");
+        tvName.setText(name + "");
+        tvIntroduce.setText(ivtroduce + "");
+        tv_point.setText("好友加入，立得" + posint + "积分");
+
     }
 
-    private void getIntentParams(){
-        Intent i=getIntent();
-        ivbg=i.getStringExtra("ivbg");
-        ivscan=i.getStringExtra("ivscan");
-        ivtroduce=i.getStringExtra("ivtroduce");
-        name=i.getStringExtra("name");
+    private void getIntentParams() {
+        Intent i = getIntent();
+        ivbg = i.getStringExtra("ivbg");
+        ivscan = i.getStringExtra("ivscan");
+        ivtroduce = i.getStringExtra("ivtroduce");
+        name = i.getStringExtra("name");
+        posint = i.getStringExtra("point");
     }
-
-
 
 
     /**
@@ -112,7 +116,6 @@ public class shareActivity extends BaseActivity implements View.OnClickListener{
         scrollView.draw(canvas);
         return bitmap;
     }
-
 
 
 }
