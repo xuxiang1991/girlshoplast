@@ -11,18 +11,16 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file('/Users/xiangxu/AndroidStudioProjects/git/girlshoplast/dc.keystore')
+            storeFile file('../dc.keystore')
             storePassword "android"
             keyAlias "daocheng"
             keyPassword "android"
-            v2SigningEnabled false
         }
         release {
-            storeFile file('/Users/xiangxu/AndroidStudioProjects/git/girlshoplast/dc.keystore')
+            storeFile file('../dc.keystore')
             storePassword "android"
             keyAlias "daocheng"
             keyPassword "android"
-            v2SigningEnabled false
         }
     }
     compileSdkVersion 26

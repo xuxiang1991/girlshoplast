@@ -8,6 +8,7 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.daocheng.girlshop.R;
@@ -34,7 +35,7 @@ public class shareActivity extends BaseActivity implements View.OnClickListener 
     private TextView tvIntroduce;
     private TextView tvSubmit;
     private TextView tv_point;
-    private LinearLayout ll_card;
+    private RelativeLayout ll_card;
 
     private String ivbg = "";
     private String ivscan = "";
@@ -89,7 +90,7 @@ public class shareActivity extends BaseActivity implements View.OnClickListener 
         ImageLoader.getInstance().displayImage(ivscan, ivScan);
         tvName.setText(name + "");
         tvIntroduce.setText(ivtroduce + "");
-        tv_point.setText("好友加入，立得" + posint + "积分");
+        tv_point.setText(posint+"");
 
     }
 

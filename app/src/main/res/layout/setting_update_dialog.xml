@@ -2,27 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/alert_dialog_middle_bg"
+    android:background="@drawable/stoke_grey_round"
     android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/content_layout"
         android:layout_width="fill_parent"
         android:layout_height="55.0dip"
-        android:layout_gravity="left|center"
+        android:gravity="center"
         android:background="@drawable/alert_dialog_top_bg"
         android:orientation="horizontal"
         android:paddingLeft="15.0dip">
 
-        <com.android.internal.widget.DialogTitle
+        <TextView
             android:id="@+id/alertTitle"
             style="@style/DialogTitleText"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:ellipsize="end"
-            android:gravity="left|center"
+            android:gravity="center"
             android:singleLine="true"
-            android:text="@string/about_update_text" />
+            android:textColor="@color/text_light_dark"
+            android:text="更新" />
     </LinearLayout>
 
 
@@ -52,7 +53,8 @@
         android:id="@+id/loading_pb_bar"
         android:progressDrawable="@drawable/progressbar_horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="3dp"
+        android:layout_marginTop="12dp"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
@@ -65,9 +67,9 @@
         android:id="@+id/buttonPanel"
         android:layout_width="fill_parent"
         android:layout_height="50.0dip"
-        android:layout_gravity="right|center"
+        android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        android:background="@drawable/alert_dialog_bottom_bg"
+        android:background="@drawable/shape_dialog_bottom"
         android:gravity="right|center"
         android:orientation="horizontal">
 
@@ -75,19 +77,23 @@
             android:id="@+id/button_cancel"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:layout_marginRight="25.0dip"
+            android:layout_weight="1"
             android:background="@color/transparent_color"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:text="@string/cancel"
             android:textColor="@color/dialog_gray_btn_text_selector"
             android:textSize="14.0sp" />
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/App_layout_stoke"/>
         <Button
             android:id="@+id/button_confrim"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:layout_marginRight="25.0dip"
+            android:layout_weight="1"
             android:background="@color/transparent_color"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:text="@string/down_load"
             android:textColor="@color/App_back_orange"
             android:textSize="14.0sp" />

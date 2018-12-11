@@ -1,6 +1,7 @@
 package com.daocheng.girlshop.activity.shidai.detail;
 
 import android.os.Build;
+import android.text.TextUtils;
 import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.WebSettings;
@@ -21,7 +22,7 @@ import java.io.File;
  * 创建人：
  * 修改人：
  */
-public class WebActivity  extends BaseActivity implements View.OnClickListener{
+public class WebActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView tv_left;
     private TextView tv_center;
@@ -29,10 +30,11 @@ public class WebActivity  extends BaseActivity implements View.OnClickListener{
 
     private String url;
     private String title;
+    private String htm;
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tv_left:
                 finish();
                 break;
@@ -47,18 +49,19 @@ public class WebActivity  extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected void setupViews() {
-        tv_left=findViewById(R.id.tv_left);
+        tv_left = findViewById(R.id.tv_left);
         tv_left.setVisibility(View.VISIBLE);
-        tv_center=findViewById(R.id.tv_center);
-        webView=findViewById(R.id.webView);
+        tv_center = findViewById(R.id.tv_center);
+        webView = findViewById(R.id.webView);
         tv_left.setOnClickListener(this);
 
     }
 
     @Override
     protected void initialized() {
-        title=getIntent().getStringExtra("title");
-        url=getIntent().getStringExtra("url");
+        title = getIntent().getStringExtra("title");
+        url = getIntent().getStringExtra("url");
+        htm = getIntent().getStringExtra("htm");
 
         tv_center.setText(title);
 
@@ -127,13 +130,13 @@ public class WebActivity  extends BaseActivity implements View.OnClickListener{
         });
 
 
+        if (TextUtils.isEmpty(url) && !TextUtils.isEmpty(htm)) {
+            webView.loadDataWithBaseURL(null, htm, "text/html",
+                    "utf-8", null);
+        } else {
+            webView.loadUrl(url);
+        }
 
-
-
-
-
-
-        webView.loadUrl(url);
 
     }
 

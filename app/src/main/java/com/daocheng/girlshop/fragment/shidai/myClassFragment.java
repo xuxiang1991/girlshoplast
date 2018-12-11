@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.BaseActivity;
 import com.daocheng.girlshop.activity.shidai.PlunActivity;
+import com.daocheng.girlshop.activity.shidai.detail.WebActivity;
 import com.daocheng.girlshop.activity.shidai.loginActivity;
 import com.daocheng.girlshop.activity.shidai.pingjiaActivity;
 import com.daocheng.girlshop.activity.shidai.shareActivity;
@@ -84,6 +85,7 @@ public class myClassFragment extends BaseFragment implements View.OnClickListene
     private TextView tv_total_class;
     private TextView tv_bzr,tv_phone;
     private TextView tv_share_class;
+    private TextView tv_rule;
 
 
     @Override
@@ -143,8 +145,10 @@ public class myClassFragment extends BaseFragment implements View.OnClickListene
         tv_phone=(TextView)headview.findViewById(R.id.tv_phone);
         tv_bzr=(TextView)headview.findViewById(R.id.tv_bzr);
         tv_share_class=(TextView)headview.findViewById(R.id.tv_share_class);
+        tv_rule=(TextView)headview.findViewById(R.id.tv_rule);
 
         tv_share_class.setOnClickListener(this);
+        tv_rule.setOnClickListener(this);
         tv_exit.setOnClickListener(this);
     }
 
@@ -193,13 +197,19 @@ public class myClassFragment extends BaseFragment implements View.OnClickListene
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.tv_rule:
+                Intent i=new Intent(self,WebActivity.class);
+                i.putExtra("htm",myclass.getInviteRule());
+                i.putExtra("title","");
+                startActivity(i);
+                break;
             case R.id.tv_share_class:
                 Intent intent=new Intent(self,shareActivity.class);
                 intent.putExtra("ivbg",myclass.getInviteBackground());
                 intent.putExtra("ivscan",myclass.getInviteQR());
                 intent.putExtra("ivtroduce",myclass.getInviteIntroduce());
                 intent.putExtra("name",myclass.getName());
-                intent.putExtra("point",myclass.getInvitePoint());
+                intent.putExtra("point",myclass.getInviteTitle());
                 startActivity(intent);
                 break;
             case R.id.tv_bottom_left:
@@ -271,7 +281,7 @@ public class myClassFragment extends BaseFragment implements View.OnClickListene
         tv_x_class.setText("选修课已预订次数:" + myclass.getNumber87());
         tv_total_class.setText("必修课可预订总次数:"+myclass.getTotal56());
         tv_levelscope.setText("报名级别："+myclass.getLevelscope());
-        tv_share_class.setText("邀请好友加入，立得"+myclass.getInvitePoint()+"积分");
+        tv_share_class.setText(myclass.getInviteTitle()+"");//"邀请好友加入，立得"+myclass.getInvitePoint()+"积分"
         if (myclass!=null&&myclass.getExtra()!=null&&myclass.getExtra().size()>0)
         {
             String extra="";

@@ -46,6 +46,26 @@ public class MyClass extends ServiceResult {
     private String inviteQR;
     private String invitePoint;
 
+    private String inviteTitle;
+    private String inviteRule;
+
+
+    public String getInviteTitle() {
+        return inviteTitle;
+    }
+
+    public void setInviteTitle(String inviteTitle) {
+        this.inviteTitle = inviteTitle;
+    }
+
+    public String getInviteRule() {
+        return inviteRule;
+    }
+
+    public void setInviteRule(String inviteRule) {
+        this.inviteRule = inviteRule;
+    }
+
     public String getInvitePoint() {
         return invitePoint;
     }
