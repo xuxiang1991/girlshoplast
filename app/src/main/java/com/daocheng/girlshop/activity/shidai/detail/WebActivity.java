@@ -70,52 +70,65 @@ public class WebActivity extends BaseActivity implements View.OnClickListener {
         String ua = webView.getSettings().getUserAgentString();
         webSettings.setUserAgentString(ua + " " + "JSCP/Android");
 
-        //js交互
-        webSettings.setJavaScriptEnabled(true);
-        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
-        webSettings.setPluginState(WebSettings.PluginState.ON);
 
-        //Storage和Local Storage两种，分别用于会话级别的存储（页面关闭即消失）和本地化存储
-        webSettings.setDomStorageEnabled(true);
-        //越权访问，跨域
-        webSettings.setAllowFileAccess(true);
-        //自适应屏幕
-        webSettings.setUseWideViewPort(true);
-        //webview 加载的模式，也是适应屏幕
-        webSettings.setLoadWithOverviewMode(true);
-        //支持缩放
-        webSettings.setSupportZoom(true);
-        //控制缩放
-        webSettings.setBuiltInZoomControls(true);
-        if (android.os.Build.VERSION.SDK_INT > 10) {
-            //隐藏webview缩放按钮
-            webView.getSettings().setDisplayZoomControls(false);
-        }
-        //对Data中包含中文字需要加上，否则会乱码
-        webSettings.setDefaultTextEncodingName("UTF-8");
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            webSettings.setAllowFileAccessFromFileURLs(true);
-            webSettings.setAllowUniversalAccessFromFileURLs(true);
-        }
-//        //开启第三方cookie支持
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            CookieManager cookieManager = CookieManager.getInstance();
-            cookieManager.setAcceptThirdPartyCookies(webView, true);
-        }
-        if (Utils.isNetworkConnected(self)) {
-            // * 默认加载方式，使用这种方式，会实现快速前进后退，在同一个标签打开几个网页后，关闭网络时，可以通过前进后退来切换已经访问过的数据，同时新建网页需要网络
-            webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
+        if (TextUtils.isEmpty(url) && !TextUtils.isEmpty(htm)) {
+            webSettings.setTextZoom(100);
         } else {
-            //  * 这个方式不论如何都会从缓存中加载，除非缓存中的网页过期，出现的问题就是打开动态网页时，不能时时更新，会出现上次打开过的状态，除非清除缓存。
-            webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+            //js交互
+            webSettings.setJavaScriptEnabled(true);
+            webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+            webSettings.setPluginState(WebSettings.PluginState.ON);
+
+            //Storage和Local Storage两种，分别用于会话级别的存储（页面关闭即消失）和本地化存储
+            webSettings.setDomStorageEnabled(true);
+            //越权访问，跨域
+            webSettings.setAllowFileAccess(true);
+            //自适应屏幕
+            webSettings.setUseWideViewPort(true);
+            //webview 加载的模式，也是适应屏幕
+            webSettings.setLoadWithOverviewMode(true);
+            //支持缩放
+            webSettings.setSupportZoom(true);
+
+            //控制缩放
+            webSettings.setBuiltInZoomControls(true);
+            if (android.os.Build.VERSION.SDK_INT > 10) {
+                //隐藏webview缩放按钮
+                webView.getSettings().setDisplayZoomControls(false);
+            }
+            //对Data中包含中文字需要加上，否则会乱码
+            webSettings.setDefaultTextEncodingName("UTF-8");
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                webSettings.setAllowFileAccessFromFileURLs(true);
+                webSettings.setAllowUniversalAccessFromFileURLs(true);
+            }
+//        //开启第三方cookie支持
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                CookieManager cookieManager = CookieManager.getInstance();
+                cookieManager.setAcceptThirdPartyCookies(webView, true);
+            }
+            if (Utils.isNetworkConnected(self)) {
+                // * 默认加载方式，使用这种方式，会实现快速前进后退，在同一个标签打开几个网页后，关闭网络时，可以通过前进后退来切换已经访问过的数据，同时新建网页需要网络
+                webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
+            } else {
+                //  * 这个方式不论如何都会从缓存中加载，除非缓存中的网页过期，出现的问题就是打开动态网页时，不能时时更新，会出现上次打开过的状态，除非清除缓存。
+                webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+            }
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                //5.0以上系统默认不支持混合渲染
+                webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
+            }
+            setCachePath();
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            //5.0以上系统默认不支持混合渲染
-            webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
-        }
-        setCachePath();
+
+
+
+
+
+
 
         webView.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {

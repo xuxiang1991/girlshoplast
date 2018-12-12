@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.BaseActivity;
 import com.daocheng.girlshop.dialog.ShareBitmapDialog;
+import com.daocheng.girlshop.utils.Utils;
+import com.inpor.fastmeetingcloud.util.AppUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
@@ -86,6 +89,17 @@ public class shareActivity extends BaseActivity implements View.OnClickListener 
     @Override
     protected void initialized() {
         getIntentParams();
+
+        ViewGroup.LayoutParams rl=ivBg.getLayoutParams();
+        rl.width=(int) Utils.dp2px(getResources(),280);
+        rl.height=(int)(Utils.dp2px(getResources(),280)*940/528);
+
+        ViewGroup.LayoutParams ll=cardview.getLayoutParams();
+        ll.width=(int) Utils.dp2px(getResources(),280);
+        ll.height=(int)(Utils.dp2px(getResources(),280)*940/528);
+        cardview.setLayoutParams(ll);
+        ivBg.setLayoutParams(rl);
+
         ImageLoader.getInstance().displayImage(ivbg, ivBg);
         ImageLoader.getInstance().displayImage(ivscan, ivScan);
         tvName.setText(name + "");

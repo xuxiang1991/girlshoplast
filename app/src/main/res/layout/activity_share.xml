@@ -106,8 +106,8 @@
 
                         <ImageView
                             android:id="@+id/iv_scan"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
                             android:scaleType="fitXY" />
@@ -139,8 +139,8 @@
                 android:id="@+id/tv_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_margin="36dp"
+                android:layout_marginTop="36dp"
                 android:background="@drawable/shape_orange_share"
                 android:gravity="center"
                 android:padding="12dp"
