@@ -104,13 +104,7 @@
                         android:layout_alignBottom="@id/iv_bg"
                         android:padding="16dp">
 
-                        <ImageView
-                            android:id="@+id/iv_scan"
-                            android:layout_width="52dp"
-                            android:layout_height="52dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:scaleType="fitXY" />
+
 
                         <TextView
                             android:id="@+id/tv_name"
@@ -118,6 +112,13 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
                             android:textSize="16sp" />
+                        <ImageView
+                            android:id="@+id/iv_scan"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_alignTop="@id/tv_name"
+                            android:layout_alignParentRight="true"
+                            android:scaleType="fitXY" />
 
                         <TextView
                             android:id="@+id/tv_introduce"

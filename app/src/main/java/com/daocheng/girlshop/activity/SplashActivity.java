@@ -10,6 +10,7 @@ import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.shidai.loginActivity;
 import com.daocheng.girlshop.net.DownloadManager;
 import com.daocheng.girlshop.utils.Config;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.File;
 
@@ -25,11 +26,6 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-
-
 
 
 //        ImageLoaderManager.getImage(iv_logo, DownloadManager.mSaveLogoFile);
@@ -49,7 +45,7 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void setupViews() {
-        iv_logo=(ImageView)findViewById(R.id.iv_logo);
+        iv_logo = (ImageView) findViewById(R.id.iv_logo);
     }
 
     @Override
@@ -58,12 +54,17 @@ public class SplashActivity extends BaseActivity {
 
 //        ImageLoader.getInstance().displayImage("http://www.csufo.com:8099/up/2015041122424880064807a928a1b83111.jpg",iv_logo);
 
-        final File file = new File(DownloadManager.mSaveLogoFile);
-        if (file.exists()) {
-            iv_logo.setImageURI(Uri.fromFile(file));
-        } else {
-            com.daocheng.girlshop.utils.Config.setCurrentLOGO("");
-            iv_logo.setImageResource(R.drawable.time_welcome);
+        try {
+            final File file = new File(DownloadManager.mSaveLogoFile);
+            if (file.getParentFile().exists()&&file.exists()) {
+                ImageLoader.getInstance().displayImage("file://"+DownloadManager.mSaveLogoFile,iv_logo);
+//                iv_logo.setImageURI(Uri.fromFile(file));
+            } else {
+                com.daocheng.girlshop.utils.Config.setCurrentLOGO("");
+                iv_logo.setImageResource(R.drawable.time_welcome);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -74,19 +75,16 @@ public class SplashActivity extends BaseActivity {
         if (Config.isFirst()) {
 //            createShortcut();
         }
-        if (Config.getShidaiUserInfo()!=null)
-        {
+        if (Config.getShidaiUserInfo() != null) {
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        }else
-        {
+        } else {
             startActivity(new Intent(SplashActivity.this, loginActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
 
         finish();
     }
-
 
 
     /**

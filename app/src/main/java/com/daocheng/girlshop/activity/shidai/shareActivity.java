@@ -91,12 +91,12 @@ public class shareActivity extends BaseActivity implements View.OnClickListener 
         getIntentParams();
 
         ViewGroup.LayoutParams rl=ivBg.getLayoutParams();
-        rl.width=(int) Utils.dp2px(getResources(),280);
-        rl.height=(int)(Utils.dp2px(getResources(),280)*940/528);
+        rl.width=(int) Utils.dp2px(getResources(),220);
+        rl.height=(int)(Utils.dp2px(getResources(),220)*940/528);
 
         ViewGroup.LayoutParams ll=cardview.getLayoutParams();
-        ll.width=(int) Utils.dp2px(getResources(),280);
-        ll.height=(int)(Utils.dp2px(getResources(),280)*940/528);
+        ll.width=(int) Utils.dp2px(getResources(),220);
+        ll.height=(int)(Utils.dp2px(getResources(),220)*940/528);
         cardview.setLayoutParams(ll);
         ivBg.setLayoutParams(rl);
 
