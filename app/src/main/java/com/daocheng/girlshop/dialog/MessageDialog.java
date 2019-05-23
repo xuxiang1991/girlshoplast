@@ -146,6 +146,8 @@ public class MessageDialog extends Dialog implements View.OnClickListener{
             tvcancel.setTextColor(mcontext.getResources().getColor(R.color.AppTextColor));
             tvok.setTextColor(mcontext.getResources().getColor(R.color.AppTextColor));
             tvcontent.setTextColor(mcontext.getResources().getColor(R.color.AppTextColor));
+        }else if(type==MESSAGE){
+            tvtitle.setVisibility(View.VISIBLE);
         }
     }
 }

@@ -1,12 +1,18 @@
 package com.daocheng.girlshop.activity.shidai.detail;
 
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.CookieManager;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,6 +33,7 @@ public class WebActivity extends BaseActivity implements View.OnClickListener {
     private ImageView tv_left;
     private TextView tv_center;
     private WebView webView;
+    private FrameLayout flVideoContainer;
 
     private String url;
     private String title;
@@ -53,6 +60,7 @@ public class WebActivity extends BaseActivity implements View.OnClickListener {
         tv_left.setVisibility(View.VISIBLE);
         tv_center = findViewById(R.id.tv_center);
         webView = findViewById(R.id.webView);
+        flVideoContainer= findViewById(R.id.flVideoContainer);
         tv_left.setOnClickListener(this);
 
     }
@@ -108,6 +116,7 @@ public class WebActivity extends BaseActivity implements View.OnClickListener {
                 CookieManager cookieManager = CookieManager.getInstance();
                 cookieManager.setAcceptThirdPartyCookies(webView, true);
             }
+
             if (Utils.isNetworkConnected(self)) {
                 // * 默认加载方式，使用这种方式，会实现快速前进后退，在同一个标签打开几个网页后，关闭网络时，可以通过前进后退来切换已经访问过的数据，同时新建网页需要网络
                 webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
@@ -126,7 +135,7 @@ public class WebActivity extends BaseActivity implements View.OnClickListener {
 
 
 
-
+        webView.setWebChromeClient(new MyWebChromeClient());
 
 
 
@@ -186,5 +195,68 @@ public class WebActivity extends BaseActivity implements View.OnClickListener {
 //        Logger.e("webviewCache1", cacheFile.getAbsolutePath());
 //        Logger.e("webviewCache2", appCachePatchCache);
 
+    }
+
+
+
+
+    @Override
+    public void onConfigurationChanged(Configuration config) {
+        super.onConfigurationChanged(config);
+        switch (config.orientation) {
+            case Configuration.ORIENTATION_LANDSCAPE:
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+                getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                break;
+            case Configuration.ORIENTATION_PORTRAIT:
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+                break;
+        }
+    }
+
+    private class MyWebChromeClient extends WebChromeClient {
+        WebChromeClient.CustomViewCallback mCallback;
+        @Override
+        public void onShowCustomView(View view, CustomViewCallback callback) {
+            Log.i("ToVmp","onShowCustomView");
+            fullScreen();
+
+            webView.setVisibility(View.GONE);
+            flVideoContainer.setVisibility(View.VISIBLE);
+            flVideoContainer.addView(view);
+            mCallback = callback;
+            super.onShowCustomView(view, callback);
+        }
+
+        @Override
+        public void onHideCustomView() {
+            Log.i("ToVmp","onHideCustomView");
+            fullScreen();
+
+            webView.setVisibility(View.VISIBLE);
+            flVideoContainer.setVisibility(View.GONE);
+            flVideoContainer.removeAllViews();
+            super.onHideCustomView();
+
+        }
+    }
+
+    private void fullScreen() {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            Log.i("ToVmp","横屏");
+        } else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            Log.i("ToVmp","竖屏");
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (webView != null) {
+            webView.destroy();
+        }
+        super.onDestroy();
     }
 }

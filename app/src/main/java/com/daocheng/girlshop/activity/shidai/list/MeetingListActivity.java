@@ -23,6 +23,7 @@ import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.BaseActivity;
 import com.daocheng.girlshop.activity.shidai.detail.WebActivity;
 import com.daocheng.girlshop.activity.shidai.detail.hotSongActivity;
+import com.daocheng.girlshop.dialog.MessageDialog;
 import com.daocheng.girlshop.dialog.SecretDialog;
 import com.daocheng.girlshop.entity.ServiceResult;
 import com.daocheng.girlshop.entity.shdiai.MeetingBean;
@@ -185,14 +186,28 @@ public class MeetingListActivity extends BaseActivity implements View.OnClickLis
                     shotRecyclerViewAdapter.notifyDataSetChanged();
 
                 } else {
-                    showShortToast(rspData.getMessage());
+                    if (!TextUtils.isEmpty(rspData.getErrmsg())) {
+                        MessageDialog mg = new MessageDialog(self, "提示", rspData.getErrmsg(), MessageDialog.MESSAGE, new MessageDialog.onRequest() {
+                            @Override
+                            public void back() {
+                            }
+                        });
+                        mg.show();
+                    }
                 }
                 mSwipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
             public void failed(String msg) {
-                Toast.makeText(self, msg, Toast.LENGTH_LONG).show();
+                if (!TextUtils.isEmpty(msg)) {
+                    MessageDialog mg = new MessageDialog(self, "提示", msg, MessageDialog.MESSAGE, new MessageDialog.onRequest() {
+                        @Override
+                        public void back() {
+                        }
+                    });
+                    mg.show();
+                }
                 mSwipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -273,9 +288,9 @@ public class MeetingListActivity extends BaseActivity implements View.OnClickLis
                             gotoMeeting("", ob.getNumber());
                         }
                     } else {
-                        Intent intent=new Intent(self,WebActivity.class);
-                        intent.putExtra("url",ob.getLive());
-                        intent.putExtra("title",ob.getTitle());
+                        Intent intent = new Intent(self, WebActivity.class);
+                        intent.putExtra("url", ob.getLive());
+                        intent.putExtra("title", ob.getTitle());
                         startActivity(intent);
 
 //                        Uri uri = Uri.parse(ob.getLive());

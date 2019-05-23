@@ -242,7 +242,7 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
 
 
     @Override
-    public void onClick(View v) {
+    public void onClick(final View v) {
         switch (v.getId()) {
             case R.id.tv_bottom_first:
                 if (dataflag != TYPE_JF) {
@@ -280,7 +280,14 @@ public class shidaiHomeFragment extends BaseFragment implements View.OnClickList
                 goToNext(DataListActivity.TYPE_MRIRIYIJU, ((TextView) v).getText().toString());
                 break;
             case R.id.rb_flxx:
-                goToMeeting(DataListActivity.TYPE_FENLEIXUEXI, ((TextView) v).getText().toString());
+                MessageDialog mg = new MessageDialog(self, "提示", "进入在线课堂需要20积分，是否进入？", MessageDialog.MESSAGE, new MessageDialog.onRequest() {
+                    @Override
+                    public void back() {
+                        goToMeeting(DataListActivity.TYPE_FENLEIXUEXI, ((TextView) v).getText().toString());
+                    }
+                });
+                mg.show();
+
                 break;
             case R.id.rb_eca:
                 iv_7_new.setVisibility(View.GONE);
