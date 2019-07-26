@@ -32,7 +32,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@id/iv_head"
-            android:text="马蓉"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -45,7 +44,6 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="6dp"
             android:layout_toRightOf="@id/iv_head"
-            android:text="学号：1041285"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -57,7 +55,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="6dp"
             android:layout_toRightOf="@id/iv_head"
-            android:text="积分：50"
+            android:text="积分："
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -167,7 +165,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:text="学期剩余天数：30"
+            android:text="学期剩余天数："
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -178,7 +176,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="6dp"
-            android:text="开始时间：2015-2-25"
+            android:text="开始时间："
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -188,7 +186,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="6dp"
-            android:text="开始时间：2015-2-25"
+            android:text="开始时间："
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -208,7 +206,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="6dp"
-            android:text="选修课已订次数：2"
+            android:text="选修课已订次数："
             android:textColor="@color/black"
             android:textSize="14sp" />
         <TextView
@@ -217,7 +215,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="6dp"
-            android:text="必修课可预订总次数：2"
+            android:text="必修课可预订总次数："
             android:textColor="@color/black"
             android:textSize="14sp" />
 
