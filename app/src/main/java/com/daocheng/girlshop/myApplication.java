@@ -105,7 +105,11 @@ public class myApplication extends Application {
 
         JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
         JPushInterface.init(this);
-        HstApplication.initHstApplication(this);
+        try {
+//            HstApplication.initHstApplication(this);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 
     }
