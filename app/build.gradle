@@ -8,7 +8,11 @@ MobSDK {
 
 android {
 
-
+    compileOptions {
+        // 1.8 是我的 jdk 版本
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
     signingConfigs {
         debug {
             storeFile file('../dc.keystore')
@@ -29,7 +33,7 @@ android {
     aaptOptions.useNewCruncher = false
     defaultConfig {
         applicationId "com.daocheng.girlshop"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 27
         versionCode 517
         versionName "5.1.7"
@@ -112,32 +116,33 @@ repositories {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.google.code.gson:gson:2.6.2'
-    compile 'com.duowan.android.netroid:netroid:1.2.1'
-    compile 'com.umeng.analytics:analytics:latest.integration'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.google.code.gson:gson:2.6.2'
+    implementation 'com.duowan.android.netroid:netroid:1.2.1'
+    implementation 'com.umeng.analytics:analytics:latest.integration'
     // compile files('libs/alipaySdk-20160223.jar')
-    compile project(':jcvideoplayer-lib')
-    compile project(':flowlayout-lib')
-    compile 'com.mcxiaoke.volley:library:1.0.7'
-    compile 'com.github.bumptech.glide:glide:3.5.2'
-    compile 'com.squareup.picasso:picasso:2.5.1'
-    compile 'com.android.support:appcompat-v7:27.0.2'
-    compile 'com.android.support:recyclerview-v7:27.0.2'
-    compile files('libs/qiniu/qiniu-android-sdk-7.0.9.jar')
-    compile files('libs/qiniu/qiniu-dependency-happy-dns-0.2.4.jar')
-    compile files('libs/qiniu/qiniu-dependency-android-async-http-1.4.9.jar')
-    compile 'cz.msebera.android:httpclient:4.4.1.1'
-    compile 'com.baoyz.actionsheet:library:1.1.5'
-    compile project(':library')
-    compile files('libs/org.apache.http.legacy.jar')
-    compile project(':playerview')
-    compile 'com.android.support:design:27.0.2'
-    compile 'com.android.support:cardview-v7:27.0.2'
-    compile(name: 'app-neutral-release', ext: 'aar', {
-        exclude group: 'com.android.support', module: 'support-v4'
-    })
-    compile 'org.greenrobot:eventbus:3.0.0'
-    compile 'com.squareup.okhttp3:okhttp:3.4.2'
+    implementation project(':jcvideoplayer-lib')
+    implementation project(':flowlayout-lib')
+    implementation 'com.mcxiaoke.volley:library:1.0.7'
+    implementation 'com.github.bumptech.glide:glide:3.5.2'
+    implementation 'com.squareup.picasso:picasso:2.5.1'
+    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support:recyclerview-v7:27.0.2'
+    implementation files('libs/qiniu/qiniu-android-sdk-7.0.9.jar')
+    implementation files('libs/qiniu/qiniu-dependency-happy-dns-0.2.4.jar')
+    implementation files('libs/qiniu/qiniu-dependency-android-async-http-1.4.9.jar')
+    implementation 'cz.msebera.android:httpclient:4.4.1.1'
+    implementation 'com.baoyz.actionsheet:library:1.1.5'
+    implementation project(':library')
+    implementation files('libs/org.apache.http.legacy.jar')
+    implementation project(':playerview')
+    implementation 'com.android.support:design:27.0.2'
+    implementation 'com.android.support:cardview-v7:27.0.2'
+    implementation(name: "hst-sdk-3.21.3.3", ext: "aar")
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.4.2'
+//    implementation 'com.android.support:multidex:1.0.1'
+
+
 }

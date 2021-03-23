@@ -13,11 +13,9 @@ import android.os.Vibrator;
 
 import com.daocheng.girlshop.activity.MainActivity;
 import com.daocheng.girlshop.entity.Location;
-import com.daocheng.girlshop.utils.BoardManager;
-import com.daocheng.girlshop.utils.Constant;
 import com.daocheng.girlshop.utils.CrashHandler;
 import com.iflytek.cloud.SpeechUtility;
-import com.inpor.fastmeetingcloud.receiver.HstApplication;
+import com.inpor.fastmeetingcloud.sdk.HstLoginManager;
 import com.mob.MobSDK;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -36,7 +34,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import cn.jpush.android.api.JPushInterface;
-import cn.smssdk.SMSSDK;
 
 /**
  * 项目名称：girlshop
@@ -105,11 +102,21 @@ public class myApplication extends Application {
 
         JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
         JPushInterface.init(this);
-        HstApplication.initHstApplication(this);
+        try {
+            HstLoginManager.getInstance().initSdk(this.getApplicationContext());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 
     }
 
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+//        MultiDex.install(base);
+    }
 
     private void initCache() {
         File cacheDir = StorageUtils.getCacheDirectory(self);

@@ -16,7 +16,6 @@ import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.BaseActivity;
 import com.daocheng.girlshop.dialog.ShareBitmapDialog;
 import com.daocheng.girlshop.utils.Utils;
-import com.inpor.fastmeetingcloud.util.AppUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**

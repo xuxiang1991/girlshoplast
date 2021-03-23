@@ -1,8 +1,7 @@
 package com.daocheng.girlshop.activity.shidai.list;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,27 +13,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.BaseActivity;
 import com.daocheng.girlshop.activity.shidai.detail.WebActivity;
-import com.daocheng.girlshop.activity.shidai.detail.hotSongActivity;
 import com.daocheng.girlshop.dialog.MessageDialog;
 import com.daocheng.girlshop.dialog.SecretDialog;
 import com.daocheng.girlshop.entity.ServiceResult;
 import com.daocheng.girlshop.entity.shdiai.MeetingBean;
-import com.daocheng.girlshop.meeting.ThirdLoginConstant;
 import com.daocheng.girlshop.net.NetUtils;
 import com.daocheng.girlshop.net.ShidaiApi;
 import com.daocheng.girlshop.utils.Config;
 import com.daocheng.girlshop.view.ClipTextView;
-import com.google.gson.Gson;
-import com.inpor.fastmeetingcloud.ui.StartTheMiddleTierActivity;
-import com.inpor.fastmeetingcloud.util.Constant;
+import com.inpor.fastmeetingcloud.sdk.HstLoginManager;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.IOException;
@@ -74,6 +67,8 @@ public class MeetingListActivity extends BaseActivity implements View.OnClickLis
     private baseHotRecycleAdapter shotRecyclerViewAdapter;
     private MeetingBean meetingBean;
 
+    private HstLoginManager loginManager;
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -92,7 +87,8 @@ public class MeetingListActivity extends BaseActivity implements View.OnClickLis
     protected void setupViews() {
         LayoutInflater inflater = LayoutInflater.from(self);
         paget_title = getIntent().getStringExtra("title");
-
+        loginManager = HstLoginManager.getInstance();
+        loginManager.hstRequestPermissions(this);
         tv_left = (ImageView) findViewById(R.id.tv_left);
         tv_left.setVisibility(View.VISIBLE);
         tv_left.setOnClickListener(this);
@@ -315,35 +311,59 @@ public class MeetingListActivity extends BaseActivity implements View.OnClickLis
         }
     }
 
+
+
+    //权限请求回调
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        loginManager.onHstRequestPermissionsResult(this, requestCode, permissions, grantResults);
+    }
     /**
      * 去往会议
      */
     private void gotoMeeting(String password, String roomId) {
-        Intent intent = new Intent(self, StartTheMiddleTierActivity.class);
-        intent.setAction(Constant.INTENT_APP_ACTION_ROOMID_PASSWORD);
+//        Intent intent = new Intent(self, StartTheMiddleTierActivity.class);
+//        intent.setAction(Constant.INTENT_APP_ACTION_ROOMID_PASSWORD);
+//
+//        //Tv
+////                Intent intent = new Intent(RoomIdPasswordActivity.this, PremeetingActivity.class);
+////                intent.setAction(StaticString.INTENT_APP_ACTION_ROOMID_PASSWORD);
+//
+//        //外部启动
+////                Intent intent = new Intent();
+////                //intent.setComponent(new ComponentName("com.inpor.fastmeetingcloud","com.inpor.fastmeetingcloud.ui.StartTheMiddleTierActivity"));
+////                intent.setComponent(new ComponentName("com.inpor.cloudmeeting","com.inpor.fastmeetingcloud.ui.StartTheMiddleTierActivity"));
+////                intent.setAction(StaticString.INTENT_APP_ACTION_ROOMID_PASSWORD);
+//
+//        Bundle bundle = new Bundle();
+//        bundle.putString(ThirdLoginConstant.BUNDLE_NICKNAME, Config.getShidaiUserInfo().getNickname());
+//        bundle.putString(ThirdLoginConstant.BUNDLE_SERVER_ROOMID, roomId);
+//        bundle.putString(ThirdLoginConstant.BUNDLE_ROOM_PASSWORD, password);
+//        bundle.putString(ThirdLoginConstant.BUNDLE_SERVER_PORT, meetingBean.getPort());
+//        bundle.putString(ThirdLoginConstant.BUNDLE_SERVER_ADDRESS, meetingBean.getServer());
+//        bundle.putString(ThirdLoginConstant.BUNDLE_UPLOAD_VIDEO_SEZE, "50");
+//        bundle.putString(ThirdLoginConstant.BUNDLE_UP_FILE, "upFile");
+//        bundle.putString(ThirdLoginConstant.BUNDLE_WEB_SERVICE_URL, "http://dbdc.gxzf.gov.cn/videoMeeting/service/meetingFile?wsdl");
+//        bundle.putString(ThirdLoginConstant.BUNDLE_NAMESPACE, "http://impl.service.webservice.sinosoft.com.cn");
+//        intent.putExtras(bundle);
+//        startActivity(intent);
+//
 
-        //Tv
-//                Intent intent = new Intent(RoomIdPasswordActivity.this, PremeetingActivity.class);
-//                intent.setAction(StaticString.INTENT_APP_ACTION_ROOMID_PASSWORD);
+        try {
+            loginManager.joinMeeting(this, meetingBean.getServer(), meetingBean.getPort(), Config.getShidaiUserInfo().getNickname(), roomId, password);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        //外部启动
-//                Intent intent = new Intent();
-//                //intent.setComponent(new ComponentName("com.inpor.fastmeetingcloud","com.inpor.fastmeetingcloud.ui.StartTheMiddleTierActivity"));
-//                intent.setComponent(new ComponentName("com.inpor.cloudmeeting","com.inpor.fastmeetingcloud.ui.StartTheMiddleTierActivity"));
-//                intent.setAction(StaticString.INTENT_APP_ACTION_ROOMID_PASSWORD);
 
-        Bundle bundle = new Bundle();
-        bundle.putString(ThirdLoginConstant.BUNDLE_NICKNAME, Config.getShidaiUserInfo().getNickname());
-        bundle.putString(ThirdLoginConstant.BUNDLE_SERVER_ROOMID, roomId);
-        bundle.putString(ThirdLoginConstant.BUNDLE_ROOM_PASSWORD, password);
-        bundle.putString(ThirdLoginConstant.BUNDLE_SERVER_PORT, meetingBean.getPort());
-        bundle.putString(ThirdLoginConstant.BUNDLE_SERVER_ADDRESS, meetingBean.getServer());
-        bundle.putString(ThirdLoginConstant.BUNDLE_UPLOAD_VIDEO_SEZE, "50");
-        bundle.putString(ThirdLoginConstant.BUNDLE_UP_FILE, "upFile");
-        bundle.putString(ThirdLoginConstant.BUNDLE_WEB_SERVICE_URL, "http://dbdc.gxzf.gov.cn/videoMeeting/service/meetingFile?wsdl");
-        bundle.putString(ThirdLoginConstant.BUNDLE_NAMESPACE, "http://impl.service.webservice.sinosoft.com.cn");
-        intent.putExtras(bundle);
-        startActivity(intent);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        loginManager.hstRelease();
     }
 
 
