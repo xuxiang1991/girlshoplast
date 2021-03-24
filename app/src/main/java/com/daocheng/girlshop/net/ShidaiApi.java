@@ -25,7 +25,7 @@ import java.util.HashMap;
 public class ShidaiApi {
 
 
-    public static final String BASE_URL = "http://121.40.90.171/";//"http://114.55.5.20:8080"
+    public static final String BASE_URL = "https://www.cs66club.com/";//"http://114.55.5.20:8080"
 
     public static final String Pic_BASE_URL = "http://7vijhu.com1.z0.glb.clouddn.com/";//"http://114.55.5.20:8080"
 
@@ -36,7 +36,7 @@ public class ShidaiApi {
      *
      * @param context
      * @param netCallBack
-     * @param rspCls      http://121.40.90.171/cstimes/app/login?mobile=13962325335&password=3380066xx&userAgent=android
+     * @param rspCls      http://121.40.90.171/app/login?mobile=13962325335&password=3380066xx&userAgent=android
      */
     public static void getLogin(Context context, String mobile, String password, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
@@ -44,12 +44,12 @@ public class ShidaiApi {
 //        map.put("mobile", mobile);
 //        map.put("password", password);
 //        map.put("userAgent", "android");
-//        NetUtils.post(context, BASE_URL + "cstimes/app/login", map, null, netCallBack, rspCls);
+//        NetUtils.post(context, BASE_URL + "app/login", map, null, netCallBack, rspCls);
 
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/login?");
+            sb.append("app/login?");
             sb.append("mobile=");
             sb.append(URLEncoder.encode(mobile, HTTP.UTF_8)).append("&");
 
@@ -76,7 +76,7 @@ public class ShidaiApi {
      * @param netCallBack
      */
     public static void getQiNiuUptoken(Context context, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
-        String url = BASE_URL + "cstimes/app/getToken";
+        String url = BASE_URL + "app/getToken";
         NetUtils.post(context, url, null, null, netCallBack, rspCls);
     }
 
@@ -92,7 +92,7 @@ public class ShidaiApi {
 
 //        StringBuilder sb = new StringBuilder(BASE_URL);
 //        try {
-//            sb.append("cstimes/app/register?");
+//            sb.append("app/register?");
 //            sb.append("mobile=");
 //            sb.append(URLEncoder.encode(mobile, HTTP.UTF_8)).append("&");
 //
@@ -109,7 +109,7 @@ public class ShidaiApi {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-        NetUtils.post(context, BASE_URL + "cstimes/app/register", map, "注册", netCallBack, rspCls);
+        NetUtils.post(context, BASE_URL + "app/register", map, "注册", netCallBack, rspCls);
     }
 
     /**
@@ -123,7 +123,7 @@ public class ShidaiApi {
     public static void gethasUserbyMobile(Context context, String mobile, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/mobileForUser?");
+            sb.append("app/mobileForUser?");
             sb.append("mobile=");
             sb.append(URLEncoder.encode(mobile, HTTP.UTF_8)).append("&")
                     .append("&userAgent=")
@@ -145,13 +145,13 @@ public class ShidaiApi {
      * @param currentPageStr
      * @param maxCountStr
      * @param rspCls
-     * @param netCallBack    http://121.40.90.171/cstimes/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     * @param netCallBack    http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
      */
     public static void getKeweekcoursesList(Context context, int userid, int catid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/weekcourses?");
+            sb.append("app/weekcourses?");
             sb.append("catid=").append(catid).append("&userid=").append(userid);
             sb.append("&currentPageStr=").append(currentPageStr).append("&maxCountStr=").append(maxCountStr)
                     .append("&userAgent=")
@@ -175,13 +175,13 @@ public class ShidaiApi {
      * @param userid
      * @param id          课程id 2454
      * @param rspCls
-     * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
+     * @param netCallBack http://121.40.90.171/app/course?id=2245&userid=715
      */
     public static void getKeDetail(Context context, int userid, int id, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/course?");
+            sb.append("app/course?");
             sb.append("userid=").append(userid);
             sb.append("&id=").append(id)
                     .append("&userAgent=")
@@ -205,13 +205,13 @@ public class ShidaiApi {
      * @param userid
      * @param id          课程id 2454
      * @param rspCls
-     * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
+     * @param netCallBack http://121.40.90.171/app/course?id=2245&userid=715
      */
     public static void JoinInKe(Context context, int userid, int id, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
 //        StringBuilder sb = new StringBuilder(BASE_URL);
 //        try {
-//            sb.append("cstimes/app/orderCourse?");
+//            sb.append("app/orderCourse?");
 //            sb.append("userid=").append(userid);
 //            sb.append("&id=").append(id)
 //                    .append("&userAgent=")
@@ -225,7 +225,7 @@ public class ShidaiApi {
         map.put("id", Integer.toString(id));
         map.put("userAgent", "android");
 
-        NetUtils.post(context, BASE_URL + "cstimes/app/orderCourse", map, null, netCallBack, rspCls);
+        NetUtils.post(context, BASE_URL + "app/orderCourse", map, null, netCallBack, rspCls);
 
 
     }
@@ -237,13 +237,13 @@ public class ShidaiApi {
      * @param context
      * @param userid
      * @param rspCls
-     * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
+     * @param netCallBack http://121.40.90.171/app/course?id=2245&userid=715
      */
     public static void getmyKeDetail(Context context, int userid, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/myCourses?");
+            sb.append("app/myCourses?");
             sb.append("userid=").append(userid);
             sb.append("&userAgent=")
                     .append("android");
@@ -267,13 +267,13 @@ public class ShidaiApi {
      * @param currentPageStr
      * @param maxCountStr
      * @param rspCls
-     * @param netCallBack    http://121.40.90.171/cstimes/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     * @param netCallBack    http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
      */
     public static void getMycihuiList(Context context, int userid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/words?");
+            sb.append("app/words?");
             sb.append("userid=").append(userid);
             sb.append("&currentPageStr=").append(currentPageStr).append("&maxCountStr=").append(maxCountStr)
                     .append("&userAgent=")
@@ -300,13 +300,13 @@ public class ShidaiApi {
      * @param currentPageStr
      * @param maxCountStr
      * @param rspCls
-     * @param netCallBack    http://121.40.90.171/cstimes/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     * @param netCallBack    http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
      */
     public static void getWordList(Context context,String level, int userid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/wordLesson?");
+            sb.append("app/wordLesson?");
             sb.append("userid=").append(userid).append("&levelname=").append(level);
             sb.append("&currentPageStr=").append(currentPageStr).append("&maxCountStr=").append(maxCountStr)
                     .append("&userAgent=")
@@ -328,13 +328,13 @@ public class ShidaiApi {
      * @param context
      * @param userid
      * @param rspCls
-     * @param netCallBack    http://121.40.90.171/cstimes/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     * @param netCallBack    http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
      */
     public static void getLevel(Context context, int userid, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/wordLevel?");
+            sb.append("app/wordLevel?");
             sb.append("userid=").append(userid);
             sb.append("&userAgent=")
                     .append("android");
@@ -358,13 +358,13 @@ public class ShidaiApi {
      * @param context
      * @param userid
      * @param rspCls
-     * @param netCallBack    http://121.40.90.171/cstimes/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     * @param netCallBack    http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
      */
     public static void getWordDetail(Context context,int lessonId, int userid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/passwords?");
+            sb.append("app/passwords?");
             sb.append("userid=").append(userid).append("&lessonId=").append(lessonId);
             sb.append("&currentPageStr=").append(currentPageStr).append("&maxCountStr=").append(maxCountStr)
                     .append("&userAgent=")
@@ -390,7 +390,7 @@ public class ShidaiApi {
      * @param userid
      * @param id          词汇id
      * @param rspCls
-     * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
+     * @param netCallBack http://121.40.90.171/app/course?id=2245&userid=715
      */
     public static void deleteCihuiFromMy(Context context, int userid, int id, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
@@ -400,7 +400,7 @@ public class ShidaiApi {
         map.put("id", Integer.toString(id));
         map.put("userAgent", "android");
 
-        NetUtils.post(context, BASE_URL + "cstimes/app/delWord", map, null, netCallBack, rspCls);
+        NetUtils.post(context, BASE_URL + "app/delWord", map, null, netCallBack, rspCls);
 
 
     }
@@ -411,14 +411,14 @@ public class ShidaiApi {
      * @param context
      * @param userid
      * @param rspCls
-     * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
+     * @param netCallBack http://121.40.90.171/app/course?id=2245&userid=715
      */
     public static void getHomedata(Context context, int userid, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/home?");
+            sb.append("app/home?");
             sb.append("userid=").append(userid)
                     .append("&userAgent=")
                     .append("android");
@@ -451,13 +451,13 @@ public class ShidaiApi {
      * @param currentPageStr
      * @param maxCountStr
      * @param rspCls
-     * @param netCallBack    http://121.40.90.171/cstimes/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     * @param netCallBack    http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
      */
     public static void getDataList(Context context, int type, int userid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/articles?");
+            sb.append("app/articles?");
             sb.append("userid=").append(userid);
             sb.append("&currentPageStr=").append(currentPageStr).append("&maxCountStr=").append(maxCountStr)
                     .append("&userAgent=")
@@ -486,13 +486,13 @@ public class ShidaiApi {
      * @param currentPageStr
      * @param maxCountStr
      * @param rspCls
-     * @param netCallBack    http://121.40.90.171/cstimes/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     * @param netCallBack    http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
      */
     public static void getSongList(Context context, int type, int userid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/songs?");
+            sb.append("app/songs?");
             sb.append("userid=").append(userid);
             sb.append("&currentPageStr=").append(currentPageStr).append("&maxCountStr=").append(maxCountStr)
                     .append("&userAgent=")
@@ -515,13 +515,13 @@ public class ShidaiApi {
      * @param context
      * @param userid
      * @param rspCls
-     * @param netCallBack    http://121.40.90.171/cstimes/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     * @param netCallBack    http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
      */
     public static void getMeetingList(Context context, int userid,  final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/meeting?");
+            sb.append("app/meeting?");
             sb.append("userid=").append(userid);
 
 
@@ -551,7 +551,7 @@ public class ShidaiApi {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/checkover?");
+            sb.append("app/checkover?");
             sb.append("userid=").append(userid);
             sb.append("&userAgent=")
                     .append("android").append("&type=").append(type);
@@ -574,7 +574,7 @@ public class ShidaiApi {
      * @param userid
      * @param id          词汇id
      * @param rspCls
-     * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
+     * @param netCallBack http://121.40.90.171/app/course?id=2245&userid=715
      */
     public static void updateScope(Context context, int userid, int id, int updateScore, int type, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
@@ -587,7 +587,7 @@ public class ShidaiApi {
         if (type != 0)
             map.put("type", Integer.toString(type));
 
-        NetUtils.post(context, BASE_URL + "cstimes/app/updateScore", map, null, netCallBack, rspCls);
+        NetUtils.post(context, BASE_URL + "app/updateScore", map, null, netCallBack, rspCls);
 
 
     }
@@ -600,7 +600,7 @@ public class ShidaiApi {
      *
      * @param context
      * @param rspCls
-     * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
+     * @param netCallBack http://121.40.90.171/app/course?id=2245&userid=715
      */
     public static void CompleteExam(Context context,  final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
@@ -608,7 +608,7 @@ public class ShidaiApi {
         HashMap map = new HashMap();
         map.put("userid",Config.getShidaiUserInfo().getUserid()+"");
         map.put("userAgent", "android");
-        NetUtils.post(context, BASE_URL + "cstimes/app/examfinish", map, null, netCallBack, rspCls);
+        NetUtils.post(context, BASE_URL + "app/examfinish", map, null, netCallBack, rspCls);
 
 
     }
@@ -619,7 +619,7 @@ public class ShidaiApi {
      * @param context
      * @param userid
      * @param rspCls
-     * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
+     * @param netCallBack http://121.40.90.171/app/course?id=2245&userid=715
      */
     public static void getSmzy(Context context, int userid, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
@@ -630,7 +630,7 @@ public class ShidaiApi {
 //        if (BuildConfig.DEBUG)
 //            map.put("debug", "1");
 
-        NetUtils.post(context, BASE_URL + "cstimes/app/writtenWork", map, null, netCallBack, rspCls);
+        NetUtils.post(context, BASE_URL + "app/writtenWork", map, null, netCallBack, rspCls);
 
 
     }
@@ -642,7 +642,7 @@ public class ShidaiApi {
      * @param context
      * @param userid
      * @param rspCls
-     * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
+     * @param netCallBack http://121.40.90.171/app/course?id=2245&userid=715
      */
     public static void RightSmzy(Context context, int userid, String id, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
@@ -652,7 +652,7 @@ public class ShidaiApi {
         map.put("userAgent", "android");
         map.put("id", id);
 
-        NetUtils.post(context, BASE_URL + "cstimes/app/right", map, null, netCallBack, rspCls);
+        NetUtils.post(context, BASE_URL + "app/right", map, null, netCallBack, rspCls);
 
 
     }
@@ -664,7 +664,7 @@ public class ShidaiApi {
      * @param userid
      * @param word
      * @param rspCls
-     * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
+     * @param netCallBack http://121.40.90.171/app/course?id=2245&userid=715
      */
     public static void addtoWordbooke(Context context, int userid, String word, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
@@ -674,7 +674,7 @@ public class ShidaiApi {
         map.put("word", word);
         map.put("userAgent", "android");
 
-        NetUtils.post(context, BASE_URL + "cstimes/app/newWord", map, null, netCallBack, rspCls);
+        NetUtils.post(context, BASE_URL + "app/newWord", map, null, netCallBack, rspCls);
 
 
     }
@@ -686,7 +686,7 @@ public class ShidaiApi {
      * @param context
      * @param userid
      * @param id
-     * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
+     * @param netCallBack http://121.40.90.171/app/course?id=2245&userid=715
      */
     public static void deletePinglun(Context context, int userid, int id, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
@@ -696,7 +696,7 @@ public class ShidaiApi {
         map.put("id", id + "");
         map.put("userAgent", "android");
 
-        NetUtils.post(context, BASE_URL + "cstimes/app/delComment", map, null, netCallBack, rspCls);
+        NetUtils.post(context, BASE_URL + "app/delComment", map, null, netCallBack, rspCls);
 
 
     }
@@ -707,7 +707,7 @@ public class ShidaiApi {
      * @param context
      * @param userid
      * @param id
-     * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
+     * @param netCallBack http://121.40.90.171/app/course?id=2245&userid=715
      */
     public static void deleteZiPinglun(Context context, int userid, int id, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
@@ -717,7 +717,7 @@ public class ShidaiApi {
         map.put("id", id + "");
         map.put("userAgent", "android");
 
-        NetUtils.post(context, BASE_URL + "cstimes/app/delSubComment", map, null, netCallBack, rspCls);
+        NetUtils.post(context, BASE_URL + "app/delSubComment", map, null, netCallBack, rspCls);
 
 
     }
@@ -737,7 +737,7 @@ public class ShidaiApi {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/comments?");
+            sb.append("app/comments?");
             sb.append("id=").append(id).append("&userid=").append(userid);
             sb.append("&currentPageStr=").append(currentPageStr).append("&maxCountStr=").append(maxCountStr)
                     .append("&userAgent=")
@@ -768,7 +768,7 @@ public class ShidaiApi {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/subcomments?");
+            sb.append("app/subcomments?");
             sb.append("id=").append(id).append("&userid=").append(userid);
             sb.append("&currentPageStr=").append(currentPageStr).append("&maxCountStr=").append(maxCountStr)
                     .append("&userAgent=")
@@ -806,7 +806,7 @@ public class ShidaiApi {
         map.put("url", url);
         map.put("content", content);
 
-        NetUtils.post(context, BASE_URL + "cstimes/app/publishcomment", map, null, netCallBack, rspCls);
+        NetUtils.post(context, BASE_URL + "app/publishcomment", map, null, netCallBack, rspCls);
 
 
     }
@@ -833,7 +833,7 @@ public class ShidaiApi {
         map.put("url", url);
         map.put("content", content);
 
-        NetUtils.post(context, BASE_URL + "cstimes/app/publishsubcomment", map, null, netCallBack, rspCls);
+        NetUtils.post(context, BASE_URL + "app/publishsubcomment", map, null, netCallBack, rspCls);
 
 
     }
@@ -857,7 +857,7 @@ public class ShidaiApi {
         map.put("userAgent", "android");
 
 
-        NetUtils.post(context, BASE_URL + "cstimes/app/zancomment", map, null, netCallBack, rspCls);
+        NetUtils.post(context, BASE_URL + "app/zancomment", map, null, netCallBack, rspCls);
 
 
     }
@@ -879,7 +879,7 @@ public class ShidaiApi {
         map.put("userAgent", "Android");
 
 
-        NetUtils.post(context, BASE_URL + "cstimes/app/resetPassword", map, "注册", netCallBack, rspCls);
+        NetUtils.post(context, BASE_URL + "app/resetPassword", map, "注册", netCallBack, rspCls);
     }
 
 
@@ -894,7 +894,7 @@ public class ShidaiApi {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/start");
+            sb.append("app/start");
 
 
         } catch (Exception e) {
@@ -918,7 +918,7 @@ public class ShidaiApi {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/study");
+            sb.append("app/study");
 
 
         } catch (Exception e) {
@@ -943,7 +943,7 @@ public class ShidaiApi {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/version");
+            sb.append("app/version");
 
 
         } catch (Exception e) {
@@ -965,13 +965,13 @@ public class ShidaiApi {
      * @param currentPageStr
      * @param maxCountStr
      * @param rspCls
-     * @param netCallBack    http://121.40.90.171/cstimes/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     * @param netCallBack    http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
      */
     public static void getDataList(Context context, int id, int type, int userid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/articles?");
+            sb.append("app/articles?");
             sb.append("userid=").append(userid);
             sb.append("&currentPageStr=").append(currentPageStr).append("&maxCountStr=").append(maxCountStr).append("&id=").append(id)
                     .append("&userAgent=")
@@ -996,13 +996,13 @@ public class ShidaiApi {
      * @param currentPageStr
      * @param maxCountStr
      * @param rspCls
-     * @param netCallBack    http://121.40.90.171/cstimes/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     * @param netCallBack    http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
      */
     public static void getDatayykw(Context context, int id, int type, int userid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/articles?");
+            sb.append("app/articles?");
             sb.append("userid=").append(userid);
             sb.append("&currentPageStr=").append(currentPageStr).append("&maxCountStr=").append(maxCountStr).append("&parentid=").append(id)
                     .append("&userAgent=")
@@ -1038,7 +1038,7 @@ public class ShidaiApi {
         map.put("userAgent", "android");
         map.put("content", content);
 
-        NetUtils.post(context, BASE_URL + "cstimes/app/courseTask", map, null, netCallBack, rspCls);
+        NetUtils.post(context, BASE_URL + "app/courseTask", map, null, netCallBack, rspCls);
 
 
     }
@@ -1050,13 +1050,13 @@ public class ShidaiApi {
      * @param context
      * @param userid
      * @param rspCls
-     * @param netCallBack http://121.40.90.171/cstimes/app/course?id=2245&userid=715
+     * @param netCallBack http://121.40.90.171/app/course?id=2245&userid=715
      */
     public static void getmyKeDetail(Context context, int userid, int catid, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("cstimes/app/myCourses?");
+            sb.append("app/myCourses?");
             sb.append("userid=").append(userid);
             sb.append("&userAgent=")
                     .append("android");
