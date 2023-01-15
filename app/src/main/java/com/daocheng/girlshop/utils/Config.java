@@ -458,4 +458,19 @@ public static void setShidaiUserInfo(String userInfo) {
     public static void setRegister(String registerid) {
         UserInfoPreferences.edit().putString(REGISTERID, registerid).commit();
     }
+
+
+    /**
+     *
+     * 计算时间
+     * @param url
+     * @return
+     */
+    public static Long getVideoTime(String url) {
+        return UserInfoPreferences.getLong(url, 0);
+    }
+
+    public static void setVideoTime(String url,long time) {
+        UserInfoPreferences.edit().putLong(url, time).commit();
+    }
 }

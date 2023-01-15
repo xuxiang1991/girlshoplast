@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -76,7 +77,6 @@ public class JCFullScreenActivity extends Activity {
     } catch (Exception e) {
       e.printStackTrace();
     }
-
     mJcVideoPlayer.mIfCurrentIsFullscreen = true;
     mJcVideoPlayer.mIfFullscreenIsDirectly = DIRECT_FULLSCREEN;
     mJcVideoPlayer.setUp(URL, OBJECTS);
@@ -87,6 +87,10 @@ public class JCFullScreenActivity extends Activity {
     } else {
       JCVideoPlayer.IF_RELEASE_WHEN_ON_PAUSE = true;
       JCMediaManager.instance().setListener(mJcVideoPlayer);
+    }
+    if (OBJECTS!=null&&OBJECTS.length>1)
+    {
+      mJcVideoPlayer.setCallback((JCVideoPlayer.Callback)OBJECTS[1]);
     }
   }
 

@@ -41,6 +41,11 @@ import java.util.TimerTask;
 public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickListener, View.OnTouchListener, SeekBar.OnSeekBarChangeListener, JCMediaManager.JCMediaPlayerListener, TextureView.SurfaceTextureListener {
 
   public static final String TAG = "JieCaoVideoPlayer";
+  public interface Callback{
+    void prepare();
+    void compelte();
+    void getTotal(int totalTime);
+  }
 
   protected int mCurrentState = -1;//-1相当于null
   protected static final int CURRENT_STATE_NORMAL = 0;
@@ -95,6 +100,7 @@ public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickL
 
   protected Dialog mVolumeDialog;
   protected ProgressBar mDialogVolumeProgressBar;
+  protected Callback callback;
 
   public static boolean WIFI_TIP_DIALOG_SHOWED = false;
 
@@ -132,6 +138,9 @@ public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickL
     mAudioManager = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
   }
 
+  public void setCallback(Callback callback){
+    this.callback=callback;
+  }
   public abstract int getLayoutId();
 
   protected static void setJcBuriedPoint(JCBuriedPoint jcBuriedPoint) {
@@ -547,6 +556,10 @@ public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickL
     JCMediaManager.instance().mediaPlayer.start();
     startProgressTimer();
     setStateAndUi(CURRENT_STATE_PLAYING);
+    if (callback!=null){
+      callback.prepare();
+    }
+
   }
 
   @Override
@@ -578,6 +591,9 @@ public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickL
   @Override
   public void onCompletion() {
     //make me normal first
+    if (callback!=null){
+      callback.compelte();
+    }
     setStateAndUi(CURRENT_STATE_NORMAL);
     if (textureViewContainer.getChildCount() > 0) {
       textureViewContainer.removeAllViews();
@@ -716,6 +732,9 @@ public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickL
     if (secProgress != 0) progressBar.setSecondaryProgress(secProgress);
     currentTimeTextView.setText(JCUtils.stringForTime(currentTime));
     totalTimeTextView.setText(JCUtils.stringForTime(totalTime));
+    if (callback!=null){
+      callback.getTotal(totalTime);
+    }
   }
 
   protected void resetProgressAndTime() {

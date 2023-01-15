@@ -35,6 +35,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import fm.jiecao.jcvideoplayer_lib.JCFullScreenActivity;
+import fm.jiecao.jcvideoplayer_lib.JCUtils;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
+
 /**
  * Created by XX on 2016/8/28.
  */
@@ -194,12 +199,15 @@ public class YykwActivity extends BaseActivity implements View.OnClickListener {
         public class arViewHolder extends RecyclerView.ViewHolder {
 
             TextView tv_lesson;
+            ImageView iv_play;
+            ImageView iv_yuyin;
 
 
             public arViewHolder(View itemView) {
                 super(itemView);
-                tv_lesson = (TextView) itemView.findViewById(R.id.tv_lesson);
-
+                tv_lesson = itemView.findViewById(R.id.tv_lesson);
+                iv_play =  itemView.findViewById(R.id.iv_play);
+                iv_yuyin =  itemView.findViewById(R.id.iv_yuyin);
 
             }
         }
@@ -217,15 +225,55 @@ public class YykwActivity extends BaseActivity implements View.OnClickListener {
 
             if (holder instanceof arViewHolder) {
                 final dataListResult.RecordBean ob = getItem(position);
-                ((arViewHolder) holder).tv_lesson.setText(ob.getTitle() + "  " + ob.getContent());
-                ((arViewHolder) holder).tv_lesson.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i=new Intent(self,YykwDetailActivity.class);
-                        i.putExtra("id",ob.getId());
-                        startActivity(i);
+                if (ob != null){
+                    if (!TextUtils.isEmpty(ob.getStudyMp4Url())){
+                        ((arViewHolder) holder).iv_play.setVisibility(View.VISIBLE);
+                    }else {
+                        ((arViewHolder) holder).iv_play.setVisibility(View.GONE);
                     }
-                });
+
+                    ((arViewHolder) holder).tv_lesson.setText(ob.getTitle() + "  " + ob.getContent());
+                    ((arViewHolder) holder).iv_yuyin.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent i=new Intent(self,YykwDetailActivity.class);
+                            i.putExtra("id",ob.getId());
+                            startActivity(i);
+                        }
+                    });
+                    ((arViewHolder) holder).iv_play.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            JCFullScreenActivity.startActivity(self,
+                                    "http://file.changshuclub.com/Coronavirus.mp4",
+                                    JCVideoPlayerStandard.class, "",new JCVideoPlayer.Callback() {
+                                        @Override
+                                        public void prepare() {
+                                            Log.e("xuxiang","http://file.changshuclub.com/Coronavirus.mp4"+"");
+                                            Log.e("xuxiang","开始");
+                                        }
+
+                                        @Override
+                                        public void compelte() {
+                                            Log.e("xuxiang","结束");
+//                                            Config.setABOUTUS();
+                                        }
+
+                                        @Override
+                                        public void getTotal(int totalTime) {
+
+                                            Log.e("xuxiang",totalTime+"");
+                                            Log.e("xuxiang", JCUtils.stringForTime(totalTime)+"");
+                                            if (Config.getVideoTime("http://file.changshuclub.com/Coronavirus.mp4")==0){
+                                                Config.setVideoTime("http://file.changshuclub.com/Coronavirus.mp4",totalTime);
+                                            }
+
+                                        }
+                                    });
+                        }
+                    });
+                }
+
 
             }
 

@@ -76,12 +76,31 @@ public class dataListResult extends ServiceResult{
         private String content50;
         private String mp4;
         private String icon;
+        private String studyMp4Url;
+        private String isSeeVideo;
 
 
 
         //每日一句
         private String mp3;
         private int count;
+
+
+        public String getStudyMp4Url() {
+            return studyMp4Url;
+        }
+
+        public void setStudyMp4Url(String studyMp4Url) {
+            this.studyMp4Url = studyMp4Url;
+        }
+
+        public String getIsSeeVideo() {
+            return isSeeVideo;
+        }
+
+        public void setIsSeeVideo(String isSeeVideo) {
+            this.isSeeVideo = isSeeVideo;
+        }
 
         public String getIcon() {
             return icon;

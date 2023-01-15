@@ -6,15 +6,39 @@
     android:orientation="vertical"
     >
 
-    <TextView
-        android:id="@+id/tv_lesson"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:text="lesson1"
-        android:padding="15dp"
-        android:textColor="@color/text_light_dark"
-        android:textSize="18sp" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingRight="16dp"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/tv_lesson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="lesson1"
+            android:padding="15dp"
+            android:textColor="@color/text_light_dark"
+            android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/iv_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            android:visibility="gone"
+            android:src="@drawable/icon_play" />
+
+        <ImageView
+            android:id="@+id/iv_yuyin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:visibility="visible"
+            android:background="@drawable/icon_talk"
+            android:scaleType="center" />
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
