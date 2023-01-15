@@ -558,6 +558,7 @@ public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickL
     setStateAndUi(CURRENT_STATE_PLAYING);
     if (callback!=null){
       callback.prepare();
+      callback.getTotal(getDuration());
     }
 
   }
@@ -732,9 +733,9 @@ public abstract class JCVideoPlayer extends FrameLayout implements View.OnClickL
     if (secProgress != 0) progressBar.setSecondaryProgress(secProgress);
     currentTimeTextView.setText(JCUtils.stringForTime(currentTime));
     totalTimeTextView.setText(JCUtils.stringForTime(totalTime));
-    if (callback!=null){
-      callback.getTotal(totalTime);
-    }
+//    if (callback!=null){
+//      callback.getTotal(totalTime);
+//    }
   }
 
   protected void resetProgressAndTime() {

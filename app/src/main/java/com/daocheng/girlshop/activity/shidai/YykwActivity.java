@@ -65,6 +65,11 @@ public class YykwActivity extends BaseActivity implements View.OnClickListener {
     private ImageView iv_pic;
     private TextView tv_main;
 
+    private String cUrl = "";
+    private long startTime = 0;
+    private long endTime = 0;
+    private long duration = 0;
+
 
     @Override
     protected int getLayoutId() {
@@ -168,7 +173,7 @@ public class YykwActivity extends BaseActivity implements View.OnClickListener {
             public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
                 if ("0".equals(rspData.getErrcode())) {
                     advertorialList = (dataListResult) rspData;
-                    Config.Default_Score=advertorialList.getScore();
+                    Config.Default_Score = advertorialList.getScore();
                     if (pageNo == 1) {
                         baseobjects.clear();
                         baseobjects.addAll(advertorialList.getRecord());
@@ -206,8 +211,8 @@ public class YykwActivity extends BaseActivity implements View.OnClickListener {
             public arViewHolder(View itemView) {
                 super(itemView);
                 tv_lesson = itemView.findViewById(R.id.tv_lesson);
-                iv_play =  itemView.findViewById(R.id.iv_play);
-                iv_yuyin =  itemView.findViewById(R.id.iv_yuyin);
+                iv_play = itemView.findViewById(R.id.iv_play);
+                iv_yuyin = itemView.findViewById(R.id.iv_yuyin);
 
             }
         }
@@ -225,10 +230,10 @@ public class YykwActivity extends BaseActivity implements View.OnClickListener {
 
             if (holder instanceof arViewHolder) {
                 final dataListResult.RecordBean ob = getItem(position);
-                if (ob != null){
-                    if (!TextUtils.isEmpty(ob.getStudyMp4Url())){
+                if (ob != null) {
+                    if (!TextUtils.isEmpty(ob.getStudyMp4Url())) {
                         ((arViewHolder) holder).iv_play.setVisibility(View.VISIBLE);
-                    }else {
+                    } else {
                         ((arViewHolder) holder).iv_play.setVisibility(View.GONE);
                     }
 
@@ -236,8 +241,8 @@ public class YykwActivity extends BaseActivity implements View.OnClickListener {
                     ((arViewHolder) holder).iv_yuyin.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent i=new Intent(self,YykwDetailActivity.class);
-                            i.putExtra("id",ob.getId());
+                            Intent i = new Intent(self, YykwDetailActivity.class);
+                            i.putExtra("id", ob.getId());
                             startActivity(i);
                         }
                     });
@@ -246,27 +251,35 @@ public class YykwActivity extends BaseActivity implements View.OnClickListener {
                         public void onClick(View v) {
                             JCFullScreenActivity.startActivity(self,
                                     "http://file.changshuclub.com/Coronavirus.mp4",
-                                    JCVideoPlayerStandard.class, "",new JCVideoPlayer.Callback() {
+                                    JCVideoPlayerStandard.class, "", new JCVideoPlayer.Callback() {
                                         @Override
                                         public void prepare() {
-                                            Log.e("xuxiang","http://file.changshuclub.com/Coronavirus.mp4"+"");
-                                            Log.e("xuxiang","开始");
+                                            Log.e("xuxiang", "http://file.changshuclub.com/Coronavirus.mp4" + "");
+                                            Log.e("xuxiang", "开始");
+                                            Config.setVideoTime("http://file.changshuclub.com/Coronavirus.mp4", System.currentTimeMillis());
+                                            Log.e("xuxiang", "当前时间:"+  Config.getVideoTime("http://file.changshuclub.com/Coronavirus.mp4"));
+
                                         }
 
                                         @Override
                                         public void compelte() {
-                                            Log.e("xuxiang","结束");
-//                                            Config.setABOUTUS();
+                                            Log.e("xuxiang", "结束");
+                                            long cTime = System.currentTimeMillis();
+                                            if (cTime-Config.getVideoTime("http://file.changshuclub.com/Coronavirus.mp4")>(duration-10000)){
+                                                Log.e("xuxiang","到时间了");
+                                            }else {
+                                                Log.e("xuxiang","还没到时间");
+                                            }
+
                                         }
 
                                         @Override
                                         public void getTotal(int totalTime) {
 
-                                            Log.e("xuxiang",totalTime+"");
-                                            Log.e("xuxiang", JCUtils.stringForTime(totalTime)+"");
-                                            if (Config.getVideoTime("http://file.changshuclub.com/Coronavirus.mp4")==0){
-                                                Config.setVideoTime("http://file.changshuclub.com/Coronavirus.mp4",totalTime);
-                                            }
+                                            Log.e("xuxiang", totalTime + "");
+                                            Log.e("xuxiang", JCUtils.stringForTime(totalTime) + "");
+                                            duration = totalTime;
+
 
                                         }
                                     });
