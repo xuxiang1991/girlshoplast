@@ -290,8 +290,6 @@ public class ShidaiApi {
     }
 
 
-
-
     /**
      * 获取我的词汇
      *
@@ -302,7 +300,7 @@ public class ShidaiApi {
      * @param rspCls
      * @param netCallBack    http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
      */
-    public static void getWordList(Context context,String level, int userid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+    public static void getWordList(Context context, String level, int userid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
@@ -328,7 +326,7 @@ public class ShidaiApi {
      * @param context
      * @param userid
      * @param rspCls
-     * @param netCallBack    http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     * @param netCallBack http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
      */
     public static void getLevel(Context context, int userid, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
@@ -350,17 +348,15 @@ public class ShidaiApi {
     }
 
 
-
-
     /**
      * 获取词汇详情
      *
      * @param context
      * @param userid
      * @param rspCls
-     * @param netCallBack    http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     * @param netCallBack http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
      */
-    public static void getWordDetail(Context context,int lessonId, int userid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+    public static void getWordDetail(Context context, int lessonId, int userid, int currentPageStr, int maxCountStr, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
@@ -379,8 +375,6 @@ public class ShidaiApi {
 
 
     }
-
-
 
 
     /**
@@ -473,13 +467,30 @@ public class ShidaiApi {
 
     }
 
+    public static void updateVideoSee(Context context, int userid, String id, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
+        StringBuilder sb = new StringBuilder(BASE_URL);
+        try {
+            sb.append("updateScoreVedio?");
+            sb.append("userid=").append(userid);
+            sb.append("&id=").append(id)
+                    .append("&userAgent=")
+                    .append("android");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        NetUtils.post(context, sb.toString(), null, null, netCallBack, rspCls);
+
+
+    }
 
 
     /**
      * 获取热门歌曲列表
      * <p/>
-
      *
      * @param context
      * @param userid
@@ -510,14 +521,13 @@ public class ShidaiApi {
 
     /**
      * 会议列表
-
      *
      * @param context
      * @param userid
      * @param rspCls
-     * @param netCallBack    http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
+     * @param netCallBack http://121.40.90.171/app/weekcourses?catid=87&currentPageStr=1&maxCountStr=1&userAgent=android
      */
-    public static void getMeetingList(Context context, int userid,  final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+    public static void getMeetingList(Context context, int userid, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
@@ -537,8 +547,6 @@ public class ShidaiApi {
 
 
     /**
-     *
-     *
      * 获取是否作业做完
      *
      * @param context
@@ -593,8 +601,6 @@ public class ShidaiApi {
     }
 
 
-
-
     /**
      * 考试结束
      *
@@ -602,11 +608,11 @@ public class ShidaiApi {
      * @param rspCls
      * @param netCallBack http://121.40.90.171/app/course?id=2245&userid=715
      */
-    public static void CompleteExam(Context context,  final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
+    public static void CompleteExam(Context context, final Class<?> rspCls, final NetUtils.NetCallBack<ServiceResult> netCallBack) {
 
 
         HashMap map = new HashMap();
-        map.put("userid",Config.getShidaiUserInfo().getUserid()+"");
+        map.put("userid", Config.getShidaiUserInfo().getUserid() + "");
         map.put("userAgent", "android");
         NetUtils.post(context, BASE_URL + "app/examfinish", map, null, netCallBack, rspCls);
 

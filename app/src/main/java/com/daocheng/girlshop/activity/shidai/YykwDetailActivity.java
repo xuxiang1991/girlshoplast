@@ -1,5 +1,6 @@
 package com.daocheng.girlshop.activity.shidai;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -106,6 +107,7 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
     protected void setupViews() {
         tv_yy_ok = (TextView) findViewById(R.id.tv_yy_ok);
         tv_yy_ok.setOnClickListener(this);
+        tv_yy_ok.setVisibility(View.GONE);
         tv_left = (ImageView) findViewById(R.id.tv_left);
         tv_left.setVisibility(View.VISIBLE);
         tv_left.setOnClickListener(this);
@@ -130,7 +132,7 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
     protected void initialized() {
         id = getIntent().getIntExtra("id", 0);
         tv_right.setText("男声");
-        tv_center.setText("预习课件");
+        tv_center.setText("在线课程");
         initIndexBroadcast();
 
         mSwipeRefreshLayout.setProgressViewOffset(false, 0, (int) TypedValue
@@ -173,7 +175,7 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
 
             }
         });
-
+        mSwipeRefreshLayout.setRefreshing(true);
         isPrepared = true;
 
     }
@@ -279,7 +281,7 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
         }
 
         @Override
-        public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
+        public void onBindViewHolder(final RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
 
             if (holder instanceof arViewHolder) {
                 final fuxiList.RecordBean ob = getItem(position);
@@ -584,11 +586,13 @@ public class YykwDetailActivity extends BaseActivity implements View.OnClickList
             tv_yy_ok.setBackgroundColor(getResources().getColor(R.color.App_calendar_big));
             tv_yy_ok.setTextColor(getResources().getColor(R.color.white));
             tv_yy_ok.setText("已完成");
+            tv_yy_ok.setVisibility(View.VISIBLE);
             tv_yy_ok.setClickable(false);
         } else {
             tv_yy_ok.setBackgroundColor(getResources().getColor(R.color.App_backgroud_grey));
             tv_yy_ok.setTextColor(getResources().getColor(R.color.App_calendar_yinli));
             tv_yy_ok.setText("未完成");
+            tv_yy_ok.setVisibility(View.VISIBLE);
             tv_yy_ok.setClickable(false);
         }
     }

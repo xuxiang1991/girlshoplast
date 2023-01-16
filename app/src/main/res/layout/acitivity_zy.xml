@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:padding="24dp"
         android:scaleType="center"
+        android:visibility="gone"
         android:src="@drawable/xuanze_icon_write" />
 
     <TextView
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingBottom="16dp"
+        android:visibility="gone"
         android:text="书写作业"
         android:textColor="@color/App_more_text_3"
         android:textSize="18sp" />

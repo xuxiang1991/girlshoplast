@@ -1,5 +1,6 @@
 package com.daocheng.girlshop.activity.shidai;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -109,7 +110,7 @@ public class YykwActivity extends BaseActivity implements View.OnClickListener {
         if (!TextUtils.isEmpty(content))
             tv_main.setText(content);
 
-        tv_center.setText("预习课件");
+        tv_center.setText("在线课程");
 
         mSwipeRefreshLayout.setProgressViewOffset(false, 0, (int) TypedValue
                 .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 48, getResources()
@@ -198,6 +199,29 @@ public class YykwActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
+    /**
+     * 更新视频查看
+     *
+     * @param id
+     */
+    private void updateVideo(String id, int postion) {
+        ShidaiApi.updateVideoSee(self, Config.getShidaiUserInfo().getUserid(), id, ServiceResult.class, new NetUtils.NetCallBack<ServiceResult>() {
+            @Override
+            public void success(ServiceResult rspData) throws IOException, ClassNotFoundException {
+                if ("0".equals(rspData.getErrcode())) {
+                    baseobjects.get(postion).setIsSeeVideo("2");
+
+                } else {
+                }
+            }
+
+            @Override
+            public void failed(String msg) {
+            }
+        });
+    }
+
+
     public class baseObRecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
@@ -226,7 +250,7 @@ public class YykwActivity extends BaseActivity implements View.OnClickListener {
         }
 
         @Override
-        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
             if (holder instanceof arViewHolder) {
                 final dataListResult.RecordBean ob = getItem(position);
@@ -249,26 +273,31 @@ public class YykwActivity extends BaseActivity implements View.OnClickListener {
                     ((arViewHolder) holder).iv_play.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            String mp4Url = ob.getStudyMp4Url() == null ? "" : ob.getStudyMp4Url();
                             JCFullScreenActivity.startActivity(self,
-                                    "http://file.changshuclub.com/Coronavirus.mp4",
+                                    mp4Url,
                                     JCVideoPlayerStandard.class, "", new JCVideoPlayer.Callback() {
                                         @Override
                                         public void prepare() {
-                                            Log.e("xuxiang", "http://file.changshuclub.com/Coronavirus.mp4" + "");
+                                            Log.e("xuxiang", mp4Url + "");
                                             Log.e("xuxiang", "开始");
-                                            Config.setVideoTime("http://file.changshuclub.com/Coronavirus.mp4", System.currentTimeMillis());
-                                            Log.e("xuxiang", "当前时间:"+  Config.getVideoTime("http://file.changshuclub.com/Coronavirus.mp4"));
+                                            Config.setVideoTime(mp4Url, System.currentTimeMillis());
+                                            Log.e("xuxiang", "当前时间:" + Config.getVideoTime(mp4Url));
 
                                         }
 
                                         @Override
                                         public void compelte() {
                                             Log.e("xuxiang", "结束");
-                                            long cTime = System.currentTimeMillis();
-                                            if (cTime-Config.getVideoTime("http://file.changshuclub.com/Coronavirus.mp4")>(duration-10000)){
-                                                Log.e("xuxiang","到时间了");
-                                            }else {
-                                                Log.e("xuxiang","还没到时间");
+                                            if ("1".equals(ob.getIsSeeVideo())) {
+                                                long cTime = System.currentTimeMillis();
+                                                if ((cTime - Config.getVideoTime(mp4Url)) > (duration - 10000)) {
+                                                    Log.e("xuxiang", "到时间了");
+                                                    updateVideo(ob.getId() + "", position);
+                                                } else {
+                                                    Log.e("xuxiang", "还没到时间");
+                                                    showToast("您还没有看完视频，请重新观看");
+                                                }
                                             }
 
                                         }
