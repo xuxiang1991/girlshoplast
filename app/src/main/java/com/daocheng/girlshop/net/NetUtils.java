@@ -1,12 +1,15 @@
 package com.daocheng.girlshop.net;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.daocheng.girlshop.R;
+import com.daocheng.girlshop.activity.shidai.loginActivity;
 import com.daocheng.girlshop.dialog.CProgressDialog;
 import com.daocheng.girlshop.entity.ServiceResult;
 import com.daocheng.girlshop.myApplication;
+import com.daocheng.girlshop.utils.Config;
 import com.duowan.mobile.netroid.AuthFailureError;
 import com.duowan.mobile.netroid.DefaultRetryPolicy;
 import com.duowan.mobile.netroid.NetroidError;
@@ -99,6 +102,13 @@ public class NetUtils {
                 if (callBack != null)
                     try {
                         if (rsp != null) {
+                            //会员过期，强制退出
+                            if ("E10008".equals(rsp.getErrcode())){
+                                Config.setShidaiUserInfo(null);
+                                context.startActivity(new Intent(context, loginActivity.class));
+                                myApplication.getInstance().exitExceptforMain();
+                                return;
+                            }
                             callBack.success(rsp);
                         } else {
                             callBack.failed(context.getResources().getString(R.string.dataerror));
