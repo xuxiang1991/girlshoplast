@@ -471,7 +471,7 @@ public class ShidaiApi {
 
         StringBuilder sb = new StringBuilder(BASE_URL);
         try {
-            sb.append("updateScoreVedio?");
+            sb.append("app/updateScoreVedio?");
             sb.append("userid=").append(userid);
             sb.append("&id=").append(id)
                     .append("&userAgent=")

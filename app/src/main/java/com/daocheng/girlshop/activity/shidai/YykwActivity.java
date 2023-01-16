@@ -273,6 +273,7 @@ public class YykwActivity extends BaseActivity implements View.OnClickListener {
                     ((arViewHolder) holder).iv_play.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+//                            updateVideo(ob.getId() + "", position);
                             String mp4Url = ob.getStudyMp4Url() == null ? "" : ob.getStudyMp4Url();
                             JCFullScreenActivity.startActivity(self,
                                     mp4Url,
@@ -299,6 +300,8 @@ public class YykwActivity extends BaseActivity implements View.OnClickListener {
                                                     showToast("您还没有看完视频，请重新观看");
                                                 }
                                             }
+
+
 
                                         }
 
