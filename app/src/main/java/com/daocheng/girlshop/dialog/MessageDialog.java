@@ -39,6 +39,7 @@ public class MessageDialog extends Dialog implements View.OnClickListener{
     public static int MESSAGE=2;
     public static int NOMAL=3;
     public static int EXIT=4;
+    public static int SINGLE_BT=5;
 
     private int type;
 
@@ -105,11 +106,21 @@ public class MessageDialog extends Dialog implements View.OnClickListener{
               case R.id.tv_ok:this.dismiss();break;
 
           }
+      }else if (type==SINGLE_BT)
+      {
+          switch (v.getId())
+          {
+              case R.id.iv_dismiss:
+              case R.id.tv_cancel:this.dismiss();break;
+              case R.id.tv_ok:this.dismiss();onrequest.back();break;
+
+          }
       }
     }
 
     public interface onRequest {
         public void back();
+
     }
 
 
@@ -146,6 +157,9 @@ public class MessageDialog extends Dialog implements View.OnClickListener{
             tvcancel.setTextColor(mcontext.getResources().getColor(R.color.AppTextColor));
             tvok.setTextColor(mcontext.getResources().getColor(R.color.AppTextColor));
             tvcontent.setTextColor(mcontext.getResources().getColor(R.color.AppTextColor));
+        }else if (type == SINGLE_BT){
+            tvcancel.setVisibility(View.GONE);
+            tvcontent.setGravity(Gravity.CENTER);
         }else if(type==MESSAGE){
             tvtitle.setVisibility(View.VISIBLE);
         }

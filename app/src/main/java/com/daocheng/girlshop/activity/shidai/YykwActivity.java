@@ -297,7 +297,7 @@ public class YykwActivity extends BaseActivity implements View.OnClickListener {
                                                     updateVideo(ob.getId() + "", position);
                                                 } else {
                                                     Log.e("xuxiang", "还没到时间");
-                                                    showToast("您还没有看完视频，请重新观看");
+                                                    showToast("您还未完成在线互动课程");
                                                 }
                                             }
 

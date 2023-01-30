@@ -7,6 +7,7 @@ import android.util.Log;
 import com.daocheng.girlshop.R;
 import com.daocheng.girlshop.activity.shidai.loginActivity;
 import com.daocheng.girlshop.dialog.CProgressDialog;
+import com.daocheng.girlshop.dialog.MessageDialog;
 import com.daocheng.girlshop.entity.ServiceResult;
 import com.daocheng.girlshop.myApplication;
 import com.daocheng.girlshop.utils.Config;
@@ -104,9 +105,15 @@ public class NetUtils {
                         if (rsp != null) {
                             //会员过期，强制退出
                             if ("E10008".equals(rsp.getErrcode())){
-                                Config.setShidaiUserInfo(null);
-                                context.startActivity(new Intent(context, loginActivity.class));
-                                myApplication.getInstance().exitExceptforMain();
+                                MessageDialog md = new MessageDialog(context, "提示", "账号已到期，即将退出当前账号", MessageDialog.SINGLE_BT, new MessageDialog.onRequest() {
+                                    @Override
+                                    public void back() {
+                                        Config.setShidaiUserInfo(null);
+                                        context.startActivity(new Intent(context, loginActivity.class));
+                                        myApplication.getInstance().exitExceptforMain();
+                                    }
+                                });
+                                md.show();
                                 return;
                             }
                             callBack.success(rsp);
