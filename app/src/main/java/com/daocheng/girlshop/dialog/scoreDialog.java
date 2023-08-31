@@ -46,7 +46,7 @@ public class scoreDialog extends Dialog implements View.OnClickListener {
 
 
     public scoreDialog(Context context, String title, String content) {
-        super(context);
+        super(context,R.style.dialog_jczq);
         mcontext = context;
         this.title = title;
         this.content = content;
